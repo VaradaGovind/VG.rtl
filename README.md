@@ -7,7 +7,8 @@ This site was built from first principles using HTML5, Tailwind CSS, and Vanilla
 ## ⚡ Features
 
 * **Silicon Aesthetic:** Custom SVG background animation simulating PCB traces and current flow.
-* **Interactive UI:** * **Spotlight Cards:** Hover effects that track mouse movement to reveal borders/glow (simulating a flashlight in a dark lab).
+* **Interactive UI:**
+    * **Spotlight Cards:** Hover effects that track mouse movement to reveal borders/glow (simulating a flashlight in a dark lab).
     * **Glitch Logo:** CSS-only glitch animation on the logo hover.
     * **Floating Elements:** Subtle vertical float animations for depth.
 * **Performance:** No heavy frameworks (React/Vue). Uses utility classes via Tailwind CSS (CDN) for rapid prototyping.
@@ -27,10 +28,10 @@ Since this project uses the CDN version of Tailwind, there is no `npm install` r
 
 1.  **Clone the repo**
     ```bash
-    git clone [https://github.com/VaradaGovind/portfolio-v2.git](https://github.com/VaradaGovind/portfolio-v2.git)
+    git clone [https://github.com/VaradaGovind/VG.rtl.git](https://github.com/VaradaGovind/VG.rtl.git)
     ```
 2.  **Run locally**
-     simply open `index.html` in your browser.
+     Simply open `index.html` in your browser.
 
 ## 🎨 Customization
 
