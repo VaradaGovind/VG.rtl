@@ -9,7 +9,6 @@
     <style>
         /* --- CUSTOM UTILITIES & ANIMATIONS --- */
         
-        /* Glass & Base Styles */
         body {
             background-color: #0a0a0a; /* Neutral-950 */
             cursor: default;
@@ -32,7 +31,7 @@
             position: absolute;
             background: radial-gradient(
                 800px circle at var(--mouse-x) var(--mouse-y),
-                rgba(251, 191, 36, 0.15), /* Amber-400 opacity */
+                rgba(251, 191, 36, 0.15),
                 transparent 40%
             );
             z-index: 0;
@@ -59,7 +58,6 @@
             transform: translateY(0);
         }
         
-        /* Staggered Delays */
         .reveal.delay-100 { transition-delay: 100ms; }
         .reveal.delay-200 { transition-delay: 200ms; }
         .reveal.delay-300 { transition-delay: 300ms; }
@@ -126,7 +124,7 @@
             width: 100%;
         }
 
-        /* Scrollbar Customization */
+        /* Scrollbar */
         ::selection {
             background-color: rgba(245, 158, 11, 0.3);
             color: #fcd34d;
@@ -142,19 +140,11 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#fffbeb',
-                            100: '#fef3c7',
-                            200: '#fde68a',
-                            300: '#fcd34d',
-                            400: '#fbbf24', /* Main Amber */
-                            500: '#f59e0b',
-                            600: '#d97706',
-                            900: '#78350f',
-                            950: '#451a03',
+                            50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
+                            400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 900: '#78350f', 950: '#451a03',
                         },
                         neutral: {
-                            900: '#171717',
-                            950: '#0a0a0a',
+                            900: '#171717', 950: '#0a0a0a',
                         }
                     },
                     fontFamily: {
@@ -172,7 +162,6 @@
         <div id="bg-grid" class="absolute inset-0 opacity-[0.03]"
              style="background-image: linear-gradient(#fbbf24 1px, transparent 1px), linear-gradient(90deg, #fbbf24 1px, transparent 1px); background-size: 50px 50px; transition: transform 0.1s linear;">
         </div>
-        
         <svg id="bg-traces" class="absolute w-full h-full opacity-40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="trace-grad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -188,36 +177,10 @@
                     </feMerge>
                 </filter>
             </defs>
-
-            <path id="trace-left" 
-                  d="M50,-10 V100 L150,200 V400 L50,500 V800 L100,850 V1200" 
-                  fill="none" 
-                  stroke="url(#trace-grad)" 
-                  stroke-width="2" 
-                  filter="url(#glow)"
-                  vector-effect="non-scaling-stroke"
-                  style="transition: stroke-dashoffset 0.1s linear;" />
-
-            <path id="trace-right" 
-                  d="M100%,-10 V150 L85%,300 V500 L95%,600 V900 L80%,1050 V1200" 
-                  fill="none" 
-                  stroke="#fbbf24" 
-                  stroke-width="1.5" 
-                  stroke-opacity="0.4"
-                  filter="url(#glow)"
-                  vector-effect="non-scaling-stroke" 
-                  style="transition: stroke-dashoffset 0.1s linear;" />
-            
-            <path id="trace-center" 
-                  d="M50%,1200 V800 L60%,700 V400 L40%,200 V0" 
-                  fill="none" 
-                  stroke="#fbbf24" 
-                  stroke-width="1" 
-                  stroke-dasharray="5,5"
-                  stroke-opacity="0.2"
-                  vector-effect="non-scaling-stroke" />
+            <path id="trace-left" d="M50,-10 V100 L150,200 V400 L50,500 V800 L100,850 V1200" fill="none" stroke="url(#trace-grad)" stroke-width="2" filter="url(#glow)" vector-effect="non-scaling-stroke" style="transition: stroke-dashoffset 0.1s linear;" />
+            <path id="trace-right" d="M100%,-10 V150 L85%,300 V500 L95%,600 V900 L80%,1050 V1200" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.4" filter="url(#glow)" vector-effect="non-scaling-stroke" style="transition: stroke-dashoffset 0.1s linear;" />
+            <path id="trace-center" d="M50%,1200 V800 L60%,700 V400 L40%,200 V0" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="5,5" stroke-opacity="0.2" vector-effect="non-scaling-stroke" />
         </svg>
-
         <div class="absolute inset-0 bg-neutral-950/80 bg-[radial-gradient(circle_at_center,_transparent_0%,_#0a0a0a_100%)]"></div>
     </div>
 
@@ -228,7 +191,6 @@
                 <div class="text-2xl font-bold font-mono text-brand-400 tracking-tighter cursor-pointer glitch-hover transition-colors" onclick="window.scrollTo(0,0)">
                     VG<span class="text-neutral-600">.rtl</span>
                 </div>
-
                 <div class="hidden md:flex space-x-8">
                     <a href="#about" class="nav-link text-neutral-400 hover:text-brand-400 transition-colors duration-300 font-mono text-sm"><span class="text-brand-500 mr-1">01.</span>About</a>
                     <a href="#experience" class="nav-link text-neutral-400 hover:text-brand-400 transition-colors duration-300 font-mono text-sm"><span class="text-brand-500 mr-1">02.</span>Experience</a>
@@ -236,12 +198,10 @@
                     <a href="#skills" class="nav-link text-neutral-400 hover:text-brand-400 transition-colors duration-300 font-mono text-sm"><span class="text-brand-500 mr-1">04.</span>Toolkit</a>
                     <a href="#contact" class="nav-link text-neutral-400 hover:text-brand-400 transition-colors duration-300 font-mono text-sm"><span class="text-brand-500 mr-1">05.</span>Contact</a>
                 </div>
-
                 <button id="menu-btn" class="md:hidden text-brand-400">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
-
             <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-neutral-900/95 backdrop-blur-xl border-b border-brand-900/30 py-4 shadow-xl">
                 <div class="flex flex-col space-y-4 px-6">
                     <a href="#about" class="mobile-link text-neutral-300 hover:text-brand-400 font-mono text-sm"><span class="text-brand-500 mr-1">01.</span>About</a>
@@ -257,12 +217,10 @@
             <div class="container mx-auto">
                 <div class="max-w-4xl reveal">
                     <p class="text-brand-400 font-mono mb-4">Hi, my name is</p>
-                    
                     <div class="flex items-center mb-4">
                         <h1 id="typewriter" class="text-5xl md:text-7xl font-bold text-neutral-100 tracking-tight drop-shadow-lg typewriter-text">
-                            </h1>
+                        </h1>
                     </div>
-
                     <h2 class="text-4xl md:text-6xl font-bold text-neutral-400/90 mb-8 tracking-tight backdrop-blur-sm">
                         From Atoms to Architecture.
                     </h2>
@@ -273,18 +231,18 @@
                         </p>
                     </div>
                     
-                    <div class="flex flex-wrap gap-4">
+                    <div class="flex flex-wrap gap-4 relative z-30">
                         <a href="mailto:varada.aakula@gmail.com" class="px-8 py-4 border border-brand-400 text-brand-400 font-mono rounded bg-brand-400/5 hover:bg-brand-400/10 backdrop-blur-sm transition-all hover:shadow-[0_0_20px_rgba(251,191,36,0.5)] hover:-translate-y-1">
                             Contact Me
                         </a>
                         <div class="flex items-center gap-4 ml-4">
-                            <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-brand-400 transition-colors hover:scale-110 transform duration-200">
+                            <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-brand-400 transition-colors hover:scale-110 transform duration-200 p-2 inline-block">
                                 <i data-lucide="github" class="w-6 h-6"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/varada-govind-3506712b5/" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-brand-400 transition-colors hover:scale-110 transform duration-200">
+                            <a href="https://www.linkedin.com/in/varada-govind-3506712b5/" target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-brand-400 transition-colors hover:scale-110 transform duration-200 p-2 inline-block">
                                 <i data-lucide="linkedin" class="w-6 h-6"></i>
                             </a>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -296,12 +254,10 @@
                     <span class="text-brand-400 font-mono mr-4 text-xl">01.</span> Hands-on Experience
                     <span class="h-px bg-neutral-800 flex-grow ml-6"></span>
                 </h2>
-
                 <div class="grid md:grid-cols-2 gap-12">
                     <div class="glass-panel p-8 rounded-xl relative overflow-hidden group spotlight-card reveal hover:border-brand-500/30">
                         <div class="relative z-10">
                             <div class="absolute top-0 right-0 w-20 h-20 border-t-2 border-r-2 border-brand-500/20 rounded-tr-xl transition-all duration-300 group-hover:border-brand-500/60 group-hover:w-24 group-hover:h-24"></div>
-                            
                             <h3 class="text-xl font-bold text-neutral-200 mb-6 flex items-center">
                                 <i data-lucide="wrench" class="mr-2 text-brand-400 w-5 h-5"></i> Lab & Leadership
                             </h3>
@@ -321,7 +277,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="reveal">
                         <h3 class="text-xl font-bold text-neutral-200 mb-6 flex items-center pl-4">
                             <i data-lucide="award" class="mr-2 text-brand-400 w-5 h-5"></i> Drive & Discipline
@@ -360,9 +315,7 @@
                 <p class="text-neutral-400 mb-10 max-w-2xl bg-neutral-900/60 p-4 rounded backdrop-blur-sm border-l-2 border-brand-500/30 reveal">
                     I believe the best way to learn is to build. From electromechanical assembly to chip architecture, here are my hands-on projects.
                 </p>
-
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
                     <div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(251,191,36,0.2)] group hover:border-brand-400/40 relative overflow-hidden spotlight-card reveal hover:scale-[1.02]">
                         <div class="relative z-10">
                             <div class="flex justify-between items-start mb-6">
@@ -384,7 +337,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(251,191,36,0.2)] group hover:border-brand-400/40 relative overflow-hidden spotlight-card reveal hover:scale-[1.02]">
                         <div class="relative z-10">
                             <div class="flex justify-between items-start mb-6">
@@ -406,7 +358,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(251,191,36,0.2)] group hover:border-brand-400/40 relative overflow-hidden spotlight-card reveal border-brand-500/20 hover:scale-[1.02]">
                         <div class="relative z-10">
                             <div class="absolute top-0 right-0 px-3 py-1 bg-brand-900/40 text-brand-400 text-[10px] font-mono border-b border-l border-brand-500/30 rounded-bl-lg flex items-center gap-2">
@@ -431,7 +382,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(251,191,36,0.2)] group hover:border-brand-400/40 relative overflow-hidden spotlight-card reveal hover:scale-[1.02]">
                         <div class="relative z-10">
                             <div class="flex justify-between items-start mb-6">
@@ -452,7 +402,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(251,191,36,0.2)] group hover:border-brand-400/40 relative overflow-hidden spotlight-card reveal hover:scale-[1.02]">
                         <div class="relative z-10">
                             <div class="flex justify-between items-start mb-6">
@@ -472,7 +421,6 @@
                             </p>
                         </div>
                     </div>
-
                     <div class="glass-panel p-8 rounded-lg transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(251,191,36,0.2)] group hover:border-brand-400/40 relative overflow-hidden spotlight-card reveal hover:scale-[1.02]">
                         <div class="relative z-10">
                             <div class="flex justify-between items-start mb-6">
@@ -492,7 +440,6 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -500,14 +447,11 @@
         <section id="skills" class="py-20 px-6">
             <div class="container mx-auto max-w-6xl glass-panel p-10 rounded-2xl shadow-2xl relative reveal">
                 <div class="absolute -top-6 left-10 text-brand-500/20 animate-pulse-fast"><i data-lucide="binary" class="w-12 h-12"></i></div>
-
                 <h2 class="flex items-center text-2xl md:text-3xl font-bold text-neutral-100 mb-12">
                     <span class="text-brand-400 font-mono mr-4 text-xl">03.</span> Technical Toolkit
                     <span class="h-px bg-neutral-800 flex-grow ml-6"></span>
                 </h2>
-
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
                     <div class="group reveal delay-100">
                         <div class="flex items-center mb-4 text-brand-400 group-hover:text-brand-300 transition-colors">
                             <i data-lucide="zap" class="w-6 h-6"></i>
@@ -520,7 +464,6 @@
                             <li class="hover:text-brand-400 transition-colors cursor-default">Lab Instrumentation</li>
                         </ul>
                     </div>
-
                     <div class="group reveal delay-200">
                         <div class="flex items-center mb-4 text-brand-400 group-hover:text-brand-300 transition-colors">
                             <i data-lucide="box" class="w-6 h-6"></i>
@@ -533,7 +476,6 @@
                             <li class="hover:text-brand-400 transition-colors cursor-default">3D Printing & Prototyping</li>
                         </ul>
                     </div>
-
                     <div class="group reveal delay-300">
                         <div class="flex items-center mb-4 text-brand-400 group-hover:text-brand-300 transition-colors">
                             <i data-lucide="cpu" class="w-6 h-6"></i>
@@ -546,7 +488,6 @@
                             <li class="hover:text-brand-400 transition-colors cursor-default">Clock Domain Crossing (CDC)</li>
                         </ul>
                     </div>
-
                     <div class="group reveal delay-100">
                         <div class="flex items-center mb-4 text-brand-400 group-hover:text-brand-300 transition-colors">
                             <i data-lucide="terminal" class="w-6 h-6"></i>
@@ -558,7 +499,6 @@
                             <li class="hover:text-brand-400 transition-colors cursor-default">Assembly (RISC-V)</li>
                         </ul>
                     </div>
-
                     <div class="group reveal delay-200">
                         <div class="flex items-center mb-4 text-brand-400 group-hover:text-brand-300 transition-colors">
                             <i data-lucide="microscope" class="w-6 h-6"></i>
@@ -571,7 +511,6 @@
                             <li class="hover:text-brand-400 transition-colors cursor-default">Computer Architecture</li>
                         </ul>
                     </div>
-
                     <div class="group reveal delay-300">
                         <div class="flex items-center mb-4 text-brand-400 group-hover:text-brand-300 transition-colors">
                             <i data-lucide="monitor" class="w-6 h-6"></i>
@@ -583,7 +522,6 @@
                             <li class="hover:text-brand-400 transition-colors cursor-default">GTKWave</li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -595,11 +533,9 @@
                 <p class="text-neutral-400 mb-12 text-lg">
                     I'm seeking a high-ownership role where I can iterate quickly and solve hard engineering problems. If you're building the future of fabrication, I'd love to chat.
                 </p>
-                
                 <a href="mailto:varada.aakula@gmail.com" class="inline-flex items-center px-8 py-4 border border-brand-400 text-brand-400 font-mono rounded bg-brand-400/5 hover:bg-brand-400/10 transition-all hover:shadow-[0_0_20px_rgba(251,191,36,0.4)] mb-12 hover:-translate-y-1">
                     Contact Me <i data-lucide="mail" class="ml-2 w-4 h-4"></i>
                 </a>
-
                 <div class="flex flex-col items-center space-y-2 text-neutral-500 font-mono text-sm">
                     <p>Engineered by Varada Govind</p>
                     <p>+91-9391092586</p>
@@ -611,7 +547,7 @@
     <script>
         lucide.createIcons();
 
-        /* Typewriter Effect */
+        /* Typewriter */
         const text = "Varada Govind.";
         const typeWriterElement = document.getElementById('typewriter');
         let i = 0;
@@ -619,56 +555,42 @@
             if (i < text.length) {
                 typeWriterElement.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 150); // Typing speed
+                setTimeout(typeWriter, 150);
             } else {
-                 typeWriterElement.style.borderRight = "none"; // Stop blinking cursor on finish
+                 typeWriterElement.style.borderRight = "none";
             }
         }
         setTimeout(typeWriter, 800);
 
-
-        /* Scroll Reveal (Intersection Observer) */
+        /* Scroll Reveal */
         const revealElements = document.querySelectorAll('.reveal');
-        
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Animate only once per session
+                    observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.15, // Trigger when 15% of element is visible
-            rootMargin: "0px 0px -50px 0px"
-        });
-
+        }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
         revealElements.forEach(el => revealObserver.observe(el));
 
-
-        /* Spotlight Hover Effect */
+        /* Spotlight Hover */
         const cards = document.querySelectorAll('.spotlight-card');
-        
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
             });
         });
 
-
-        /* Scroll Drawing & Navbar Logic */
+        /* Scroll Drawing */
         const bgGrid = document.getElementById('bg-grid');
         const nav = document.getElementById('navbar');
-        const scrollPaths = [
-            document.getElementById('trace-left'), 
-            document.getElementById('trace-right'), 
-            document.getElementById('trace-center')
-        ];
-
+        const scrollPaths = [document.getElementById('trace-left'), document.getElementById('trace-right'), document.getElementById('trace-center')];
+        
         scrollPaths.forEach(path => {
             if(path) {
                 const length = path.getTotalLength();
@@ -693,7 +615,6 @@
                 }
             });
 
-            // Toggle navbar styles on scroll
             if (scrollY > 50) {
                 nav.classList.add('bg-neutral-950/80', 'backdrop-blur-md', 'border-b', 'border-brand-900/30', 'py-4');
                 nav.classList.remove('py-6');
