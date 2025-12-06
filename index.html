@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varada Govind | Hardware Engineer</title>
-    <meta name="description" content="Portfolio of Varada Govind, Electronics Engineer specializing in RTL Design, Embedded Systems, and VLSI.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,11 +28,25 @@
                         dark: {
                             900: '#0a0a0a',
                             800: '#121212',
-                            700: '#1a1a1a',
                         }
                     },
                     backgroundImage: {
                         'grid-pattern': "linear-gradient(to right, #262626 1px, transparent 1px), linear-gradient(to bottom, #262626 1px, transparent 1px)",
+                    },
+                    animation: {
+                        'grid-flow': 'gridFlow 20s linear infinite',
+                        'glitch': 'glitch 1s linear infinite',
+                    },
+                    keyframes: {
+                        gridFlow: {
+                            '0%': { transform: 'translateY(0)' },
+                            '100%': { transform: 'translateY(40px)' },
+                        },
+                        glitch: {
+                            '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                            '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                            '62%': { transform: 'translate(0,0) skew(5deg)' },
+                        }
                     }
                 }
             }
@@ -41,62 +54,51 @@
     </script>
 
     <style>
-        /* --- CUSTOM CSS --- */
-        body {
-            background-color: #050505;
-            color: #e5e5e5;
-        }
+        body { background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
 
-        /* PCB Grid Background */
+        /* Moving Grid Background */
+        .bg-grid-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            perspective: 1000px;
+        }
         .bg-grid {
             background-size: 40px 40px;
-            mask-image: linear-gradient(to bottom, transparent, 10%, black, 90%, transparent);
+            width: 100%;
+            height: 200%; /* taller for scrolling effect */
+            mask-image: linear-gradient(to bottom, transparent, 5%, black, 90%, transparent);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+            transform-style: preserve-3d;
         }
 
         /* Glassmorphism */
         .glass-panel {
             background: rgba(20, 20, 20, 0.6);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Spotlight Hover Effect */
-        .spotlight-card {
-            position: relative;
-            overflow: hidden;
-        }
+        /* Spotlight */
+        .spotlight-card { position: relative; overflow: hidden; }
         .spotlight-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(251, 191, 36, 0.06), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
-            z-index: 1;
+            opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 1;
         }
         .spotlight-card:hover::before { opacity: 1; }
 
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .typewriter-cursor::after {
-            content: '|';
-            animation: blink 1s step-start infinite;
-            color: #fbbf24;
-        }
-        @keyframes blink { 50% { opacity: 0; } }
+        /* Glitch Hover text */
+        .hacker-text { display: inline-block; min-width: 100px; }
+
+        /* Magnetic Button Base */
+        .magnetic-btn { transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
@@ -104,48 +106,26 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #fbbf24; }
 
-        /* Timeline Line */
         .timeline-line {
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
+            position: absolute; left: 20px; top: 0; bottom: 0; width: 2px;
             background: linear-gradient(to bottom, transparent, #333 10%, #333 90%, transparent);
         }
-        @media (min-width: 768px) {
-            .timeline-line { left: 50%; transform: translateX(-50%); }
-        }
-        
-        /* Chip/IC Style */
-        .ic-chip {
-            position: relative;
-        }
-        .ic-chip::before, .ic-chip::after {
-            content: '';
-            position: absolute;
-            background: #333;
-        }
-        /* Stylized pins for the chips */
-        .ic-pin-l { position: absolute; left: -4px; width: 4px; height: 60%; top: 20%; background: #333; }
-        .ic-pin-r { position: absolute; right: -4px; width: 4px; height: 60%; top: 20%; background: #333; }
+        @media (min-width: 768px) { .timeline-line { left: 50%; transform: translateX(-50%); } }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-amber-500/30 selection:text-amber-200">
 
-    <div class="fixed inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-grid-pattern bg-grid opacity-[0.15]"></div>
+    <div class="fixed inset-0 z-0 pointer-events-none bg-grid-wrapper">
+        <div class="bg-grid-pattern bg-grid opacity-[0.15] animate-grid-flow"></div>
         <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[120px] animate-pulse"></div>
         <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-amber-600/5 rounded-full blur-[100px]"></div>
     </div>
 
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-transparent">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="group flex items-center gap-2">
-                <div class="w-8 h-8 bg-amber-500/10 border border-amber-500/50 rounded flex items-center justify-center font-mono font-bold text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all">
-                    V
-                </div>
-                <span class="font-mono text-lg font-bold tracking-tight text-neutral-300 group-hover:text-white transition-colors">VG.rtl</span>
+            <a href="#" class="group flex items-center gap-2" onmouseenter="scrambleText(this.querySelector('.logo-text'))">
+                <div class="w-8 h-8 bg-amber-500/10 border border-amber-500/50 rounded flex items-center justify-center font-mono font-bold text-amber-500 group-hover:bg-amber-500 group-hover:text-black transition-all">V</div>
+                <span class="logo-text font-mono text-lg font-bold tracking-tight text-neutral-300 group-hover:text-white transition-colors" data-value="VG.rtl">VG.rtl</span>
             </a>
 
             <div class="hidden md:flex items-center space-x-8">
@@ -154,25 +134,18 @@
                 <a href="#projects" class="text-sm font-mono text-neutral-400 hover:text-amber-400 transition-colors"><span class="text-amber-600 mr-1">03.</span>// Builds</a>
                 <a href="#skills" class="text-sm font-mono text-neutral-400 hover:text-amber-400 transition-colors"><span class="text-amber-600 mr-1">04.</span>// Toolkit</a>
                 
-                <a href="#resume" class="px-4 py-2 text-xs font-mono font-bold text-amber-500 border border-amber-500/50 rounded hover:bg-amber-500/10 hover:shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all">
-                    RESUME.pdf
-                </a>
+                <a href="#resume" class="magnetic-btn px-4 py-2 text-xs font-mono font-bold text-amber-500 border border-amber-500/50 rounded hover:bg-amber-500/10 transition-all">RESUME.pdf</a>
             </div>
-
-            <button id="menu-btn" class="md:hidden text-neutral-300 hover:text-amber-500 transition-colors">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+            
+            <button id="menu-btn" class="md:hidden text-neutral-300 hover:text-amber-500"><i data-lucide="menu"></i></button>
         </div>
         
         <div id="mobile-menu" class="fixed inset-0 z-40 bg-dark-900/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 flex flex-col justify-center items-center space-y-8 md:hidden">
-            <button id="close-menu" class="absolute top-6 right-6 text-neutral-400 hover:text-white">
-                <i data-lucide="x" class="w-8 h-8"></i>
-            </button>
-            <a href="#about" class="mobile-link text-xl font-mono text-neutral-300 hover:text-amber-500"><span class="text-amber-600">01.</span> About</a>
-            <a href="#experience" class="mobile-link text-xl font-mono text-neutral-300 hover:text-amber-500"><span class="text-amber-600">02.</span> Experience</a>
-            <a href="#projects" class="mobile-link text-xl font-mono text-neutral-300 hover:text-amber-500"><span class="text-amber-600">03.</span> Builds</a>
-            <a href="#skills" class="mobile-link text-xl font-mono text-neutral-300 hover:text-amber-500"><span class="text-amber-600">04.</span> Toolkit</a>
-            <a href="#resume" class="px-8 py-3 font-mono font-bold text-black bg-amber-500 rounded hover:bg-amber-400 transition-colors">Download Resume</a>
+            <button id="close-menu" class="absolute top-6 right-6 text-neutral-400 hover:text-white"><i data-lucide="x" class="w-8 h-8"></i></button>
+            <a href="#about" class="mobile-link text-xl font-mono text-neutral-300 hover:text-amber-500">01. About</a>
+            <a href="#experience" class="mobile-link text-xl font-mono text-neutral-300 hover:text-amber-500">02. Experience</a>
+            <a href="#projects" class="mobile-link text-xl font-mono text-neutral-300 hover:text-amber-500">03. Builds</a>
+            <a href="#skills" class="mobile-link text-xl font-mono text-neutral-300 hover:text-amber-500">04. Toolkit</a>
         </div>
     </nav>
 
@@ -190,31 +163,26 @@
                     </div>
                     
                     <p class="text-amber-500 font-mono mb-4 text-lg">Hi, I'm</p>
-                    <h1 class="text-5xl md:text-8xl font-bold text-white tracking-tight mb-4">
-                        Varada Govind<span class="text-amber-500">.</span>
+                    
+                    <h1 class="text-5xl md:text-8xl font-bold text-white tracking-tight mb-4 hacker-text" data-value="Varada Govind">
+                        Varada Govind
                     </h1>
-                    <h2 class="text-3xl md:text-5xl font-bold text-neutral-400 mb-8 font-mono typewriter-cursor">
+                    
+                    <h2 class="text-3xl md:text-5xl font-bold text-neutral-400 mb-8 font-mono">
                         Designing Silicon Logic.
                     </h2>
                     
                     <p class="max-w-2xl text-neutral-400 text-lg leading-relaxed mb-10 border-l-2 border-amber-500/30 pl-6">
-                        I am an <span class="text-white font-semibold">Electronics Engineer</span> at <span class="text-amber-400">IIIT Allahabad</span> bridging the gap between software and silicon. I design RISC-V cores, build autonomous robots, and optimize hardware architectures for the next generation of computing.
+                        I am an <span class="text-white font-semibold">Electronics Engineer</span> at <span class="text-amber-400">IIIT Allahabad</span> bridging the gap between software and silicon. I design RISC-V cores, build autonomous robots, and optimize hardware architectures.
                     </p>
 
                     <div class="flex flex-wrap gap-4 items-center">
-                        <a href="#contact" class="px-8 py-4 bg-amber-500 text-black font-bold font-mono rounded hover:bg-amber-400 transition-all hover:scale-105 shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+                        <a href="#contact" class="magnetic-btn px-8 py-4 bg-amber-500 text-black font-bold font-mono rounded hover:bg-amber-400 transition-all shadow-[0_0_20px_rgba(245,158,11,0.4)]">
                             Initiate Handshake
                         </a>
                         <div class="flex items-center gap-4 ml-4">
-                            <a href="https://github.com/VaradaGovind" target="_blank" class="p-3 text-neutral-400 hover:text-white hover:bg-white/5 rounded-full transition-all border border-transparent hover:border-white/10">
-                                <i data-lucide="github" class="w-6 h-6"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/" target="_blank" class="p-3 text-neutral-400 hover:text-white hover:bg-white/5 rounded-full transition-all border border-transparent hover:border-white/10">
-                                <i data-lucide="linkedin" class="w-6 h-6"></i>
-                            </a>
-                            <a href="mailto:varada.aakula@gmail.com" class="p-3 text-neutral-400 hover:text-white hover:bg-white/5 rounded-full transition-all border border-transparent hover:border-white/10">
-                                <i data-lucide="mail" class="w-6 h-6"></i>
-                            </a>
+                            <a href="https://github.com/VaradaGovind" target="_blank" class="magnetic-btn p-3 text-neutral-400 hover:text-white hover:bg-white/5 rounded-full transition-all border border-transparent hover:border-white/10"><i data-lucide="github" class="w-6 h-6"></i></a>
+                            <a href="https://linkedin.com" target="_blank" class="magnetic-btn p-3 text-neutral-400 hover:text-white hover:bg-white/5 rounded-full transition-all border border-transparent hover:border-white/10"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
                         </div>
                     </div>
                 </div>
@@ -225,7 +193,7 @@
             <div class="container mx-auto max-w-4xl">
                 <div class="flex items-center gap-4 mb-16 reveal">
                     <span class="text-amber-500 font-mono text-xl">01.</span>
-                    <h2 class="text-3xl font-bold text-white">Simulation & Reality</h2>
+                    <h2 class="text-3xl font-bold text-white hover:animate-glitch cursor-default">Simulation & Reality</h2>
                     <div class="h-[1px] bg-neutral-800 flex-grow"></div>
                 </div>
 
@@ -234,17 +202,13 @@
 
                     <div class="mb-12 md:flex justify-between items-center w-full right-timeline reveal group">
                         <div class="order-1 md:w-5/12 md:text-right"></div>
-                        <div class="z-20 flex items-center order-1 bg-dark-800 shadow-xl w-10 h-10 rounded-full border-2 border-amber-500 group-hover:scale-110 transition-transform">
-                            <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
-                        </div>
+                        <div class="z-20 flex items-center order-1 bg-dark-800 shadow-xl w-10 h-10 rounded-full border-2 border-amber-500 group-hover:scale-110 transition-transform"><h1 class="mx-auto font-semibold text-lg text-white">1</h1></div>
                         <div class="order-1 md:w-5/12 pl-8 md:pl-0">
                             <div class="glass-panel p-6 rounded-lg border-l-4 border-amber-500 hover:bg-neutral-800/50 transition-colors">
                                 <span class="text-xs font-mono text-amber-500 mb-1 block">2025 - Present</span>
                                 <h3 class="font-bold text-xl text-white">Co-Ordinator, IoT Wing</h3>
                                 <p class="text-sm text-neutral-400 mb-4">Tesla Club, IIITA</p>
-                                <p class="text-sm text-neutral-300 leading-relaxed">
-                                    Leading technical workshops and managing lab inventory. Responsible for rapid prototyping embedded systems and mentoring juniors in AVR/ARM architectures.
-                                </p>
+                                <p class="text-sm text-neutral-300">Leading workshops, managing lab inventory, and rapid prototyping embedded systems.</p>
                             </div>
                         </div>
                     </div>
@@ -255,14 +219,10 @@
                                 <span class="text-xs font-mono text-amber-500 mb-1 block">2024</span>
                                 <h3 class="font-bold text-xl text-white">PR Executive</h3>
                                 <p class="text-sm text-neutral-400 mb-4">Cultural Fest, IIITA</p>
-                                <p class="text-sm text-neutral-300 leading-relaxed">
-                                    Orchestrated communication channels between technical teams and external stakeholders, ensuring seamless event execution.
-                                </p>
+                                <p class="text-sm text-neutral-300">Orchestrated communication channels between technical teams and stakeholders.</p>
                             </div>
                         </div>
-                        <div class="z-20 flex items-center order-1 bg-dark-800 shadow-xl w-10 h-10 rounded-full border-2 border-neutral-600 group-hover:border-amber-500 transition-colors">
-                            <h1 class="mx-auto font-semibold text-lg text-white">2</h1>
-                        </div>
+                        <div class="z-20 flex items-center order-1 bg-dark-800 shadow-xl w-10 h-10 rounded-full border-2 border-neutral-600 group-hover:border-amber-500 transition-colors"><h1 class="mx-auto font-semibold text-lg text-white">2</h1></div>
                         <div class="order-1 md:w-5/12"></div>
                     </div>
                 </div>
@@ -273,129 +233,79 @@
             <div class="container mx-auto max-w-6xl">
                 <div class="flex items-center gap-4 mb-16 reveal">
                     <span class="text-amber-500 font-mono text-xl">02.</span>
-                    <h2 class="text-3xl font-bold text-white">RTL & Embedded Builds</h2>
+                    <h2 class="text-3xl font-bold text-white hover:animate-glitch cursor-default">RTL & Embedded Builds</h2>
                     <div class="h-[1px] bg-neutral-800 flex-grow"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
                     <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
                         <div class="flex justify-between items-start mb-6">
                             <i data-lucide="cpu" class="w-10 h-10 text-amber-500"></i>
-                            <div class="flex gap-4">
-                                <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
-                            </div>
+                            <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">RISC-V 32-bit Core</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">
-                            Single-cycle RV32I processor implementation. Designed IF, ID, EX, MEM, and WB stages from scratch in Verilog.
-                        </p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <span class="px-2 py-1 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">Verilog</span>
-                            <span class="px-2 py-1 rounded bg-neutral-800 text-neutral-300">ModelSim</span>
-                            <span class="px-2 py-1 rounded bg-neutral-800 text-neutral-300">GTKWave</span>
-                        </div>
+                        <p class="text-neutral-400 text-sm mb-6 h-16">Single-cycle RV32I processor implementation. Designed IF, ID, EX, MEM, and WB stages.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-amber-500/10 text-amber-500">Verilog</span></div>
                     </div>
 
                     <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal border-amber-500/30">
                         <div class="flex justify-between items-start mb-6">
                             <i data-lucide="bot" class="w-10 h-10 text-amber-500"></i>
-                            <div class="flex gap-4">
-                                <a href="https://github.com/VaradaGovind/arduino-avoidance-robot" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
-                            </div>
+                            <a href="https://github.com/VaradaGovind/arduino-avoidance-robot" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">Autonomous Robot</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">
-                            Obstacle avoidance vehicle using ultrasonic sensor fusion and DC motor control logic implemented in Embedded C++.
-                        </p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <span class="px-2 py-1 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">Arduino</span>
-                            <span class="px-2 py-1 rounded bg-neutral-800 text-neutral-300">C++</span>
-                            <span class="px-2 py-1 rounded bg-neutral-800 text-neutral-300">Sensors</span>
-                        </div>
+                        <p class="text-neutral-400 text-sm mb-6 h-16">Obstacle avoidance vehicle using ultrasonic sensor fusion and DC motor control logic.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-amber-500/10 text-amber-500">Embedded C++</span></div>
                     </div>
 
-                    <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
+                     <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
                         <div class="flex justify-between items-start mb-6">
                             <i data-lucide="lock" class="w-10 h-10 text-amber-500"></i>
-                            <div class="flex gap-4">
-                                <a href="#" class="text-neutral-400 hover:text-white cursor-not-allowed" title="In Progress"><i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i></a>
-                            </div>
+                            <a href="#" class="text-neutral-400 hover:text-white cursor-not-allowed"><i data-lucide="loader-2" class="animate-spin"></i></a>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">AES-128 Encryption</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">
-                            High-throughput encryption hardware core. Optimizing S-Box lookups for reduced silicon area usage.
-                        </p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <span class="px-2 py-1 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">SystemVerilog</span>
-                            <span class="px-2 py-1 rounded bg-neutral-800 text-neutral-300">Crypto</span>
-                        </div>
+                        <p class="text-neutral-400 text-sm mb-6 h-16">High-throughput encryption hardware core. Optimizing S-Box lookups for silicon area.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-amber-500/10 text-amber-500">SystemVerilog</span></div>
                     </div>
-
-                    <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
-                        <div class="flex justify-between items-start mb-6">
-                            <i data-lucide="traffic-cone" class="w-10 h-10 text-amber-500"></i>
-                            <div class="flex gap-4">
-                                <a href="https://github.com/VaradaGovind/rtl-traffic-controller" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">FSM Traffic Control</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">
-                            Robust Finite State Machine design with timed state transitions and emergency override interrupt logic.
-                        </p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs">
-                            <span class="px-2 py-1 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">Digital Logic</span>
-                            <span class="px-2 py-1 rounded bg-neutral-800 text-neutral-300">FSM</span>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="py-24 px-6 relative overflow-hidden">
-            <div class="container mx-auto max-w-5xl relative z-10">
+        <section id="skills" class="py-24 px-6 relative">
+            <div class="container mx-auto max-w-5xl">
                 <div class="flex items-center gap-4 mb-16 reveal">
                     <span class="text-amber-500 font-mono text-xl">03.</span>
-                    <h2 class="text-3xl font-bold text-white">Technical Toolkit</h2>
+                    <h2 class="text-3xl font-bold text-white hover:animate-glitch cursor-default">Technical Toolkit</h2>
                     <div class="h-[1px] bg-neutral-800 flex-grow"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <div class="glass-panel p-6 rounded border border-neutral-800 ic-chip hover:border-amber-500/50 transition-colors reveal">
-                        <div class="ic-pin-l"></div><div class="ic-pin-r"></div>
+                    <div class="glass-panel p-6 rounded border border-neutral-800 hover:border-amber-500/50 transition-colors reveal">
                         <h3 class="font-mono text-amber-500 mb-4 flex items-center"><i data-lucide="cpu" class="w-4 h-4 mr-2"></i> RTL & Arch</h3>
                         <ul class="space-y-2 text-sm text-neutral-300 font-mono">
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>Verilog / SystemVerilog</li>
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>Digital Logic Design</li>
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>FSM & CDC</li>
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>FPGA Architecture</li>
+                            <li><span class="text-amber-500">>></span> Verilog / SystemVerilog</li>
+                            <li><span class="text-amber-500">>></span> Digital Logic Design</li>
+                            <li><span class="text-amber-500">>></span> FSM & CDC</li>
                         </ul>
                     </div>
-
-                    <div class="glass-panel p-6 rounded border border-neutral-800 ic-chip hover:border-amber-500/50 transition-colors reveal delay-100">
-                        <div class="ic-pin-l"></div><div class="ic-pin-r"></div>
+                    
+                    <div class="glass-panel p-6 rounded border border-neutral-800 hover:border-amber-500/50 transition-colors reveal delay-100">
                         <h3 class="font-mono text-amber-500 mb-4 flex items-center"><i data-lucide="zap" class="w-4 h-4 mr-2"></i> Embedded</h3>
                         <ul class="space-y-2 text-sm text-neutral-300 font-mono">
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>C / C++</li>
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>Microcontrollers (AVR/ARM)</li>
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>I2C, SPI, UART</li>
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>RTOS Concepts</li>
+                            <li><span class="text-amber-500">>></span> C / C++</li>
+                            <li><span class="text-amber-500">>></span> Microcontrollers (AVR/ARM)</li>
+                            <li><span class="text-amber-500">>></span> I2C, SPI, UART</li>
                         </ul>
                     </div>
 
-                    <div class="glass-panel p-6 rounded border border-neutral-800 ic-chip hover:border-amber-500/50 transition-colors reveal delay-200">
-                        <div class="ic-pin-l"></div><div class="ic-pin-r"></div>
-                        <h3 class="font-mono text-amber-500 mb-4 flex items-center"><i data-lucide="monitor-check" class="w-4 h-4 mr-2"></i> Tools</h3>
+                    <div class="glass-panel p-6 rounded border border-neutral-800 hover:border-amber-500/50 transition-colors reveal delay-200">
+                        <h3 class="font-mono text-amber-500 mb-4 flex items-center"><i data-lucide="monitor" class="w-4 h-4 mr-2"></i> Tools</h3>
                         <ul class="space-y-2 text-sm text-neutral-300 font-mono">
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>Xilinx Vivado / Vitis</li>
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>LTspice</li>
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>Solidworks</li>
-                            <li class="flex items-center"><span class="w-1 h-1 bg-amber-500 rounded-full mr-2"></span>Python (Scripting)</li>
+                            <li><span class="text-amber-500">>></span> Xilinx Vivado / Vitis</li>
+                            <li><span class="text-amber-500">>></span> LTspice</li>
+                            <li><span class="text-amber-500">>></span> Python (Scripting)</li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -405,22 +315,15 @@
                 <span class="text-amber-500 font-mono mb-4 block">04. What's Next?</span>
                 <h2 class="text-5xl font-bold text-white mb-6">Get In Touch</h2>
                 <p class="text-neutral-400 text-lg mb-10 max-w-xl mx-auto">
-                    I'm currently looking for new opportunities in Hardware Engineering, VLSI, and Embedded Systems. Whether you have a question or just want to discuss RISC-V architectures, my inbox is open.
+                    Looking for opportunities in Hardware Engineering, VLSI, and Embedded Systems.
                 </p>
                 <div class="flex flex-col items-center gap-6">
-                    <a href="mailto:varada.aakula@gmail.com" class="px-8 py-4 border border-amber-500 text-amber-500 font-mono rounded hover:bg-amber-500/10 transition-all">
+                    <a href="mailto:varada.aakula@gmail.com" class="magnetic-btn px-8 py-4 border border-amber-500 text-amber-500 font-mono rounded hover:bg-amber-500/10 transition-all">
                         Say Hello
                     </a>
                     
                     <div class="mt-12 pt-12 border-t border-neutral-800 w-full text-center">
-                        <p class="text-neutral-600 font-mono text-sm mb-2">
-                            Engineered by Varada Govind
-                        </p>
-                        <div class="flex justify-center gap-4 text-neutral-500 text-sm">
-                            <a href="#" class="hover:text-amber-500 transition-colors"><i data-lucide="github" class="w-4 h-4"></i></a>
-                            <a href="#" class="hover:text-amber-500 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
-                            <a href="#" class="hover:text-amber-500 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
-                        </div>
+                        <p class="text-neutral-600 font-mono text-sm mb-2">Engineered by Varada Govind</p>
                     </div>
                 </div>
             </div>
@@ -428,15 +331,62 @@
 
     </main>
 
-    <a href="#" id="to-top" class="fixed bottom-8 right-8 bg-amber-500 p-3 rounded text-black opacity-0 pointer-events-none transition-all duration-300 hover:-translate-y-1 shadow-lg z-50">
-        <i data-lucide="arrow-up" class="w-6 h-6"></i>
-    </a>
-
     <script>
-        // Initialize Icons
         lucide.createIcons();
 
-        // Spotlight Effect
+        // --- 1. HACKER TEXT EFFECT (Decrypt Animation) ---
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const hackerTarget = document.querySelector(".hacker-text");
+
+        function scrambleText(element) {
+            let iteration = 0;
+            const originalText = element.dataset.value;
+            let interval = setInterval(() => {
+                element.innerText = originalText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) return originalText[index];
+                        return letters[Math.floor(Math.random() * 36)];
+                    })
+                    .join("");
+
+                if (iteration >= originalText.length) clearInterval(interval);
+                iteration += 1 / 3;
+            }, 30);
+        }
+
+        // Run on load for the main title
+        if(hackerTarget) {
+            // Slight delay so user sees it start
+            setTimeout(() => scrambleText(hackerTarget), 500);
+            
+            // Re-run on hover
+            hackerTarget.addEventListener('mouseover', () => {
+                scrambleText(hackerTarget);
+            });
+        }
+
+
+        // --- 2. MAGNETIC BUTTONS ---
+        const magBtns = document.querySelectorAll(".magnetic-btn");
+        
+        magBtns.forEach(btn => {
+            btn.addEventListener("mousemove", (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Move button slightly towards mouse
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+
+            btn.addEventListener("mouseleave", () => {
+                btn.style.transform = "translate(0px, 0px)";
+            });
+        });
+
+
+        // --- 3. SPOTLIGHT & REVEAL (Standard) ---
         const cards = document.querySelectorAll('.spotlight-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -448,50 +398,22 @@
             });
         });
 
-        // Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Navbar Scroll Logic
-        const nav = document.getElementById('navbar');
-        const toTopBtn = document.getElementById('to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-dark-900/90', 'backdrop-blur-md', 'shadow-lg', 'border-white/10');
-                nav.classList.remove('py-6', 'border-transparent');
-                nav.classList.add('py-4');
-                toTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-            } else {
-                nav.classList.remove('bg-dark-900/90', 'backdrop-blur-md', 'shadow-lg', 'border-white/10');
-                nav.classList.add('py-6', 'border-transparent');
-                nav.classList.remove('py-4');
-                toTopBtn.classList.add('opacity-0', 'pointer-events-none');
-            }
-        });
-
-        // Mobile Menu
+        // --- 4. MOBILE MENU ---
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            mobileMenu.classList.toggle('translate-x-full');
-            document.body.classList.toggle('overflow-hidden');
-        }
-
+        function toggleMenu() { mobileMenu.classList.toggle('translate-x-full'); }
         menuBtn.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
         mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
-
     </script>
 </body>
 </html>
