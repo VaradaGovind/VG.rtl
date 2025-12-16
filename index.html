@@ -35,6 +35,7 @@
                         'grid-flow': 'gridFlow 20s linear infinite',
                         'glitch': 'glitch 0.5s linear infinite',
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
                     },
                     keyframes: {
                         gridFlow: {
@@ -48,6 +49,10 @@
                             '60%': { transform: 'translate(2px, 2px)' },
                             '80%': { transform: 'translate(2px, -2px)' },
                             '100%': { transform: 'translate(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         }
                     }
                 }
@@ -126,7 +131,7 @@
             overflow: hidden;
         }
         .accordion-content.expanded {
-            max-height: 200px; /* Arbitrary large height */
+            max-height: 200px;
             opacity: 1;
         }
         .rotate-icon { transition: transform 0.3s ease; }
@@ -274,64 +279,24 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     
-                    <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
-                        <div class="flex justify-between items-start mb-6">
-                            <i data-lucide="bot" class="w-10 h-10 text-brand-400"></i>
-                            <a href="https://github.com/VaradaGovind/arduino-avoidance-robot" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Autonomous Robot</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">Obstacle avoidance vehicle using ultrasonic sensor fusion and DC motor control logic.</p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">Embedded C++</span></div>
-                    </div>
-
                     <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal border-brand-500/30">
                         <div class="flex justify-between items-start mb-6">
                             <i data-lucide="cpu" class="w-10 h-10 text-brand-400"></i>
                             <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">RISC-V 32-bit Core</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">Single-cycle RV32I processor implementation. Designed IF, ID, EX, MEM, and WB stages.</p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">Verilog</span></div>
+                        <p class="text-neutral-400 text-sm mb-6 h-16">Single-cycle RV32I processor implementation. Designed IF, ID, EX, MEM, and WB stages from scratch.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">Verilog</span><span class="px-2 py-1 rounded bg-neutral-800 text-neutral-400">Arch</span></div>
                     </div>
 
                     <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
                         <div class="flex justify-between items-start mb-6">
-                            <i data-lucide="lock" class="w-10 h-10 text-brand-400"></i>
+                            <i data-lucide="shield-check" class="w-10 h-10 text-brand-400"></i>
                             <div class="px-2 py-0.5 rounded bg-brand-900/40 text-brand-400 text-[10px] font-mono border border-brand-500/30 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse-fast"></span>WIP</div>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">AES-128 Encryption</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">High-throughput encryption core. Optimizing S-Box lookups for reduced silicon area.</p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">Digital Logic</span></div>
-                    </div>
-
-                    <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
-                        <div class="flex justify-between items-start mb-6">
-                            <i data-lucide="traffic-cone" class="w-10 h-10 text-brand-400"></i>
-                            <a href="https://github.com/VaradaGovind/rtl-traffic-controller" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Traffic Controller</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">Robust Finite State Machine (FSM) with timed state transitions and emergency override logic.</p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">FSM</span></div>
-                    </div>
-
-                    <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
-                        <div class="flex justify-between items-start mb-6">
-                            <i data-lucide="layers" class="w-10 h-10 text-brand-400"></i>
-                            <a href="https://github.com/VaradaGovind/rtl-fifo-buffer" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Synchronous FIFO</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">Parameterized depth FIFO with reliable read/write pointer logic and status flags.</p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">Memory</span></div>
-                    </div>
-
-                    <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
-                        <div class="flex justify-between items-start mb-6">
-                            <i data-lucide="server" class="w-10 h-10 text-brand-400"></i>
-                            <a href="https://github.com/VaradaGovind/rtl-dual-port-ram" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Dual-Port RAM</h3>
-                        <p class="text-neutral-400 text-sm mb-6 h-16">Memory block with independent read/write ports and synchronous operation.</p>
-                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">FPGA</span></div>
+                        <h3 class="text-xl font-bold text-white mb-2">AES-128 Engine</h3>
+                        <p class="text-neutral-400 text-sm mb-6 h-16">High-throughput hardware encryption core. Optimizing S-Box lookups for reduced silicon area.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">Digital Logic</span><span class="px-2 py-1 rounded bg-neutral-800 text-neutral-400">Security</span></div>
                     </div>
 
                     <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
@@ -339,8 +304,8 @@
                             <i data-lucide="network" class="w-10 h-10 text-brand-400"></i>
                             <div class="px-2 py-0.5 rounded bg-brand-900/40 text-brand-400 text-[10px] font-mono border border-brand-500/30 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse-fast"></span>Active</div>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-2">Standard Protocols</h3>
-                        <p class="text-neutral-400 text-sm mb-4">Implementation of robust communication interfaces for FPGA peripherals and sensors.</p>
+                        <h3 class="text-xl font-bold text-white mb-2">Chip Interfaces</h3>
+                        <p class="text-neutral-400 text-sm mb-4">Implementation of robust communication protocols (UART, SPI, I2C) for peripheral integration.</p>
                         
                         <button onclick="toggleProtocols(this)" class="w-full flex items-center justify-between text-xs font-mono text-brand-400 hover:bg-brand-500/10 py-2 px-3 rounded border border-brand-500/20 transition-all mb-4">
                             <span>View Roadmap</span>
@@ -362,7 +327,47 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap gap-2 font-mono text-xs pt-2"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">Interface</span></div>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs pt-2"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">SystemVerilog</span></div>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <div class="flex justify-between items-start mb-6">
+                            <i data-lucide="layers" class="w-10 h-10 text-brand-400"></i>
+                            <a href="https://github.com/VaradaGovind/rtl-fifo-buffer" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Synchronous FIFO</h3>
+                        <p class="text-neutral-400 text-sm mb-6 h-16">Parameterized depth FIFO with reliable read/write pointer logic, status flags, and overflow protection.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">Memory</span></div>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <div class="flex justify-between items-start mb-6">
+                            <i data-lucide="server" class="w-10 h-10 text-brand-400"></i>
+                            <a href="https://github.com/VaradaGovind/rtl-dual-port-ram" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Dual-Port RAM</h3>
+                        <p class="text-neutral-400 text-sm mb-6 h-16">FPGA Memory block inferencing with independent read/write ports and synchronous operation.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">FPGA</span></div>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <div class="flex justify-between items-start mb-6">
+                            <i data-lucide="traffic-cone" class="w-10 h-10 text-brand-400"></i>
+                            <a href="https://github.com/VaradaGovind/rtl-traffic-controller" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Traffic Controller</h3>
+                        <p class="text-neutral-400 text-sm mb-6 h-16">Robust Finite State Machine (FSM) with timed state transitions and emergency override logic.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">FSM</span></div>
+                    </div>
+
+                     <div class="glass-panel p-8 rounded-xl spotlight-card group hover:-translate-y-2 transition-transform duration-300 reveal">
+                        <div class="flex justify-between items-start mb-6">
+                            <i data-lucide="bot" class="w-10 h-10 text-brand-400"></i>
+                            <a href="https://github.com/VaradaGovind/arduino-avoidance-robot" target="_blank" class="text-neutral-400 hover:text-white"><i data-lucide="github"></i></a>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Autonomous Robot</h3>
+                        <p class="text-neutral-400 text-sm mb-6 h-16">Obstacle avoidance vehicle using ultrasonic sensor fusion and DC motor control logic.</p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs"><span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">Embedded C++</span></div>
                     </div>
 
                 </div>
