@@ -105,6 +105,7 @@
             <div class="hidden md:flex gap-8 text-sm font-mono opacity-70">
                 <a href="#work" class="hover:opacity-100 hover:text-accent transition-all">/WORK</a>
                 <a href="#about" class="hover:opacity-100 hover:text-accent transition-all">/ABOUT</a>
+                <a href="#skills" class="hover:opacity-100 hover:text-accent transition-all">/SKILLS</a>
                 <a href="#contact" class="hover:opacity-100 hover:text-accent transition-all">/CONTACT</a>
             </div>
             <div class="flex items-center gap-2 text-xs font-mono border border-white/20 px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm">
@@ -206,7 +207,6 @@
                             </p>
                         </div>
                     </a>
-
                 </div>
             </div>
         </section>
@@ -214,48 +214,89 @@
         <section id="about" class="py-32 px-6 bg-[#050505]">
             <div class="max-w-4xl mx-auto">
                 <h2 class="text-3xl font-medium tracking-tight mb-16">Experience Log</h2>
-                
                 <div class="relative border-l border-white/10 ml-4 md:ml-0 space-y-16">
-                    
                     <div class="relative pl-12 md:pl-24 group reveal-item">
                         <div class="absolute left-[-5px] top-2 w-[9px] h-[9px] bg-dark border border-gray-600 rounded-full group-hover:border-accent group-hover:bg-accent transition-colors duration-300 shadow-[0_0_10px_rgba(0,242,234,0.5)] opacity-0 group-hover:opacity-100"></div>
                         <div class="absolute left-[-5px] top-2 w-[9px] h-[9px] bg-dark border border-gray-600 rounded-full group-hover:opacity-0 transition-opacity"></div>
-
                         <span class="absolute left-12 md:left-0 top-1 text-xs font-mono text-gray-500 -translate-x-full pr-8 hidden md:block group-hover:text-accent transition-colors">2025 - PRESENT</span>
-                        
                         <div class="group-hover:translate-x-2 transition-transform duration-300">
                             <h3 class="text-2xl font-semibold text-white">IoT Wing Coordinator</h3>
                             <div class="text-accent font-mono text-sm mb-4">Tesla Society, IIIT Prayagraj</div>
                             <p class="text-gray-400 leading-relaxed max-w-lg text-sm md:text-base">
-                                Leading hands-on technical initiatives and lab inventory management. Mentoring juniors in embedded systems design, component sourcing, and rapid prototyping of IoT solutions.
+                                Leading technical initiatives and inventory management. Mentoring juniors in embedded systems design and prototyping.
                             </p>
                         </div>
                     </div>
-
                     <div class="relative pl-12 md:pl-24 group reveal-item">
                         <div class="absolute left-[-5px] top-2 w-[9px] h-[9px] bg-dark border border-gray-600 rounded-full group-hover:border-accent group-hover:bg-accent transition-colors duration-300 shadow-[0_0_10px_rgba(0,242,234,0.5)] opacity-0 group-hover:opacity-100"></div>
                         <div class="absolute left-[-5px] top-2 w-[9px] h-[9px] bg-dark border border-gray-600 rounded-full group-hover:opacity-0 transition-opacity"></div>
-
                         <span class="absolute left-12 md:left-0 top-1 text-xs font-mono text-gray-500 -translate-x-full pr-8 hidden md:block group-hover:text-accent transition-colors">2024</span>
-                        
                         <div class="group-hover:translate-x-2 transition-transform duration-300">
                             <h3 class="text-2xl font-semibold text-white">PR Executive</h3>
                             <div class="text-accent font-mono text-sm mb-4">Cultural Fest, IIIT</div>
                             <p class="text-gray-400 leading-relaxed max-w-lg text-sm md:text-base">
-                                Managed stakeholder communication and logistics for major university events, coordinating between technical and non-technical teams.
+                                Managed stakeholder communication and logistics for major university events.
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <section class="py-24 border-y border-white/5 bg-black overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 pointer-events-none"></div>
-            <div class="flex gap-16 animate-marquee whitespace-nowrap opacity-60 font-mono text-sm tracking-[0.2em] text-gray-400">
-                <span>VERILOG</span> <span>SYSTEMVERILOG</span> <span>C/C++</span> <span>PYTHON</span> <span>VIVADO</span> <span>KICAD</span> <span>FPGA</span> <span>RISC-V</span> <span>ASM</span> <span>SPICE</span>
-                <span>VERILOG</span> <span>SYSTEMVERILOG</span> <span>C/C++</span> <span>PYTHON</span> <span>VIVADO</span> <span>KICAD</span> <span>FPGA</span> <span>RISC-V</span> <span>ASM</span> <span>SPICE</span>
+        <section id="skills" class="py-32 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex items-baseline justify-between mb-12 border-b border-white/10 pb-4">
+                    <h2 class="text-3xl font-medium tracking-tight">Technical Arsenal</h2>
+                    <span class="font-mono text-gray-500 text-sm">[CORE COMPETENCIES]</span>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    
+                    <div class="bento-card p-6 rounded-2xl group hover:bg-white/5 transition-colors reveal-item cursor-default">
+                        <i data-lucide="cpu" class="w-8 h-8 text-accent mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="font-bold text-white mb-4">RTL Design</h4>
+                        <ul class="space-y-2 font-mono text-xs text-gray-400">
+                            <li class="hover:text-white transition-colors">Verilog</li>
+                            <li class="hover:text-white transition-colors">SystemVerilog</li>
+                            <li class="hover:text-white transition-colors">RISC-V Arch</li>
+                            <li class="hover:text-white transition-colors">FSM Logic</li>
+                        </ul>
+                    </div>
+
+                    <div class="bento-card p-6 rounded-2xl group hover:bg-white/5 transition-colors reveal-item cursor-default">
+                        <i data-lucide="terminal" class="w-8 h-8 text-accent mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="font-bold text-white mb-4">Firmware</h4>
+                        <ul class="space-y-2 font-mono text-xs text-gray-400">
+                            <li class="hover:text-white transition-colors">C / C++</li>
+                            <li class="hover:text-white transition-colors">Python</li>
+                            <li class="hover:text-white transition-colors">Assembly</li>
+                            <li class="hover:text-white transition-colors">Embedded C</li>
+                        </ul>
+                    </div>
+
+                    <div class="bento-card p-6 rounded-2xl group hover:bg-white/5 transition-colors reveal-item cursor-default">
+                        <i data-lucide="wrench" class="w-8 h-8 text-accent mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="font-bold text-white mb-4">Tools</h4>
+                        <ul class="space-y-2 font-mono text-xs text-gray-400">
+                            <li class="hover:text-white transition-colors">Xilinx Vivado</li>
+                            <li class="hover:text-white transition-colors">GTKWave</li>
+                            <li class="hover:text-white transition-colors">KiCad</li>
+                            <li class="hover:text-white transition-colors">Spice</li>
+                        </ul>
+                    </div>
+
+                    <div class="bento-card p-6 rounded-2xl group hover:bg-white/5 transition-colors reveal-item cursor-default">
+                        <i data-lucide="layers" class="w-8 h-8 text-accent mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h4 class="font-bold text-white mb-4">Concepts</h4>
+                        <ul class="space-y-2 font-mono text-xs text-gray-400">
+                            <li class="hover:text-white transition-colors">Digital Logic</li>
+                            <li class="hover:text-white transition-colors">Comp. Arch</li>
+                            <li class="hover:text-white transition-colors">FPGA Flow</li>
+                            <li class="hover:text-white transition-colors">Timing Analysis</li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
         </section>
 
@@ -287,14 +328,7 @@
     </main>
 
     <style>
-        /* Utilities */
         .text-stroke { -webkit-text-stroke: 1px white; color: transparent; }
-        
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee { animation: marquee 30s linear infinite; }
     </style>
 
     <script>
@@ -323,14 +357,12 @@
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
         
-        // Hover state logic
         const hoverElements = document.querySelectorAll('a, button, .bento-card');
 
         window.addEventListener('mousemove', (e) => {
             const posX = e.clientX;
             const posY = e.clientY;
 
-            // Cursor movement
             cursorDot.style.left = `${posX}px`;
             cursorDot.style.top = `${posY}px`;
             cursorDot.style.transform = `translate(-50%, -50%)`;
@@ -341,7 +373,6 @@
                 transform: `translate(-50%, -50%)`
             }, { duration: 500, fill: "forwards" });
 
-            // Spotlight Logic
             document.querySelectorAll('.spotlight-wrapper').forEach(card => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -351,7 +382,6 @@
             });
         });
 
-        // Expand cursor on hover
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorOutline.style.width = '60px';
@@ -370,46 +400,24 @@
         // 4. GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero Sequence
         const tl = gsap.timeline();
         tl.to(".reveal-hero", {
-            y: 0,
-            opacity: 1,
-            duration: 1.5,
-            stagger: 0.2,
-            ease: "power4.out",
-            delay: 0.2
+            y: 0, opacity: 1, duration: 1.5, stagger: 0.2, ease: "power4.out", delay: 0.2
         });
 
-        // Bento Cards Pop-in
         gsap.utils.toArray('.bento-card').forEach((card, i) => {
             gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 95%",
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: i * 0.1
+                scrollTrigger: { trigger: card, start: "top 95%" },
+                y: 50, opacity: 0, duration: 1, ease: "power3.out", delay: i * 0.1
             });
         });
 
-        // Experience Reveal
         gsap.utils.toArray('.reveal-item').forEach((item) => {
             gsap.from(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: "top 85%",
-                },
-                x: -20,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power3.out"
+                scrollTrigger: { trigger: item, start: "top 85%" },
+                x: -20, opacity: 0, duration: 0.8, ease: "power3.out"
             });
         });
-
     </script>
 </body>
 </html>
