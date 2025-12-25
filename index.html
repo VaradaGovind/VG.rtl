@@ -11,11 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 
     <script>
         tailwind.config = {
@@ -60,25 +64,44 @@
             transition: transform 0.1s, width 0.3s, height 0.3s, background-color 0.3s;
         }
 
-        /* 3. Subtle Grid Background */
+        /* 3. NEW: 3D Moving Grid Background */
         .grid-bg {
+            position: fixed;
+            width: 200%; 
+            height: 200%;
+            top: -50%;
+            left: -50%;
             background-size: 60px 60px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            background-image: 
+                linear-gradient(to right, rgba(0, 242, 234, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 242, 234, 0.03) 1px, transparent 1px);
+            transform: perspective(500px) rotateX(60deg);
+            animation: grid-move 20s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+            /* Fade out at edges */
+            mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
         }
 
-        /* 4. Glassmorphism / Bento Cards */
+        @keyframes grid-move {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
+        }
+
+        /* 4. Glassmorphism / Bento Cards - UPDATED FOR TILT */
         .glass-card {
             background: rgba(15, 15, 15, 0.6);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* Removed translateY hover because Vanilla-Tilt handles movement now */
+            transition: border-color 0.3s;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
         }
         .glass-card:hover {
             border-color: rgba(0, 242, 234, 0.3);
-            transform: translateY(-4px);
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.8);
         }
 
@@ -101,7 +124,7 @@
     <div class="noise-overlay"></div>
     <div class="cursor-dot hidden md:block"></div>
     <div class="cursor-outline hidden md:block"></div>
-    <div class="fixed inset-0 grid-bg pointer-events-none z-[-1]"></div>
+    <div class="grid-bg"></div>
 
     <nav class="fixed top-0 w-full z-40 px-6 py-8 mix-blend-difference text-white">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
@@ -124,7 +147,7 @@
     <main class="relative">
         
         <section class="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+            <div id="three-canvas-container" class="absolute inset-0 z-0 pointer-events-none opacity-40"></div>
 
             <div class="max-w-5xl w-full relative z-10">
                 <div class="font-mono text-accent mb-6 reveal-hero opacity-0 overflow-hidden text-xs tracking-widest">
@@ -162,11 +185,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[380px]">
                     
                     <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" class="glass-card md:col-span-2 md:row-span-1 rounded-3xl p-10 relative group spotlight-wrapper overflow-hidden flex flex-col justify-between cursor-none">
-                        <div class="relative z-10 flex justify-between items-start">
+                        <div class="relative z-10 flex justify-between items-start" style="transform: translateZ(20px)">
                             <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider backdrop-blur-md text-gray-300">VERILOG</div>
                             <i data-lucide="cpu" class="text-accent opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-300"></i>
                         </div>
-                        <div class="relative z-10">
+                        <div class="relative z-10" style="transform: translateZ(30px)">
                             <h3 class="text-3xl font-semibold mb-3 text-white group-hover:text-accent transition-colors">RISC-V 32-bit Core</h3>
                             <p class="text-gray-400 text-sm max-w-lg leading-relaxed">
                                 A synthesized single-cycle RV32I processor. Implemented IF, ID, EX, MEM, and WB stages with custom control logic and data paths.
@@ -177,14 +200,14 @@
 
                     <a href="#" class="glass-card md:col-span-1 md:row-span-2 rounded-3xl p-10 relative group spotlight-wrapper overflow-hidden flex flex-col cursor-none">
                          <div class="relative z-10 h-full flex flex-col justify-between">
-                            <div class="px-3 py-1 w-fit rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider backdrop-blur-md text-gray-300">VERILOG</div>
+                            <div class="px-3 py-1 w-fit rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider backdrop-blur-md text-gray-300" style="transform: translateZ(20px)">VERILOG</div>
                             
-                            <div class="my-auto flex justify-center relative">
+                            <div class="my-auto flex justify-center relative" style="transform: translateZ(40px)">
                                 <div class="absolute inset-0 bg-accent/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 <i data-lucide="shield-check" class="w-32 h-32 text-gray-800 group-hover:text-white transition-colors duration-300 relative z-10"></i>
                             </div>
                             
-                            <div>
+                            <div style="transform: translateZ(30px)">
                                 <h3 class="text-2xl font-semibold mb-3 text-white group-hover:text-accent transition-colors">AES-128 Engine</h3>
                                 <p class="text-gray-400 text-sm leading-relaxed">
                                     High-throughput encryption accelerator. Optimized S-Box lookups for reduced silicon area and low latency.
@@ -195,12 +218,12 @@
                     </a>
 
                     <div class="glass-card md:col-span-1 md:row-span-1 rounded-3xl p-8 relative group spotlight-wrapper overflow-hidden cursor-default flex flex-col">
-                         <div class="relative z-10 flex justify-between mb-4">
+                         <div class="relative z-10 flex justify-between mb-4" style="transform: translateZ(20px)">
                             <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider text-gray-300">PROTOCOLS</div>
                             <i data-lucide="arrow-right-left" class="text-accent opacity-70 group-hover:scale-110 transition-transform duration-500"></i>
                         </div>
                         
-                        <div class="relative z-10 flex flex-col justify-end h-full space-y-3">
+                        <div class="relative z-10 flex flex-col justify-end h-full space-y-3" style="transform: translateZ(30px)">
                             <a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" class="flex items-center justify-between py-3 border-b border-white/5 group/link hover:pl-2 transition-all duration-300 cursor-pointer">
                                 <span class="text-xl font-semibold text-white group-hover/link:text-accent transition-colors">UART</span>
                                 <div class="flex items-center gap-2">
@@ -226,11 +249,11 @@
                     </div>
 
                     <a href="https://github.com/VaradaGovind/rtl-traffic-controller" target="_blank" class="glass-card md:col-span-1 md:row-span-1 rounded-3xl p-10 relative group spotlight-wrapper overflow-hidden cursor-none flex flex-col justify-between">
-                         <div class="relative z-10 flex justify-between">
+                         <div class="relative z-10 flex justify-between" style="transform: translateZ(20px)">
                             <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider text-gray-300">FSM DESIGN</div>
                             <i data-lucide="traffic-cone" class="text-accent opacity-70 group-hover:scale-110 transition-transform duration-300"></i>
                         </div>
-                        <div class="relative z-10">
+                        <div class="relative z-10" style="transform: translateZ(30px)">
                             <h3 class="text-2xl font-semibold mb-3 text-white group-hover:text-accent transition-colors">Traffic Controller</h3>
                             <p class="text-gray-400 text-sm leading-relaxed">
                                 Finite State Machine (FSM) implementation with timed transitions and emergency override logic.
@@ -296,9 +319,9 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     
                     <div class="glass-card skill-card p-8 rounded-2xl group hover:bg-white/5 transition-colors cursor-default border-transparent">
-                        <i data-lucide="cpu" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="font-bold text-white mb-4 text-lg">RTL Design</h4>
-                        <ul class="space-y-3 font-mono text-xs text-gray-500">
+                        <i data-lucide="cpu" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" style="transform: translateZ(20px)"></i>
+                        <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">RTL Design</h4>
+                        <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
                             <li class="group-hover:text-gray-300 transition-colors">>> Verilog</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> SystemVerilog</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> RISC-V Arch</li>
@@ -307,9 +330,9 @@
                     </div>
 
                     <div class="glass-card skill-card p-8 rounded-2xl group hover:bg-white/5 transition-colors cursor-default border-transparent">
-                        <i data-lucide="terminal" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="font-bold text-white mb-4 text-lg">Firmware</h4>
-                        <ul class="space-y-3 font-mono text-xs text-gray-500">
+                        <i data-lucide="terminal" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" style="transform: translateZ(20px)"></i>
+                        <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">Firmware</h4>
+                        <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
                             <li class="group-hover:text-gray-300 transition-colors">>> C / C++</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> Python</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> Assembly</li>
@@ -318,9 +341,9 @@
                     </div>
 
                     <div class="glass-card skill-card p-8 rounded-2xl group hover:bg-white/5 transition-colors cursor-default border-transparent">
-                        <i data-lucide="wrench" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="font-bold text-white mb-4 text-lg">Tools</h4>
-                        <ul class="space-y-3 font-mono text-xs text-gray-500">
+                        <i data-lucide="wrench" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" style="transform: translateZ(20px)"></i>
+                        <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">Tools</h4>
+                        <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
                             <li class="group-hover:text-gray-300 transition-colors">>> Xilinx Vivado</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> GTKWave</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> KiCad</li>
@@ -329,9 +352,9 @@
                     </div>
 
                     <div class="glass-card skill-card p-8 rounded-2xl group hover:bg-white/5 transition-colors cursor-default border-transparent">
-                        <i data-lucide="layers" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h4 class="font-bold text-white mb-4 text-lg">Concepts</h4>
-                        <ul class="space-y-3 font-mono text-xs text-gray-500">
+                        <i data-lucide="layers" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" style="transform: translateZ(20px)"></i>
+                        <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">Concepts</h4>
+                        <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
                             <li class="group-hover:text-gray-300 transition-colors">>> Digital Logic</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> Comp. Arch</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> FPGA Flow</li>
@@ -477,6 +500,62 @@
             stagger: 0.15, 
             ease: "power3.out"
         });
+
+        // 5. NEW: Initialize Vanilla Tilt (3D Card Effect)
+        VanillaTilt.init(document.querySelectorAll(".glass-card, .skill-card"), {
+            max: 10,              // Maximum tilt rotation (degrees)
+            speed: 400,           // Speed of the enter/exit transition
+            glare: true,          // Add a light glare effect
+            "max-glare": 0.1,     // Opacity of the glare
+            scale: 1.02,          // Slight zoom on hover
+            gyroscope: true       // Works on mobile based on phone orientation
+        });
+
+        // 6. NEW: Three.js Wireframe Animation (Hero Background)
+        function initThreeJS() {
+            const container = document.getElementById('three-canvas-container');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            // Create a "Tech" Geometry (Icosahedron looks like a network)
+            const geometry = new THREE.IcosahedronGeometry(2.8, 1);
+            const material = new THREE.MeshBasicMaterial({ 
+                color: 0x00f2ea, // Your accent color
+                wireframe: true,
+                transparent: true,
+                opacity: 0.15 // Subtle opacity
+            });
+            
+            const sphere = new THREE.Mesh(geometry, material);
+            scene.add(sphere);
+
+            camera.position.z = 5;
+
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                sphere.rotation.x += 0.001;
+                sphere.rotation.y += 0.002;
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Handle Resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+        
+        // Start Three.js
+        initThreeJS();
 
     </script>
 </body>
