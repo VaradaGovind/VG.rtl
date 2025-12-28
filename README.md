@@ -1,45 +1,52 @@
-# VG.rtl | Hardware Engineer Portfolio
+# VG.rtl | Digital Architect Portfolio
 
-A minimal, high-performance portfolio website designed to reflect the aesthetic of **EDA tools, dark mode terminals, and silicon fabrication**. 
+A high-performance, immersive portfolio website designed for a Hardware Engineer. The aesthetic blends **cyberpunk minimalism, CMOS fabrication visuals, and dark-mode terminal vibes**.
 
-This site was built from first principles using HTML5, Tailwind CSS, and Vanilla JavaScript to ensure zero build-step complexity while maintaining high visual fidelity.
+Built to showcase RTL designs and Embedded Systems projects, this site leverages WebGL and modern animation libraries without the bloat of heavy frontend frameworks.
 
-## ⚡ Features
+## ⚡ Visual Features
 
-* **Silicon Aesthetic:** Custom SVG background animation simulating PCB traces and current flow.
-* **Interactive UI:**
-    * **Spotlight Cards:** Hover effects that track mouse movement to reveal borders/glow (simulating a flashlight in a dark lab).
-    * **Glitch Logo:** CSS-only glitch animation on the logo hover.
-    * **Floating Elements:** Subtle vertical float animations for depth.
-* **Performance:** No heavy frameworks (React/Vue). Uses utility classes via Tailwind CSS (CDN) for rapid prototyping.
-* **Responsive:** Fully responsive grid layout for mobile and desktop.
-* **Animations:** Staggered entry animations and scroll-based drawing effects.
+* **3D Wireframe Core:** Interactive 3D Icosahedron background powered by **Three.js**, representing complex network architectures.
+* **Cinematic Atmosphere:**
+    * **Noise Overlay:** Film-grain texture for a tactical, analog feel.
+    * **Moving Grid:** Infinite 3D perspective grid simulating a simulation environment.
+    * **Custom Cursor:** Magnetic cursor with delayed trailing mechanics.
+* **Glassmorphism UI:** "Bento-style" project cards with frosted glass effects (backdrop-blur) and dynamic borders.
+* **Interactive Physics:**
+    * **3D Tilt:** Cards respond to mouse movement using **Vanilla Tilt**.
+    * **Spotlight Effect:** Mouse-tracking radial gradients that reveal card borders in the dark.
+* **Smooth Motion:** Inertia-based smooth scrolling via **Lenis** and scroll-triggered entrance animations via **GSAP**.
 
 ## 🛠️ Tech Stack
 
-* **Structure:** Semantic HTML5
-* **Styling:** [Tailwind CSS](https://tailwindcss.com/) (CDN)
-* **Icons:** [Lucide Icons](https://lucide.dev/)
-* **Logic:** Vanilla JavaScript (Intersection Observers, Mouse tracking)
+This project is built for speed and ease of deployment. It uses **CDN-hosted libraries** to avoid complex build steps (`npm install` is not required).
+
+| Category | Technology |
+| :--- | :--- |
+| **Core** | Semantic HTML5, Vanilla JavaScript |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) (CDN) |
+| **3D & Graphics** | [Three.js](https://threejs.org/) |
+| **Animations** | [GSAP](https://greensock.com/gsap) + ScrollTrigger |
+| **Interaction** | [Vanilla-Tilt.js](https://micku7zu.github.io/vanilla-tilt.js/) |
+| **UX Polish** | [Lenis](https://lenis.studio/) (Smooth Scroll), [Lucide](https://lucide.dev/) (Icons) |
 
 ## 🚀 Quick Start
 
-Since this project uses the CDN version of Tailwind, there is no `npm install` required.
-
-1.  **Clone the repo**
+1.  **Clone the repository**
     ```bash
     git clone [https://github.com/VaradaGovind/VG.rtl.git](https://github.com/VaradaGovind/VG.rtl.git)
     ```
 2.  **Run locally**
-     Simply open `index.html` in your browser.
+    Simply double-click `index.html` to open it in your browser.
+    *(Note: For Three.js textures to load correctly in some browsers, you may need a local server like VS Code's "Live Server" extension).*
 
 ## 🎨 Customization
 
-To adapt this template for your own use:
+To adapt this portfolio for yourself:
 
-1.  **Colors:** Modify the `tailwind.config` script in the `<head>` to change the `brand` colors (currently Amber-400).
-2.  **Links:** Update the `href` attributes in the `#projects` section.
-3.  **Content:** Edit the HTML text within the `#about` and `#experience` sections.
+1.  **Theme:** Edit the `tailwind.config` script in the `<head>` to change the `accent` color (currently Cyan/Neon `#00f2ea`).
+2.  **Projects:** Update the `glass-card` links in the `#work` section.
+3.  **Hero:** Modify the 3D geometry in the `initThreeJS()` function inside the `<script>` tag.
 
 ## 📄 License
 
