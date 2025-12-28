@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varada Govind | Digital Architect</title>
-    <meta name="description" content="Portfolio of Varada Govind Aakula, Electronics Engineer specializing in RTL Design, RISC-V Architecture, and Embedded Systems.">
+    <title>Varada Govind | Digital Architect & VLSI Engineer</title>
+    <meta name="description" content="Portfolio of Varada Govind Aakula, Electronics Engineer specializing in RTL Design, RISC-V Architecture, CMOS VLSI, and Embedded Systems.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,7 @@
             transition: transform 0.1s, width 0.3s, height 0.3s, background-color 0.3s;
         }
 
-        /* 3. NEW: 3D Moving Grid Background */
+        /* 3. 3D Moving Grid Background */
         .grid-bg {
             position: fixed;
             width: 200%; 
@@ -79,7 +79,6 @@
             animation: grid-move 20s linear infinite;
             z-index: -1;
             pointer-events: none;
-            /* Fade out at edges */
             mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
             -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
         }
@@ -89,13 +88,12 @@
             100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
         }
 
-        /* 4. Glassmorphism / Bento Cards - UPDATED FOR TILT */
+        /* 4. Glassmorphism / Bento Cards */
         .glass-card {
             background: rgba(15, 15, 15, 0.6);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            /* Removed translateY hover because Vanilla-Tilt handles movement now */
             transition: border-color 0.3s;
             transform-style: preserve-3d;
             transform: perspective(1000px);
@@ -161,7 +159,7 @@
                 <div class="flex flex-col md:flex-row gap-12 md:items-end reveal-hero opacity-0 translate-y-10 border-l border-white/10 pl-6">
                     <p class="max-w-xl text-lg md:text-xl text-gray-400 leading-relaxed font-light">
                         Electronics & Communication Engineer. <br>
-                        Specializing in <span class="text-white font-medium">Computer Architecture</span> and <span class="text-white font-medium">RTL Design</span>.
+                        Specializing in <span class="text-white font-medium">Computer Architecture</span>, <span class="text-white font-medium">VLSI</span>, and <span class="text-white font-medium">RTL Design</span>.
                         Transforming complex logic into efficient silicon.
                     </p>
                 </div>
@@ -179,7 +177,7 @@
                         <span class="font-mono text-accent text-xs block mb-2">01 // PROJECTS</span>
                         <h2 class="text-4xl font-medium tracking-tight text-white">Selected Works</h2>
                     </div>
-                    <span class="font-mono text-gray-600 text-xs hidden md:block">Verilog / SystemVerilog / FSM</span>
+                    <span class="font-mono text-gray-600 text-xs hidden md:block">Verilog / SPICE / CMOS</span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[380px]">
@@ -248,18 +246,18 @@
                         <div class="absolute right-[-10px] bottom-[-20px] opacity-5 font-mono text-9xl font-bold select-none text-white pointer-events-none transition-transform duration-500 group-hover:translate-x-2">I/O</div>
                     </div>
 
-                    <a href="https://github.com/VaradaGovind/rtl-traffic-controller" target="_blank" class="glass-card md:col-span-1 md:row-span-1 rounded-3xl p-10 relative group spotlight-wrapper overflow-hidden cursor-none flex flex-col justify-between">
+                    <a href="https://github.com/VaradaGovind/CMOS-Standard-Cell-Library" target="_blank" class="glass-card md:col-span-1 md:row-span-1 rounded-3xl p-10 relative group spotlight-wrapper overflow-hidden cursor-none flex flex-col justify-between">
                          <div class="relative z-10 flex justify-between" style="transform: translateZ(20px)">
-                            <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider text-gray-300">FSM DESIGN</div>
-                            <i data-lucide="traffic-cone" class="text-accent opacity-70 group-hover:scale-110 transition-transform duration-300"></i>
+                            <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider text-gray-300">VLSI / SPICE</div>
+                            <i data-lucide="zap" class="text-accent opacity-70 group-hover:scale-110 transition-transform duration-300"></i>
                         </div>
                         <div class="relative z-10" style="transform: translateZ(30px)">
-                            <h3 class="text-2xl font-semibold mb-3 text-white group-hover:text-accent transition-colors">Traffic Controller</h3>
+                            <h3 class="text-2xl font-semibold mb-3 text-white group-hover:text-accent transition-colors">CMOS Cell Library</h3>
                             <p class="text-gray-400 text-sm leading-relaxed">
-                                Finite State Machine (FSM) implementation with timed transitions and emergency override logic.
+                                Transistor-level implementation of digital logic. Features verified NAND/NOR primitives and a hierarchical 1-Bit Full Adder in LTSpice.
                             </p>
                         </div>
-                        <div class="absolute right-[-20px] bottom-[-30px] opacity-5 font-mono text-9xl font-bold select-none text-white pointer-events-none transition-transform duration-500 group-hover:translate-x-2">FSM</div>
+                        <div class="absolute right-[-20px] bottom-[-30px] opacity-5 font-mono text-9xl font-bold select-none text-white pointer-events-none transition-transform duration-500 group-hover:translate-x-2">CMOS</div>
                     </a>
 
                 </div>
@@ -345,9 +343,9 @@
                         <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">Tools</h4>
                         <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
                             <li class="group-hover:text-gray-300 transition-colors">>> Xilinx Vivado</li>
+                            <li class="group-hover:text-gray-300 transition-colors">>> LTSpice</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> GTKWave</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> KiCad</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> Spice</li>
                         </ul>
                     </div>
 
@@ -355,8 +353,8 @@
                         <i data-lucide="layers" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" style="transform: translateZ(20px)"></i>
                         <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">Concepts</h4>
                         <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
-                            <li class="group-hover:text-gray-300 transition-colors">>> Digital Logic</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> Comp. Arch</li>
+                            <li class="group-hover:text-gray-300 transition-colors">>> CMOS Tech</li>
+                            <li class="group-hover:text-gray-300 transition-colors">>> Transistor Lvl</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> FPGA Flow</li>
                             <li class="group-hover:text-gray-300 transition-colors">>> Timing Analysis</li>
                         </ul>
@@ -501,7 +499,7 @@
             ease: "power3.out"
         });
 
-        // 5. NEW: Initialize Vanilla Tilt (3D Card Effect)
+        // 5. Initialize Vanilla Tilt (3D Card Effect)
         VanillaTilt.init(document.querySelectorAll(".glass-card, .skill-card"), {
             max: 10,              // Maximum tilt rotation (degrees)
             speed: 400,           // Speed of the enter/exit transition
@@ -511,7 +509,7 @@
             gyroscope: true       // Works on mobile based on phone orientation
         });
 
-        // 6. NEW: Three.js Wireframe Animation (Hero Background)
+        // 6. Three.js Wireframe Animation (Hero Background)
         function initThreeJS() {
             const container = document.getElementById('three-canvas-container');
             if (!container) return;
