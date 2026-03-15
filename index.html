@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varada Govind | Digital Architect & VLSI Engineer</title>
-    <meta name="description" content="Portfolio of Varada Govind Aakula, Electronics Engineer specializing in RTL Design, RISC-V Architecture, CMOS VLSI, and Embedded Systems.">
-    
+    <title>Varada Govind | RTL and VLSI Portfolio</title>
+    <meta name="description" content="Portfolio of Varada Govind Aakula, Electronics Engineer focused on RTL design, RISC-V architecture, CMOS VLSI, and embedded systems.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script src="https://unpkg.com/lucide@latest"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 
@@ -26,535 +23,755 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Sora', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
                     },
                     colors: {
-                        accent: '#00f2ea', // Cyan/Neon
-                        dark: '#030303',   // Deep Void
-                        surface: '#0a0a0a' 
+                        ink: '#04070D',
+                        panel: '#0B1220',
+                        panelSoft: '#111A2B',
+                        mist: '#9AA8C0',
+                        signal: '#22D3EE',
+                        lime: '#A3E635',
+                        ember: '#FB7185'
+                    },
+                    boxShadow: {
+                        neon: '0 0 0 1px rgba(34,211,238,0.15), 0 12px 38px rgba(34,211,238,0.12)'
                     }
                 }
             }
-        }
+        };
     </script>
 
     <style>
-        :root { --cursor-size: 20px; }
-        
+        :root {
+            --cursor-size: 22px;
+            --grid-size: 56px;
+            --focus-ring: 0 0 0 2px rgba(163, 230, 53, 0.5);
+        }
+
         html.lenis { height: auto; }
-        body { background-color: #030303; color: #e5e5e5; cursor: none; overflow-x: hidden; }
 
-        /* 1. Cinematic Noise Texture */
+        body {
+            background:
+                radial-gradient(1200px 700px at 80% -10%, rgba(34,211,238,0.16), transparent 55%),
+                radial-gradient(800px 500px at 10% 20%, rgba(163,230,53,0.08), transparent 55%),
+                #04070D;
+            color: #E6EDF7;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+            body { cursor: auto; }
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -200px;
+            z-index: 10000;
+            padding: 0.7rem 1rem;
+            background: #A3E635;
+            color: #081017;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: top 0.2s ease;
+        }
+
+        .skip-link:focus { top: 1rem; }
+
         .noise-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 50; opacity: 0.04;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 35;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* 2. Custom Cursor */
-        .cursor-dot {
-            width: 8px; height: 8px; background: white; border-radius: 50%;
-            position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference;
-            transition: transform 0.1s;
-        }
-        .cursor-outline {
-            width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998;
-            transition: transform 0.1s, width 0.3s, height 0.3s, background-color 0.3s;
-        }
-
-        /* 3. 3D Moving Grid Background */
         .grid-bg {
             position: fixed;
-            width: 200%; 
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            background-size: 60px 60px;
-            background-image: 
-                linear-gradient(to right, rgba(0, 242, 234, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 242, 234, 0.03) 1px, transparent 1px);
-            transform: perspective(500px) rotateX(60deg);
-            animation: grid-move 20s linear infinite;
-            z-index: -1;
+            width: 220%;
+            height: 220%;
+            top: -60%;
+            left: -60%;
+            z-index: -2;
             pointer-events: none;
-            mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+            background-size: var(--grid-size) var(--grid-size);
+            background-image:
+                linear-gradient(to right, rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+            transform: perspective(650px) rotateX(62deg);
+            animation: gridMove 26s linear infinite;
+            mask-image: radial-gradient(circle at center, black 28%, transparent 78%);
+            -webkit-mask-image: radial-gradient(circle at center, black 28%, transparent 78%);
         }
 
-        @keyframes grid-move {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
+        @keyframes gridMove {
+            from { transform: perspective(650px) rotateX(62deg) translateY(0); }
+            to { transform: perspective(650px) rotateX(62deg) translateY(56px); }
         }
 
-        /* 4. Glassmorphism / Bento Cards */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #E6EDF7;
+            border-radius: 999px;
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(230, 237, 247, 0.35);
+            border-radius: 999px;
+            position: fixed;
+            z-index: 9998;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+            .cursor-dot,
+            .cursor-outline,
+            .grid-bg,
+            .noise-overlay {
+                display: none;
+            }
+        }
+
         .glass-card {
-            background: rgba(15, 15, 15, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: border-color 0.3s;
+            background: linear-gradient(140deg, rgba(17, 26, 43, 0.72), rgba(11, 18, 32, 0.65));
+            border: 1px solid rgba(154, 168, 192, 0.16);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             transform-style: preserve-3d;
-            transform: perspective(1000px);
-        }
-        .glass-card:hover {
-            border-color: rgba(0, 242, 234, 0.3);
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.8);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
-        /* 5. Spotlight Effect */
-        .spotlight-wrapper { position: relative; overflow: hidden; }
+        .glass-card:hover,
+        .glass-card:focus-within {
+            border-color: rgba(34, 211, 238, 0.5);
+            box-shadow: 0 14px 46px rgba(3, 8, 19, 0.55);
+        }
+
+        .spotlight-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
         .spotlight-wrapper::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%);
-            opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 1;
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(34, 211, 238, 0.1), transparent 45%);
         }
-        .spotlight-wrapper:hover::before { opacity: 1; }
 
-        /* Utilities */
-        ::-webkit-scrollbar { width: 0px; }
-        .text-stroke { -webkit-text-stroke: 1px white; color: transparent; }
+        .spotlight-wrapper:hover::before,
+        .spotlight-wrapper:focus-within::before {
+            opacity: 1;
+        }
+
+        .metric-badge {
+            border: 1px solid rgba(154, 168, 192, 0.2);
+            background: rgba(11, 18, 32, 0.72);
+        }
+
+        .section-anchor {
+            scroll-margin-top: 5.5rem;
+        }
+
+        .filter-btn[aria-pressed="true"] {
+            border-color: rgba(163, 230, 53, 0.7);
+            color: #D9F99D;
+            background: rgba(163, 230, 53, 0.12);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: none;
+            box-shadow: var(--focus-ring);
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            max-height: 260px;
+        }
+
+        .text-stroke {
+            -webkit-text-stroke: 1px #E6EDF7;
+            color: transparent;
+        }
+
+        .hidden-card {
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
-<body class="selection:bg-accent selection:text-black">
+<body class="selection:bg-lime selection:text-ink">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <div class="noise-overlay"></div>
-    <div class="cursor-dot hidden md:block"></div>
-    <div class="cursor-outline hidden md:block"></div>
     <div class="grid-bg"></div>
+    <div class="cursor-dot hidden md:block" aria-hidden="true"></div>
+    <div class="cursor-outline hidden md:block" aria-hidden="true"></div>
 
-    <nav class="fixed top-0 w-full z-40 px-6 py-8 mix-blend-difference text-white">
-        <div class="flex justify-between items-center max-w-7xl mx-auto">
-            <a href="#" class="font-mono font-bold tracking-tighter text-xl hover:text-accent transition-colors">VG.rtl</a>
-            
-            <div class="hidden md:flex gap-10 text-xs font-mono font-medium opacity-60">
-                <a href="#work" class="hover:opacity-100 hover:text-accent transition-all">[ WORK ]</a>
-                <a href="#about" class="hover:opacity-100 hover:text-accent transition-all">[ ABOUT ]</a>
-                <a href="#skills" class="hover:opacity-100 hover:text-accent transition-all">[ ARSENAL ]</a>
-                <a href="#contact" class="hover:opacity-100 hover:text-accent transition-all">[ CONTACT ]</a>
-            </div>
+    <header class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 bg-ink/35 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <a href="#" class="font-mono text-lg font-bold tracking-tight hover:text-signal transition-colors">VG.core</a>
 
-            <div class="flex items-center gap-2 text-[10px] font-mono border border-white/20 px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm">
-                <span class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse shadow-[0_0_8px_#00f2ea]"></span>
-                <span class="tracking-widest opacity-80">ONLINE</span>
+            <button id="mobile-menu-toggle" class="md:hidden inline-flex items-center justify-center border border-white/15 rounded-lg px-3 py-2 text-sm" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i data-lucide="menu" class="w-4 h-4"></i>
+            </button>
+
+            <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-mist" aria-label="Primary">
+                <a href="#work" class="hover:text-signal transition-colors nav-link">[ WORK ]</a>
+                <a href="#about" class="hover:text-signal transition-colors nav-link">[ ABOUT ]</a>
+                <a href="#skills" class="hover:text-signal transition-colors nav-link">[ ARSENAL ]</a>
+                <a href="#contact" class="hover:text-signal transition-colors nav-link">[ CONTACT ]</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-2 border border-white/10 rounded-full px-3 py-1 bg-panel/60 text-[10px] font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-lime animate-pulse"></span>
+                <span class="tracking-widest text-mist">OPEN_TO_WORK</span>
             </div>
         </div>
-    </nav>
 
-    <main class="relative">
-        
-        <section class="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
-            <div id="three-canvas-container" class="absolute inset-0 z-0 pointer-events-none opacity-40"></div>
+        <nav id="mobile-menu" class="mobile-menu md:hidden mt-4 border border-white/10 rounded-2xl bg-panel/80" aria-label="Mobile">
+            <div class="p-4 space-y-3 font-mono text-xs">
+                <a href="#work" class="block nav-link">[ WORK ]</a>
+                <a href="#about" class="block nav-link">[ ABOUT ]</a>
+                <a href="#skills" class="block nav-link">[ ARSENAL ]</a>
+                <a href="#contact" class="block nav-link">[ CONTACT ]</a>
+            </div>
+        </nav>
+    </header>
 
-            <div class="max-w-5xl w-full relative z-10">
-                <div class="font-mono text-accent mb-6 reveal-hero opacity-0 overflow-hidden text-xs tracking-widest">
-                    <span class="inline-block">>> ARCHITECTURE_INITIALIZED</span>
-                </div>
-                
-                <h1 class="text-6xl md:text-9xl font-semibold tracking-tighter leading-[0.9] mb-10 text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40 reveal-hero opacity-0 translate-y-10">
-                    VARADA <br> GOVIND.
+    <main id="main-content" class="relative pt-20 md:pt-24">
+        <section class="min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden section-anchor">
+            <div id="three-canvas-container" class="absolute inset-0 z-0 pointer-events-none opacity-45"></div>
+
+            <div class="max-w-6xl w-full relative z-10">
+                <p class="font-mono text-signal text-xs tracking-[0.2em] mb-4 reveal-hero opacity-0">SYSTEM READY // VARADA GOVIND</p>
+
+                <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-8 reveal-hero opacity-0 translate-y-6 bg-gradient-to-b from-white to-slate-300/55 text-transparent bg-clip-text">
+                    DIGITAL LOGIC,<br>
+                    REAL SILICON.
                 </h1>
 
-                <div class="flex flex-col md:flex-row gap-12 md:items-end reveal-hero opacity-0 translate-y-10 border-l border-white/10 pl-6">
-                    <p class="max-w-xl text-lg md:text-xl text-gray-400 leading-relaxed font-light">
-                        Electronics & Communication Engineer. <br>
-                        Specializing in <span class="text-white font-medium">Computer Architecture</span>, <span class="text-white font-medium">VLSI</span>, and <span class="text-white font-medium">RTL Design</span>.
-                        Transforming complex logic into efficient silicon.
-                    </p>
-                </div>
-            </div>
+                <p class="max-w-3xl text-base md:text-xl text-mist leading-relaxed reveal-hero opacity-0 translate-y-6">
+                    Electronics and communication engineer focused on RISC-V microarchitecture, high-quality RTL, and practical VLSI implementation.
+                    I build systems that move from simulation to synthesis with clear timing and power goals.
+                </p>
 
-            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 font-mono text-[10px] text-gray-600 animate-bounce">
-                SCROLL_TO_EXPLORE
+                <div class="mt-10 flex flex-wrap items-center gap-3 reveal-hero opacity-0 translate-y-6">
+                    <a href="#work" class="px-5 py-3 rounded-xl bg-signal/15 border border-signal/40 text-signal font-mono text-xs tracking-wider hover:bg-signal/25 transition-colors">VIEW PROJECTS</a>
+                    <a href="#contact" class="px-5 py-3 rounded-xl bg-panel/70 border border-white/10 text-mist font-mono text-xs tracking-wider hover:text-white transition-colors">CONTACT</a>
+                </div>
+
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 reveal-hero opacity-0 translate-y-6" aria-label="Highlights">
+                    <div class="metric-badge rounded-xl p-3">
+                        <p class="font-mono text-[10px] text-mist">RTL FILES</p>
+                        <p class="text-lg font-semibold">16+</p>
+                    </div>
+                    <div class="metric-badge rounded-xl p-3">
+                        <p class="font-mono text-[10px] text-mist">ISA SUPPORT</p>
+                        <p class="text-lg font-semibold">RV32IMA</p>
+                    </div>
+                    <div class="metric-badge rounded-xl p-3">
+                        <p class="font-mono text-[10px] text-mist">BUS FABRIC</p>
+                        <p class="text-lg font-semibold">AXI4-Lite</p>
+                    </div>
+                    <div class="metric-badge rounded-xl p-3">
+                        <p class="font-mono text-[10px] text-mist">FOCUS</p>
+                        <p class="text-lg font-semibold">PPA-aware</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="work" class="py-32 px-6">
+        <section id="work" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
             <div class="max-w-7xl mx-auto">
-                <div class="flex items-end justify-between mb-16 border-b border-white/10 pb-6">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 border-b border-white/10 pb-6">
                     <div>
-                        <span class="font-mono text-accent text-xs block mb-2">01 // PROJECTS</span>
-                        <h2 class="text-4xl font-medium tracking-tight text-white">Selected Works</h2>
+                        <span class="font-mono text-signal text-xs">01 // PROJECTS</span>
+                        <h2 class="mt-2 text-3xl md:text-4xl font-display font-semibold">Selected Work</h2>
                     </div>
-                    <span class="font-mono text-gray-600 text-xs hidden md:block">Verilog / SPICE / CMOS</span>
+
+                    <div class="flex flex-wrap gap-2" role="toolbar" aria-label="Project filters">
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="all" aria-pressed="true">ALL</button>
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="rtl" aria-pressed="false">RTL</button>
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="vlsi" aria-pressed="false">VLSI</button>
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="proto" aria-pressed="false">PROTOCOL</button>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[380px]">
-                    
-                    <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" class="glass-card md:col-span-2 md:row-span-1 rounded-3xl p-10 relative group spotlight-wrapper overflow-hidden flex flex-col justify-between cursor-none">
-                        <div class="relative z-10 flex justify-between items-start" style="transform: translateZ(20px)">
-                            <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider backdrop-blur-md text-gray-300">VERILOG</div>
-                            <i data-lucide="cpu" class="text-accent opacity-70 group-hover:scale-110 group-hover:opacity-100 transition-all duration-300"></i>
-                        </div>
-                        <div class="relative z-10" style="transform: translateZ(30px)">
-                            <h3 class="text-3xl font-semibold mb-3 text-white group-hover:text-accent transition-colors">RISC-V 32-bit Core</h3>
-                            <p class="text-gray-400 text-sm max-w-lg leading-relaxed">
-                                A synthesized single-cycle RV32I processor. Implemented IF, ID, EX, MEM, and WB stages with custom control logic and data paths.
-                            </p>
-                        </div>
-                        <div class="absolute right-[-20px] bottom-[-40px] opacity-5 font-mono text-9xl font-bold select-none text-white pointer-events-none transition-transform duration-500 group-hover:translate-x-2">RV32</div>
-                    </a>
-
-                    <a href="#" class="glass-card md:col-span-1 md:row-span-2 rounded-3xl p-10 relative group spotlight-wrapper overflow-hidden flex flex-col cursor-none">
-                         <div class="relative z-10 h-full flex flex-col justify-between">
-                            <div class="px-3 py-1 w-fit rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider backdrop-blur-md text-gray-300" style="transform: translateZ(20px)">VERILOG</div>
-                            
-                            <div class="my-auto flex justify-center relative" style="transform: translateZ(40px)">
-                                <div class="absolute inset-0 bg-accent/20 blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <i data-lucide="shield-check" class="w-32 h-32 text-gray-800 group-hover:text-white transition-colors duration-300 relative z-10"></i>
+                <div id="project-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[330px] md:auto-rows-[360px]">
+                    <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8 md:col-span-2" data-category="rtl">
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <div class="flex items-center justify-between" style="transform: translateZ(24px)">
+                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">RTL / RISC-V</span>
+                                <i data-lucide="cpu" class="w-5 h-5 text-signal"></i>
                             </div>
-                            
                             <div style="transform: translateZ(30px)">
-                                <h3 class="text-2xl font-semibold mb-3 text-white group-hover:text-accent transition-colors">AES-128 Engine</h3>
-                                <p class="text-gray-400 text-sm leading-relaxed">
-                                    High-throughput encryption accelerator. Optimized S-Box lookups for reduced silicon area and low latency.
-                                </p>
+                                <h3 class="text-2xl md:text-3xl font-semibold mb-2">RISC-V 32-bit Core</h3>
+                                <p class="text-sm text-mist leading-relaxed max-w-xl">Single-cycle RV32I core with structured datapath, custom control logic, and pipeline-ready interfaces for future extensions.</p>
                             </div>
+                            <p class="font-mono text-xs text-signal">OPEN REPOSITORY</p>
                         </div>
-                        <div class="absolute right-[-20px] bottom-[-30px] opacity-5 font-mono text-9xl font-bold select-none text-white pointer-events-none transition-transform duration-500 group-hover:translate-x-2">AES</div>
                     </a>
 
-                    <div class="glass-card md:col-span-1 md:row-span-1 rounded-3xl p-8 relative group spotlight-wrapper overflow-hidden cursor-default flex flex-col">
-                         <div class="relative z-10 flex justify-between mb-4" style="transform: translateZ(20px)">
-                            <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider text-gray-300">PROTOCOLS</div>
-                            <i data-lucide="arrow-right-left" class="text-accent opacity-70 group-hover:scale-110 transition-transform duration-500"></i>
-                        </div>
-                        
-                        <div class="relative z-10 flex flex-col justify-end h-full space-y-3" style="transform: translateZ(30px)">
-                            <a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" class="flex items-center justify-between py-3 border-b border-white/5 group/link hover:pl-2 transition-all duration-300 cursor-pointer">
-                                <span class="text-xl font-semibold text-white group-hover/link:text-accent transition-colors">UART</span>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-[10px] font-mono text-gray-400">VIEW</span>
-                                    <i data-lucide="external-link" class="w-3 h-3 text-accent"></i>
-                                </div>
-                            </a>
-
-                            <a href="https://github.com/VaradaGovind/rtl-spi-controller" target="_blank" class="flex items-center justify-between py-3 border-b border-white/5 group/link hover:pl-2 transition-all duration-300 cursor-pointer">
-                                <span class="text-xl font-semibold text-white group-hover/link:text-accent transition-colors">SPI</span>
-                                <div class="flex items-center gap-2">
-                                    <span class="text-[10px] font-mono text-gray-400">VIEW</span>
-                                    <i data-lucide="external-link" class="w-3 h-3 text-accent"></i>
-                                </div>
-                            </a>
-
-                            <div class="flex items-center justify-between py-2 opacity-50">
-                                <span class="text-lg font-semibold text-gray-400">I2C</span>
-                                <span class="text-[10px] font-mono text-yellow-500 animate-pulse">WORKING...</span>
+                    <a href="#" class="project-card glass-card spotlight-wrapper rounded-3xl p-8 md:row-span-2" data-category="rtl">
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist w-fit" style="transform: translateZ(24px)">CRYPTO / RTL</span>
+                            <i data-lucide="shield-check" class="w-16 h-16 md:w-24 md:h-24 text-slate-600" style="transform: translateZ(30px)"></i>
+                            <div style="transform: translateZ(30px)">
+                                <h3 class="text-2xl font-semibold mb-2">AES-128 Engine</h3>
+                                <p class="text-sm text-mist leading-relaxed">Throughput-focused hardware encryption design with reduced-area S-Box implementation strategy.</p>
                             </div>
                         </div>
-                        <div class="absolute right-[-10px] bottom-[-20px] opacity-5 font-mono text-9xl font-bold select-none text-white pointer-events-none transition-transform duration-500 group-hover:translate-x-2">I/O</div>
+                    </a>
+
+                    <div class="project-card glass-card spotlight-wrapper rounded-3xl p-8" data-category="proto">
+                        <div class="relative z-10 h-full flex flex-col">
+                            <div class="flex items-center justify-between mb-4" style="transform: translateZ(24px)">
+                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">PROTO STACK</span>
+                                <i data-lucide="arrow-right-left" class="w-5 h-5 text-signal"></i>
+                            </div>
+                            <div class="mt-auto space-y-3" style="transform: translateZ(30px)">
+                                <a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" rel="noopener" class="flex justify-between items-center border-b border-white/10 pb-2 hover:text-signal transition-colors">
+                                    <span class="font-semibold">UART</span>
+                                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                                </a>
+                                <a href="https://github.com/VaradaGovind/rtl-spi-controller" target="_blank" rel="noopener" class="flex justify-between items-center border-b border-white/10 pb-2 hover:text-signal transition-colors">
+                                    <span class="font-semibold">SPI</span>
+                                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                                </a>
+                                <div class="flex justify-between items-center opacity-60">
+                                    <span class="font-semibold">I2C</span>
+                                    <span class="font-mono text-[10px] text-amber-400">IN PROGRESS</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <a href="https://github.com/VaradaGovind/CMOS-Standard-Cell-Library" target="_blank" class="glass-card md:col-span-1 md:row-span-1 rounded-3xl p-10 relative group spotlight-wrapper overflow-hidden cursor-none flex flex-col justify-between">
-                         <div class="relative z-10 flex justify-between" style="transform: translateZ(20px)">
-                            <div class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono tracking-wider text-gray-300">VLSI / SPICE</div>
-                            <i data-lucide="zap" class="text-accent opacity-70 group-hover:scale-110 transition-transform duration-300"></i>
+                    <a href="https://github.com/VaradaGovind/CMOS-Standard-Cell-Library" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8" data-category="vlsi">
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <div class="flex items-center justify-between" style="transform: translateZ(24px)">
+                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">VLSI / SPICE</span>
+                                <i data-lucide="zap" class="w-5 h-5 text-signal"></i>
+                            </div>
+                            <div style="transform: translateZ(30px)">
+                                <h3 class="text-2xl font-semibold mb-2">CMOS Cell Library</h3>
+                                <p class="text-sm text-mist leading-relaxed">Transistor-level logic cells including tested NAND/NOR primitives and hierarchical full-adder build in LTSpice.</p>
+                            </div>
+                            <p class="font-mono text-xs text-signal">OPEN REPOSITORY</p>
                         </div>
-                        <div class="relative z-10" style="transform: translateZ(30px)">
-                            <h3 class="text-2xl font-semibold mb-3 text-white group-hover:text-accent transition-colors">CMOS Cell Library</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">
-                                Transistor-level implementation of digital logic. Features verified NAND/NOR primitives and a hierarchical 1-Bit Full Adder in LTSpice.
-                            </p>
-                        </div>
-                        <div class="absolute right-[-20px] bottom-[-30px] opacity-5 font-mono text-9xl font-bold select-none text-white pointer-events-none transition-transform duration-500 group-hover:translate-x-2">CMOS</div>
                     </a>
-
                 </div>
+
+                <p id="project-empty-state" class="hidden mt-6 text-mist font-mono text-xs">No projects in this category yet.</p>
             </div>
         </section>
 
-        <section id="about" class="py-32 px-6 bg-[#040404]">
+        <section id="about" class="py-20 md:py-28 px-4 md:px-6 bg-[#060B16] section-anchor">
             <div class="max-w-4xl mx-auto">
-                <div class="mb-16">
-                    <span class="font-mono text-accent text-xs block mb-2">02 // EXPERIENCE</span>
-                    <h2 class="text-3xl font-medium tracking-tight text-white">Career Timeline</h2>
-                </div>
-                
-                <div class="relative border-l border-white/10 ml-3 md:ml-0 space-y-20">
-                    <div class="relative pl-12 md:pl-24 group reveal-item">
-                        <div class="absolute left-[-5px] top-2 w-[9px] h-[9px] bg-dark border border-gray-600 rounded-full group-hover:border-accent group-hover:bg-accent transition-colors duration-300 shadow-[0_0_15px_rgba(0,242,234,0.6)] opacity-0 group-hover:opacity-100"></div>
-                        <div class="absolute left-[-5px] top-2 w-[9px] h-[9px] bg-dark border border-white/20 rounded-full group-hover:opacity-0 transition-opacity"></div>
+                <span class="font-mono text-signal text-xs">02 // TIMELINE</span>
+                <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2 mb-12">Career Milestones</h2>
 
-                        <span class="absolute left-12 md:left-0 top-1 text-xs font-mono text-gray-500 -translate-x-full pr-8 hidden md:block group-hover:text-accent transition-colors">2025 - PRESENT</span>
-                        
-                        <div class="group-hover:translate-x-2 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-white">IoT Wing Coordinator</h3>
-                            <div class="text-accent font-mono text-sm mb-4 mt-1">Tesla Society, IIIT Prayagraj</div>
-                            <p class="text-gray-400 leading-relaxed max-w-lg text-sm md:text-base">
-                                Leading hands-on technical initiatives and lab inventory management. Mentoring juniors in embedded systems design, component sourcing, and rapid prototyping of IoT solutions.
-                            </p>
-                        </div>
-                    </div>
+                <div class="relative border-l border-white/10 ml-2 md:ml-0 space-y-14">
+                    <article class="reveal-item relative pl-8 md:pl-20">
+                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-signal bg-ink shadow-neon"></div>
+                        <p class="font-mono text-xs text-mist mb-2">2025 - PRESENT</p>
+                        <h3 class="text-xl md:text-2xl font-semibold">IoT Wing Coordinator</h3>
+                        <p class="text-signal font-mono text-sm mt-1">Tesla Society, IIIT Prayagraj</p>
+                        <p class="text-mist leading-relaxed mt-3">Leading practical hardware initiatives, lab planning, and mentoring on embedded systems and rapid IoT prototyping.</p>
+                    </article>
 
-                    <div class="relative pl-12 md:pl-24 group reveal-item">
-                        <div class="absolute left-[-5px] top-2 w-[9px] h-[9px] bg-dark border border-gray-600 rounded-full group-hover:border-accent group-hover:bg-accent transition-colors duration-300 shadow-[0_0_15px_rgba(0,242,234,0.6)] opacity-0 group-hover:opacity-100"></div>
-                        <div class="absolute left-[-5px] top-2 w-[9px] h-[9px] bg-dark border border-white/20 rounded-full group-hover:opacity-0 transition-opacity"></div>
-
-                        <span class="absolute left-12 md:left-0 top-1 text-xs font-mono text-gray-500 -translate-x-full pr-8 hidden md:block group-hover:text-accent transition-colors">2024</span>
-                        
-                        <div class="group-hover:translate-x-2 transition-transform duration-300">
-                            <h3 class="text-2xl font-semibold text-white">PR Executive</h3>
-                            <div class="text-accent font-mono text-sm mb-4 mt-1">Cultural Fest, IIIT</div>
-                            <p class="text-gray-400 leading-relaxed max-w-lg text-sm md:text-base">
-                                Managed stakeholder communication and logistics for major university events, coordinating between technical and non-technical teams.
-                            </p>
-                        </div>
-                    </div>
+                    <article class="reveal-item relative pl-8 md:pl-20">
+                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-signal bg-ink shadow-neon"></div>
+                        <p class="font-mono text-xs text-mist mb-2">2024</p>
+                        <h3 class="text-xl md:text-2xl font-semibold">PR Executive</h3>
+                        <p class="text-signal font-mono text-sm mt-1">Cultural Fest, IIIT</p>
+                        <p class="text-mist leading-relaxed mt-3">Managed communication and operational coordination across technical and non-technical teams for major campus events.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="py-32 px-6">
+        <section id="skills" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
             <div class="max-w-7xl mx-auto">
-                <div class="flex items-end justify-between mb-16 border-b border-white/10 pb-6">
-                    <div>
-                        <span class="font-mono text-accent text-xs block mb-2">03 // ARSENAL</span>
-                        <h2 class="text-3xl font-medium tracking-tight text-white">Technical Proficiency</h2>
-                    </div>
+                <div class="mb-10 border-b border-white/10 pb-6">
+                    <span class="font-mono text-signal text-xs">03 // ARSENAL</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2">Technical Proficiency</h2>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    
-                    <div class="glass-card skill-card p-8 rounded-2xl group hover:bg-white/5 transition-colors cursor-default border-transparent">
-                        <i data-lucide="cpu" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" style="transform: translateZ(20px)"></i>
-                        <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">RTL Design</h4>
-                        <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
-                            <li class="group-hover:text-gray-300 transition-colors">>> Verilog</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> SystemVerilog</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> RISC-V Arch</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> FSM Logic</li>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <article class="glass-card skill-card rounded-2xl p-6">
+                        <i data-lucide="cpu" class="w-7 h-7 text-signal mb-5"></i>
+                        <h4 class="font-semibold text-lg mb-4">RTL Design</h4>
+                        <ul class="space-y-2 text-sm text-mist">
+                            <li>Verilog and SystemVerilog</li>
+                            <li>RISC-V microarchitecture</li>
+                            <li>FSM and control-path design</li>
+                            <li>Pipeline hazard handling</li>
                         </ul>
-                    </div>
+                    </article>
 
-                    <div class="glass-card skill-card p-8 rounded-2xl group hover:bg-white/5 transition-colors cursor-default border-transparent">
-                        <i data-lucide="terminal" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" style="transform: translateZ(20px)"></i>
-                        <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">Firmware</h4>
-                        <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
-                            <li class="group-hover:text-gray-300 transition-colors">>> C / C++</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> Python</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> Assembly</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> Embedded C</li>
+                    <article class="glass-card skill-card rounded-2xl p-6">
+                        <i data-lucide="terminal" class="w-7 h-7 text-signal mb-5"></i>
+                        <h4 class="font-semibold text-lg mb-4">Firmware</h4>
+                        <ul class="space-y-2 text-sm text-mist">
+                            <li>C and C++</li>
+                            <li>Python scripting</li>
+                            <li>Assembly basics</li>
+                            <li>Embedded C workflows</li>
                         </ul>
-                    </div>
+                    </article>
 
-                    <div class="glass-card skill-card p-8 rounded-2xl group hover:bg-white/5 transition-colors cursor-default border-transparent">
-                        <i data-lucide="wrench" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" style="transform: translateZ(20px)"></i>
-                        <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">Tools</h4>
-                        <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
-                            <li class="group-hover:text-gray-300 transition-colors">>> Xilinx Vivado</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> LTSpice</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> GTKWave</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> KiCad</li>
+                    <article class="glass-card skill-card rounded-2xl p-6">
+                        <i data-lucide="wrench" class="w-7 h-7 text-signal mb-5"></i>
+                        <h4 class="font-semibold text-lg mb-4">Tools</h4>
+                        <ul class="space-y-2 text-sm text-mist">
+                            <li>Xilinx Vivado</li>
+                            <li>LTSpice</li>
+                            <li>GTKWave</li>
+                            <li>KiCad</li>
                         </ul>
-                    </div>
+                    </article>
 
-                    <div class="glass-card skill-card p-8 rounded-2xl group hover:bg-white/5 transition-colors cursor-default border-transparent">
-                        <i data-lucide="layers" class="w-8 h-8 text-accent mb-6 group-hover:scale-110 transition-transform" style="transform: translateZ(20px)"></i>
-                        <h4 class="font-bold text-white mb-4 text-lg" style="transform: translateZ(30px)">Concepts</h4>
-                        <ul class="space-y-3 font-mono text-xs text-gray-500" style="transform: translateZ(20px)">
-                            <li class="group-hover:text-gray-300 transition-colors">>> CMOS Tech</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> Transistor Lvl</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> FPGA Flow</li>
-                            <li class="group-hover:text-gray-300 transition-colors">>> Timing Analysis</li>
+                    <article class="glass-card skill-card rounded-2xl p-6">
+                        <i data-lucide="layers" class="w-7 h-7 text-signal mb-5"></i>
+                        <h4 class="font-semibold text-lg mb-4">Concepts</h4>
+                        <ul class="space-y-2 text-sm text-mist">
+                            <li>CMOS technology</li>
+                            <li>Transistor-level design</li>
+                            <li>FPGA implementation flow</li>
+                            <li>Timing analysis</li>
                         </ul>
-                    </div>
-
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="h-[60vh] flex flex-col justify-between p-6 md:p-12 relative overflow-hidden bg-black border-t border-white/5">
-             <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_100%,_rgba(0,242,234,0.05),_transparent_70%)]"></div>
-
-            <div class="mt-16 z-10 relative">
-                <p class="font-mono text-accent mb-6 text-xs tracking-widest">04 // INITIATE_COMMUNICATION</p>
-                <h2 class="text-5xl md:text-8xl font-bold tracking-tighter text-white transition-all cursor-none group inline-block">
-                    <a href="mailto:varada.aakula@gmail.com" class="relative block">
-                        <span class="group-hover:opacity-0 transition-opacity duration-300">LET'S TALK</span>
-                        <span class="absolute top-0 left-0 opacity-0 group-hover:opacity-100 text-stroke transition-opacity duration-300">LET'S TALK</span>
+        <section id="contact" class="py-16 md:py-24 px-4 md:px-6 border-t border-white/10 bg-black/30 section-anchor">
+            <div class="max-w-7xl mx-auto">
+                <p class="font-mono text-signal text-xs">04 // CONTACT</p>
+                <h2 class="mt-3 text-4xl md:text-7xl font-display font-bold leading-[0.95]">
+                    <a href="mailto:varada.aakula@gmail.com" class="inline-block group">
+                        <span class="group-hover:opacity-0 transition-opacity">LET US BUILD</span>
+                        <span class="absolute opacity-0 group-hover:opacity-100 text-stroke transition-opacity">LET US BUILD</span>
                     </a>
                 </h2>
-            </div>
 
-            <div class="flex flex-col md:flex-row justify-between items-end border-t border-white/10 pt-8 font-mono text-[10px] text-gray-500 uppercase tracking-widest z-10">
-                <div class="flex gap-8 mb-4 md:mb-0">
-                    <a href="https://github.com/VaradaGovind" target="_blank" class="hover:text-accent transition-colors">GitHub</a>
-                    <a href="https://linkedin.com/in/varada-govind-3506712b5" target="_blank" class="hover:text-accent transition-colors">LinkedIn</a>
-                    <a href="#" class="hover:text-accent transition-colors">Resume</a>
+                <div class="mt-8 flex flex-wrap items-center gap-3">
+                    <button id="copy-email" class="px-4 py-2 rounded-lg border border-white/15 bg-panel/70 text-sm font-mono hover:text-lime transition-colors">COPY EMAIL</button>
+                    <span id="copy-status" class="text-xs font-mono text-mist" aria-live="polite"></span>
                 </div>
-                <div>
-                    &copy; 2025 Varada Govind Aakula
+
+                <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 font-mono text-xs text-mist uppercase tracking-wider">
+                    <div class="flex gap-6">
+                        <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener" class="hover:text-signal transition-colors">GitHub</a>
+                        <a href="https://linkedin.com/in/varada-govind-3506712b5" target="_blank" rel="noopener" class="hover:text-signal transition-colors">LinkedIn</a>
+                        <a href="#" class="hover:text-signal transition-colors">Resume</a>
+                    </div>
+                    <p>Copyright 2026 Varada Govind Aakula</p>
                 </div>
             </div>
         </section>
-
     </main>
 
     <script>
-        // 1. Initialize Lenis (Smooth Scroll)
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-        });
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const finePointer = window.matchMedia('(pointer:fine)').matches;
+        const isDesktop = window.matchMedia('(min-width: 768px)').matches;
 
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', String(!expanded));
+                mobileMenu.classList.toggle('open');
+            });
+
+            navLinks.forEach((link) => {
+                link.addEventListener('click', () => {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('open');
+                });
+            });
         }
-        requestAnimationFrame(raf);
 
-        // 2. Initialize Icons
         lucide.createIcons();
 
-        // 3. Custom Cursor & Spotlight
+        let lenis;
+        if (!reducedMotion) {
+            lenis = new Lenis({
+                duration: 1.1,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+                smoothTouch: false,
+                wheelMultiplier: 1.0
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+        }
+
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
-        
-        const hoverElements = document.querySelectorAll('a, button, .glass-card');
 
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
+        if (finePointer && !reducedMotion && cursorDot && cursorOutline) {
+            const hoverTargets = document.querySelectorAll('a, button, .glass-card');
+            const spotlightCards = document.querySelectorAll('.spotlight-wrapper');
 
-            // Cursor Movement
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            cursorDot.style.transform = `translate(-50%, -50%)`;
+            let mouseX = 0;
+            let mouseY = 0;
+            let rafPending = false;
 
-            // Delayed Outline Movement
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`,
-                transform: `translate(-50%, -50%)`
-            }, { duration: 500, fill: "forwards" });
+            const applyPointerFrame = () => {
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+                cursorOutline.style.left = mouseX + 'px';
+                cursorOutline.style.top = mouseY + 'px';
 
-            // Spotlight Logic
-            document.querySelectorAll('.spotlight-wrapper').forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+                spotlightCards.forEach((card) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = mouseX - rect.left;
+                    const y = mouseY - rect.top;
+                    card.style.setProperty('--mx', x + 'px');
+                    card.style.setProperty('--my', y + 'px');
+                });
+
+                rafPending = false;
+            };
+
+            window.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                if (!rafPending) {
+                    rafPending = true;
+                    requestAnimationFrame(applyPointerFrame);
+                }
+            });
+
+            hoverTargets.forEach((target) => {
+                target.addEventListener('mouseenter', () => {
+                    cursorOutline.style.width = '60px';
+                    cursorOutline.style.height = '60px';
+                    cursorOutline.style.borderColor = 'rgba(34, 211, 238, 0.6)';
+                    cursorOutline.style.backgroundColor = 'rgba(34, 211, 238, 0.12)';
+                });
+
+                target.addEventListener('mouseleave', () => {
+                    cursorOutline.style.width = '40px';
+                    cursorOutline.style.height = '40px';
+                    cursorOutline.style.borderColor = 'rgba(230, 237, 247, 0.35)';
+                    cursorOutline.style.backgroundColor = 'transparent';
+                });
+            });
+        }
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        const emptyState = document.getElementById('project-empty-state');
+
+        filterButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const selected = button.dataset.filter;
+                let visibleCount = 0;
+
+                filterButtons.forEach((btn) => btn.setAttribute('aria-pressed', 'false'));
+                button.setAttribute('aria-pressed', 'true');
+
+                projectCards.forEach((card) => {
+                    const show = selected === 'all' || card.dataset.category === selected;
+                    card.classList.toggle('hidden-card', !show);
+                    if (show) visibleCount += 1;
+                });
+
+                if (emptyState) {
+                    emptyState.classList.toggle('hidden', visibleCount > 0);
+                }
             });
         });
 
-        // Hover States
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOutline.style.width = '60px';
-                cursorOutline.style.height = '60px';
-                cursorOutline.style.borderColor = 'rgba(0, 242, 234, 0.5)'; // Cyan tint
-                cursorOutline.style.backgroundColor = 'rgba(0, 242, 234, 0.05)';
+        const copyEmailBtn = document.getElementById('copy-email');
+        const copyStatus = document.getElementById('copy-status');
+
+        if (copyEmailBtn && copyStatus) {
+            copyEmailBtn.addEventListener('click', async () => {
+                const email = 'varada.aakula@gmail.com';
+                try {
+                    await navigator.clipboard.writeText(email);
+                    copyStatus.textContent = 'Email copied to clipboard';
+                } catch (error) {
+                    copyStatus.textContent = 'Clipboard blocked, please copy manually: ' + email;
+                }
+
+                setTimeout(() => {
+                    copyStatus.textContent = '';
+                }, 2400);
             });
-            el.addEventListener('mouseleave', () => {
-                cursorOutline.style.width = '40px';
-                cursorOutline.style.height = '40px';
-                cursorOutline.style.borderColor = 'rgba(255,255,255,0.3)';
-                cursorOutline.style.backgroundColor = 'transparent';
+        }
+
+        if (!reducedMotion && window.gsap && window.ScrollTrigger) {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.timeline()
+                .to('.reveal-hero', {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.16,
+                    duration: 1.1,
+                    ease: 'power3.out'
+                });
+
+            gsap.utils.toArray('#project-grid .glass-card').forEach((card, index) => {
+                gsap.from(card, {
+                    scrollTrigger: { trigger: card, start: 'top 88%' },
+                    opacity: 0,
+                    y: 38,
+                    duration: 0.75,
+                    delay: Math.min(index * 0.06, 0.3),
+                    ease: 'power2.out'
+                });
             });
-        });
 
-        // 4. GSAP Animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero Reveal
-        const tl = gsap.timeline();
-        tl.to(".reveal-hero", {
-            y: 0, opacity: 1, duration: 1.5, stagger: 0.2, ease: "power4.out", delay: 0.2
-        });
-
-        // Projects Stagger
-        gsap.utils.toArray('#work .glass-card').forEach((card, i) => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: "top 90%" },
-                y: 50, opacity: 0, duration: 1, ease: "power3.out", delay: i * 0.1
+            gsap.from('.reveal-item', {
+                scrollTrigger: { trigger: '#about', start: 'top 78%' },
+                opacity: 0,
+                x: -20,
+                duration: 0.75,
+                stagger: 0.16,
+                ease: 'power2.out'
             });
-        });
 
-        // Experience Lines
-        gsap.utils.toArray('.reveal-item').forEach((item) => {
-            gsap.from(item, {
-                scrollTrigger: { trigger: item, start: "top 85%" },
-                x: -20, opacity: 0, duration: 0.8, ease: "power3.out"
+            gsap.from('.skill-card', {
+                scrollTrigger: { trigger: '#skills', start: 'top 80%' },
+                opacity: 0,
+                y: 48,
+                duration: 0.8,
+                stagger: 0.12,
+                ease: 'power2.out'
             });
-        });
+        } else {
+            document.querySelectorAll('.reveal-hero').forEach((el) => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+        }
 
-        // Skills Waterfall
-        gsap.from(".skill-card", {
-            scrollTrigger: {
-                trigger: "#skills",
-                start: "top 80%",
-            },
-            y: 60,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.15, 
-            ease: "power3.out"
-        });
+        if (finePointer && isDesktop && !reducedMotion && window.VanillaTilt) {
+            VanillaTilt.init(document.querySelectorAll('.glass-card, .skill-card'), {
+                max: 8,
+                speed: 350,
+                glare: true,
+                'max-glare': 0.08,
+                scale: 1.015,
+                gyroscope: true
+            });
+        }
 
-        // 5. Initialize Vanilla Tilt (3D Card Effect)
-        VanillaTilt.init(document.querySelectorAll(".glass-card, .skill-card"), {
-            max: 10,              // Maximum tilt rotation (degrees)
-            speed: 400,           // Speed of the enter/exit transition
-            glare: true,          // Add a light glare effect
-            "max-glare": 0.1,     // Opacity of the glare
-            scale: 1.02,          // Slight zoom on hover
-            gyroscope: true       // Works on mobile based on phone orientation
-        });
+        function canUseWebGL() {
+            try {
+                const canvas = document.createElement('canvas');
+                return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+            } catch (error) {
+                return false;
+            }
+        }
 
-        // 6. Three.js Wireframe Animation (Hero Background)
         function initThreeJS() {
             const container = document.getElementById('three-canvas-container');
-            if (!container) return;
+            if (!container || reducedMotion || !isDesktop || !canUseWebGL() || !window.THREE) return;
 
             const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            
+            const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
+
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
             renderer.setSize(window.innerWidth, window.innerHeight);
             container.appendChild(renderer.domElement);
 
-            // Create a "Tech" Geometry (Icosahedron looks like a network)
-            const geometry = new THREE.IcosahedronGeometry(2.8, 1);
-            const material = new THREE.MeshBasicMaterial({ 
-                color: 0x00f2ea, // Your accent color
+            const shape = new THREE.IcosahedronGeometry(2.7, 1);
+            const material = new THREE.MeshBasicMaterial({
+                color: 0x22d3ee,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.15 // Subtle opacity
+                opacity: 0.14
             });
-            
-            const sphere = new THREE.Mesh(geometry, material);
-            scene.add(sphere);
+            const mesh = new THREE.Mesh(shape, material);
+            scene.add(mesh);
+
+            const ringGeometry = new THREE.TorusGeometry(3.8, 0.03, 16, 100);
+            const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xa3e635, transparent: true, opacity: 0.08 });
+            const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+            ring.rotation.x = 1.1;
+            scene.add(ring);
 
             camera.position.z = 5;
 
-            // Animation Loop
-            function animate() {
-                requestAnimationFrame(animate);
-                sphere.rotation.x += 0.001;
-                sphere.rotation.y += 0.002;
+            let rafId;
+            const animate = () => {
+                rafId = requestAnimationFrame(animate);
+                mesh.rotation.x += 0.0009;
+                mesh.rotation.y += 0.0017;
+                ring.rotation.z += 0.0007;
                 renderer.render(scene, camera);
-            }
+            };
             animate();
 
-            // Handle Resize
-            window.addEventListener('resize', () => {
+            const onResize = () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
+            };
+            window.addEventListener('resize', onResize);
+
+            window.addEventListener('beforeunload', () => {
+                cancelAnimationFrame(rafId);
+                window.removeEventListener('resize', onResize);
+                renderer.dispose();
+                shape.dispose();
+                material.dispose();
+                ringGeometry.dispose();
+                ringMaterial.dispose();
             });
         }
-        
-        // Start Three.js
-        initThreeJS();
 
+        initThreeJS();
     </script>
 </body>
 </html>
