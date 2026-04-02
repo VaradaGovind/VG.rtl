@@ -302,7 +302,7 @@
                     </div>
                     <div class="metric-badge rounded-xl p-3">
                         <p class="font-mono text-[10px] text-mist">ISA SUPPORT</p>
-                        <p class="text-lg font-semibold">RV32IMA</p>
+                        <p class="text-lg font-semibold">RV32I</p>
                     </div>
                     <div class="metric-badge rounded-xl p-3">
                         <p class="font-mono text-[10px] text-mist">BUS FABRIC</p>
@@ -326,9 +326,9 @@
 
                     <div class="flex flex-wrap gap-2" role="toolbar" aria-label="Project filters">
                         <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="all" aria-pressed="true">ALL</button>
-                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="rtl" aria-pressed="false">RTL</button>
-                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="vlsi" aria-pressed="false">VLSI</button>
-                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="proto" aria-pressed="false">PROTOCOL</button>
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="rtl">RTL</button>
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="vlsi">VLSI</button>
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="proto">PROTOCOL</button>
                     </div>
                 </div>
 
@@ -340,21 +340,22 @@
                                 <i data-lucide="cpu" class="w-5 h-5 text-signal"></i>
                             </div>
                             <div style="transform: translateZ(30px)">
-                                <h3 class="text-2xl md:text-3xl font-semibold mb-2">RISC-V 32-bit Core</h3>
-                                <p class="text-sm text-mist leading-relaxed max-w-xl">Single-cycle RV32I core implemented entirely in Verilog. Features a structured datapath, custom control logic, and pipeline-ready interfaces for future extensions.</p>
+                                <h3 class="text-2xl md:text-3xl font-semibold mb-2">RISC-V 32-bit RV32I Processor</h3>
+                                <p class="text-sm text-mist leading-relaxed max-w-xl">Architected a single-cycle RV32I processor synthesizing to 100 MHz on a Nexys 4 DDR FPGA. Optimized for an ultra-low footprint of 300 LUTs (<1%) drawing just 1.89 W. Features custom MMIO.</p>
                             </div>
                             <p class="font-mono text-xs text-signal">OPEN REPOSITORY</p>
                         </div>
                     </a>
 
-                    <a href="#" class="project-card glass-card spotlight-wrapper rounded-3xl p-8 md:row-span-2" data-category="rtl">
+                    <a href="https://github.com/VaradaGovind/GridLock-AES" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8 md:row-span-2 flex flex-col" data-category="rtl">
                         <div class="relative z-10 h-full flex flex-col justify-between">
                             <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist w-fit" style="transform: translateZ(24px)">CRYPTO / RTL</span>
                             <i data-lucide="shield-check" class="w-16 h-16 md:w-24 md:h-24 text-slate-600" style="transform: translateZ(30px)"></i>
                             <div style="transform: translateZ(30px)">
-                                <h3 class="text-2xl font-semibold mb-2">AES-128 Engine</h3>
-                                <p class="text-sm text-mist leading-relaxed">Throughput-focused hardware encryption design with reduced-area S-Box implementation strategy.</p>
+                                <h3 class="text-2xl font-semibold mb-2">GridLock AES: 1.6 Gbps</h3>
+                                <p class="text-sm text-mist leading-relaxed">High-performance AXI4 hardware accelerator achieving 1.66 Gbps and 150 MHz timing closure. Utilizes Composite Field Arithmetic for a BRAM-less S-Box (2,581 LUTs).</p>
                             </div>
+                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">OPEN REPOSITORY</p>
                         </div>
                     </a>
 
@@ -366,17 +367,17 @@
                             </div>
                             <div class="mt-auto space-y-3" style="transform: translateZ(30px)">
                                 <a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" rel="noopener" class="flex justify-between items-center border-b border-white/10 pb-2 hover:text-signal transition-colors">
-                                    <span class="font-semibold">UART</span>
+                                    <span class="font-semibold">UART Controller</span>
                                     <i data-lucide="external-link" class="w-3 h-3"></i>
                                 </a>
-                                <a href="https://github.com/VaradaGovind/rtl-spi-controller" target="_blank" rel="noopener" class="flex justify-between items-center border-b border-white/10 pb-2 hover:text-signal transition-colors">
-                                    <span class="font-semibold">SPI</span>
+                                <a href="https://github.com/VaradaGovind/spi-core" target="_blank" rel="noopener" class="flex justify-between items-center border-b border-white/10 pb-2 hover:text-signal transition-colors">
+                                    <span class="font-semibold">SPI Core</span>
                                     <i data-lucide="external-link" class="w-3 h-3"></i>
                                 </a>
-                                <div class="flex justify-between items-center opacity-60">
-                                    <span class="font-semibold">I2C</span>
-                                    <span class="font-mono text-[10px] text-amber-400">IN PROGRESS</span>
-                                </div>
+                                <a href="https://github.com/VaradaGovind/i2c-core" target="_blank" rel="noopener" class="flex justify-between items-center pb-2 hover:text-signal transition-colors">
+                                    <span class="font-semibold">I2C Controller (CDC)</span>
+                                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -389,7 +390,7 @@
                             </div>
                             <div style="transform: translateZ(30px)">
                                 <h3 class="text-2xl font-semibold mb-2">CMOS Cell Library</h3>
-                                <p class="text-sm text-mist leading-relaxed">Transistor-level logic cells designed and verified in LTspice, including an inverter, NAND gate, hierarchical full-adder, and master-slave flip-flop.</p>
+                                <p class="text-sm text-mist leading-relaxed">Standard cell library (Inverter, NAND, FF) and hierarchical 1-Bit Adder designed using NMOS/PMOS models. Validated via rigorous transient and DC sweep analysis.</p>
                             </div>
                             <p class="font-mono text-xs text-signal">OPEN REPOSITORY</p>
                         </div>
@@ -408,10 +409,18 @@
                 <div class="relative border-l border-white/10 ml-2 md:ml-0 space-y-14">
                     <article class="reveal-item relative pl-8 md:pl-20">
                         <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-signal bg-ink shadow-neon"></div>
-                        <p class="font-mono text-xs text-mist mb-2">2025 - PRESENT</p>
+                        <p class="font-mono text-xs text-mist mb-2">2024 - PRESENT</p>
                         <h3 class="text-xl md:text-2xl font-semibold">IoT Wing Coordinator</h3>
                         <p class="text-signal font-mono text-sm mt-1">Tesla Electronics Society, IIIT Allahabad</p>
-                        <p class="text-mist leading-relaxed mt-3">Leading practical hardware initiatives, lab planning, and mentoring on embedded systems and rapid IoT prototyping.</p>
+                        <p class="text-mist leading-relaxed mt-3">Leading practical hardware initiatives, lab planning, and mentoring 20+ members on digital design fundamentals and Verilog coding standards.</p>
+                    </article>
+
+                    <article class="reveal-item relative pl-8 md:pl-20">
+                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-lime bg-ink shadow-neon"></div>
+                        <p class="font-mono text-xs text-mist mb-2">2023</p>
+                        <h3 class="text-xl md:text-2xl font-semibold">National Runner-Up</h3>
+                        <p class="text-lime font-mono text-sm mt-1">Rural Innovation Conclave</p>
+                        <p class="text-mist leading-relaxed mt-3">Architected the hardware interface for a solar-powered, IoT-enabled mobile education platform; recognized at the national level for system scalability.</p>
                     </article>
 
                     <article class="reveal-item relative pl-8 md:pl-20">
@@ -419,7 +428,7 @@
                         <p class="font-mono text-xs text-mist mb-2">2023 - 2027 (Expected)</p>
                         <h3 class="text-xl md:text-2xl font-semibold">B.Tech Electronics & Communication</h3>
                         <p class="text-signal font-mono text-sm mt-1">Indian Institute of Information Technology, Allahabad</p>
-                        <p class="text-mist leading-relaxed mt-3">Core coursework focusing on Digital Design, Microprocessors, Data Communication Networks, and VLSI Systems.</p>
+                        <p class="text-mist leading-relaxed mt-3">Core coursework focusing on Digital Logic Design, CMOS VLSI Design, Computer Architecture, Signals & Systems, and Computer Networks.</p>
                     </article>
                 </div>
             </div>
@@ -437,10 +446,11 @@
                         <i data-lucide="cpu" class="w-7 h-7 text-signal mb-5"></i>
                         <h4 class="font-semibold text-lg mb-4">RTL Design</h4>
                         <ul class="space-y-2 text-sm text-mist">
-                            <li>Verilog & VHDL</li>
                             <li>SystemVerilog & UVM</li>
+                            <li>Verilog & VHDL</li>
                             <li>RISC-V microarchitecture</li>
-                            <li>FSM and control-path design</li>
+                            <li>AXI4 Integration</li>
+                            <li>CDC & Data Synchronization</li>
                         </ul>
                     </article>
 
@@ -450,8 +460,8 @@
                         <ul class="space-y-2 text-sm text-mist">
                             <li>C and C++</li>
                             <li>Python scripting</li>
-                            <li>Assembly basics</li>
-                            <li>Embedded C workflows</li>
+                            <li>Assembly-level Programming</li>
+                            <li>Linux Environments</li>
                         </ul>
                     </article>
 
@@ -462,7 +472,8 @@
                             <li>Xilinx Vivado</li>
                             <li>LTspice</li>
                             <li>GTKWave</li>
-                            <li>Cisco Packet Tracer</li>
+                            <li>ModelSim</li>
+                            <li>MATLAB & Git/GitHub</li>
                         </ul>
                     </article>
 
@@ -470,10 +481,10 @@
                         <i data-lucide="layers" class="w-7 h-7 text-signal mb-5"></i>
                         <h4 class="font-semibold text-lg mb-4">Concepts</h4>
                         <ul class="space-y-2 text-sm text-mist">
-                            <li>CMOS technology</li>
-                            <li>Transistor-level design</li>
-                            <li>FPGA implementation flow</li>
-                            <li>Machine Learning Accelerators</li>
+                            <li>Digital Logic & FSM Design</li>
+                            <li>Static Timing Analysis (STA)</li>
+                            <li>CMOS VLSI</li>
+                            <li>FPGA Implementation Flow</li>
                         </ul>
                     </article>
                 </div>
@@ -496,9 +507,9 @@
                 </div>
 
                 <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 font-mono text-xs text-mist uppercase tracking-wider">
-                    <div class="flex gap-6">
+                    <div class="flex flex-wrap gap-6">
                         <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener" class="hover:text-signal transition-colors">GitHub</a>
-                        <a href="https://linkedin.com/in/varada-govind-3506712b5" target="_blank" rel="noopener" class="hover:text-signal transition-colors">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/varada-govind-aakula-3506712b5/" target="_blank" rel="noopener" class="hover:text-signal transition-colors">LinkedIn</a>
                         <a href="#" class="hover:text-signal transition-colors">Resume</a>
                     </div>
                     <p>Copyright 2026 Varada Govind Aakula</p>
