@@ -241,4 +241,586 @@
     <div class="cursor-dot hidden md:block" aria-hidden="true"></div>
     <div class="cursor-outline hidden md:block" aria-hidden="true"></div>
 
-    <header class="fixed
+    <header class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 bg-ink/35 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <a href="#" class="font-mono text-lg font-bold tracking-tight hover:text-signal transition-colors">VG.rtl</a>
+
+            <button id="mobile-menu-toggle" class="md:hidden inline-flex items-center justify-center border border-white/15 rounded-lg px-3 py-2 text-sm" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i data-lucide="menu" class="w-4 h-4"></i>
+            </button>
+
+            <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-mist" aria-label="Primary">
+                <a href="#work" class="hover:text-signal transition-colors nav-link">[ WORK ]</a>
+                <a href="#about" class="hover:text-signal transition-colors nav-link">[ ABOUT ]</a>
+                <a href="#skills" class="hover:text-signal transition-colors nav-link">[ ARSENAL ]</a>
+                <a href="#contact" class="hover:text-signal transition-colors nav-link">[ CONTACT ]</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-3">
+                <div class="flex items-center gap-2 border border-white/10 rounded-full px-3 py-1 bg-panel/60 text-[10px] font-mono">
+                    <span class="w-1.5 h-1.5 rounded-full bg-lime animate-pulse"></span>
+                    <span class="tracking-widest text-mist">OPEN_TO_WORK</span>
+                </div>
+            </div>
+        </div>
+
+        <nav id="mobile-menu" class="mobile-menu md:hidden mt-4 border border-white/10 rounded-2xl bg-panel/80" aria-label="Mobile">
+            <div class="p-4 space-y-3 font-mono text-xs">
+                <a href="#work" class="block nav-link">[ WORK ]</a>
+                <a href="#about" class="block nav-link">[ ABOUT ]</a>
+                <a href="#skills" class="block nav-link">[ ARSENAL ]</a>
+                <a href="#contact" class="block nav-link">[ CONTACT ]</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" class="relative pt-20 md:pt-24">
+        <section class="min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden section-anchor">
+            <div id="three-canvas-container" class="absolute inset-0 z-0 pointer-events-none opacity-45"></div>
+
+            <div class="max-w-6xl w-full relative z-10">
+                <p class="font-mono text-signal text-xs tracking-[0.2em] mb-4 reveal-hero opacity-0">SYSTEM READY // VARADA GOVIND AAKULA</p>
+
+                <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6 reveal-hero opacity-0 translate-y-6 bg-gradient-to-b from-white to-slate-300/55 text-transparent bg-clip-text">
+                    DIGITAL LOGIC,<br>
+                    REAL SILICON.
+                </h1>
+
+                <p class="max-w-2xl text-base md:text-lg text-mist leading-relaxed reveal-hero opacity-0 translate-y-6">
+                    B.Tech ECE @ IIIT Allahabad. Focused on Verilog & SystemVerilog-based RISC-V microarchitecture, rigorous UVM verification, and edge-compatible hardware accelerators.
+                </p>
+
+                <div class="mt-8 flex flex-wrap items-center gap-3 reveal-hero opacity-0 translate-y-6">
+                    <a href="#work" class="px-5 py-3 rounded-xl bg-signal/15 border border-signal/40 text-signal font-mono text-xs tracking-wider hover:bg-signal/25 transition-colors">VIEW PROJECTS</a>
+                    <a href="#contact" class="px-5 py-3 rounded-xl bg-panel/70 border border-white/10 text-mist font-mono text-xs tracking-wider hover:text-white transition-colors">CONTACT</a>
+                </div>
+
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 reveal-hero opacity-0 translate-y-6" aria-label="Highlights">
+                    <div class="metric-badge rounded-xl p-3">
+                        <p class="font-mono text-[10px] text-mist">RTL FILES</p>
+                        <p class="text-lg font-semibold">16+</p>
+                    </div>
+                    <div class="metric-badge rounded-xl p-3">
+                        <p class="font-mono text-[10px] text-mist">ISA SUPPORT</p>
+                        <p class="text-lg font-semibold">RV32I</p>
+                    </div>
+                    <div class="metric-badge rounded-xl p-3">
+                        <p class="font-mono text-[10px] text-mist">BUS FABRIC</p>
+                        <p class="text-lg font-semibold">AXI4-Lite</p>
+                    </div>
+                    <div class="metric-badge rounded-xl p-3">
+                        <p class="font-mono text-[10px] text-mist">FOCUS</p>
+                        <p class="text-lg font-semibold">PPA-aware</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 border-b border-white/10 pb-6">
+                    <div>
+                        <span class="font-mono text-signal text-xs">01 // PROJECTS</span>
+                        <h2 class="mt-2 text-3xl md:text-4xl font-display font-semibold">Selected Work</h2>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2" role="toolbar" aria-label="Project filters">
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="all" aria-pressed="true">ALL</button>
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="rtl">RTL</button>
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="vlsi">VLSI</button>
+                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="proto">PROTOCOL</button>
+                    </div>
+                </div>
+
+                <div id="project-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[330px] md:auto-rows-[360px]">
+                    
+                    <article class="project-card glass-card spotlight-wrapper rounded-3xl p-8 md:col-span-2" data-category="rtl">
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <div class="flex items-center justify-between" style="transform: translateZ(24px)">
+                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">SYSVERILOG / RISC-V / RTL</span>
+                                <i data-lucide="cpu" class="w-5 h-5 text-signal"></i>
+                            </div>
+                            <div style="transform: translateZ(30px)">
+                                <h3 class="text-2xl md:text-3xl font-semibold mb-2">OrionRV: Thermally Aware 5-Core SoC</h3>
+                                <p class="text-sm text-mist leading-relaxed max-w-xl">Architected a 5-core heterogeneous RV32IMAC SoC with an RTL-based Thermal Management Unit (TMU), closing timing at 98 MHz on Xilinx Ultrascale+ xcu250. Designed a hardware fixed-point Kalman estimator converging in 6 cycles. Sustained 96.3% normal-execution throughput under an 85°C ceiling with an ultra-low 12,000 LUT footprint.</p>
+                            </div>
+                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">UNDER REVIEW, VDAT 2026</p>
+                        </div>
+                    </article>
+
+                    <article class="project-card glass-card spotlight-wrapper rounded-3xl p-8 flex flex-col" data-category="rtl">
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist w-fit" style="transform: translateZ(24px)">VERILOG / EDGE AI</span>
+                            <i data-lucide="brain-circuit" class="w-12 h-12 text-slate-500 mt-4" style="transform: translateZ(30px)"></i>
+                            <div class="mt-auto" style="transform: translateZ(30px)">
+                                <h3 class="text-2xl font-semibold mb-2">Task-Aware Object Detection</h3>
+                                <p class="text-sm text-mist leading-relaxed">Built a heterogeneous inference pipeline. Engineered a 16x16 INT8 systolic array delivering 51.2 GOPS at 200 MHz. Reduced memory bandwidth 256x via sparse BRAM addressing and hid latency via Ping-Pong AXI4 SG-DMA.</p>
+                            </div>
+                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">DVCON 2026 CONTEST</p>
+                        </div>
+                    </article>
+
+                    <a href="https://github.com/VaradaGovind/GridLock-AES" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8 flex flex-col" data-category="rtl">
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist w-fit" style="transform: translateZ(24px)">CRYPTO / AXI4</span>
+                            <i data-lucide="shield-check" class="w-12 h-12 text-slate-500 mt-4" style="transform: translateZ(30px)"></i>
+                            <div class="mt-auto" style="transform: translateZ(30px)">
+                                <h3 class="text-2xl font-semibold mb-2">GridLock AES: 1.6 Gbps</h3>
+                                <p class="text-sm text-mist leading-relaxed">SystemVerilog hardware accelerator achieving 1.66 Gbps and 150 MHz timing closure (WNS: +1.049 ns). Reduced logic area by 40% via Composite Field Arithmetic for a BRAM-less S-Box (2,581 LUTs, 539 Registers).</p>
+                            </div>
+                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">OPEN REPOSITORY</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8" data-category="rtl">
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <div class="flex items-center justify-between" style="transform: translateZ(24px)">
+                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">VERILOG / RISC-V</span>
+                                <i data-lucide="cpu" class="w-5 h-5 text-signal"></i>
+                            </div>
+                            <div style="transform: translateZ(30px)">
+                                <h3 class="text-2xl font-semibold mb-2">RV32I Soft-Core</h3>
+                                <p class="text-sm text-mist leading-relaxed">Single-cycle RISC-V core meeting 100 MHz timing on Nexys 4 DDR. Achieved ultra-low footprint (300 LUTs) and minimized on-chip power to 1.89 W. Includes custom MMIO.</p>
+                            </div>
+                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">OPEN REPOSITORY</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/VaradaGovind/CMOS-Standard-Cell-Library" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8" data-category="vlsi">
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <div class="flex items-center justify-between" style="transform: translateZ(24px)">
+                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">VLSI / SPICE</span>
+                                <i data-lucide="zap" class="w-5 h-5 text-signal"></i>
+                            </div>
+                            <div style="transform: translateZ(30px)">
+                                <h3 class="text-2xl font-semibold mb-2">CMOS Cell Library</h3>
+                                <p class="text-sm text-mist leading-relaxed">Standard cell library (Inverter, NAND, FF) and hierarchical 1-Bit Adder designed using NMOS/PMOS models. Validated via rigorous transient and DC sweep analysis.</p>
+                            </div>
+                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">OPEN REPOSITORY</p>
+                        </div>
+                    </a>
+
+                    <div class="project-card glass-card spotlight-wrapper rounded-3xl p-8 md:col-span-3" data-category="proto">
+                        <div class="relative z-10 h-full flex flex-col justify-center">
+                            <div class="flex items-center gap-4 mb-6" style="transform: translateZ(24px)">
+                                <i data-lucide="arrow-right-left" class="w-6 h-6 text-signal"></i>
+                                <h3 class="text-2xl md:text-3xl font-semibold">Hardware Protocol Stack</h3>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" style="transform: translateZ(30px)">
+                                <a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" rel="noopener" class="glass-card rounded-xl p-5 hover:border-signal/50 transition-colors group">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-semibold text-lg group-hover:text-signal transition-colors">UART Controller</span>
+                                        <i data-lucide="external-link" class="w-4 h-4 text-mist group-hover:text-signal transition-colors"></i>
+                                    </div>
+                                    <p class="text-xs text-mist">Configurable baud-rate 16-bit transceiver.</p>
+                                </a>
+                                <a href="https://github.com/VaradaGovind/spi-core" target="_blank" rel="noopener" class="glass-card rounded-xl p-5 hover:border-signal/50 transition-colors group">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-semibold text-lg group-hover:text-signal transition-colors">SPI Core</span>
+                                        <i data-lucide="external-link" class="w-4 h-4 text-mist group-hover:text-signal transition-colors"></i>
+                                    </div>
+                                    <p class="text-xs text-mist">Master/Slave architecture for high-speed sync.</p>
+                                </a>
+                                <a href="https://github.com/VaradaGovind/i2c-core" target="_blank" rel="noopener" class="glass-card rounded-xl p-5 hover:border-signal/50 transition-colors group">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="font-semibold text-lg group-hover:text-signal transition-colors">I2C Controller</span>
+                                        <i data-lucide="external-link" class="w-4 h-4 text-mist group-hover:text-signal transition-colors"></i>
+                                    </div>
+                                    <p class="text-xs text-mist">Multi-master capable with robust CDC handling.</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p id="project-empty-state" class="hidden mt-6 text-mist font-mono text-xs">No projects in this category yet.</p>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 md:py-28 px-4 md:px-6 bg-[#060B16] section-anchor">
+            <div class="max-w-4xl mx-auto">
+                <span class="font-mono text-signal text-xs">02 // TIMELINE</span>
+                <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2 mb-12">Career & Education</h2>
+
+                <div class="relative border-l border-white/10 ml-2 md:ml-0 space-y-14">
+                    <article class="reveal-item relative pl-8 md:pl-20">
+                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-signal bg-ink shadow-neon"></div>
+                        <p class="font-mono text-xs text-mist mb-2">JAN 2026 - PRESENT</p>
+                        <h3 class="text-xl md:text-2xl font-semibold">Undergraduate Hardware Researcher</h3>
+                        <p class="text-signal font-mono text-sm mt-1">Indian Institute of Information Technology, Allahabad</p>
+                        <p class="text-mist leading-relaxed mt-3">Architecting Prolepsis (an RTL Thermal Management Unit) for a 4-core RISC-V cluster. Designed a Kalman predictor and policy FSM for proactive throttling and task migrations to bypass firmware delays.</p>
+                    </article>
+
+                    <article class="reveal-item relative pl-8 md:pl-20">
+                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-mist bg-ink"></div>
+                        <p class="font-mono text-xs text-mist mb-2">AUG 2024 - PRESENT</p>
+                        <h3 class="text-xl md:text-2xl font-semibold">IoT Wing Coordinator</h3>
+                        <p class="text-signal font-mono text-sm mt-1">Tesla Electronics Society, IIIT Allahabad</p>
+                        <p class="text-mist leading-relaxed mt-3">Leading practical hardware initiatives, lab planning, and mentoring 20+ members on digital design fundamentals and Verilog coding standards.</p>
+                    </article>
+
+                    <article class="reveal-item relative pl-8 md:pl-20">
+                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-mist bg-ink"></div>
+                        <p class="font-mono text-xs text-mist mb-2">2023 - 2027 (EXPECTED)</p>
+                        <h3 class="text-xl md:text-2xl font-semibold">B.Tech Electronics & Communication</h3>
+                        <p class="text-signal font-mono text-sm mt-1">Indian Institute of Information Technology, Allahabad</p>
+                        <p class="text-mist leading-relaxed mt-3">Core coursework focusing on Digital Logic Design, CMOS VLSI Design, Low Power Design, Computer Architecture, Signals & Systems, and Computer Networks.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-10 border-b border-white/10 pb-6">
+                    <span class="font-mono text-signal text-xs">03 // ARSENAL</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2">Technical Proficiency</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <article class="glass-card skill-card rounded-2xl p-6">
+                        <i data-lucide="cpu" class="w-7 h-7 text-signal mb-5"></i>
+                        <h4 class="font-semibold text-lg mb-4">RTL Design</h4>
+                        <ul class="space-y-2 text-sm text-mist">
+                            <li>SystemVerilog & UVM</li>
+                            <li>Verilog & VHDL</li>
+                            <li>RISC-V microarchitecture</li>
+                            <li>AXI4 Integration</li>
+                            <li>CDC & Data Synchronization</li>
+                        </ul>
+                    </article>
+
+                    <article class="glass-card skill-card rounded-2xl p-6">
+                        <i data-lucide="terminal" class="w-7 h-7 text-signal mb-5"></i>
+                        <h4 class="font-semibold text-lg mb-4">Firmware & Software</h4>
+                        <ul class="space-y-2 text-sm text-mist">
+                            <li>C and C++</li>
+                            <li>Python scripting</li>
+                            <li>Assembly-level Programming</li>
+                            <li>Linux Environments</li>
+                        </ul>
+                    </article>
+
+                    <article class="glass-card skill-card rounded-2xl p-6">
+                        <i data-lucide="wrench" class="w-7 h-7 text-signal mb-5"></i>
+                        <h4 class="font-semibold text-lg mb-4">Tools</h4>
+                        <ul class="space-y-2 text-sm text-mist">
+                            <li>Xilinx Vivado</li>
+                            <li>LTspice</li>
+                            <li>GTKWave</li>
+                            <li>ModelSim</li>
+                            <li>MATLAB & Git/GitHub</li>
+                        </ul>
+                    </article>
+
+                    <article class="glass-card skill-card rounded-2xl p-6">
+                        <i data-lucide="layers" class="w-7 h-7 text-signal mb-5"></i>
+                        <h4 class="font-semibold text-lg mb-4">Concepts</h4>
+                        <ul class="space-y-2 text-sm text-mist">
+                            <li>Digital Logic & FSM Design</li>
+                            <li>Static Timing Analysis (STA)</li>
+                            <li>CMOS VLSI</li>
+                            <li>FPGA Implementation Flow</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 md:py-24 px-4 md:px-6 border-t border-white/10 bg-black/30 section-anchor">
+            <div class="max-w-7xl mx-auto">
+                <p class="font-mono text-signal text-xs">04 // CONTACT</p>
+                <h2 class="mt-3 text-4xl md:text-7xl font-display font-bold leading-[0.95]">
+                    <a href="mailto:varada.aakula@gmail.com" class="inline-block group">
+                        <span class="group-hover:opacity-0 transition-opacity">LET US BUILD</span>
+                        <span class="absolute opacity-0 group-hover:opacity-100 text-stroke transition-opacity">LET US BUILD</span>
+                    </a>
+                </h2>
+
+                <div class="mt-8 flex flex-wrap items-center gap-3">
+                    <button id="copy-email" class="px-4 py-2 rounded-lg border border-white/15 bg-panel/70 text-sm font-mono hover:text-lime transition-colors">COPY EMAIL</button>
+                    <span id="copy-status" class="text-xs font-mono text-mist" aria-live="polite"></span>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 font-mono text-xs text-mist uppercase tracking-wider">
+                    <div class="flex flex-wrap gap-6">
+                        <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener" class="hover:text-signal transition-colors">GitHub</a>
+                        <a href="https://www.linkedin.com/in/varada-govind-aakula-3506712b5/" target="_blank" rel="noopener" class="hover:text-signal transition-colors">LinkedIn</a>
+                        <a href="#" class="hover:text-signal transition-colors">Resume</a>
+                    </div>
+                    <p>Copyright 2026 Varada Govind Aakula</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const finePointer = window.matchMedia('(pointer:fine)').matches;
+        const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', String(!expanded));
+                mobileMenu.classList.toggle('open');
+            });
+
+            navLinks.forEach((link) => {
+                link.addEventListener('click', () => {
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('open');
+                });
+            });
+        }
+
+        lucide.createIcons();
+
+        let lenis;
+        if (!reducedMotion) {
+            lenis = new Lenis({
+                duration: 1.1,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+                smoothTouch: false,
+                wheelMultiplier: 1.0
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+        }
+
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        if (finePointer && !reducedMotion && cursorDot && cursorOutline) {
+            const hoverTargets = document.querySelectorAll('a, button, .glass-card');
+            const spotlightCards = document.querySelectorAll('.spotlight-wrapper');
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let rafPending = false;
+
+            const applyPointerFrame = () => {
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+                cursorOutline.style.left = mouseX + 'px';
+                cursorOutline.style.top = mouseY + 'px';
+
+                spotlightCards.forEach((card) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = mouseX - rect.left;
+                    const y = mouseY - rect.top;
+                    card.style.setProperty('--mx', x + 'px');
+                    card.style.setProperty('--my', y + 'px');
+                });
+
+                rafPending = false;
+            };
+
+            window.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                if (!rafPending) {
+                    rafPending = true;
+                    requestAnimationFrame(applyPointerFrame);
+                }
+            });
+
+            hoverTargets.forEach((target) => {
+                target.addEventListener('mouseenter', () => {
+                    cursorOutline.style.width = '60px';
+                    cursorOutline.style.height = '60px';
+                    cursorOutline.style.borderColor = 'rgba(34, 211, 238, 0.6)';
+                    cursorOutline.style.backgroundColor = 'rgba(34, 211, 238, 0.12)';
+                });
+
+                target.addEventListener('mouseleave', () => {
+                    cursorOutline.style.width = '40px';
+                    cursorOutline.style.height = '40px';
+                    cursorOutline.style.borderColor = 'rgba(230, 237, 247, 0.35)';
+                    cursorOutline.style.backgroundColor = 'transparent';
+                });
+            });
+        }
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        const emptyState = document.getElementById('project-empty-state');
+
+        filterButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const selected = button.dataset.filter;
+                let visibleCount = 0;
+
+                filterButtons.forEach((btn) => btn.setAttribute('aria-pressed', 'false'));
+                button.setAttribute('aria-pressed', 'true');
+
+                projectCards.forEach((card) => {
+                    const show = selected === 'all' || card.dataset.category === selected;
+                    card.classList.toggle('hidden-card', !show);
+                    if (show) visibleCount += 1;
+                });
+
+                if (emptyState) {
+                    emptyState.classList.toggle('hidden', visibleCount > 0);
+                }
+            });
+        });
+
+        const copyEmailBtn = document.getElementById('copy-email');
+        const copyStatus = document.getElementById('copy-status');
+
+        if (copyEmailBtn && copyStatus) {
+            copyEmailBtn.addEventListener('click', async () => {
+                const email = 'varada.aakula@gmail.com';
+                try {
+                    await navigator.clipboard.writeText(email);
+                    copyStatus.textContent = 'Email copied to clipboard';
+                } catch (error) {
+                    copyStatus.textContent = 'Clipboard blocked, please copy manually: ' + email;
+                }
+
+                setTimeout(() => {
+                    copyStatus.textContent = '';
+                }, 2400);
+            });
+        }
+
+        if (!reducedMotion && window.gsap && window.ScrollTrigger) {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.timeline()
+                .to('.reveal-hero', {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.16,
+                    duration: 1.1,
+                    ease: 'power3.out'
+                });
+
+            gsap.utils.toArray('#project-grid .glass-card').forEach((card, index) => {
+                gsap.from(card, {
+                    scrollTrigger: { trigger: card, start: 'top 88%' },
+                    opacity: 0,
+                    y: 38,
+                    duration: 0.75,
+                    delay: Math.min(index * 0.06, 0.3),
+                    ease: 'power2.out'
+                });
+            });
+
+            gsap.from('.reveal-item', {
+                scrollTrigger: { trigger: '#about', start: 'top 78%' },
+                opacity: 0,
+                x: -20,
+                duration: 0.75,
+                stagger: 0.16,
+                ease: 'power2.out'
+            });
+
+            gsap.from('.skill-card', {
+                scrollTrigger: { trigger: '#skills', start: 'top 80%' },
+                opacity: 0,
+                y: 48,
+                duration: 0.8,
+                stagger: 0.12,
+                ease: 'power2.out'
+            });
+        } else {
+            document.querySelectorAll('.reveal-hero').forEach((el) => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+        }
+
+        if (finePointer && isDesktop && !reducedMotion && window.VanillaTilt) {
+            VanillaTilt.init(document.querySelectorAll('.glass-card, .skill-card'), {
+                max: 8,
+                speed: 350,
+                glare: true,
+                'max-glare': 0.08,
+                scale: 1.015,
+                gyroscope: true
+            });
+        }
+
+        function canUseWebGL() {
+            try {
+                const canvas = document.createElement('canvas');
+                return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+            } catch (error) {
+                return false;
+            }
+        }
+
+        function initThreeJS() {
+            const container = document.getElementById('three-canvas-container');
+            if (!container || reducedMotion || !isDesktop || !canUseWebGL() || !window.THREE) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
+
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            const shape = new THREE.IcosahedronGeometry(2.7, 1);
+            const material = new THREE.MeshBasicMaterial({
+                color: 0x22d3ee,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.14
+            });
+            const mesh = new THREE.Mesh(shape, material);
+            scene.add(mesh);
+
+            const ringGeometry = new THREE.TorusGeometry(3.8, 0.03, 16, 100);
+            const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xa3e635, transparent: true, opacity: 0.08 });
+            const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+            ring.rotation.x = 1.1;
+            scene.add(ring);
+
+            camera.position.z = 5;
+
+            let rafId;
+            const animate = () => {
+                rafId = requestAnimationFrame(animate);
+                mesh.rotation.x += 0.0009;
+                mesh.rotation.y += 0.0017;
+                ring.rotation.z += 0.0007;
+                renderer.render(scene, camera);
+            };
+            animate();
+
+            const onResize = () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            };
+            window.addEventListener('resize', onResize);
+
+            window.addEventListener('beforeunload', () => {
+                cancelAnimationFrame(rafId);
+                window.removeEventListener('resize', onResize);
+                renderer.dispose();
+                shape.dispose();
+                material.dispose();
+                ringGeometry.dispose();
+                ringMaterial.dispose();
+            });
+        }
+
+        initThreeJS();
+    </script>
+</body>
+</html>
