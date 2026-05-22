@@ -341,8 +341,8 @@
                                 <i data-lucide="cpu" class="w-5 h-5 text-signal"></i>
                             </div>
                             <div style="transform: translateZ(30px)">
-                                <h3 class="text-2xl md:text-3xl font-semibold mb-2">OrionRV: Thermally Aware 5-Core SoC</h3>
-                                <p class="text-sm text-mist leading-relaxed max-w-xl">Architected a 5-core heterogeneous RV32IMAC SoC with an RTL-based Thermal Management Unit (TMU), closing timing at 98 MHz on Xilinx Ultrascale+ xcu250. Designed a hardware fixed-point Kalman estimator converging in 6 cycles. Sustained 96.3% normal-execution throughput under an 85°C ceiling with an ultra-low 12,000 LUT footprint.</p>
+                                <h3 class="text-2xl md:text-3xl font-semibold mb-2">Prolepsis: ISA-Agnostic Predictive TMU</h3>
+                                <p class="text-sm text-mist leading-relaxed max-w-xl">Architected an RTL Thermal Management Unit (TMU) for a 4-core RISC-V cluster, evaluating telemetry every 4,096 cycles without new ISA instructions. Designed a Kalman predictor and policy FSM for proactive throttling and task migrations, bypassing firmware delays. Achieved 96.3% normal-speed execution under an 85°C limit (vs 68.7% baseline) using 18,015 LUTs on Xilinx UltraScale+.</p>
                             </div>
                             <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">UNDER REVIEW, VDAT 2026</p>
                         </div>
