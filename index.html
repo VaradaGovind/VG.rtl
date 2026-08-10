@@ -138,11 +138,40 @@
             transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
         }
 
+        #bg-wire {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.45;
+        }
+
+        .wire-base {
+            fill: none;
+            stroke: rgba(154, 168, 192, 0.08);
+            stroke-width: 2px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+        }
+
+        .wire-glow {
+            fill: none;
+            stroke: #22D3EE;
+            stroke-width: 3px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 6px rgba(34,211,238,0.7));
+        }
+
         @media (pointer: coarse), (prefers-reduced-motion: reduce) {
             .cursor-dot,
             .cursor-outline,
             .grid-bg,
-            .noise-overlay {
+            .noise-overlay,
+            #bg-wire {
                 display: none;
             }
         }
@@ -238,6 +267,10 @@
 
     <div class="noise-overlay"></div>
     <div class="grid-bg"></div>
+    <svg id="bg-wire" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path class="wire-base" d="M 100,-100 V 150 L 200,250 H 700 L 800,350 V 650 L 700,750 H 300 L 200,850 V 1100" vector-effect="non-scaling-stroke"></path>
+        <path class="wire-glow" d="M 100,-100 V 150 L 200,250 H 700 L 800,350 V 650 L 700,750 H 300 L 200,850 V 1100" vector-effect="non-scaling-stroke"></path>
+    </svg>
     <div class="cursor-dot hidden md:block" aria-hidden="true"></div>
     <div class="cursor-outline hidden md:block" aria-hidden="true"></div>
 
@@ -831,6 +864,24 @@
                 stagger: 0.12,
                 ease: 'power2.out'
             });
+
+            const wireGlow = document.querySelector('.wire-glow');
+            if (wireGlow) {
+                const length = wireGlow.getTotalLength();
+                wireGlow.style.strokeDasharray = length;
+                wireGlow.style.strokeDashoffset = length;
+
+                gsap.to(wireGlow, {
+                    strokeDashoffset: 0,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: document.body,
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: 0.5
+                    }
+                });
+            }
         } else {
             document.querySelectorAll('.reveal-hero').forEach((el) => {
                 el.style.opacity = '1';
