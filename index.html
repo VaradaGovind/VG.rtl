@@ -29,12 +29,12 @@
                     },
                     colors: {
                         ink: '#000000',
-                        panel: 'rgba(255, 255, 255, 0.03)',
-                        panelSoft: 'rgba(255, 255, 255, 0.05)',
-                        mist: '#A1A1AA',
-                        signal: '#E2E8F0',
+                        panel: 'rgba(255, 255, 255, 0.05)',
+                        panelSoft: 'rgba(255, 255, 255, 0.08)',
+                        mist: '#D4D4D8',
+                        signal: '#FFFFFF',
                         lime: '#FFFFFF',
-                        ember: '#A1A1AA'
+                        ember: '#F4F4F5'
                     },
                     boxShadow: {
                         neon: '0 0 0 1px rgba(255,255,255,0.15), 0 12px 38px rgba(255,255,255,0.12)'
@@ -165,18 +165,19 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             transform-style: preserve-3d;
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
         }
 
         .glass-card:hover,
         .glass-card:focus-within {
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 14px 46px rgba(0, 0, 0, 0.55);
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 14px 46px rgba(0, 0, 0, 0.8);
         }
 
         .spotlight-wrapper {
@@ -232,7 +233,7 @@
         }
 
         .text-stroke {
-            -webkit-text-stroke: 1px #E2E8F0;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.7);
             color: transparent;
         }
 
@@ -310,7 +311,7 @@
     <div class="cursor-dot hidden md:block" aria-hidden="true"></div>
     <div class="cursor-outline hidden md:block" aria-hidden="true"></div>
 
-    <header class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 bg-ink/35 backdrop-blur-md border-b border-white/5">
+    <header class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 bg-black/60 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
             <a href="#" class="font-mono text-lg font-bold tracking-tight hover:text-signal transition-colors">VG.rtl</a>
 
@@ -355,7 +356,7 @@
                     <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">🏆 VDAT 2026 • Accepted Paper</span>
                 </div>
 
-                <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6 reveal-hero opacity-0 translate-y-6 bg-gradient-to-b from-white to-mist/60 text-transparent bg-clip-text">
+                <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6 reveal-hero opacity-0 translate-y-6 bg-gradient-to-b from-white to-white/60 text-transparent bg-clip-text">
                     DIGITAL LOGIC,<br>
                     REAL SILICON.
                 </h1>
@@ -543,7 +544,7 @@
 
                 <div class="relative border-l border-white/10 ml-2 md:ml-0 space-y-14">
                     <article class="reveal-item relative pl-8 md:pl-20">
-                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-signal bg-ink shadow-neon"></div>
+                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-signal bg-white shadow-neon"></div>
                         <p class="font-mono text-xs text-mist mb-2">JAN 2026 - JUL 2026</p>
                         <h3 class="text-xl md:text-2xl font-semibold">Research Intern</h3>
                         <p class="text-signal font-mono text-sm mt-1">Indian Institute of Information Technology, Allahabad</p>
