@@ -1,1208 +1,661 @@
 
 <!DOCTYPE html>
-
 <html lang="en" class="antialiased">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Varada Govind Aakula | RTL and VLSI Portfolio</title>
-
 <meta name="description" content="Portfolio of Varada Govind Aakula, Electronics Engineer focused on RTL design, RISC-V architecture, CMOS VLSI, and edge-compatible hardware accelerators.">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
 <script src="https://cdn.tailwindcss.com"></script>
-
 <script src="https://unpkg.com/lucide@latest"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-
 <script>
-
 tailwind.config = {
-
 theme: {
-
 extend: {
-
 fontFamily: {
-
 sans: ['Sora', 'sans-serif'],
-
 display: ['Space Grotesk', 'sans-serif'],
-
 mono: ['JetBrains Mono', 'monospace']
-
 },
-
 colors: {
-
 bg: '#0A0A0A',
-
 surface: '#121212',
-
 surfaceHover: '#1A1A1A',
-
 border: '#262626',
-
 textMain: '#EDEDED',
-
 textMuted: '#A1A1AA',
-
 accent: '#F3F4F6'
-
 }
-
 }
-
 }
-
 };
-
 </script>
-
 <style>
-
 :root {
-
 --dot-size: 1px;
-
 --dot-space: 24px;
-
 }
-
 html.lenis { height: auto; }
-
 body {
-
 background-color: #0A0A0A;
-
 color: #EDEDED;
-
 overflow-x: hidden;
-
 background-image: radial-gradient(#262626 var(--dot-size), transparent var(--dot-size));
-
 background-size: var(--dot-space) var(--dot-space);
-
 background-position: center;
-
 background-attachment: fixed;
-
 }
-
 .skip-link {
-
 position: absolute;
-
 left: 1rem;
-
 top: -200px;
-
 z-index: 10000;
-
 padding: 0.7rem 1rem;
-
 background: #F3F4F6;
-
 color: #0A0A0A;
-
 font-weight: 600;
-
 border-radius: 0.5rem;
-
 transition: top 0.2s ease;
-
 }
-
 .skip-link:focus { top: 1rem; }
-
 .minimal-card {
-
 background: #121212;
-
 border: 1px solid #262626;
-
 transition: all 0.3s ease;
-
 border-radius: 1.5rem;
-
-}
-
-.minimal-card:hover {
-
-border-color: #404040;
-
-background: #1A1A1A;
-
-transform: translateY(-2px);
-
-}
-
-.metric-badge {
-
-border: 1px solid #262626;
-
-background: #121212;
-
-border-radius: 0.75rem;
-
-}
-
-.section-anchor {
-
-scroll-margin-top: 5.5rem;
-
-}
-
-.filter-btn[aria-pressed="true"] {
-
-border-color: #EDEDED;
-
-color: #0A0A0A;
-
-background: #EDEDED;
-
-}
-
-a:focus-visible,
-
-button:focus-visible {
-
-outline: 2px solid #EDEDED;
-
-outline-offset: 2px;
-
-}
-
-.mobile-menu {
-
-max-height: 0;
-
+position: relative;
 overflow: hidden;
-
+}
+.minimal-card::before {
+content: '';
+position: absolute;
+inset: 0;
+z-index: 1;
+pointer-events: none;
+opacity: 0;
+transition: opacity 0.3s ease;
+background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.04), transparent 40%);
+}
+.minimal-card:hover::before,
+.minimal-card:focus-within::before {
+opacity: 1;
+}
+.minimal-card:hover {
+border-color: #404040;
+transform: translateY(-3px);
+box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.cursor-dot {
+width: 6px;
+height: 6px;
+background: #EDEDED;
+border-radius: 999px;
+position: fixed;
+z-index: 9999;
+pointer-events: none;
+mix-blend-mode: difference;
+transform: translate(-50%, -50%);
+transition: opacity 0.2s;
+opacity: 0;
+}
+body:hover .cursor-dot {
+opacity: 1;
+}
+@media (pointer: coarse) {
+.cursor-dot { display: none !important; }
+}
+.metric-badge {
+border: 1px solid #262626;
+background: #121212;
+border-radius: 0.75rem;
+}
+.section-anchor {
+scroll-margin-top: 5.5rem;
+}
+.filter-btn[aria-pressed="true"] {
+border-color: #EDEDED;
+color: #0A0A0A;
+background: #EDEDED;
+}
+a:focus-visible,
+button:focus-visible {
+outline: 2px solid #EDEDED;
+outline-offset: 2px;
+}
+.mobile-menu {
+max-height: 0;
+overflow: hidden;
 transition: max-height 0.3s ease;
-
 }
-
 .mobile-menu.open {
-
 max-height: 260px;
-
 }
-
 .text-stroke {
-
 -webkit-text-stroke: 1px #EDEDED;
-
 color: transparent;
-
 }
-
 .hidden-card {
-
 display: none;
-
 }
-
 @media (prefers-reduced-motion: reduce) {
-
 * {
-
 animation-duration: 0.01ms !important;
-
 animation-iteration-count: 1 !important;
-
 transition-duration: 0.01ms !important;
-
 scroll-behavior: auto !important;
-
 }
-
 }
-
 }
-
 </style>
-
 </head>
-
 <body class="selection:bg-accent selection:text-bg">
-
 <a href="#main-content" class="skip-link">Skip to main content</a>
-
+<div class="cursor-dot hidden md:block" aria-hidden="true"></div>
 <header class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 bg-bg/80 backdrop-blur-md border-b border-border">
-
 <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-
 <a href="#" class="font-mono text-lg font-bold tracking-tight hover:text-accent transition-colors">VG.rtl</a>
-
 <button id="mobile-menu-toggle" class="md:hidden inline-flex items-center justify-center border border-border rounded-lg px-3 py-2 text-sm" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
-
 <i data-lucide="menu" class="w-4 h-4"></i>
-
 </button>
-
 <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-textMuted" aria-label="Primary">
-
 <a href="#work" class="hover:text-accent transition-colors nav-link">[ WORK ]</a>
-
 <a href="#about" class="hover:text-accent transition-colors nav-link">[ ABOUT ]</a>
-
 <a href="#publications" class="hover:text-accent transition-colors nav-link">[ PUBLICATIONS ]</a>
-
 <a href="#skills" class="hover:text-accent transition-colors nav-link">[ ARSENAL ]</a>
-
 <a href="#contact" class="hover:text-accent transition-colors nav-link">[ CONTACT ]</a>
-
 </nav>
-
 <div class="hidden md:flex items-center gap-3">
-
 <div class="flex items-center gap-2 border border-border rounded-full px-3 py-1 bg-surface text-[10px] font-mono">
-
 <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-
 <span class="tracking-widest text-textMuted">OPEN_TO_WORK</span>
-
 </div>
-
 </div>
-
 </div>
-
 <nav id="mobile-menu" class="mobile-menu md:hidden mt-4 border border-border rounded-2xl bg-bg" aria-label="Mobile">
-
 <div class="p-4 space-y-3 font-mono text-xs">
-
 <a href="#work" class="block nav-link">[ WORK ]</a>
-
 <a href="#about" class="block nav-link">[ ABOUT ]</a>
-
 <a href="#publications" class="block nav-link">[ PUBLICATIONS ]</a>
-
 <a href="#skills" class="block nav-link">[ ARSENAL ]</a>
-
 <a href="#contact" class="block nav-link">[ CONTACT ]</a>
-
 </div>
-
 </nav>
-
 </header>
-
 <main id="main-content" class="relative pt-20 md:pt-24">
-
 <section class="min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden section-anchor">
-
 <div class="max-w-6xl w-full relative z-10">
-
 <div class="flex flex-wrap items-center gap-4 mb-4 reveal-hero opacity-0">
-
 <p class="font-mono text-accent text-xs tracking-[0.2em]">SYSTEM READY // VARADA GOVIND AAKULA</p>
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted">ðŸ† VDAT 2026 â€¢ Accepted Paper</span>
-
 </div>
-
 <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6 reveal-hero opacity-0 translate-y-6 text-textMain ">
-
 DIGITAL LOGIC,<br>
-
 REAL SILICON.
-
 </h1>
-
 <p class="max-w-2xl text-base md:text-lg text-textMuted leading-relaxed reveal-hero opacity-0 translate-y-6">
-
 Hardware Researcher at IIIT Allahabad specializing in RTL Design, SystemVerilog, RISC-V Microarchitecture, Hardware Verification, FPGA Acceleration, and CMOS VLSI. Passionate about building high-performance digital systems from architecture to silicon.
-
 </p>
-
 <div class="mt-8 flex flex-wrap items-center gap-3 reveal-hero opacity-0 translate-y-6">
-
 <a href="#work" class="px-5 py-3 rounded-xl bg-signal/15 border border-signal/40 text-accent font-mono text-xs tracking-wider hover:bg-signal/25 transition-colors">VIEW PROJECTS</a>
-
 <a href="#contact" class="px-5 py-3 rounded-xl bg-surface border border-border text-textMuted font-mono text-xs tracking-wider hover:text-white transition-colors">CONTACT</a>
-
 <a href="#publications" class="px-5 py-3 rounded-xl bg-surface border border-border text-textMuted font-mono text-xs tracking-wider hover:text-white transition-colors">VIEW PUBLICATIONS</a>
-
 </div>
-
 <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 reveal-hero opacity-0 translate-y-6" aria-label="Highlights">
-
 <div class="metric-badge rounded-xl p-3">
-
 <p class="font-mono text-[10px] text-textMuted">PROJECTS</p>
-
 <p class="text-lg font-semibold">10+</p>
-
 </div>
-
 <div class="metric-badge rounded-xl p-3">
-
 <p class="font-mono text-[10px] text-textMuted">PUBLICATION</p>
-
 <p class="text-lg font-semibold">VDAT 2026</p>
-
 </div>
-
 <div class="metric-badge rounded-xl p-3">
-
 <p class="font-mono text-[10px] text-textMuted">OPEN SOURCE</p>
-
 <p class="text-lg font-semibold">GitHub</p>
-
 </div>
-
 <div class="metric-badge rounded-xl p-3">
-
 <p class="font-mono text-[10px] text-textMuted">FOCUS</p>
-
 <p class="text-lg font-semibold">PPA-aware</p>
-
 </div>
-
 </div>
-
 </div>
-
 </section>
-
 <section id="work" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
-
 <div class="max-w-7xl mx-auto">
-
 <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 border-b border-border pb-6">
-
 <div>
-
 <span class="font-mono text-accent text-xs">01 // PROJECTS</span>
-
 <h2 class="mt-2 text-3xl md:text-4xl font-display font-semibold">Selected Work</h2>
-
 </div>
-
 <div class="flex flex-wrap gap-2" role="toolbar" aria-label="Project filters">
-
 <button class="filter-btn px-3 py-2 rounded-lg border border-border bg-surface text-xs font-mono" data-filter="all" aria-pressed="true">ALL</button>
-
 <button class="filter-btn px-3 py-2 rounded-lg border border-border bg-surface text-xs font-mono" data-filter="rtl">RTL</button>
-
 <button class="filter-btn px-3 py-2 rounded-lg border border-border bg-surface text-xs font-mono" data-filter="vlsi">VLSI</button>
-
 <button class="filter-btn px-3 py-2 rounded-lg border border-border bg-surface text-xs font-mono" data-filter="proto">PROTOCOL</button>
-
 </div>
-
 </div>
-
 <div id="project-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[330px] md:auto-rows-[360px]">
-
 <article class="project-card minimal-card rounded-3xl p-8 md:col-span-2" data-category="rtl">
-
 <div class="relative z-10 h-full flex flex-col justify-between">
-
 <div class="flex items-center justify-between" >
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted">PYTHON / MULTI-AGENT AI / EDA</span>
-
 <i data-lucide="bug" class="w-5 h-5 text-accent"></i>
-
 </div>
-
 <div >
-
 <h3 class="text-2xl md:text-3xl font-semibold mb-2 flex items-center gap-3">
-
 Argus: AI Hardware Debugger
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover text-textMain rounded-full px-2 py-0.5">WIP</span>
-
 </h3>
-
 <p class="text-sm text-textMuted leading-relaxed max-w-xl">A multi-agent AI framework for hardware debugging that combines deterministic RTL analysis, simulation-log parsing, waveform intelligence, and protocol checking with LLM-based reasoning. Decomposes debugging into specialized AI agents while an orchestration layer coordinates evidence collection to generate explainable root-cause reports and recommend potential RTL fixes.</p>
-
 </div>
-
 <p class="font-mono text-xs text-accent mt-4" >RESEARCH FRAMEWORK</p>
-
 </div>
-
 </article>
-
 <a href="https://github.com/VaradaGovind/MobileNet-Accelerator-RTL" target="_blank" rel="noopener" class="project-card minimal-card rounded-3xl p-8 flex flex-col" data-category="rtl">
-
 <div class="relative z-10 h-full flex flex-col justify-between">
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted w-fit" >VERILOG / EDGE AI</span>
-
 <i data-lucide="brain-circuit" class="w-12 h-12 text-slate-500 mt-4" ></i>
-
 <div class="mt-auto" >
-
 <h3 class="text-2xl font-semibold mb-2">Task-Aware Object Detection</h3>
-
 <p class="text-sm text-textMuted leading-relaxed">Built a heterogeneous inference pipeline. Engineered a 16x16 INT8 systolic array delivering 51.2 GOPS at 200 MHz. Reduced memory bandwidth 256x via sparse BRAM addressing and hid latency via Ping-Pong AXI4 SG-DMA.</p>
-
 </div>
-
 <div class="flex items-center justify-between mt-4" >
-
 <p class="font-mono text-xs text-accent">DVCON 2026 CONTEST</p>
-
 <p class="font-mono text-xs text-accent flex items-center gap-1">OPEN REPOSITORY <i data-lucide="external-link" class="w-3 h-3"></i></p>
-
 </div>
-
 </div>
-
 </a>
-
 <a href="https://github.com/VaradaGovind/Prolepsis-soc" target="_blank" rel="noopener" class="project-card minimal-card rounded-3xl p-8 md:col-span-2" data-category="rtl">
-
 <div class="relative z-10 h-full flex flex-col justify-between">
-
 <div class="flex items-center justify-between" >
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted">SYSVERILOG / RISC-V / RTL</span>
-
 <i data-lucide="cpu" class="w-5 h-5 text-accent"></i>
-
 </div>
-
 <div >
-
 <h3 class="text-2xl md:text-3xl font-semibold mb-2">Prolepsis: ISA-Agnostic Predictive TMU</h3>
-
 <p class="text-sm text-textMuted leading-relaxed max-w-xl">Architected an ISA-agnostic RTL Thermal Management Unit (TMU) for multicore RISC-V processors. Designed a Kalman predictor and policy FSM for proactive thermal management without ISA modifications. Achieved 96.3% execution under an 85Â°C thermal limit (vs 68.7% baseline) using 18,015 LUTs on Xilinx UltraScale+.</p>
-
 </div>
-
 <div class="flex items-center justify-between mt-4" >
-
 <p class="font-mono text-xs text-accent">ACCEPTED FOR PRESENTATION â€¢ VDAT 2026</p>
-
 <p class="font-mono text-xs text-accent flex items-center gap-1">OPEN REPOSITORY <i data-lucide="external-link" class="w-3 h-3"></i></p>
-
 </div>
-
 </div>
-
 </a>
-
 <a href="https://github.com/VaradaGovind/GridLock-AES" target="_blank" rel="noopener" class="project-card minimal-card rounded-3xl p-8 flex flex-col" data-category="rtl">
-
 <div class="relative z-10 h-full flex flex-col justify-between">
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted w-fit" >CRYPTO / AXI4</span>
-
 <i data-lucide="shield-check" class="w-12 h-12 text-slate-500 mt-4" ></i>
-
 <div class="mt-auto" >
-
 <h3 class="text-2xl font-semibold mb-2">GridLock AES: 1.6 Gbps</h3>
-
 <p class="text-sm text-textMuted leading-relaxed">SystemVerilog hardware accelerator achieving 1.66 Gbps and 150 MHz timing closure (WNS: +1.049 ns). Reduced logic area by 40% via Composite Field Arithmetic for a BRAM-less S-Box (2,581 LUTs, 539 Registers).</p>
-
 </div>
-
 <p class="font-mono text-xs text-accent mt-4" >OPEN REPOSITORY</p>
-
 </div>
-
 </a>
-
 <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" rel="noopener" class="project-card minimal-card rounded-3xl p-8" data-category="rtl">
-
 <div class="relative z-10 h-full flex flex-col justify-between">
-
 <div class="flex items-center justify-between" >
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted">VERILOG / RISC-V</span>
-
 <i data-lucide="cpu" class="w-5 h-5 text-accent"></i>
-
 </div>
-
 <div >
-
 <h3 class="text-2xl font-semibold mb-2">RV32I Soft-Core</h3>
-
 <p class="text-sm text-textMuted leading-relaxed">Single-cycle RISC-V core meeting 100 MHz timing on Nexys 4 DDR. Achieved ultra-low footprint (300 LUTs) and minimized on-chip power to 1.89 W. Includes custom MMIO.</p>
-
 </div>
-
 <p class="font-mono text-xs text-accent mt-4" >OPEN REPOSITORY</p>
-
 </div>
-
 </a>
-
 <a href="https://github.com/VaradaGovind/CMOS-Standard-Cell-Library" target="_blank" rel="noopener" class="project-card minimal-card rounded-3xl p-8" data-category="vlsi">
-
 <div class="relative z-10 h-full flex flex-col justify-between">
-
 <div class="flex items-center justify-between" >
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted">VLSI / SPICE</span>
-
 <i data-lucide="zap" class="w-5 h-5 text-accent"></i>
-
 </div>
-
 <div >
-
 <h3 class="text-2xl font-semibold mb-2">CMOS Cell Library</h3>
-
 <p class="text-sm text-textMuted leading-relaxed">Standard cell library (Inverter, NAND, FF) and hierarchical 1-Bit Adder designed using NMOS/PMOS models. Validated via rigorous transient and DC sweep analysis.</p>
-
 </div>
-
 <p class="font-mono text-xs text-accent mt-4" >OPEN REPOSITORY</p>
-
 </div>
-
 </a>
-
 <div class="project-card minimal-card rounded-3xl p-8 md:col-span-3" data-category="proto">
-
 <div class="relative z-10 h-full flex flex-col justify-center">
-
 <div class="flex items-center gap-4 mb-6" >
-
 <i data-lucide="arrow-right-left" class="w-6 h-6 text-accent"></i>
-
 <h3 class="text-2xl md:text-3xl font-semibold">Hardware Protocol Stack</h3>
-
 </div>
-
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6" >
-
 <a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" rel="noopener" class="minimal-card rounded-xl p-5 hover:border-signal/50 transition-colors group">
-
 <div class="flex justify-between items-center mb-2">
-
 <span class="font-semibold text-lg group-hover:text-accent transition-colors">UART Controller</span>
-
 <i data-lucide="external-link" class="w-4 h-4 text-textMuted group-hover:text-accent transition-colors"></i>
-
 </div>
-
 <p class="text-xs text-textMuted">Configurable baud-rate 16-bit transceiver.</p>
-
 </a>
-
 <a href="https://github.com/VaradaGovind/spi-core" target="_blank" rel="noopener" class="minimal-card rounded-xl p-5 hover:border-signal/50 transition-colors group">
-
 <div class="flex justify-between items-center mb-2">
-
 <span class="font-semibold text-lg group-hover:text-accent transition-colors">SPI Core</span>
-
 <i data-lucide="external-link" class="w-4 h-4 text-textMuted group-hover:text-accent transition-colors"></i>
-
 </div>
-
 <p class="text-xs text-textMuted">Master/Slave architecture for high-speed sync.</p>
-
 </a>
-
 <a href="https://github.com/VaradaGovind/i2c-core" target="_blank" rel="noopener" class="minimal-card rounded-xl p-5 hover:border-signal/50 transition-colors group">
-
 <div class="flex justify-between items-center mb-2">
-
 <span class="font-semibold text-lg group-hover:text-accent transition-colors">I2C Controller</span>
-
 <i data-lucide="external-link" class="w-4 h-4 text-textMuted group-hover:text-accent transition-colors"></i>
-
 </div>
-
 <p class="text-xs text-textMuted">Multi-master capable with robust CDC handling.</p>
-
 </a>
-
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 <p id="project-empty-state" class="hidden mt-6 text-textMuted font-mono text-xs">No projects in this category yet.</p>
-
 </div>
-
 </section>
-
 <section id="about" class="py-20 md:py-28 px-4 md:px-6 bg-bg section-anchor">
-
 <div class="max-w-4xl mx-auto">
-
 <span class="font-mono text-accent text-xs">02 // TIMELINE</span>
-
 <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2 mb-12">Career & Education</h2>
-
 <div class="relative border-l border-border ml-2 md:ml-0 space-y-14">
-
 <article class="reveal-item relative pl-8 md:pl-20">
-
 <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-signal bg-bg "></div>
-
 <p class="font-mono text-xs text-textMuted mb-2">JAN 2026 - JUL 2026</p>
-
 <h3 class="text-xl md:text-2xl font-semibold">Research Intern</h3>
-
 <p class="text-accent font-mono text-sm mt-1">Indian Institute of Information Technology, Allahabad</p>
-
 <p class="text-textMuted leading-relaxed mt-3">Architecting Prolepsis (an RTL Thermal Management Unit) for a 4-core RISC-V cluster. Designed a Kalman predictor and policy FSM for proactive throttling and task migrations to bypass firmware delays.</p>
-
 </article>
-
 <article class="reveal-item relative pl-8 md:pl-20">
-
 <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-mist bg-bg"></div>
-
 <p class="font-mono text-xs text-textMuted mb-2">AUG 2024 - PRESENT</p>
-
 <h3 class="text-xl md:text-2xl font-semibold">IoT Wing Coordinator</h3>
-
 <p class="text-accent font-mono text-sm mt-1">Tesla Electronics Society, IIIT Allahabad</p>
-
 <p class="text-textMuted leading-relaxed mt-3">Leading practical hardware initiatives, lab planning, and mentoring 20+ members on digital design fundamentals and Verilog coding standards.</p>
-
 </article>
-
 <article class="reveal-item relative pl-8 md:pl-20">
-
 <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-mist bg-bg"></div>
-
 <p class="font-mono text-xs text-textMuted mb-2">2023 - 2027 (EXPECTED)</p>
-
 <h3 class="text-xl md:text-2xl font-semibold">B.Tech Electronics & Communication</h3>
-
 <p class="text-accent font-mono text-sm mt-1">Indian Institute of Information Technology, Allahabad</p>
-
 <p class="text-textMuted leading-relaxed mt-3">Core coursework focusing on Digital Logic Design, CMOS VLSI Design, Low Power Design, Computer Architecture, Signals & Systems, and Computer Networks.</p>
-
 </article>
-
 </div>
-
 </div>
-
 </section>
-
 <section id="publications" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
-
 <div class="max-w-7xl mx-auto">
-
 <div class="mb-10 border-b border-border pb-6">
-
 <span class="font-mono text-accent text-xs">03 // PUBLICATIONS</span>
-
 <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2">Research Publications</h2>
-
 </div>
-
 <div class="relative">
-
 <article class="minimal-card p-8 relative overflow-hidden">
-
 <div class="absolute top-0 right-0 overflow-hidden w-32 h-32 z-20 pointer-events-none rounded-tr-3xl">
-
 <div class="absolute top-6 -right-8 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 text-ink font-bold text-[10px] py-1.5 px-10 transform rotate-45 shadow-lg w-[160px] text-center tracking-wider">
-
 ðŸ† ACCEPTED @ VDAT 2026
-
 </div>
-
 </div>
-
 <div class="relative z-10 h-full flex flex-col">
-
 <div class="flex flex-wrap items-center gap-2 mb-6" >
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted">Accepted</span>
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted">Conference Paper</span>
-
 <span class="text-[10px] font-mono border border-border bg-surfaceHover rounded-full px-3 py-1 text-textMuted">RTL Research</span>
-
 </div>
-
 <div >
-
 <h3 class="text-2xl md:text-3xl font-semibold mb-4 leading-snug">Prolepsis:<br>ISA-Agnostic RTL Predictive Thermal<br>Management for Multicore Processors</h3>
-
 <p class="text-sm md:text-base text-textMuted leading-relaxed max-w-3xl mb-8">Designed an ISA-agnostic RTL Thermal Management Unit (TMU) that proactively predicts thermal hotspots using a Kalman predictor and policy FSM, enabling runtime thermal management without ISA modifications while maintaining 96.3% execution under an 85Â°C thermal limit.</p>
-
 </div>
-
 <div class="flex flex-wrap gap-2 mb-8" >
-
 <div class="metric-badge rounded-lg px-3 py-1.5">
-
 <p class="font-mono text-[10px] text-textMuted font-semibold">SystemVerilog</p>
-
 </div>
-
 <div class="metric-badge rounded-lg px-3 py-1.5">
-
 <p class="font-mono text-[10px] text-textMuted font-semibold">RTL</p>
-
 </div>
-
 <div class="metric-badge rounded-lg px-3 py-1.5">
-
 <p class="font-mono text-[10px] text-textMuted font-semibold">RISC-V</p>
-
 </div>
-
 <div class="metric-badge rounded-lg px-3 py-1.5">
-
 <p class="font-mono text-[10px] text-textMuted font-semibold">FPGA</p>
-
 </div>
-
 <div class="metric-badge rounded-lg px-3 py-1.5">
-
 <p class="font-mono text-[10px] text-textMuted font-semibold">Kalman Filter</p>
-
 </div>
-
 <div class="metric-badge rounded-lg px-3 py-1.5">
-
 <p class="font-mono text-[10px] text-textMuted font-semibold">Thermal Management</p>
-
 </div>
-
 </div>
-
 <div class="flex flex-wrap gap-4 mt-auto pt-4 border-t border-border" >
-
 <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface border border-border text-textMuted/50 font-mono text-xs cursor-not-allowed">
-
 <span>ðŸ“„ Paper</span>
-
 <span class="text-[9px] bg-bg px-1.5 py-0.5 rounded">Coming Soon</span>
-
 </button>
-
 <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface border border-border text-textMuted/50 font-mono text-xs cursor-not-allowed">
-
 <span>ðŸ“š BibTeX</span>
-
 <span class="text-[9px] bg-bg px-1.5 py-0.5 rounded">Coming Soon</span>
-
 </button>
-
 <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface border border-border text-textMuted/50 font-mono text-xs cursor-not-allowed">
-
 <span>ðŸŽ¤ Presentation Slides</span>
-
 <span class="text-[9px] bg-bg px-1.5 py-0.5 rounded">Coming Soon</span>
-
 </button>
-
 </div>
-
 </div>
-
 </article>
-
 </div>
-
 </div>
-
 </section>
-
 <section id="skills" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
-
 <div class="max-w-7xl mx-auto">
-
 <div class="mb-10 border-b border-border pb-6">
-
 <span class="font-mono text-accent text-xs">04 // ARSENAL</span>
-
 <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2">Technical Proficiency</h2>
-
 </div>
-
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
 <article class="minimal-card skill-card rounded-2xl p-6">
-
 <i data-lucide="cpu" class="w-7 h-7 text-accent mb-5"></i>
-
 <h4 class="font-semibold text-lg mb-4">RTL Design</h4>
-
 <ul class="space-y-2 text-sm text-textMuted">
-
 <li>SystemVerilog & UVM</li>
-
 <li>Verilog & VHDL</li>
-
 <li>RISC-V microarchitecture</li>
-
 <li>AXI4 Integration</li>
-
 <li>CDC & Data Synchronization</li>
-
 </ul>
-
 </article>
-
 <article class="minimal-card skill-card rounded-2xl p-6">
-
 <i data-lucide="terminal" class="w-7 h-7 text-accent mb-5"></i>
-
 <h4 class="font-semibold text-lg mb-4">Firmware & Software</h4>
-
 <ul class="space-y-2 text-sm text-textMuted">
-
 <li>C and C++</li>
-
 <li>Python scripting</li>
-
 <li>Assembly-level Programming</li>
-
 <li>Linux Environments</li>
-
 </ul>
-
 </article>
-
 <article class="minimal-card skill-card rounded-2xl p-6">
-
 <i data-lucide="wrench" class="w-7 h-7 text-accent mb-5"></i>
-
 <h4 class="font-semibold text-lg mb-4">Tools</h4>
-
 <ul class="space-y-2 text-sm text-textMuted">
-
 <li>Xilinx Vivado</li>
-
 <li>LTspice</li>
-
 <li>GTKWave</li>
-
 <li>ModelSim</li>
-
 <li>MATLAB & Git/GitHub</li>
-
 </ul>
-
 </article>
-
 <article class="minimal-card skill-card rounded-2xl p-6">
-
 <i data-lucide="layers" class="w-7 h-7 text-accent mb-5"></i>
-
 <h4 class="font-semibold text-lg mb-4">Concepts</h4>
-
 <ul class="space-y-2 text-sm text-textMuted">
-
 <li>Digital Logic & FSM Design</li>
-
 <li>Static Timing Analysis (STA)</li>
-
 <li>CMOS VLSI</li>
-
 <li>FPGA Implementation Flow</li>
-
 </ul>
-
 </article>
-
 </div>
-
 </div>
-
 </section>
-
 <section id="contact" class="py-16 md:py-24 px-4 md:px-6 border-t border-border bg-bg section-anchor">
-
 <div class="max-w-7xl mx-auto">
-
 <p class="font-mono text-accent text-xs">05 // CONTACT</p>
-
 <h2 class="mt-3 text-4xl md:text-7xl font-display font-bold leading-[0.95]">
-
 <a href="mailto:varada.aakula@gmail.com" class="inline-block group">
-
 <span class="group-hover:opacity-0 transition-opacity">Let's Build Hardware That Matters</span>
-
 <span class="absolute opacity-0 group-hover:opacity-100 text-stroke transition-opacity">Let's Build Hardware That Matters</span>
-
 </a>
-
 </h2>
-
 <div class="mt-8 flex flex-wrap items-center gap-3">
-
 <button id="copy-email" class="px-4 py-2 rounded-lg border border-border bg-surface text-sm font-mono hover:text-accent transition-colors">COPY EMAIL</button>
-
 <span id="copy-status" class="text-xs font-mono text-textMuted" aria-live="polite"></span>
-
 </div>
-
 <div class="mt-12 pt-8 border-t border-border flex flex-col md:flex-row md:items-center md:justify-between gap-4 font-mono text-xs text-textMuted uppercase tracking-wider">
-
 <div class="flex flex-wrap gap-6">
-
 <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener" class="hover:text-accent transition-colors">GitHub</a>
-
 <a href="https://www.linkedin.com/in/varada-govind-aakula-3506712b5/" target="_blank" rel="noopener" class="hover:text-accent transition-colors">LinkedIn</a>
-
 </div>
-
 <p>Copyright 2026 Varada Govind Aakula</p>
-
 </div>
-
 </div>
-
 </section>
-
 </main>
-
 <script>
-
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 const menuToggle = document.getElementById('mobile-menu-toggle');
-
 const mobileMenu = document.getElementById('mobile-menu');
-
 const navLinks = document.querySelectorAll('.nav-link');
-
 if (menuToggle && mobileMenu) {
-
 menuToggle.addEventListener('click', () => {
-
 const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-
 menuToggle.setAttribute('aria-expanded', String(!expanded));
-
 mobileMenu.classList.toggle('open');
-
 });
-
 navLinks.forEach((link) => {
-
 link.addEventListener('click', () => {
-
 menuToggle.setAttribute('aria-expanded', 'false');
-
 mobileMenu.classList.remove('open');
-
 });
-
 });
-
 }
-
 lucide.createIcons();
-
 let lenis;
-
 if (!reducedMotion) {
-
 lenis = new Lenis({
-
 duration: 1.1,
-
 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-
 smoothWheel: true,
-
 smoothTouch: false,
-
 wheelMultiplier: 1.0
-
 });
-
 function raf(time) {
-
 lenis.raf(time);
-
 requestAnimationFrame(raf);
-
 }
-
 requestAnimationFrame(raf);
-
 }
-
+const cursorDot = document.querySelector('.cursor-dot');
+const finePointer = window.matchMedia('(pointer:fine)').matches;
+if (finePointer && !reducedMotion && cursorDot) {
+const spotlightCards = document.querySelectorAll('.minimal-card');
+let mouseX = 0, mouseY = 0, rafPending = false;
+const applyPointerFrame = () => {
+cursorDot.style.left = mouseX + 'px';
+cursorDot.style.top = mouseY + 'px';
+spotlightCards.forEach((card) => {
+const rect = card.getBoundingClientRect();
+card.style.setProperty('--mx', (mouseX - rect.left) + 'px');
+card.style.setProperty('--my', (mouseY - rect.top) + 'px');
+});
+rafPending = false;
+};
+window.addEventListener('mousemove', (event) => {
+mouseX = event.clientX; mouseY = event.clientY;
+if (!rafPending) { rafPending = true; requestAnimationFrame(applyPointerFrame); }
+});
+}
 const filterButtons = document.querySelectorAll('.filter-btn');
-
 const projectCards = document.querySelectorAll('.project-card');
-
 const emptyState = document.getElementById('project-empty-state');
-
 filterButtons.forEach((button) => {
-
 button.addEventListener('click', () => {
-
 const selected = button.dataset.filter;
-
 let visibleCount = 0;
-
 filterButtons.forEach((btn) => btn.setAttribute('aria-pressed', 'false'));
-
 button.setAttribute('aria-pressed', 'true');
-
 projectCards.forEach((card) => {
-
 const show = selected === 'all' || card.dataset.category === selected;
-
 card.classList.toggle('hidden-card', !show);
-
 if (show) visibleCount += 1;
-
 });
-
 if (emptyState) {
-
 emptyState.classList.toggle('hidden', visibleCount > 0);
-
 }
-
 });
-
 });
-
 const copyEmailBtn = document.getElementById('copy-email');
-
 const copyStatus = document.getElementById('copy-status');
-
 if (copyEmailBtn && copyStatus) {
-
 copyEmailBtn.addEventListener('click', async () => {
-
 const email = 'varada.aakula@gmail.com';
-
 try {
-
 await navigator.clipboard.writeText(email);
-
 copyStatus.textContent = 'Email copied to clipboard';
-
 } catch (error) {
-
 copyStatus.textContent = 'Clipboard blocked, please copy manually: ' + email;
-
 }
-
 setTimeout(() => {
-
 copyStatus.textContent = '';
-
 }, 2400);
-
 });
-
 }
-
 if (!reducedMotion && window.gsap && window.ScrollTrigger) {
-
 gsap.registerPlugin(ScrollTrigger);
-
 gsap.timeline()
-
 .to('.reveal-hero', {
-
 opacity: 1,
-
 y: 0,
-
 stagger: 0.16,
-
 duration: 1.1,
-
 ease: 'power3.out'
-
 });
-
 gsap.utils.toArray('#project-grid .minimal-card').forEach((card, index) => {
-
 gsap.from(card, {
-
 scrollTrigger: { trigger: card, start: 'top 88%' },
-
 opacity: 0,
-
 y: 20,
-
 duration: 0.75,
-
 delay: Math.min(index * 0.06, 0.3),
-
 ease: 'power2.out'
-
 });
-
 });
-
 gsap.from('.reveal-item', {
-
 scrollTrigger: { trigger: '#about', start: 'top 78%' },
-
 opacity: 0,
-
 x: -20,
-
 duration: 0.75,
-
 stagger: 0.16,
-
 ease: 'power2.out'
-
 });
-
 gsap.from('.skill-card', {
-
 scrollTrigger: { trigger: '#skills', start: 'top 80%' },
-
 opacity: 0,
-
 y: 20,
-
 duration: 0.8,
-
 stagger: 0.12,
-
 ease: 'power2.out'
-
 });
-
 } else {
-
 document.querySelectorAll('.reveal-hero').forEach((el) => {
-
 el.style.opacity = '1';
-
 el.style.transform = 'none';
-
 });
-
 }
-
 </script>
-
 </body>
-
 </html>
