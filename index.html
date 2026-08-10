@@ -28,16 +28,16 @@
                         mono: ['JetBrains Mono', 'monospace']
                     },
                     colors: {
-                        ink: '#04070D',
-                        panel: '#0B1220',
-                        panelSoft: '#111A2B',
-                        mist: '#9AA8C0',
-                        signal: '#22D3EE',
-                        lime: '#A3E635',
-                        ember: '#FB7185'
+                        ink: '#080214',
+                        panel: '#110526',
+                        panelSoft: '#1A0A3A',
+                        mist: '#9D8CB0',
+                        signal: '#F0C265',
+                        lime: '#E88B4A',
+                        ember: '#8E3F65'
                     },
                     boxShadow: {
-                        neon: '0 0 0 1px rgba(34,211,238,0.15), 0 12px 38px rgba(34,211,238,0.12)'
+                        neon: '0 0 0 1px rgba(240,194,101,0.15), 0 12px 38px rgba(240,194,101,0.12)'
                     }
                 }
             }
@@ -48,17 +48,17 @@
         :root {
             --cursor-size: 22px;
             --grid-size: 56px;
-            --focus-ring: 0 0 0 2px rgba(163, 230, 53, 0.5);
+            --focus-ring: 0 0 0 2px rgba(232, 139, 74, 0.5);
         }
 
         html.lenis { height: auto; }
 
         body {
             background:
-                radial-gradient(1200px 700px at 80% -10%, rgba(34,211,238,0.16), transparent 55%),
-                radial-gradient(800px 500px at 10% 20%, rgba(163,230,53,0.08), transparent 55%),
-                #04070D;
-            color: #E6EDF7;
+                radial-gradient(1200px 700px at 80% -10%, rgba(240,194,101,0.16), transparent 55%),
+                radial-gradient(800px 500px at 10% 20%, rgba(232,139,74,0.08), transparent 55%),
+                #080214;
+            color: #F4EBF7;
             overflow-x: hidden;
             cursor: none;
         }
@@ -73,8 +73,8 @@
             top: -200px;
             z-index: 10000;
             padding: 0.7rem 1rem;
-            background: #A3E635;
-            color: #081017;
+            background: #E88B4A;
+            color: #080214;
             font-weight: 600;
             border-radius: 0.5rem;
             transition: top 0.2s ease;
@@ -101,8 +101,8 @@
             pointer-events: none;
             background-size: var(--grid-size) var(--grid-size);
             background-image:
-                linear-gradient(to right, rgba(34, 211, 238, 0.06) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(34, 211, 238, 0.06) 1px, transparent 1px);
+                linear-gradient(to right, rgba(240, 194, 101, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(240, 194, 101, 0.06) 1px, transparent 1px);
             transform: perspective(650px) rotateX(62deg);
             animation: gridMove 26s linear infinite;
             mask-image: radial-gradient(circle at center, black 28%, transparent 78%);
@@ -117,7 +117,7 @@
         .cursor-dot {
             width: 8px;
             height: 8px;
-            background: #E6EDF7;
+            background: #F4EBF7;
             border-radius: 999px;
             position: fixed;
             z-index: 9999;
@@ -129,7 +129,7 @@
         .cursor-outline {
             width: 40px;
             height: 40px;
-            border: 1px solid rgba(230, 237, 247, 0.35);
+            border: 1px solid rgba(244, 235, 247, 0.35);
             border-radius: 999px;
             position: fixed;
             z-index: 9998;
@@ -151,7 +151,7 @@
 
         .wire-base {
             fill: none;
-            stroke: rgba(154, 168, 192, 0.08);
+            stroke: rgba(157, 140, 176, 0.08);
             stroke-width: 2px;
             stroke-linejoin: round;
             stroke-linecap: round;
@@ -159,11 +159,11 @@
 
         .wire-glow {
             fill: none;
-            stroke: #22D3EE;
+            stroke: #F0C265;
             stroke-width: 3px;
             stroke-linejoin: round;
             stroke-linecap: round;
-            filter: drop-shadow(0 0 6px rgba(34,211,238,0.7));
+            filter: drop-shadow(0 0 6px rgba(240,194,101,0.7));
         }
 
         @media (pointer: coarse), (prefers-reduced-motion: reduce) {
@@ -177,8 +177,8 @@
         }
 
         .glass-card {
-            background: linear-gradient(140deg, rgba(17, 26, 43, 0.72), rgba(11, 18, 32, 0.65));
-            border: 1px solid rgba(154, 168, 192, 0.16);
+            background: linear-gradient(140deg, rgba(26, 10, 58, 0.72), rgba(17, 5, 38, 0.65));
+            border: 1px solid rgba(157, 140, 176, 0.16);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             transform-style: preserve-3d;
@@ -187,8 +187,8 @@
 
         .glass-card:hover,
         .glass-card:focus-within {
-            border-color: rgba(34, 211, 238, 0.5);
-            box-shadow: 0 14px 46px rgba(3, 8, 19, 0.55);
+            border-color: rgba(240, 194, 101, 0.5);
+            box-shadow: 0 14px 46px rgba(8, 2, 20, 0.55);
         }
 
         .spotlight-wrapper {
@@ -204,7 +204,7 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
-            background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(34, 211, 238, 0.1), transparent 45%);
+            background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(240, 194, 101, 0.1), transparent 45%);
         }
 
         .spotlight-wrapper:hover::before,
@@ -213,8 +213,8 @@
         }
 
         .metric-badge {
-            border: 1px solid rgba(154, 168, 192, 0.2);
-            background: rgba(11, 18, 32, 0.72);
+            border: 1px solid rgba(157, 140, 176, 0.2);
+            background: rgba(17, 5, 38, 0.72);
         }
 
         .section-anchor {
@@ -222,9 +222,9 @@
         }
 
         .filter-btn[aria-pressed="true"] {
-            border-color: rgba(163, 230, 53, 0.7);
-            color: #D9F99D;
-            background: rgba(163, 230, 53, 0.12);
+            border-color: rgba(232, 139, 74, 0.7);
+            color: #F8D9C0;
+            background: rgba(232, 139, 74, 0.12);
         }
 
         a:focus-visible,
@@ -244,7 +244,7 @@
         }
 
         .text-stroke {
-            -webkit-text-stroke: 1px #E6EDF7;
+            -webkit-text-stroke: 1px #F4EBF7;
             color: transparent;
         }
 
