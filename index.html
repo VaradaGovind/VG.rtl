@@ -28,16 +28,16 @@
                         mono: ['JetBrains Mono', 'monospace']
                     },
                     colors: {
-                        ink: '#050B14',
-                        panel: '#0A192F',
-                        panelSoft: '#112240',
-                        mist: '#8892B0',
-                        signal: '#FF2A6D',
-                        lime: '#05D9E8',
-                        ember: '#FFC200'
+                        ink: '#000000',
+                        panel: 'rgba(255, 255, 255, 0.03)',
+                        panelSoft: 'rgba(255, 255, 255, 0.05)',
+                        mist: '#A1A1AA',
+                        signal: '#E2E8F0',
+                        lime: '#FFFFFF',
+                        ember: '#A1A1AA'
                     },
                     boxShadow: {
-                        neon: '0 0 0 1px rgba(255,42,109,0.15), 0 12px 38px rgba(255,42,109,0.12)'
+                        neon: '0 0 0 1px rgba(255,255,255,0.15), 0 12px 38px rgba(255,255,255,0.12)'
                     }
                 }
             }
@@ -48,17 +48,14 @@
         :root {
             --cursor-size: 22px;
             --grid-size: 56px;
-            --focus-ring: 0 0 0 2px rgba(5, 217, 232, 0.5);
+            --focus-ring: 0 0 0 2px rgba(255, 255, 255, 0.5);
         }
 
         html.lenis { height: auto; }
 
         body {
-            background:
-                radial-gradient(1200px 700px at 80% -10%, rgba(255,42,109,0.16), transparent 55%),
-                radial-gradient(800px 500px at 10% 20%, rgba(5,217,232,0.08), transparent 55%),
-                #050B14;
-            color: #E2E8F0;
+            background: #000000;
+            color: #FFFFFF;
             overflow-x: hidden;
             cursor: none;
         }
@@ -73,8 +70,8 @@
             top: -200px;
             z-index: 10000;
             padding: 0.7rem 1rem;
-            background: #05D9E8;
-            color: #050B14;
+            background: #FFFFFF;
+            color: #000000;
             font-weight: 600;
             border-radius: 0.5rem;
             transition: top 0.2s ease;
@@ -101,8 +98,8 @@
             pointer-events: none;
             background-size: var(--grid-size) var(--grid-size);
             background-image:
-                linear-gradient(to right, rgba(255, 42, 109, 0.06) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 42, 109, 0.06) 1px, transparent 1px);
+                linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
             transform: perspective(650px) rotateX(62deg);
             animation: gridMove 26s linear infinite;
             mask-image: radial-gradient(circle at center, black 28%, transparent 78%);
@@ -151,7 +148,7 @@
 
         .wire-base {
             fill: none;
-            stroke: rgba(136, 146, 176, 0.1);
+            stroke: rgba(255, 255, 255, 0.1);
             stroke-width: 2px;
             stroke-linejoin: round;
             stroke-linecap: round;
@@ -168,18 +165,18 @@
         }
 
         .glass-card {
-            background: linear-gradient(140deg, rgba(17, 34, 64, 0.72), rgba(10, 25, 47, 0.65));
-            border: 1px solid rgba(136, 146, 176, 0.16);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             transform-style: preserve-3d;
             transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
         .glass-card:hover,
         .glass-card:focus-within {
-            border-color: rgba(255, 42, 109, 0.5);
-            box-shadow: 0 14px 46px rgba(5, 11, 20, 0.55);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 14px 46px rgba(0, 0, 0, 0.55);
         }
 
         .spotlight-wrapper {
@@ -195,7 +192,7 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
-            background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 42, 109, 0.1), transparent 45%);
+            background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.06), transparent 45%);
         }
 
         .spotlight-wrapper:hover::before,
@@ -204,8 +201,8 @@
         }
 
         .metric-badge {
-            border: 1px solid rgba(136, 146, 176, 0.2);
-            background: rgba(10, 25, 47, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .section-anchor {
@@ -213,9 +210,9 @@
         }
 
         .filter-btn[aria-pressed="true"] {
-            border-color: rgba(5, 217, 232, 0.7);
-            color: #05D9E8;
-            background: rgba(5, 217, 232, 0.12);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.08);
         }
 
         a:focus-visible,
@@ -261,14 +258,14 @@
     <svg id="bg-wire" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
             <linearGradient id="wireGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FF2A6D" stop-opacity="0" />
-                <stop offset="50%" stop-color="#FF2A6D" stop-opacity="1" />
-                <stop offset="100%" stop-color="#05D9E8" stop-opacity="0" />
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0" />
+                <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#A1A1AA" stop-opacity="0" />
             </linearGradient>
             <linearGradient id="wireGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#05D9E8" stop-opacity="0" />
-                <stop offset="50%" stop-color="#05D9E8" stop-opacity="1" />
-                <stop offset="100%" stop-color="#FF2A6D" stop-opacity="0" />
+                <stop offset="0%" stop-color="#A1A1AA" stop-opacity="0" />
+                <stop offset="50%" stop-color="#A1A1AA" stop-opacity="0.3" />
+                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
             </linearGradient>
             <filter id="glowFilter">
                 <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -301,7 +298,7 @@
             </path>
         </g>
         
-        <g fill="#05D9E8" filter="url(#glowFilter)">
+        <g fill="#FFFFFF" filter="url(#glowFilter)">
             <circle cx="250" cy="300" r="3" />
             <circle cx="650" cy="300" r="3" />
             <circle cx="850" cy="500" r="3" />
