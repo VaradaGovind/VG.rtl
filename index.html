@@ -179,9 +179,9 @@ scroll-behavior: auto !important;
 <section class="min-h-screen flex items-end pb-24 px-4 md:px-6 relative overflow-hidden section-anchor">
 <div class="max-w-7xl w-full relative z-10 flex flex-col md:flex-row md:justify-between md:items-end gap-12 mx-auto">
 <div class="md:w-2/3">
-<p class="font-mono text-accent text-xs tracking-[0.2em] mb-6 reveal-hero opacity-0">SYSTEM READY // VARADA GOVIND AAKULA</p>
-<h1 class="font-display text-6xl sm:text-7xl md:text-[9rem] font-bold tracking-tighter leading-[0.85] reveal-hero opacity-0 translate-y-6 text-textMain ">
-DIGITAL<br>SILICON.
+<p class="font-mono text-accent text-xs tracking-[0.2em] mb-6 reveal-hero opacity-0">PORTFOLIO // 2026</p>
+<h1 class="font-display text-5xl sm:text-7xl md:text-[8rem] font-bold tracking-tighter leading-[0.9] reveal-hero opacity-0 translate-y-6 text-textMain ">
+VARADA GOVIND<br>AAKULA.
 </h1>
 </div>
 <div class="md:w-1/3 flex flex-col items-start md:items-end text-left md:text-right reveal-hero opacity-0 translate-y-6">
@@ -219,84 +219,79 @@ Hardware Researcher at IIIT Allahabad specializing in RTL Design, SystemVerilog,
 <button class="filter-btn px-3 py-2 rounded-lg border border-border bg-surface text-xs font-mono" data-filter="proto">PROTOCOL</button>
 </div>
 </div>
-<div id="project-grid" class="flex flex-col border-t border-border mt-8">
-<a href="#" class="project-row group flex flex-col md:flex-row md:items-center justify-between py-6 md:py-8 border-b border-border hover:bg-surface transition-colors" data-category="rtl">
-<div class="flex items-center gap-6">
-<span class="font-mono text-xs text-textMuted w-12 hidden md:block">01</span>
-<h3 class="text-xl md:text-3xl font-display font-semibold group-hover:text-accent transition-colors">Argus: AI Hardware Debugger</h3>
-<span class="text-[10px] font-mono border border-border bg-surfaceHover text-textMain rounded-full px-2 py-0.5">WIP</span>
+<div id="project-grid" class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-8">
+<article class="bento-card p-8 md:col-span-2 md:row-span-2 flex flex-col justify-between" data-category="rtl">
+<div class="flex items-center justify-between mb-4">
+<span class="text-[10px] font-mono text-textMuted border border-border bg-surfaceHover rounded-full px-2 py-0.5">PYTHON / AI / EDA</span>
+<span class="text-[10px] font-mono border border-border bg-bg text-textMain rounded-full px-2 py-0.5">WIP</span>
 </div>
-<div class="flex items-center gap-4 mt-4 md:mt-0">
-<span class="text-[10px] font-mono text-textMuted hidden md:block">PYTHON / MULTI-AGENT AI</span>
-<i data-lucide="arrow-up-right" class="w-5 h-5 text-textMuted group-hover:text-accent transition-colors opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transform duration-300"></i>
+<div class="mb-6">
+<h3 class="text-3xl font-display font-semibold mb-4">Argus: AI Hardware Debugger</h3>
+<p class="text-sm text-textMuted leading-relaxed max-w-sm">A multi-agent AI framework for hardware debugging that combines deterministic RTL analysis, simulation-log parsing, waveform intelligence, and protocol checking with LLM-based reasoning. Decomposes debugging into specialized AI agents while an orchestration layer coordinates evidence collection to generate explainable root-cause reports.</p>
+</div>
+<i data-lucide="bug" class="w-8 h-8 text-accent mt-auto"></i>
+</article>
+
+<a href="https://github.com/VaradaGovind/MobileNet-Accelerator-RTL" target="_blank" rel="noopener" class="bento-card p-8 md:col-span-2 flex flex-col justify-between group" data-category="rtl">
+<div class="flex items-center justify-between mb-4">
+<span class="text-[10px] font-mono text-textMuted border border-border bg-surfaceHover rounded-full px-2 py-0.5">VERILOG / EDGE AI</span>
+<i data-lucide="arrow-up-right" class="w-4 h-4 text-textMuted opacity-0 group-hover:opacity-100 transition-opacity"></i>
+</div>
+<div class="mb-2">
+<h3 class="text-2xl font-display font-semibold mb-3 group-hover:text-accent transition-colors">Task-Aware Object Detection</h3>
+<p class="text-sm text-textMuted leading-relaxed">Built a heterogeneous inference pipeline. Engineered a 16x16 INT8 systolic array delivering 51.2 GOPS at 200 MHz. Reduced memory bandwidth 256x via sparse BRAM addressing.</p>
 </div>
 </a>
 
-<a href="https://github.com/VaradaGovind/MobileNet-Accelerator-RTL" target="_blank" rel="noopener" class="project-row group flex flex-col md:flex-row md:items-center justify-between py-6 md:py-8 border-b border-border hover:bg-surface transition-colors" data-category="rtl">
-<div class="flex items-center gap-6">
-<span class="font-mono text-xs text-textMuted w-12 hidden md:block">02</span>
-<h3 class="text-xl md:text-3xl font-display font-semibold group-hover:text-accent transition-colors">Task-Aware Object Detection</h3>
+<a href="https://github.com/VaradaGovind/Prolepsis-soc" target="_blank" rel="noopener" class="bento-card p-8 md:col-span-2 flex flex-col justify-between group" data-category="rtl">
+<div class="flex items-center justify-between mb-4">
+<span class="text-[10px] font-mono text-textMuted border border-border bg-surfaceHover rounded-full px-2 py-0.5">SYSVERILOG / RISC-V / RTL</span>
+<i data-lucide="arrow-up-right" class="w-4 h-4 text-textMuted opacity-0 group-hover:opacity-100 transition-opacity"></i>
 </div>
-<div class="flex items-center gap-4 mt-4 md:mt-0">
-<span class="text-[10px] font-mono text-textMuted hidden md:block">VERILOG / EDGE AI / 51.2 GOPS</span>
-<i data-lucide="arrow-up-right" class="w-5 h-5 text-textMuted group-hover:text-accent transition-colors opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transform duration-300"></i>
-</div>
-</a>
-
-<a href="https://github.com/VaradaGovind/Prolepsis-soc" target="_blank" rel="noopener" class="project-row group flex flex-col md:flex-row md:items-center justify-between py-6 md:py-8 border-b border-border hover:bg-surface transition-colors" data-category="rtl">
-<div class="flex items-center gap-6">
-<span class="font-mono text-xs text-textMuted w-12 hidden md:block">03</span>
-<h3 class="text-xl md:text-3xl font-display font-semibold group-hover:text-accent transition-colors">Prolepsis: Predictive TMU</h3>
-</div>
-<div class="flex items-center gap-4 mt-4 md:mt-0">
-<span class="text-[10px] font-mono text-textMuted hidden md:block">SYSVERILOG / RISC-V / VDAT 2026</span>
-<i data-lucide="arrow-up-right" class="w-5 h-5 text-textMuted group-hover:text-accent transition-colors opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transform duration-300"></i>
+<div class="mb-2">
+<h3 class="text-2xl font-display font-semibold mb-3 group-hover:text-accent transition-colors">Prolepsis: Predictive TMU</h3>
+<p class="text-sm text-textMuted leading-relaxed">Architected an ISA-agnostic RTL Thermal Management Unit (TMU) for multicore RISC-V processors. Designed a Kalman predictor and policy FSM for proactive thermal management without ISA modifications. Achieved 96.3% execution under an 85Â°C thermal limit.</p>
 </div>
 </a>
 
-<a href="https://github.com/VaradaGovind/GridLock-AES" target="_blank" rel="noopener" class="project-row group flex flex-col md:flex-row md:items-center justify-between py-6 md:py-8 border-b border-border hover:bg-surface transition-colors" data-category="rtl">
-<div class="flex items-center gap-6">
-<span class="font-mono text-xs text-textMuted w-12 hidden md:block">04</span>
-<h3 class="text-xl md:text-3xl font-display font-semibold group-hover:text-accent transition-colors">GridLock AES: 1.6 Gbps</h3>
+<a href="https://github.com/VaradaGovind/GridLock-AES" target="_blank" rel="noopener" class="bento-card p-8 md:col-span-2 flex flex-col justify-between group" data-category="rtl">
+<div class="flex items-center justify-between mb-4">
+<span class="text-[10px] font-mono text-textMuted border border-border bg-surfaceHover rounded-full px-2 py-0.5">CRYPTO / AXI4 / SYSVERILOG</span>
+<i data-lucide="arrow-up-right" class="w-4 h-4 text-textMuted opacity-0 group-hover:opacity-100 transition-opacity"></i>
 </div>
-<div class="flex items-center gap-4 mt-4 md:mt-0">
-<span class="text-[10px] font-mono text-textMuted hidden md:block">CRYPTO / AXI4 / SYSTEMVERILOG</span>
-<i data-lucide="arrow-up-right" class="w-5 h-5 text-textMuted group-hover:text-accent transition-colors opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transform duration-300"></i>
-</div>
-</a>
-
-<a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" rel="noopener" class="project-row group flex flex-col md:flex-row md:items-center justify-between py-6 md:py-8 border-b border-border hover:bg-surface transition-colors" data-category="rtl">
-<div class="flex items-center gap-6">
-<span class="font-mono text-xs text-textMuted w-12 hidden md:block">05</span>
-<h3 class="text-xl md:text-3xl font-display font-semibold group-hover:text-accent transition-colors">RV32I Soft-Core</h3>
-</div>
-<div class="flex items-center gap-4 mt-4 md:mt-0">
-<span class="text-[10px] font-mono text-textMuted hidden md:block">VERILOG / RISC-V / 300 LUTS</span>
-<i data-lucide="arrow-up-right" class="w-5 h-5 text-textMuted group-hover:text-accent transition-colors opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transform duration-300"></i>
+<div class="mb-2">
+<h3 class="text-2xl font-display font-semibold mb-3 group-hover:text-accent transition-colors">GridLock AES</h3>
+<p class="text-sm text-textMuted leading-relaxed">Hardware accelerator achieving 1.66 Gbps and 150 MHz timing closure (WNS: +1.049 ns). Reduced logic area by 40% via Composite Field Arithmetic.</p>
 </div>
 </a>
 
-<a href="https://github.com/VaradaGovind/CMOS-Standard-Cell-Library" target="_blank" rel="noopener" class="project-row group flex flex-col md:flex-row md:items-center justify-between py-6 md:py-8 border-b border-border hover:bg-surface transition-colors" data-category="vlsi">
-<div class="flex items-center gap-6">
-<span class="font-mono text-xs text-textMuted w-12 hidden md:block">06</span>
-<h3 class="text-xl md:text-3xl font-display font-semibold group-hover:text-accent transition-colors">CMOS Cell Library</h3>
-</div>
-<div class="flex items-center gap-4 mt-4 md:mt-0">
-<span class="text-[10px] font-mono text-textMuted hidden md:block">VLSI / SPICE</span>
-<i data-lucide="arrow-up-right" class="w-5 h-5 text-textMuted group-hover:text-accent transition-colors opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transform duration-300"></i>
+<a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" rel="noopener" class="bento-card p-8 md:col-span-1 flex flex-col justify-between group" data-category="rtl">
+<span class="text-[10px] font-mono text-textMuted mb-4 border border-border bg-surfaceHover rounded-full px-2 py-0.5 w-fit">VERILOG / RISC-V</span>
+<div class="mb-2">
+<h3 class="text-xl font-display font-semibold mb-3 group-hover:text-accent transition-colors">RV32I Soft-Core</h3>
+<p class="text-sm text-textMuted leading-relaxed">Single-cycle RISC-V core meeting 100 MHz timing. Ultra-low footprint (300 LUTs).</p>
 </div>
 </a>
 
-<a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" rel="noopener" class="project-row group flex flex-col md:flex-row md:items-center justify-between py-6 md:py-8 border-b border-border hover:bg-surface transition-colors" data-category="proto">
-<div class="flex items-center gap-6">
-<span class="font-mono text-xs text-textMuted w-12 hidden md:block">07</span>
-<h3 class="text-xl md:text-3xl font-display font-semibold group-hover:text-accent transition-colors">Hardware Protocol Stack</h3>
-</div>
-<div class="flex items-center gap-4 mt-4 md:mt-0">
-<span class="text-[10px] font-mono text-textMuted hidden md:block">UART / SPI / I2C</span>
-<i data-lucide="arrow-up-right" class="w-5 h-5 text-textMuted group-hover:text-accent transition-colors opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transform duration-300"></i>
+<a href="https://github.com/VaradaGovind/CMOS-Standard-Cell-Library" target="_blank" rel="noopener" class="bento-card p-8 md:col-span-1 flex flex-col justify-between group" data-category="vlsi">
+<span class="text-[10px] font-mono text-textMuted mb-4 border border-border bg-surfaceHover rounded-full px-2 py-0.5 w-fit">VLSI / SPICE</span>
+<div class="mb-2">
+<h3 class="text-xl font-display font-semibold mb-3 group-hover:text-accent transition-colors">CMOS Cell Lib</h3>
+<p class="text-sm text-textMuted leading-relaxed">Standard cell library and hierarchical 1-Bit Adder designed using NMOS/PMOS.</p>
 </div>
 </a>
+
+<div class="bento-card p-8 md:col-span-2 flex flex-col justify-between" data-category="proto">
+<span class="text-[10px] font-mono text-textMuted mb-4 border border-border bg-surfaceHover rounded-full px-2 py-0.5 w-fit">PROTOCOLS</span>
+<div class="mb-2">
+<h3 class="text-2xl font-display font-semibold mb-3">Hardware Protocol Stack</h3>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+<a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" class="block text-sm text-textMuted hover:text-accent transition-colors">Ã¢â‚¬Â¢ UART Core</a>
+<a href="https://github.com/VaradaGovind/spi-core" target="_blank" class="block text-sm text-textMuted hover:text-accent transition-colors">Ã¢â‚¬Â¢ SPI Core</a>
+<a href="https://github.com/VaradaGovind/i2c-core" target="_blank" class="block text-sm text-textMuted hover:text-accent transition-colors">Ã¢â‚¬Â¢ I2C Core</a>
+</div>
+</div>
+</div>
 </div>
 <p id="project-empty-state" class="hidden mt-6 text-textMuted font-mono text-xs">No projects in this category yet.</p>
 </div>
@@ -378,34 +373,50 @@ Hardware Researcher at IIIT Allahabad specializing in RTL Design, SystemVerilog,
 <span class="font-mono text-accent text-xs">04 // ARSENAL</span>
 <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2">Technical Proficiency</h2>
 </div>
-<div class="flex flex-col border-t border-border mt-8">
-<div class="skill-card timeline-row flex flex-col md:flex-row gap-6 md:gap-12 hover:bg-surface transition-colors -mx-4 px-4">
-<h4 class="font-semibold text-xl w-48 text-textMain shrink-0">RTL Design</h4>
-<p class="text-sm text-textMuted leading-loose flex flex-wrap gap-x-4 gap-y-2">
-<span>SystemVerilog & UVM</span> <span>&bull;</span> <span>Verilog & VHDL</span> <span>&bull;</span> <span>RISC-V microarchitecture</span> <span>&bull;</span> <span>AXI4 Integration</span> <span>&bull;</span> <span>CDC & Data Synchronization</span>
-</p>
-</div>
-<div class="skill-card timeline-row flex flex-col md:flex-row gap-6 md:gap-12 hover:bg-surface transition-colors -mx-4 px-4">
-<h4 class="font-semibold text-xl w-48 text-textMain shrink-0">Firmware & Software</h4>
-<p class="text-sm text-textMuted leading-loose flex flex-wrap gap-x-4 gap-y-2">
-<span>C and C++</span> <span>&bull;</span> <span>Python scripting</span> <span>&bull;</span> <span>Assembly-level Programming</span> <span>&bull;</span> <span>Linux Environments</span>
-</p>
-</div>
-<div class="skill-card timeline-row flex flex-col md:flex-row gap-6 md:gap-12 hover:bg-surface transition-colors -mx-4 px-4">
-<h4 class="font-semibold text-xl w-48 text-textMain shrink-0">Tools</h4>
-<p class="text-sm text-textMuted leading-loose flex flex-wrap gap-x-4 gap-y-2">
-<span>Xilinx Vivado</span> <span>&bull;</span> <span>LTspice</span> <span>&bull;</span> <span>GTKWave</span> <span>&bull;</span> <span>ModelSim</span> <span>&bull;</span> <span>MATLAB & Git/GitHub</span>
-</p>
-</div>
-<div class="skill-card timeline-row flex flex-col md:flex-row gap-6 md:gap-12 hover:bg-surface transition-colors -mx-4 px-4 border-b">
-<h4 class="font-semibold text-xl w-48 text-textMain shrink-0">Concepts</h4>
-<p class="text-sm text-textMuted leading-loose flex flex-wrap gap-x-4 gap-y-2">
-<span>Digital Logic & FSM Design</span> <span>&bull;</span> <span>Static Timing Analysis (STA)</span> <span>&bull;</span> <span>CMOS VLSI</span> <span>&bull;</span> <span>FPGA Implementation Flow</span>
-</p>
-</div>
-</div>
-</div>
-</section>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+<article class="bento-card p-6">
+<i data-lucide="cpu" class="w-6 h-6 text-textMuted mb-5"></i>
+<h4 class="font-semibold text-lg mb-4 text-textMain">RTL Design</h4>
+<ul class="space-y-2 text-sm text-textMuted font-mono">
+<li>SystemVerilog & UVM</li>
+<li>Verilog & VHDL</li>
+<li>RISC-V architecture</li>
+<li>AXI4 Integration</li>
+<li>CDC / Sync</li>
+</ul>
+</article>
+<article class="bento-card p-6">
+<i data-lucide="terminal" class="w-6 h-6 text-textMuted mb-5"></i>
+<h4 class="font-semibold text-lg mb-4 text-textMain">Firmware & Software</h4>
+<ul class="space-y-2 text-sm text-textMuted font-mono">
+<li>C and C++</li>
+<li>Python scripting</li>
+<li>Assembly</li>
+<li>Linux OS</li>
+</ul>
+</article>
+<article class="bento-card p-6">
+<i data-lucide="wrench" class="w-6 h-6 text-textMuted mb-5"></i>
+<h4 class="font-semibold text-lg mb-4 text-textMain">Tools</h4>
+<ul class="space-y-2 text-sm text-textMuted font-mono">
+<li>Xilinx Vivado</li>
+<li>LTspice</li>
+<li>GTKWave</li>
+<li>ModelSim</li>
+<li>MATLAB & Git</li>
+</ul>
+</article>
+<article class="bento-card p-6">
+<i data-lucide="layers" class="w-6 h-6 text-textMuted mb-5"></i>
+<h4 class="font-semibold text-lg mb-4 text-textMain">Concepts</h4>
+<ul class="space-y-2 text-sm text-textMuted font-mono">
+<li>Digital Logic</li>
+<li>Static Timing Analysis</li>
+<li>CMOS VLSI</li>
+<li>FPGA Flow</li>
+</ul>
+</article>
+</div></section>
 <section id="contact" class="py-16 md:py-24 px-4 md:px-6 border-t border-border bg-bg section-anchor">
 <div class="max-w-7xl mx-auto">
 <p class="font-mono text-accent text-xs">05 // CONTACT</p>
@@ -484,7 +495,7 @@ if (!rafPending) { rafPending = true; requestAnimationFrame(applyPointerFrame); 
 });
 }
 const filterButtons = document.querySelectorAll('.filter-btn');
-const projectRows = document.querySelectorAll('.project-row');
+const projectRows = document.querySelectorAll('.bento-card');
 const emptyState = document.getElementById('project-empty-state');
 filterButtons.forEach((button) => {
 button.addEventListener('click', () => {
@@ -528,7 +539,7 @@ stagger: 0.16,
 duration: 1.1,
 ease: 'power3.out'
 });
-gsap.utils.toArray('#project-grid .project-row').forEach((row, index) => {
+gsap.utils.toArray('#project-grid .bento-card').forEach((row, index) => {
 gsap.from(row, {
 scrollTrigger: { trigger: row, start: 'top 88%' },
 opacity: 0,
