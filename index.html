@@ -358,7 +358,7 @@
                     <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">🏆 VDAT 2026 • Accepted Paper</span>
                 </div>
 
-                <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6 reveal-hero opacity-0 translate-y-6 bg-gradient-to-b from-white to-slate-300/55 text-transparent bg-clip-text">
+                <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6 reveal-hero opacity-0 translate-y-6 bg-gradient-to-b from-white to-mist/60 text-transparent bg-clip-text">
                     DIGITAL LOGIC,<br>
                     REAL SILICON.
                 </h1>
@@ -539,7 +539,7 @@
             </div>
         </section>
 
-        <section id="about" class="py-20 md:py-28 px-4 md:px-6 bg-[#060B16] section-anchor">
+        <section id="about" class="py-20 md:py-28 px-4 md:px-6 bg-ink section-anchor">
             <div class="max-w-4xl mx-auto">
                 <span class="font-mono text-signal text-xs">02 // TIMELINE</span>
                 <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2 mb-12">Career & Education</h2>
@@ -697,7 +697,7 @@
             </div>
         </section>
 
-        <section id="contact" class="py-16 md:py-24 px-4 md:px-6 border-t border-white/10 bg-black/30 section-anchor">
+        <section id="contact" class="py-16 md:py-24 px-4 md:px-6 border-t border-white/10 bg-panel/40 section-anchor">
             <div class="max-w-7xl mx-auto">
                 <p class="font-mono text-signal text-xs">05 // CONTACT</p>
                 <h2 class="mt-3 text-4xl md:text-7xl font-display font-bold leading-[0.95]">
@@ -807,8 +807,8 @@
                 target.addEventListener('mouseenter', () => {
                     cursorOutline.style.width = '60px';
                     cursorOutline.style.height = '60px';
-                    cursorOutline.style.borderColor = 'rgba(34, 211, 238, 0.6)';
-                    cursorOutline.style.backgroundColor = 'rgba(34, 211, 238, 0.12)';
+                    cursorOutline.style.borderColor = 'rgba(5, 217, 232, 0.6)';
+                    cursorOutline.style.backgroundColor = 'rgba(5, 217, 232, 0.12)';
                 });
 
                 target.addEventListener('mouseleave', () => {
@@ -962,7 +962,7 @@
 
             const shape = new THREE.IcosahedronGeometry(2.7, 1);
             const material = new THREE.MeshBasicMaterial({
-                color: 0x22d3ee,
+                color: 0xff2a6d,
                 wireframe: true,
                 transparent: true,
                 opacity: 0.14
@@ -971,7 +971,7 @@
             scene.add(mesh);
 
             const ringGeometry = new THREE.TorusGeometry(3.8, 0.03, 16, 100);
-            const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xa3e635, transparent: true, opacity: 0.08 });
+            const ringMaterial = new THREE.MeshBasicMaterial({ color: 0x05d9e8, transparent: true, opacity: 0.08 });
             const ring = new THREE.Mesh(ringGeometry, ringMaterial);
             ring.rotation.x = 1.1;
             scene.add(ring);
