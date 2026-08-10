@@ -31,7 +31,7 @@
                         ink: '#000000',
                         panel: 'rgba(255, 255, 255, 0.05)',
                         panelSoft: 'rgba(255, 255, 255, 0.08)',
-                        mist: '#D4D4D8',
+                        mist: '#F4F4F5',
                         signal: '#FFFFFF',
                         lime: '#FFFFFF',
                         ember: '#F4F4F5'
@@ -126,7 +126,7 @@
         .cursor-outline {
             width: 40px;
             height: 40px;
-            border: 1px solid rgba(226, 232, 240, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.35);
             border-radius: 999px;
             position: fixed;
             z-index: 9998;
@@ -619,15 +619,15 @@
                             </div>
 
                             <div class="flex flex-wrap gap-4 mt-auto pt-4 border-t border-white/5" style="transform: translateZ(30px)">
-                                <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-panel/40 border border-white/5 text-mist/50 font-mono text-xs cursor-not-allowed">
+                                <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-panel/40 border border-white/5 text-mist/70 font-mono text-xs cursor-not-allowed">
                                     <span>📄 Paper</span>
                                     <span class="text-[9px] bg-black/30 px-1.5 py-0.5 rounded">Coming Soon</span>
                                 </button>
-                                <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-panel/40 border border-white/5 text-mist/50 font-mono text-xs cursor-not-allowed">
+                                <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-panel/40 border border-white/5 text-mist/70 font-mono text-xs cursor-not-allowed">
                                     <span>📚 BibTeX</span>
                                     <span class="text-[9px] bg-black/30 px-1.5 py-0.5 rounded">Coming Soon</span>
                                 </button>
-                                <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-panel/40 border border-white/5 text-mist/50 font-mono text-xs cursor-not-allowed">
+                                <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-panel/40 border border-white/5 text-mist/70 font-mono text-xs cursor-not-allowed">
                                     <span>🎤 Presentation Slides</span>
                                     <span class="text-[9px] bg-black/30 px-1.5 py-0.5 rounded">Coming Soon</span>
                                 </button>
@@ -805,14 +805,14 @@
                 target.addEventListener('mouseenter', () => {
                     cursorOutline.style.width = '60px';
                     cursorOutline.style.height = '60px';
-                    cursorOutline.style.borderColor = 'rgba(5, 217, 232, 0.6)';
-                    cursorOutline.style.backgroundColor = 'rgba(5, 217, 232, 0.12)';
+                    cursorOutline.style.borderColor = 'rgba(255, 255, 255, 0.8)';
+                    cursorOutline.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
                 });
 
                 target.addEventListener('mouseleave', () => {
                     cursorOutline.style.width = '40px';
                     cursorOutline.style.height = '40px';
-                    cursorOutline.style.borderColor = 'rgba(230, 237, 247, 0.35)';
+                    cursorOutline.style.borderColor = 'rgba(255, 255, 255, 0.35)';
                     cursorOutline.style.backgroundColor = 'transparent';
                 });
             });
