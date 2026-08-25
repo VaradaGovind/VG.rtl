@@ -502,8 +502,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 3rem;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.5rem;
       align-items: center;
       margin-bottom: 4.5rem;
     }
@@ -520,7 +520,7 @@
 
     .hero-desc {
       font-family: var(--font-mono);
-      font-size: 1rem;
+      font-size: 0.98rem;
       line-height: 1.65;
       opacity: 0.88;
       max-width: 540px;
@@ -534,24 +534,28 @@
       margin-bottom: 2rem;
     }
 
-    .hero-silicon-box {
+    /* -------------------------------------------------------------
+       6. REUSABLE SILICON ARTIFACT BOX (Hero & Project Cards)
+       ------------------------------------------------------------- */
+    .silicon-artifact-box {
       position: relative;
-      height: 390px;
+      min-height: 380px;
       width: 100%;
       background: var(--color-main);
       border: var(--border-thick);
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shadow-lg);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 1.5rem;
+      padding: 1.35rem 1.5rem;
       user-select: none;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
     }
 
-    .hero-silicon-box:hover {
-      transform: translateY(-4px);
+    .silicon-artifact-box:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
     }
 
     .silicon-grid-bg {
@@ -561,7 +565,7 @@
       background-image: 
         linear-gradient(to right, var(--color-fg) 1px, transparent 1px),
         linear-gradient(to bottom, var(--color-fg) 1px, transparent 1px);
-      background-size: 24px 24px;
+      background-size: 20px 20px;
       pointer-events: none;
     }
 
@@ -572,7 +576,10 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px dashed var(--color-fg);
-      padding-bottom: 0.75rem;
+      padding-bottom: 0.65rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
     }
 
     .silicon-body {
@@ -582,7 +589,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: auto 0;
+      margin: 1.25rem 0;
       text-align: center;
     }
 
@@ -590,7 +597,7 @@
       width: 120px;
       height: 120px;
       border: var(--border-thick);
-      background-color: var(--color-yellow);
+      background-color: var(--die-bg, var(--color-yellow));
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -622,7 +629,7 @@
       to { transform: rotate(360deg); }
     }
 
-    .silicon-telemetry {
+    .silicon-telemetry-grid {
       position: relative;
       z-index: 2;
       display: grid;
@@ -630,28 +637,36 @@
       gap: 0.5rem;
       border-top: 2px dashed var(--color-fg);
       padding-top: 0.75rem;
+      background: rgba(0, 0, 0, 0.025);
     }
 
-    .telemetry-item {
+    html.dark .silicon-telemetry-grid {
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .telemetry-cell {
       font-family: var(--font-mono);
       font-size: 0.7rem;
       text-align: center;
+      padding: 0.25rem;
     }
 
-    .telemetry-label {
+    .telemetry-cell-label {
       opacity: 0.65;
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: 0.04em;
     }
 
-    .telemetry-val {
+    .telemetry-cell-val {
       font-weight: 800;
       font-size: 0.82rem;
+      margin-top: 0.15rem;
     }
 
     /* -------------------------------------------------------------
-       6. "BASE OF OPERATIONS" SECTION
+       7. "BASE OF OPERATIONS" SECTION
        ------------------------------------------------------------- */
     .base-operations {
       border: var(--border-thick);
@@ -716,7 +731,7 @@
     }
 
     /* -------------------------------------------------------------
-       7. SELECTED WORK / PROJECTS SECTION
+       8. SELECTED WORK / PROJECTS SECTION
        ------------------------------------------------------------- */
     .section-header-wrap {
       display: flex;
@@ -788,29 +803,30 @@
     .projects-container {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.75rem;
       margin-bottom: 4.5rem;
       position: relative;
     }
 
     .projects-container.deck-mode {
-      min-height: 460px;
+      min-height: 520px;
     }
 
     .project-card {
       border: var(--border-thick);
       background-color: var(--color-main);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-xl);
       padding: 2.25rem 2rem;
       display: grid;
-      grid-template-columns: 0.9fr 1.3fr;
-      gap: 2rem;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.25rem;
+      align-items: center;
       transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .project-card:hover {
       transform: translate(-3px, -3px);
-      box-shadow: var(--shadow-xl);
+      box-shadow: 10px 10px 0 0 var(--color-border);
     }
 
     .projects-container.deck-mode .project-card {
@@ -840,13 +856,13 @@
     .card-meta-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 0.35rem;
+      gap: 0.45rem;
+      margin-bottom: 0.25rem;
     }
 
     .card-title {
       font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-size: clamp(1.4rem, 2.5vw, 2.1rem);
       font-weight: 900;
       line-height: 1.15;
       letter-spacing: -0.02em;
@@ -855,69 +871,43 @@
     .card-tech-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.5rem;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
     }
 
     .tech-pill {
       font-family: var(--font-mono);
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
+      padding: 0.2rem 0.55rem;
       border: 1px solid var(--color-fg);
-      opacity: 0.85;
+      background-color: rgba(0, 0, 0, 0.03);
+      opacity: 0.9;
     }
 
-    .card-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    html.dark .tech-pill {
+      background-color: rgba(255, 255, 255, 0.05);
     }
 
     .card-desc {
       font-family: var(--font-mono);
       font-size: 0.92rem;
       line-height: 1.65;
-      opacity: 0.9;
-      margin-bottom: 1.5rem;
-    }
-
-    .hardware-metric-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      padding: 0.75rem;
-      background: rgba(0, 0, 0, 0.04);
-      border: 1.5px dashed var(--color-fg);
-    }
-
-    html.dark .hardware-metric-row {
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .metric-chip {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 700;
-    }
-
-    .metric-chip strong {
-      color: var(--color-yellow);
-      background-color: #111111;
-      padding: 0.1em 0.35em;
-      margin-right: 0.25em;
+      opacity: 0.92;
+      margin-bottom: 1.25rem;
     }
 
     .card-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
+      margin-top: auto;
     }
 
     /* -------------------------------------------------------------
-       8. FIELD NOTES (STICKY POST-IT NOTES)
+       9. FIELD NOTES (STICKY POST-IT NOTES)
        ------------------------------------------------------------- */
     .sticky-section {
       border-top: 3px solid var(--color-fg);
@@ -1052,7 +1042,7 @@
     }
 
     /* -------------------------------------------------------------
-       9. BENTO RESUME CARD (MULTI-PROFILE)
+       10. BENTO RESUME CARD (MULTI-PROFILE)
        ------------------------------------------------------------- */
     .bento-resume-card {
       position: relative;
@@ -1212,7 +1202,7 @@
     }
 
     /* -------------------------------------------------------------
-       10. ARSENAL / TECHNICAL PROFICIENCY GRID
+       11. ARSENAL / TECHNICAL PROFICIENCY GRID
        ------------------------------------------------------------- */
     .skills-grid {
       display: grid;
@@ -1267,7 +1257,7 @@
     }
 
     /* -------------------------------------------------------------
-       11. FOOTER & CONTACT MODAL (<dialog>)
+       12. FOOTER & CONTACT MODAL (<dialog>)
        ------------------------------------------------------------- */
     .site-footer {
       border-top: var(--border-thick);
@@ -1442,12 +1432,12 @@
     }
 
     /* -------------------------------------------------------------
-       12. RESPONSIVE BREAKPOINTS
+       13. RESPONSIVE BREAKPOINTS
        ------------------------------------------------------------- */
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .base-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-      .project-card { grid-template-columns: 1fr; gap: 1.5rem; }
+      .project-card { grid-template-columns: 1fr; gap: 1.75rem; }
       .bento-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
 
@@ -1542,7 +1532,7 @@
   <!-- Main Content Container -->
   <main class="container-page" id="main-content">
     
-    <!-- Hero Section -->
+    <!-- Hero Section with Best Prolepsis Artifacts -->
     <section class="hero-grid" id="hero">
       <div class="hero-content">
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
@@ -1575,41 +1565,41 @@
         </div>
       </div>
 
-      <!-- Right Column: Interactive Silicon & Wafer Card (Accurate Prolepsis TMU Data) -->
-      <div class="hero-silicon-box" id="hero-interactive-box">
+      <!-- Right Column: Prolepsis TMU Hero Silicon Monitor -->
+      <div class="silicon-artifact-box" id="hero-interactive-box">
         <div class="silicon-grid-bg"></div>
-        <div class="silicon-header font-mono">
-          <span style="font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; gap: 0.35rem;">
-            <span id="die-pulse-dot" style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: pulseDie 2s infinite;"></span>
+        <div class="silicon-header">
+          <span style="display: flex; align-items: center; gap: 0.4rem;">
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: pulseDie 2s infinite;"></span>
             PROLEPSIS TMU: ACTIVE
           </span>
-          <span id="die-cycle-ticker" style="font-size: 0.72rem; font-weight: 700; opacity: 0.75;">CYCLE: 0x4A2F</span>
+          <span id="die-cycle-ticker" style="opacity: 0.75;">CYCLE: 0x4A2F</span>
         </div>
 
         <div class="silicon-body">
           <div class="die-traces"></div>
           <div class="die-core-graphic" id="die-core-box">
             <span class="font-mono" style="font-size: 0.65rem; font-weight: 900; letter-spacing: 0.05em; color: #111;">PROLEPSIS</span>
-            <span class="font-display" style="font-size: 1.4rem; font-weight: 900; color: #111; line-height: 1;">TMU</span>
-            <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111; opacity: 0.75;">VDAT 2026</span>
+            <span class="font-display" style="font-size: 1.45rem; font-weight: 900; color: #111; line-height: 1;">TMU</span>
+            <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111; opacity: 0.8;">VDAT 2026</span>
           </div>
-          <p class="font-mono" style="font-size: 0.72rem; margin-top: 0.85rem; font-weight: 600;">
-            Multicore RISC-V Cluster • Hardware Kalman TMU
+          <p class="font-mono" style="font-size: 0.72rem; margin-top: 0.85rem; font-weight: 700;">
+            5-Core RISC-V SoC • Q16.16 Kalman Predictor
           </p>
         </div>
 
-        <div class="silicon-telemetry">
-          <div class="telemetry-item">
-            <div class="telemetry-label">THERMAL LIMIT</div>
-            <div class="telemetry-val" style="color: var(--color-pink);">96.3% &lt;85°C</div>
+        <div class="silicon-telemetry-grid">
+          <div class="telemetry-cell">
+            <div class="telemetry-cell-label">PREDICTION RMSE</div>
+            <div class="telemetry-cell-val" style="color: var(--color-green);">0.087</div>
           </div>
-          <div class="telemetry-item">
-            <div class="telemetry-label">FPGA FOOTPRINT</div>
-            <div class="telemetry-val" style="color: var(--color-green);">18,015 LUTs</div>
+          <div class="telemetry-cell">
+            <div class="telemetry-cell-label">THERMAL LIMIT</div>
+            <div class="telemetry-cell-val" style="color: var(--color-pink);">96.3% &lt;85°C</div>
           </div>
-          <div class="telemetry-item">
-            <div class="telemetry-label">TARGET ARCH</div>
-            <div class="telemetry-val" style="color: var(--color-cyan);">UltraScale+</div>
+          <div class="telemetry-cell">
+            <div class="telemetry-cell-label">FPGA FOOTPRINT</div>
+            <div class="telemetry-cell-val" style="color: var(--color-cyan);">18,015 LUTs</div>
           </div>
         </div>
       </div>
@@ -1643,7 +1633,7 @@
       </div>
     </section>
 
-    <!-- Selected Work / Projects Section -->
+    <!-- Selected Work / Projects Section (All with Verified GitHub Artifacts) -->
     <section id="work">
       <div class="section-header-wrap">
         <div class="section-title-badge">
@@ -1665,32 +1655,63 @@
 
       <div class="projects-container" id="projects-container">
         
-        <!-- Project 1: Argus AI Hardware Debugger -->
+        <!-- Project 1: Prolepsis TMU @ VDAT 2026 (Best Artifacts from GitHub) -->
         <article class="project-card active-card" data-index="0">
           <div class="card-left">
             <div class="card-meta-chips">
-              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">EDA & AI RESEARCH</span>
-              <span class="neo-tag">WIP</span>
+              <span class="neo-tag" style="background-color: var(--color-pink); color: #111;">CONFERENCE PAPER</span>
+              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">🏆 VDAT 2026 ACCEPTED</span>
             </div>
-            <h3 class="card-title">Argus: Multi-Agent AI Hardware Debugger</h3>
+            <h3 class="card-title">Prolepsis: Predictive Thermal Management Unit</h3>
             <div class="card-tech-chips">
-              <span class="tech-pill">Python</span>
               <span class="tech-pill">SystemVerilog</span>
-              <span class="tech-pill">Waveform Parsing</span>
-              <span class="tech-pill">LLM Multi-Agent</span>
-              <span class="tech-pill">EDA Toolchain</span>
+              <span class="tech-pill">5-Core RISC-V SoC</span>
+              <span class="tech-pill">Q16.16 Kalman Filter</span>
+              <span class="tech-pill">UltraScale+ XCU250</span>
+              <span class="tech-pill">AXI4-Lite QoS</span>
+            </div>
+            <p class="card-desc">
+              An ISA-agnostic, inline RTL thermal management unit (TMU) for multicore RISC-V processors (4 RV32IMACF P-cores + 1 E-core). Evaluates execution telemetry every 4096 cycles using a fixed-point Q16.16 Kalman predictor and proactive migration policy FSM—achieving 96.3% execution within the 85°C safety limit.
+            </p>
+            <div class="card-actions">
+              <a href="https://github.com/VaradaGovind/Prolepsis-soc" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--cyan">
+                VIEW GITHUB REPO ↗
+              </a>
+              <span class="neo-btn neo-btn--pink" style="font-size: 0.75rem;">VDAT '26 ACCEPTED</span>
             </div>
           </div>
-          <div class="card-right">
-            <p class="card-desc">
-              A multi-agent AI framework for automated hardware debugging that combines deterministic RTL analysis, simulation log parsing, waveform intelligence, and protocol checking with LLM reasoning to identify root-cause RTL bugs and propose verified fixes.
-            </p>
-            <div class="hardware-metric-row">
-              <div class="metric-chip"><strong>FLOW</strong> Multi-Agent Evidence Orchestration</div>
-              <div class="metric-chip"><strong>INTELLIGENCE</strong> VCD/FSDB Waveform Parser</div>
+
+          <!-- Right: Prolepsis Silicon Artifact Monitor -->
+          <div class="silicon-artifact-box">
+            <div class="silicon-grid-bg"></div>
+            <div class="silicon-header">
+              <span>TARGET: XILINX ULTRASCALE+</span>
+              <span style="color: var(--color-green);">TIMING MET (98 MHz)</span>
             </div>
-            <div class="card-actions">
-              <span class="neo-btn neo-btn--black" style="font-size: 0.75rem;">RESEARCH FRAMEWORK</span>
+            <div class="silicon-body">
+              <div class="die-traces"></div>
+              <div class="die-core-graphic" style="--die-bg: var(--color-pink);">
+                <span class="font-mono" style="font-size: 0.6rem; font-weight: 900; color: #111;">PROLEPSIS</span>
+                <span class="font-display" style="font-size: 1.35rem; font-weight: 900; color: #111;">TMU</span>
+                <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111;">Q16.16</span>
+              </div>
+              <p class="font-mono" style="font-size: 0.68rem; margin-top: 0.75rem; font-weight: 700;">
+                Inline Telemetry @ 4096-Cycle Epochs
+              </p>
+            </div>
+            <div class="silicon-telemetry-grid">
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">PREDICTION RMSE</div>
+                <div class="telemetry-cell-val" style="color: var(--color-green);">0.087</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">THERMAL LIMIT</div>
+                <div class="telemetry-cell-val" style="color: var(--color-pink);">96.3% &lt;85°C</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">FPGA FOOTPRINT</div>
+                <div class="telemetry-cell-val" style="color: var(--color-cyan);">18,015 LUTs</div>
+              </div>
             </div>
           </div>
         </article>
@@ -1700,120 +1721,140 @@
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-cyan); color: #111;">EDGE ACCELERATOR</span>
-              <span class="neo-tag">Genesys-2 FPGA</span>
+              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">DVCon 2026 TOP 100</span>
             </div>
             <h3 class="card-title">MobileNet INT8 Systolic Array Accelerator</h3>
             <div class="card-tech-chips">
               <span class="tech-pill">Verilog</span>
-              <span class="tech-pill">16x16 Systolic Array</span>
+              <span class="tech-pill">16x16 PE Array (256 PEs)</span>
               <span class="tech-pill">AXI4 SG-DMA</span>
-              <span class="tech-pill">BRAM Sparsity</span>
-              <span class="tech-pill">Vivado</span>
+              <span class="tech-pill">Kintex UltraScale</span>
+              <span class="tech-pill">Vivado STA</span>
             </div>
-          </div>
-          <div class="card-right">
             <p class="card-desc">
-              A heterogeneous edge inference pipeline on Genesys-2 FPGA featuring a 16x16 INT8 systolic compute core delivering 51.2 GOPS at 200 MHz. Implemented sparse BRAM addressing to reduce memory bandwidth by 256x and hid memory transfer latency via ping-pong AXI4 SG-DMA streaming.
+              Synthesizable edge inference pipeline with a 16x16 INT8 spatial systolic array (256 MACs/cycle). Features streamed 3x3 convolution windowing, depthwise mapping, on-chip global pooling, and top-k selection, meeting routed timing at 207.13 MHz with 256x BRAM bandwidth reduction.
             </p>
-            <div class="hardware-metric-row">
-              <div class="metric-chip"><strong>THROUGHPUT</strong> 51.2 GOPS @ 200 MHz</div>
-              <div class="metric-chip"><strong>BANDWIDTH</strong> 256x Sparsity Reduction</div>
-              <div class="metric-chip"><strong>DMA</strong> Ping-Pong AXI4</div>
-            </div>
             <div class="card-actions">
               <a href="https://github.com/VaradaGovind/MobileNet-Accelerator-RTL" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--yellow">
-                SOURCE CODE ↗
+                VIEW GITHUB REPO ↗
               </a>
+              <span class="neo-btn neo-btn--black" style="font-size: 0.75rem;">DVCON '26 SUBMISSION</span>
+            </div>
+          </div>
+
+          <!-- Right: MobileNet Silicon Artifact Monitor -->
+          <div class="silicon-artifact-box">
+            <div class="silicon-grid-bg"></div>
+            <div class="silicon-header">
+              <span>TARGET: KINTEX ULTRASCALE</span>
+              <span style="color: var(--color-green);">WNS: +0.172 ns</span>
+            </div>
+            <div class="silicon-body">
+              <div class="die-traces"></div>
+              <div class="die-core-graphic" style="--die-bg: var(--color-cyan);">
+                <span class="font-mono" style="font-size: 0.6rem; font-weight: 900; color: #111;">16x16 ARRAY</span>
+                <span class="font-display" style="font-size: 1.35rem; font-weight: 900; color: #111;">256 PE</span>
+                <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111;">INT8 DENSE</span>
+              </div>
+              <p class="font-mono" style="font-size: 0.68rem; margin-top: 0.75rem; font-weight: 700;">
+                Ping-Pong AXI4 SG-DMA Streaming
+              </p>
+            </div>
+            <div class="silicon-telemetry-grid">
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">THROUGHPUT</div>
+                <div class="telemetry-cell-val" style="color: var(--color-green);">51.2 GOPS</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">ROUTED FMAX</div>
+                <div class="telemetry-cell-val" style="color: var(--color-yellow);">207.13 MHz</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">SPARSITY GAIN</div>
+                <div class="telemetry-cell-val" style="color: var(--color-cyan);">256x Saving</div>
+              </div>
             </div>
           </div>
         </article>
 
-        <!-- Project 3: Prolepsis TMU @ VDAT 2026 -->
+        <!-- Project 3: GridLock AES-128 Accelerator -->
         <article class="project-card" data-index="2">
           <div class="card-left">
             <div class="card-meta-chips">
-              <span class="neo-tag" style="background-color: var(--color-pink); color: #111;">CONFERENCE PAPER</span>
-              <span class="neo-tag">VDAT 2026 ACCEPTED</span>
+              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">CRYPTOGRAPHY RTL</span>
+              <span class="neo-tag">BRAM-LESS S-BOX</span>
             </div>
-            <h3 class="card-title">Prolepsis: ISA-Agnostic Predictive Thermal Management</h3>
+            <h3 class="card-title">GridLock AES: 1.66 Gbps Cryptographic Engine</h3>
             <div class="card-tech-chips">
               <span class="tech-pill">SystemVerilog</span>
-              <span class="tech-pill">RISC-V Multicore</span>
-              <span class="tech-pill">Kalman Predictor</span>
-              <span class="tech-pill">UltraScale+</span>
+              <span class="tech-pill">Composite Field GF((2^4)^2)</span>
+              <span class="tech-pill">AXI4-Lite</span>
+              <span class="tech-pill">AXI4-Stream</span>
+              <span class="tech-pill">Artix-7 XC7A100T</span>
+            </div>
+            <p class="card-desc">
+              High-throughput AES-128 encryption engine featuring dual interfaces: AXI4-Lite for key expansion/control and 128-bit AXI4-Stream for data path. Implements pure combinatorial Composite Galois Field arithmetic for a zero-BRAM S-Box, achieving 1.66 Gbps with +1.049 ns positive slack.
+            </p>
+            <div class="card-actions">
+              <a href="https://github.com/VaradaGovind/GridLock-AES" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--yellow">
+                VIEW GITHUB REPO ↗
+              </a>
             </div>
           </div>
-          <div class="card-right">
-            <p class="card-desc">
-              Architected an ISA-agnostic RTL Thermal Management Unit (TMU) for multicore RISC-V processors. Designed a hardware Kalman predictor and policy FSM for proactive throttling and task migration, achieving 96.3% execution under an 85°C thermal safety limit using 18,015 LUTs on AMD Xilinx UltraScale+.
-            </p>
-            <div class="hardware-metric-row">
-              <div class="metric-chip"><strong>THERMAL LIMIT</strong> 96.3% compliance (&lt;85°C)</div>
-              <div class="metric-chip"><strong>AREA</strong> 18,015 LUTs on UltraScale+</div>
+
+          <!-- Right: GridLock Silicon Artifact Monitor -->
+          <div class="silicon-artifact-box">
+            <div class="silicon-grid-bg"></div>
+            <div class="silicon-header">
+              <span>TARGET: ARTIX-7 XC7A100T</span>
+              <span style="color: var(--color-green);">WNS: +1.049 ns</span>
             </div>
-            <div class="card-actions">
-              <a href="https://github.com/VaradaGovind/Prolepsis-soc" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--cyan">
-                SOURCE CODE ↗
-              </a>
-              <span class="neo-btn neo-btn--pink" style="font-size: 0.75rem;">VDAT '26 ACCEPTED</span>
+            <div class="silicon-body">
+              <div class="die-traces"></div>
+              <div class="die-core-graphic" style="--die-bg: var(--color-yellow);">
+                <span class="font-mono" style="font-size: 0.6rem; font-weight: 900; color: #111;">GRIDLOCK</span>
+                <span class="font-display" style="font-size: 1.35rem; font-weight: 900; color: #111;">AES</span>
+                <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111;">128-BIT</span>
+              </div>
+              <p class="font-mono" style="font-size: 0.68rem; margin-top: 0.75rem; font-weight: 700;">
+                Pure Logic S-Box (0 Block RAM)
+              </p>
+            </div>
+            <div class="silicon-telemetry-grid">
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">LINE RATE</div>
+                <div class="telemetry-cell-val" style="color: var(--color-green);">1.66 Gbps</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">CLOCK FMAX</div>
+                <div class="telemetry-cell-val" style="color: var(--color-cyan);">150 MHz</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">LUT USAGE</div>
+                <div class="telemetry-cell-val" style="color: var(--color-pink);">2,581 LUTs</div>
+              </div>
             </div>
           </div>
         </article>
 
-        <!-- Project 4: GridLock AES-128 Accelerator -->
+        <!-- Project 4: RV32I Soft-Core Processor & Protocols -->
         <article class="project-card" data-index="3">
           <div class="card-left">
             <div class="card-meta-chips">
-              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">CRYPTOGRAPHY RTL</span>
-            </div>
-            <h3 class="card-title">GridLock AES: 1.66 Gbps Cryptographic Core</h3>
-            <div class="card-tech-chips">
-              <span class="tech-pill">SystemVerilog</span>
-              <span class="tech-pill">Composite Galois Field</span>
-              <span class="tech-pill">AXI4-Lite</span>
-              <span class="tech-pill">Timing Closure</span>
-            </div>
-          </div>
-          <div class="card-right">
-            <p class="card-desc">
-              High-throughput AES-128 cryptographic engine achieving 1.66 Gbps with 150 MHz timing closure (WNS: +1.049 ns). Reduced logic area by 40% using Composite Field Arithmetic for a pure BRAM-less S-Box (2,581 LUTs, 539 Registers).
-            </p>
-            <div class="hardware-metric-row">
-              <div class="metric-chip"><strong>SPEED</strong> 1.66 Gbps @ 150 MHz</div>
-              <div class="metric-chip"><strong>AREA REDUCTION</strong> 40% Logic Reduction</div>
-              <div class="metric-chip"><strong>SLACK</strong> WNS +1.049 ns</div>
-            </div>
-            <div class="card-actions">
-              <a href="https://github.com/VaradaGovind/GridLock-AES" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--yellow">
-                SOURCE CODE ↗
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 5: RV32I Soft-Core Processor -->
-        <article class="project-card" data-index="4">
-          <div class="card-left">
-            <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-green); color: #111;">MICROARCHITECTURE</span>
+              <span class="neo-tag">SILICON SYNTHESIZED</span>
             </div>
             <h3 class="card-title">RV32I Soft-Core & Hardware Protocol Suite</h3>
             <div class="card-tech-chips">
               <span class="tech-pill">Verilog</span>
-              <span class="tech-pill">RISC-V ISA</span>
+              <span class="tech-pill">RV32I Base ISA</span>
+              <span class="tech-pill">MMIO Controller</span>
               <span class="tech-pill">UART / SPI / I2C</span>
               <span class="tech-pill">Nexys 4 DDR</span>
             </div>
-          </div>
-          <div class="card-right">
             <p class="card-desc">
-              Single-cycle RV32I processor core with custom MMIO meeting 100 MHz timing closure at ultra-low area (~300 LUTs). Coupled with robust hardware controllers for 16-bit configurable UART, SPI Master/Slave, and multi-master I2C with Clock Domain Crossing (CDC).
+              Area-optimized 32-bit single-cycle RISC-V soft-core with custom memory-mapped I/O peripheral controllers. Synthesized and verified on Artix-7 fabric with massive positive timing slack (+8.161 ns at 100 MHz) using only 300 LUTs, coupled with CDC-safe UART, SPI, and I2C controllers.
             </p>
-            <div class="hardware-metric-row">
-              <div class="metric-chip"><strong>FOOTPRINT</strong> ~300 LUTs Soft-Core</div>
-              <div class="metric-chip"><strong>TIMING</strong> 100 MHz on Nexys 4 DDR</div>
-              <div class="metric-chip"><strong>PROTOCOLS</strong> UART, SPI, I2C with CDC</div>
-            </div>
             <div class="card-actions">
               <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--cyan">
                 RV32I REPO ↗
@@ -1823,34 +1864,156 @@
               </a>
             </div>
           </div>
+
+          <!-- Right: RV32I Silicon Artifact Monitor -->
+          <div class="silicon-artifact-box">
+            <div class="silicon-grid-bg"></div>
+            <div class="silicon-header">
+              <span>TARGET: NEXYS 4 DDR</span>
+              <span style="color: var(--color-green);">WNS: +8.161 ns</span>
+            </div>
+            <div class="silicon-body">
+              <div class="die-traces"></div>
+              <div class="die-core-graphic" style="--die-bg: var(--color-green);">
+                <span class="font-mono" style="font-size: 0.6rem; font-weight: 900; color: #111;">RISC-V</span>
+                <span class="font-display" style="font-size: 1.35rem; font-weight: 900; color: #111;">RV32I</span>
+                <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111;">SINGLE-CYCLE</span>
+              </div>
+              <p class="font-mono" style="font-size: 0.68rem; margin-top: 0.75rem; font-weight: 700;">
+                Ultra-Compact MMIO Control Datapath
+              </p>
+            </div>
+            <div class="silicon-telemetry-grid">
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">CORE AREA</div>
+                <div class="telemetry-cell-val" style="color: var(--color-green);">300 LUTs</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">REGISTERS</div>
+                <div class="telemetry-cell-val" style="color: var(--color-yellow);">117 FFs</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">ON-BOARD CLK</div>
+                <div class="telemetry-cell-val" style="color: var(--color-cyan);">100 MHz</div>
+              </div>
+            </div>
+          </div>
         </article>
 
-        <!-- Project 6: CMOS Standard Cell Library -->
-        <article class="project-card" data-index="5">
+        <!-- Project 5: CMOS Standard Cell Library -->
+        <article class="project-card" data-index="4">
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-purple); color: #111;">VLSI & SPICE</span>
+              <span class="neo-tag">TRANSISTOR LEVEL</span>
             </div>
             <h3 class="card-title">CMOS Standard Cell Library & Hierarchical Adder</h3>
             <div class="card-tech-chips">
-              <span class="tech-pill">SPICE</span>
-              <span class="tech-pill">NMOS / PMOS</span>
-              <span class="tech-pill">DC Sweep</span>
+              <span class="tech-pill">SPICE Netlist</span>
+              <span class="tech-pill">45nm/90nm NMOS/PMOS</span>
+              <span class="tech-pill">DC Voltage Transfer</span>
+              <span class="tech-pill">Noise Margin (VIL/VIH)</span>
               <span class="tech-pill">Transient Analysis</span>
             </div>
-          </div>
-          <div class="card-right">
             <p class="card-desc">
-              Custom standard cell library (Inverter, NAND, D-FlipFlop) and hierarchical 1-bit full adder designed from the transistor level. Verified using rigorous transient and DC sweep analysis for delay, noise margins, and power dissipation.
+              Custom standard cell library (Inverter, 2-input NAND, D-FlipFlop) and a 1-bit full adder designed from the transistor level. Validated through rigorous DC sweep and transient SPICE simulations to extract noise margins, propagation delay, and switching power dissipation.
             </p>
-            <div class="hardware-metric-row">
-              <div class="metric-chip"><strong>CIRCUITS</strong> Inverter, NAND, Flip-Flop, Adder</div>
-              <div class="metric-chip"><strong>ANALYSIS</strong> DC Sweep & Transient Verification</div>
-            </div>
             <div class="card-actions">
               <a href="https://github.com/VaradaGovind/CMOS-Standard-Cell-Library" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--yellow">
-                SPICE REPO ↗
+                VIEW GITHUB REPO ↗
               </a>
+            </div>
+          </div>
+
+          <!-- Right: CMOS Silicon Artifact Monitor -->
+          <div class="silicon-artifact-box">
+            <div class="silicon-grid-bg"></div>
+            <div class="silicon-header">
+              <span>MODEL: SPICE TRANSIENT</span>
+              <span style="color: var(--color-green);">DC SWEEP MET</span>
+            </div>
+            <div class="silicon-body">
+              <div class="die-traces"></div>
+              <div class="die-core-graphic" style="--die-bg: var(--color-purple);">
+                <span class="font-mono" style="font-size: 0.6rem; font-weight: 900; color: #111;">CMOS</span>
+                <span class="font-display" style="font-size: 1.35rem; font-weight: 900; color: #111;">CELLS</span>
+                <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111;">SPICE</span>
+              </div>
+              <p class="font-mono" style="font-size: 0.68rem; margin-top: 0.75rem; font-weight: 700;">
+                Inverter, NAND, D-FF, Full Adder
+              </p>
+            </div>
+            <div class="silicon-telemetry-grid">
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">PRIMITIVES</div>
+                <div class="telemetry-cell-val" style="color: var(--color-green);">4 Custom</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">VERIFICATION</div>
+                <div class="telemetry-cell-val" style="color: var(--color-cyan);">DC &amp; Noise</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">METRICS</div>
+                <div class="telemetry-cell-val" style="color: var(--color-pink);">Delay / Power</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6: Argus AI Hardware Debugger -->
+        <article class="project-card" data-index="5">
+          <div class="card-left">
+            <div class="card-meta-chips">
+              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">EDA & AI RESEARCH</span>
+              <span class="neo-tag">WIP FRAMEWORK</span>
+            </div>
+            <h3 class="card-title">Argus: Multi-Agent AI Hardware Debugger</h3>
+            <div class="card-tech-chips">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">SystemVerilog</span>
+              <span class="tech-pill">VCD/FSDB Waveform Parser</span>
+              <span class="tech-pill">LLM Multi-Agent</span>
+              <span class="tech-pill">EDA Toolchain</span>
+            </div>
+            <p class="card-desc">
+              A multi-agent AI framework for automated hardware debugging that combines deterministic RTL analysis, simulation log parsing, waveform intelligence, and protocol checking with LLM reasoning to identify root-cause RTL bugs and propose verified fixes.
+            </p>
+            <div class="card-actions">
+              <span class="neo-btn neo-btn--black" style="font-size: 0.75rem;">RESEARCH FRAMEWORK</span>
+            </div>
+          </div>
+
+          <!-- Right: Argus Silicon Artifact Monitor -->
+          <div class="silicon-artifact-box">
+            <div class="silicon-grid-bg"></div>
+            <div class="silicon-header">
+              <span>FLOW: MULTI-AGENT EDA</span>
+              <span style="color: var(--color-green);">WAVEFORM CHECK</span>
+            </div>
+            <div class="silicon-body">
+              <div class="die-traces"></div>
+              <div class="die-core-graphic" style="--die-bg: var(--color-amber);">
+                <span class="font-mono" style="font-size: 0.6rem; font-weight: 900; color: #111;">AGENTIC</span>
+                <span class="font-display" style="font-size: 1.35rem; font-weight: 900; color: #111;">ARGUS</span>
+                <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111;">LLM EDA</span>
+              </div>
+              <p class="font-mono" style="font-size: 0.68rem; margin-top: 0.75rem; font-weight: 700;">
+                Deterministic RTL + Waveform Intelligence
+              </p>
+            </div>
+            <div class="silicon-telemetry-grid">
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">PARSER</div>
+                <div class="telemetry-cell-val" style="color: var(--color-green);">VCD / FSDB</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">ORCHESTRATION</div>
+                <div class="telemetry-cell-val" style="color: var(--color-cyan);">Multi-Agent</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">AUTOMATION</div>
+                <div class="telemetry-cell-val" style="color: var(--color-pink);">Bug Root-Cause</div>
+              </div>
             </div>
           </div>
         </article>
@@ -2172,7 +2335,6 @@
       window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        // Dot tracks immediately
         cursorDot.style.left = `${mouseX}px`;
         cursorDot.style.top = `${mouseY}px`;
       }, { passive: true });
@@ -2187,7 +2349,7 @@
       renderCursor();
 
       function bindHoverElements() {
-        const hoverTargets = document.querySelectorAll('a, button, .sticky-note, .project-card, .skill-card, .neo-tag, .bento-resume-card');
+        const hoverTargets = document.querySelectorAll('a, button, .sticky-note, .project-card, .skill-card, .neo-tag, .bento-resume-card, .silicon-artifact-box');
         hoverTargets.forEach((target) => {
           target.addEventListener('mouseenter', () => cursorRing.classList.add('cursor-hover'));
           target.addEventListener('mouseleave', () => cursorRing.classList.remove('cursor-hover'));
@@ -2195,11 +2357,9 @@
       }
       bindHoverElements();
 
-      // Click Elastic Squash
       window.addEventListener('mousedown', () => cursorRing.classList.add('cursor-active'));
       window.addEventListener('mouseup', () => cursorRing.classList.remove('cursor-active'));
 
-      // Lens Mode on Hero Interactive Box
       if (heroBox) {
         heroBox.addEventListener('mouseenter', () => cursorRing.classList.add('cursor-lens'));
         heroBox.addEventListener('mouseleave', () => cursorRing.classList.remove('cursor-lens'));
@@ -2354,7 +2514,6 @@
     function openContactModal() {
       if (contactModal) {
         contactModal.showModal();
-        // Re-parent custom cursor elements inside the modal so they stay in the Top Layer above the dialog backdrop!
         if (cursorRing && cursorDot) {
           contactModal.appendChild(cursorRing);
           contactModal.appendChild(cursorDot);
@@ -2365,7 +2524,6 @@
     function closeContactModal() {
       if (contactModal) {
         contactModal.close();
-        // Return cursor elements back to document.body
         if (cursorRing && cursorDot) {
           document.body.appendChild(cursorRing);
           document.body.appendChild(cursorDot);
