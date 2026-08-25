@@ -8,6 +8,9 @@
   <meta name="author" content="Varada Govind Aakula">
   <meta name="theme-color" content="#f8f8f6" id="theme-color-meta">
 
+  <!-- Favicon: Hardware Silicon Chip Neo-Logo -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fef08a' stroke='%23121214' stroke-width='2' rx='4'/%3E%3Crect x='7' y='7' width='18' height='18' fill='%23121214' rx='2'/%3E%3Ctext x='16' y='20' fill='%23fef08a' font-family='monospace' font-weight='900' font-size='10' text-anchor='middle'%3EVG%3C/text%3E%3Cline x1='16' y1='2' x2='16' y2='6' stroke='%23121214' stroke-width='2'/%3E%3Cline x1='16' y1='26' x2='16' y2='30' stroke='%23121214' stroke-width='2'/%3E%3Cline x1='2' y1='16' x2='6' y2='16' stroke='%23121214' stroke-width='2'/%3E%3Cline x1='26' y1='16' x2='30' y2='16' stroke='%23121214' stroke-width='2'/%3E%3C/svg%3E">
+
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://varadagovind.github.io/VG.rtl/">
@@ -68,11 +71,15 @@
       --font-mono: 'IBM Plex Mono', monospace;
 
       /* Light Theme Colors */
-      --color-bg: #f8f8f6;
+      --color-bg: #fafaf7;
       --color-fg: #121214;
       --color-main: #ffffff;
       --color-panel: #ffffff;
       --color-border: #121214;
+
+      /* Grid Dot Pattern Color */
+      --color-dot-grid: rgba(18, 18, 20, 0.08);
+      --color-grid-line: rgba(18, 18, 20, 0.04);
 
       /* Pastel Neo Accents */
       --color-yellow: #fef08a;
@@ -101,6 +108,10 @@
       --color-panel: #18191f;
       --color-border: #f4f4f5;
 
+      /* Dark Grid Dot Pattern */
+      --color-dot-grid: rgba(244, 244, 245, 0.12);
+      --color-grid-line: rgba(244, 244, 245, 0.04);
+
       /* Neon Dark Accents */
       --color-yellow: #f59e0b;
       --color-cyan: #06b6d4;
@@ -117,7 +128,7 @@
     }
 
     /* -------------------------------------------------------------
-       2. BASE STYLES & RESET
+       2. BASE STYLES & CLEAN RETRO-TECH BACKGROUND
        ------------------------------------------------------------- */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -140,6 +151,23 @@
       overflow-x: hidden;
       transition: background-color 0.25s ease, color 0.25s ease;
       cursor: none;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Clean subtle retro dot grid background similar to ayanmahata.pages.dev */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: 
+        radial-gradient(var(--color-dot-grid) 1px, transparent 1px),
+        linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
+      background-size: 24px 24px, 120px 120px, 120px 120px;
+      opacity: 0.9;
     }
 
     @media (pointer: coarse), (prefers-reduced-motion: reduce) {
@@ -329,7 +357,7 @@
     }
 
     /* -------------------------------------------------------------
-       5. HEADER & NAVIGATION
+       5. HEADER & NAVIGATION WITH PROMINENT LOGO
        ------------------------------------------------------------- */
     .site-nav {
       position: fixed;
@@ -339,7 +367,7 @@
       z-index: 1000;
       background-color: var(--color-bg);
       border-bottom: var(--border-thick);
-      padding: 0.75rem 1.25rem;
+      padding: 0.65rem 1.25rem;
       transition: background-color 0.25s ease, border-color 0.25s ease;
     }
 
@@ -358,22 +386,66 @@
       gap: 0.85rem;
     }
 
-    .nav-brand {
+    /* Prominent Hardware Logo Mark */
+    .nav-brand-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .nav-logo-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background-color: var(--color-yellow);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-sm);
+      color: #111111;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1rem;
+      position: relative;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .nav-brand-link:hover .nav-logo-badge {
+      transform: translate(2px, 2px);
+      box-shadow: 0 0 0 0 var(--color-border);
+    }
+
+    .nav-logo-pins {
+      position: absolute;
+      inset: -4px;
+      border: 1px dashed var(--color-fg);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .nav-brand-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-brand-title {
       font-family: var(--font-display);
       font-weight: 900;
       font-size: 1.15rem;
       letter-spacing: -0.02em;
+      line-height: 1.1;
       text-transform: uppercase;
-      padding: 0.35rem 0.75rem;
-      background-color: var(--color-fg);
-      color: var(--color-bg);
-      border: var(--border-thin);
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.12s ease;
+      color: var(--color-fg);
     }
 
-    .nav-brand:hover {
-      transform: translate(2px, 2px);
+    .nav-brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      opacity: 0.75;
+      text-transform: uppercase;
     }
 
     .nav-socials {
@@ -1359,17 +1431,24 @@
       .nav-brand-group {
         gap: 0.4rem;
       }
-      .nav-brand {
+      .nav-logo-badge {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+      }
+      .nav-brand-title {
         font-size: 0.95rem;
-        padding: 0.25rem 0.5rem;
+      }
+      .nav-brand-sub {
+        display: none;
       }
       .nav-socials .neo-social-btn {
         width: 32px;
         height: 32px;
       }
       .nav-links .neo-btn {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.72rem;
+        padding: 0.4rem 0.55rem;
+        font-size: 0.7rem;
       }
       .container-page {
         padding: 5.5rem 1rem 3rem;
@@ -1399,9 +1478,31 @@
   <nav class="site-nav" id="site-nav">
     <div class="nav-inner">
       <div class="nav-brand-group">
-        <a href="#hero" class="nav-brand" id="nav-brand-logo">
-          VG.RTL
+        <!-- Prominent Hardware Logo Mark & Title -->
+        <a href="#hero" class="nav-brand-link" id="nav-brand-logo" aria-label="Varada Govind Portfolio Home">
+          <div class="nav-logo-badge">
+            <div class="nav-logo-pins"></div>
+            <!-- Embedded Minimalist Silicon Vector -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <line x1="9" y1="1" x2="9" y2="4"></line>
+              <line x1="15" y1="1" x2="15" y2="4"></line>
+              <line x1="9" y1="20" x2="9" y2="23"></line>
+              <line x1="15" y1="20" x2="15" y2="23"></line>
+              <line x1="20" y1="9" x2="23" y2="9"></line>
+              <line x1="20" y1="14" x2="23" y2="14"></line>
+              <line x1="1" y1="9" x2="4" y2="9"></line>
+              <line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+          </div>
+          <div class="nav-brand-text-wrap">
+            <span class="nav-brand-title">VG.RTL</span>
+            <span class="nav-brand-sub">VARADA GOVIND</span>
+          </div>
         </a>
+
+        <!-- Social Icons -->
         <div class="nav-socials">
           <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener noreferrer" class="neo-social-btn" aria-label="GitHub Profile">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -1412,6 +1513,7 @@
         </div>
       </div>
 
+      <!-- Navigation Links -->
       <ul class="nav-links" id="nav-links">
         <li class="nav-link-item">
           <a href="#work" class="neo-btn">WORK</a>
