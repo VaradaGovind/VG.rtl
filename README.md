@@ -27,7 +27,7 @@ Built with a **Clean Neobrutalist aesthetic** inspired by modern retro-tech inte
 | # | Project | Focus Area | Key Benchmark / Metric | Status | Repo |
 |---|---|---|---|---|---|
 | **1** | **Argus: Multi-Agent AI Hardware Debugger** | EDA & AI Research | VCD/FSDB Waveform Parsing + LLM Multi-Agent Reasoning | `WIP` | — |
-| **2** | **Prolepsis: Predictive Thermal Management Unit** | Computer Architecture | **96.3% <85°C** Thermal Compliance, **0.087 RMSE**, 18,015 LUTs | `VDAT 2026` | [Prolepsis-soc](https://github.com/VaradaGovind/Prolepsis-soc) |
+| **2** | **Prolepsis: Predictive Thermal Management Unit** | Computer Architecture | **96.3% <85°C** Thermal Compliance, **0.087 RMSE**, 18,015 LUTs | `VDAT 2026` | [Prolepsis-SoC](https://github.com/VaradaGovind/Prolepsis-SoC) |
 | **3** | **MobileNet INT8 Systolic Array Accelerator** | Edge AI / Acceleration | **51.2 GOPS**, **207.13 MHz Fmax** (`WNS +0.172ns`), 256x Sparsity | `DVCon '26` | [MobileNet-RTL](https://github.com/VaradaGovind/MobileNet-Accelerator-RTL) |
 | **4** | **GridLock AES: 1.66 Gbps Cryptographic Core** | Cryptography RTL | **1.66 Gbps @ 150 MHz** (`WNS +1.049ns`), 0 BRAM S-Box | `Completed` | [GridLock-AES](https://github.com/VaradaGovind/GridLock-AES) |
 | **5** | **RV32I Soft-Core & Hardware Protocol Suite** | Microarchitecture | **~300 LUTs @ 100 MHz** (`WNS +8.161ns`), UART/SPI/I2C CDC | `Synthesized` | [rtl-riscv32](https://github.com/VaradaGovind/rtl-riscv32) |
