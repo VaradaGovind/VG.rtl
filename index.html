@@ -368,7 +368,7 @@
     }
 
     /* -------------------------------------------------------------
-       4. HEADER & NAVIGATION WITH PROMINENT LOGO
+       4. HEADER & NAVIGATION WITH PROMINENT LOGO (Clean Nav without Resume Link)
        ------------------------------------------------------------- */
     .site-nav {
       position: fixed;
@@ -1464,7 +1464,7 @@
   <!-- Scroll Progress Indicator -->
   <div id="scroll-progress"></div>
 
-  <!-- Site Navigation -->
+  <!-- Site Navigation (Clean Nav with WORK, NOTES, ARSENAL, Theme Toggle) -->
   <nav class="site-nav" id="site-nav">
     <div class="nav-inner">
       <div class="nav-brand-group">
@@ -1503,7 +1503,7 @@
         </div>
       </div>
 
-      <!-- Navigation Links -->
+      <!-- Navigation Links (Clean: Work, Notes, Arsenal, Theme) -->
       <ul class="nav-links" id="nav-links">
         <li class="nav-link-item">
           <a href="#work" class="neo-btn">WORK</a>
@@ -1513,9 +1513,6 @@
         </li>
         <li class="nav-link-item">
           <a href="#arsenal" class="neo-btn">ARSENAL</a>
-        </li>
-        <li class="nav-link-item">
-          <a href="#resume" class="neo-btn">RESUME</a>
         </li>
         <li>
           <button class="neo-social-btn dark-toggle" id="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -1633,7 +1630,7 @@
       </div>
     </section>
 
-    <!-- Selected Work / Projects Section (All with Verified GitHub Artifacts) -->
+    <!-- Selected Work / Projects Section (WIP Projects at the Top) -->
     <section id="work">
       <div class="section-header-wrap">
         <div class="section-title-badge">
@@ -1655,8 +1652,67 @@
 
       <div class="projects-container" id="projects-container">
         
-        <!-- Project 1: Prolepsis TMU @ VDAT 2026 (Best Artifacts from GitHub) -->
+        <!-- Project 1: Argus AI Hardware Debugger (WIP Project - Placed at Top!) -->
         <article class="project-card active-card" data-index="0">
+          <div class="card-left">
+            <div class="card-meta-chips">
+              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">EDA & AI RESEARCH</span>
+              <span class="neo-tag" style="background-color: var(--color-pink); color: #111;">🔥 WORK IN PROGRESS</span>
+            </div>
+            <h3 class="card-title">Argus: Multi-Agent AI Hardware Debugger</h3>
+            <div class="card-tech-chips">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">SystemVerilog</span>
+              <span class="tech-pill">VCD/FSDB Waveform Parser</span>
+              <span class="tech-pill">LLM Multi-Agent</span>
+              <span class="tech-pill">EDA Toolchain</span>
+            </div>
+            <p class="card-desc">
+              An active research multi-agent AI framework for automated hardware debugging. Combines deterministic RTL AST analysis, simulation log parsing, waveform intelligence, and protocol checking with LLM reasoning to isolate root-cause RTL bugs and synthesize verified fixes.
+            </p>
+            <div class="card-actions">
+              <span class="neo-btn neo-btn--black" style="font-size: 0.75rem;">ACTIVE RESEARCH FRAMEWORK</span>
+              <span class="neo-btn neo-btn--yellow" style="font-size: 0.75rem;">WIP / PROTOTYPE</span>
+            </div>
+          </div>
+
+          <!-- Right: Argus Silicon Artifact Monitor -->
+          <div class="silicon-artifact-box">
+            <div class="silicon-grid-bg"></div>
+            <div class="silicon-header">
+              <span>FLOW: MULTI-AGENT EDA</span>
+              <span style="color: var(--color-green);">WAVEFORM CHECK</span>
+            </div>
+            <div class="silicon-body">
+              <div class="die-traces"></div>
+              <div class="die-core-graphic" style="--die-bg: var(--color-amber);">
+                <span class="font-mono" style="font-size: 0.6rem; font-weight: 900; color: #111;">AGENTIC</span>
+                <span class="font-display" style="font-size: 1.35rem; font-weight: 900; color: #111;">ARGUS</span>
+                <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111;">LLM EDA</span>
+              </div>
+              <p class="font-mono" style="font-size: 0.68rem; margin-top: 0.75rem; font-weight: 700;">
+                Deterministic RTL + Waveform Intelligence
+              </p>
+            </div>
+            <div class="silicon-telemetry-grid">
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">PARSER</div>
+                <div class="telemetry-cell-val" style="color: var(--color-green);">VCD / FSDB</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">ORCHESTRATION</div>
+                <div class="telemetry-cell-val" style="color: var(--color-cyan);">Multi-Agent</div>
+              </div>
+              <div class="telemetry-cell">
+                <div class="telemetry-cell-label">AUTOMATION</div>
+                <div class="telemetry-cell-val" style="color: var(--color-pink);">Bug Root-Cause</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Prolepsis TMU @ VDAT 2026 -->
+        <article class="project-card" data-index="1">
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-pink); color: #111;">CONFERENCE PAPER</span>
@@ -1716,8 +1772,8 @@
           </div>
         </article>
 
-        <!-- Project 2: MobileNet INT8 Systolic Array Accelerator -->
-        <article class="project-card" data-index="1">
+        <!-- Project 3: MobileNet INT8 Systolic Array Accelerator -->
+        <article class="project-card" data-index="2">
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-cyan); color: #111;">EDGE ACCELERATOR</span>
@@ -1777,8 +1833,8 @@
           </div>
         </article>
 
-        <!-- Project 3: GridLock AES-128 Accelerator -->
-        <article class="project-card" data-index="2">
+        <!-- Project 4: GridLock AES-128 Accelerator -->
+        <article class="project-card" data-index="3">
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">CRYPTOGRAPHY RTL</span>
@@ -1837,8 +1893,8 @@
           </div>
         </article>
 
-        <!-- Project 4: RV32I Soft-Core Processor & Protocols -->
-        <article class="project-card" data-index="3">
+        <!-- Project 5: RV32I Soft-Core Processor & Protocols -->
+        <article class="project-card" data-index="4">
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-green); color: #111;">MICROARCHITECTURE</span>
@@ -1900,8 +1956,8 @@
           </div>
         </article>
 
-        <!-- Project 5: CMOS Standard Cell Library -->
-        <article class="project-card" data-index="4">
+        <!-- Project 6: CMOS Standard Cell Library -->
+        <article class="project-card" data-index="5">
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-purple); color: #111;">VLSI & SPICE</span>
@@ -1955,64 +2011,6 @@
               <div class="telemetry-cell">
                 <div class="telemetry-cell-label">METRICS</div>
                 <div class="telemetry-cell-val" style="color: var(--color-pink);">Delay / Power</div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 6: Argus AI Hardware Debugger -->
-        <article class="project-card" data-index="5">
-          <div class="card-left">
-            <div class="card-meta-chips">
-              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">EDA & AI RESEARCH</span>
-              <span class="neo-tag">WIP FRAMEWORK</span>
-            </div>
-            <h3 class="card-title">Argus: Multi-Agent AI Hardware Debugger</h3>
-            <div class="card-tech-chips">
-              <span class="tech-pill">Python</span>
-              <span class="tech-pill">SystemVerilog</span>
-              <span class="tech-pill">VCD/FSDB Waveform Parser</span>
-              <span class="tech-pill">LLM Multi-Agent</span>
-              <span class="tech-pill">EDA Toolchain</span>
-            </div>
-            <p class="card-desc">
-              A multi-agent AI framework for automated hardware debugging that combines deterministic RTL analysis, simulation log parsing, waveform intelligence, and protocol checking with LLM reasoning to identify root-cause RTL bugs and propose verified fixes.
-            </p>
-            <div class="card-actions">
-              <span class="neo-btn neo-btn--black" style="font-size: 0.75rem;">RESEARCH FRAMEWORK</span>
-            </div>
-          </div>
-
-          <!-- Right: Argus Silicon Artifact Monitor -->
-          <div class="silicon-artifact-box">
-            <div class="silicon-grid-bg"></div>
-            <div class="silicon-header">
-              <span>FLOW: MULTI-AGENT EDA</span>
-              <span style="color: var(--color-green);">WAVEFORM CHECK</span>
-            </div>
-            <div class="silicon-body">
-              <div class="die-traces"></div>
-              <div class="die-core-graphic" style="--die-bg: var(--color-amber);">
-                <span class="font-mono" style="font-size: 0.6rem; font-weight: 900; color: #111;">AGENTIC</span>
-                <span class="font-display" style="font-size: 1.35rem; font-weight: 900; color: #111;">ARGUS</span>
-                <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111;">LLM EDA</span>
-              </div>
-              <p class="font-mono" style="font-size: 0.68rem; margin-top: 0.75rem; font-weight: 700;">
-                Deterministic RTL + Waveform Intelligence
-              </p>
-            </div>
-            <div class="silicon-telemetry-grid">
-              <div class="telemetry-cell">
-                <div class="telemetry-cell-label">PARSER</div>
-                <div class="telemetry-cell-val" style="color: var(--color-green);">VCD / FSDB</div>
-              </div>
-              <div class="telemetry-cell">
-                <div class="telemetry-cell-label">ORCHESTRATION</div>
-                <div class="telemetry-cell-val" style="color: var(--color-cyan);">Multi-Agent</div>
-              </div>
-              <div class="telemetry-cell">
-                <div class="telemetry-cell-label">AUTOMATION</div>
-                <div class="telemetry-cell-val" style="color: var(--color-pink);">Bug Root-Cause</div>
               </div>
             </div>
           </div>
