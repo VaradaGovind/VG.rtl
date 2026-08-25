@@ -1,10 +1,5 @@
 # ⚡ VG.rtl // Varada Govind Aakula
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Conference](https://img.shields.io/badge/Accepted-VDAT%202026-pink.svg)](https://github.com/VaradaGovind/Prolepsis-soc)
-[![Contest](https://img.shields.io/badge/DVCon%20India%202026-Top%20100-yellow.svg)](https://github.com/VaradaGovind/MobileNet-Accelerator-RTL)
-[![Style](https://img.shields.io/badge/Aesthetic-Clean%20Neobrutalism-blue.svg)](#-visual--interaction-design)
-
 A high-performance, responsive portfolio website for **Varada Govind Aakula**—Hardware Researcher and RTL/VLSI Engineer at IIIT Allahabad. The website showcases synthesizable digital logic designs, RISC-V microarchitectures, edge AI compute accelerators, and automated multi-agent EDA debugging frameworks.
 
 Built with a **Clean Neobrutalist aesthetic** inspired by modern retro-tech interfaces, featuring tactile physical textures, high-contrast borders, dynamic silicon die telemetry monitors, and custom cursor physics without the bloat of heavy runtime frameworks.
