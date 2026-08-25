@@ -6,10 +6,10 @@
   <title>Varada Govind Aakula — Hardware Researcher & RTL/VLSI Engineer</title>
   <meta name="description" content="Portfolio of Varada Govind Aakula: Hardware Researcher at IIIT Allahabad specializing in RTL Design, RISC-V Microarchitecture, FPGA Acceleration, and CMOS VLSI.">
   <meta name="author" content="Varada Govind Aakula">
-  <meta name="theme-color" content="#f8f8f6" id="theme-color-meta">
+  <meta name="theme-color" content="#fafaf7" id="theme-color-meta">
 
   <!-- Favicon: Hardware Silicon Chip Neo-Logo -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fef08a' stroke='%23121214' stroke-width='2' rx='4'/%3E%3Crect x='7' y='7' width='18' height='18' fill='%23121214' rx='2'/%3E%3Ctext x='16' y='20' fill='%23fef08a' font-family='monospace' font-weight='900' font-size='10' text-anchor='middle'%3EVG%3C/text%3E%3Cline x1='16' y1='2' x2='16' y2='6' stroke='%23121214' stroke-width='2'/%3E%3Cline x1='16' y1='26' x2='16' y2='30' stroke='%23121214' stroke-width='2'/%3E%3Cline x1='2' y1='16' x2='6' y2='16' stroke='%23121214' stroke-width='2'/%3E%3Cline x1='26' y1='16' x2='30' y2='16' stroke='%23121214' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fef08a' stroke='%23121214' stroke-width='2.5' rx='5'/%3E%3Crect x='7' y='7' width='18' height='18' fill='%23121214' rx='2'/%3E%3Ctext x='16' y='20' fill='%23fef08a' font-family='monospace' font-weight='900' font-size='10' text-anchor='middle'%3EVG%3C/text%3E%3Cline x1='16' y1='1' x2='16' y2='6' stroke='%23121214' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='26' x2='16' y2='31' stroke='%23121214' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='1' y1='16' x2='6' y2='16' stroke='%23121214' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='26' y1='16' x2='31' y2='16' stroke='%23121214' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
@@ -79,7 +79,7 @@
 
       /* Grid Dot Pattern Color */
       --color-dot-grid: rgba(18, 18, 20, 0.08);
-      --color-grid-line: rgba(18, 18, 20, 0.04);
+      --color-grid-line: rgba(18, 18, 20, 0.035);
 
       /* Pastel Neo Accents */
       --color-yellow: #fef08a;
@@ -96,8 +96,6 @@
       --shadow-xl: 8px 8px 0 0 var(--color-border);
       --border-thick: 3px solid var(--color-border);
       --border-thin: 2px solid var(--color-border);
-
-      --cursor-size: 20px;
     }
 
     html.dark {
@@ -128,7 +126,7 @@
     }
 
     /* -------------------------------------------------------------
-       2. BASE STYLES & CLEAN RETRO-TECH BACKGROUND
+       2. BASE STYLES & RETRO-TECH CANVAS BACKGROUND
        ------------------------------------------------------------- */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -167,7 +165,7 @@
         linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px),
         linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
       background-size: 24px 24px, 120px 120px, 120px 120px;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     @media (pointer: coarse), (prefers-reduced-motion: reduce) {
@@ -200,41 +198,82 @@
     }
 
     /* -------------------------------------------------------------
-       3. CUSTOM MAGIC CURSOR & SCROLL PROGRESS
+       3. REFINED DUAL MAGIC CURSOR (Dot + Dynamic Smooth Follower)
        ------------------------------------------------------------- */
-    #magic-cursor {
+    #magic-cursor-dot {
       position: fixed;
       top: 0;
       left: 0;
-      width: var(--cursor-size);
-      height: var(--cursor-size);
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background-color: var(--color-fg);
       pointer-events: none;
-      z-index: 99999;
+      z-index: 2147483647;
       transform: translate(-50%, -50%);
-      transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, opacity 0.2s ease;
-      mix-blend-mode: difference;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+      will-change: left, top;
     }
 
-    #magic-cursor.cursor-hover {
-      width: 48px;
-      height: 48px;
-      background-color: transparent;
-      border: 2.5px solid #ffffff;
+    #magic-cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--color-fg);
+      pointer-events: none;
+      z-index: 2147483646;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                  height 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                  background-color 0.2s ease, 
+                  border-color 0.2s ease, 
+                  border-style 0.2s ease,
+                  transform 0.15s ease;
+      will-change: left, top, width, height, transform;
     }
 
-    #magic-cursor.cursor-lens {
-      width: 76px;
-      height: 76px;
-      background: rgba(255, 255, 255, 0.25);
-      border: 2px dashed #ffffff;
-      mix-blend-mode: normal;
-      backdrop-filter: invert(1);
+    /* Hovering Interactive Elements */
+    #magic-cursor-ring.cursor-hover {
+      width: 54px;
+      height: 54px;
+      background-color: rgba(254, 240, 138, 0.3);
+      border-color: var(--color-fg);
+      border-width: 2.5px;
+    }
+
+    html.dark #magic-cursor-ring.cursor-hover {
+      background-color: rgba(6, 182, 212, 0.25);
+    }
+
+    /* Lens Mode on Silicon Hero Graphic */
+    #magic-cursor-ring.cursor-lens {
+      width: 80px;
+      height: 80px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px dashed var(--color-fg);
+      backdrop-filter: invert(0.85);
+      animation: spinLens 12s linear infinite;
+    }
+
+    @keyframes spinLens {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Mouse Click Elastic Squash */
+    #magic-cursor-ring.cursor-active {
+      width: 26px;
+      height: 26px;
+      background-color: var(--color-yellow);
+      border-width: 3px;
+      transform: translate(-50%, -50%) scale(0.9);
     }
 
     @media (pointer: coarse), (prefers-reduced-motion: reduce) {
-      #magic-cursor {
+      #magic-cursor-dot, #magic-cursor-ring {
         display: none !important;
       }
     }
@@ -252,7 +291,7 @@
     }
 
     /* -------------------------------------------------------------
-       4. NEOBRUTALIST UTILITIES
+       4. NEOBRUTALIST UTILITIES & ENHANCED MICRO-ANIMATIONS
        ------------------------------------------------------------- */
     .font-display { font-family: var(--font-display); }
     .font-mono { font-family: var(--font-mono); }
@@ -268,7 +307,7 @@
       border: var(--border-thick);
       background-color: var(--color-main);
       box-shadow: var(--shadow-lg);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .neo-btn {
@@ -286,18 +325,21 @@
       color: var(--color-fg);
       border: var(--border-thin);
       box-shadow: var(--shadow-md);
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease, color 0.15s ease;
+      transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                  box-shadow 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                  background-color 0.18s ease, 
+                  color 0.18s ease;
       user-select: none;
     }
 
     .neo-btn:hover {
-      transform: translate(2px, 2px);
-      box-shadow: var(--shadow-sm);
+      transform: translate(-3px, -3px);
+      box-shadow: var(--shadow-lg);
     }
 
     .neo-btn:active {
-      transform: translate(4px, 4px);
-      box-shadow: 0 0 0 0 var(--color-border);
+      transform: translate(2px, 2px);
+      box-shadow: var(--shadow-sm);
     }
 
     .neo-btn--yellow {
@@ -334,6 +376,11 @@
       background-color: var(--color-main);
       color: var(--color-fg);
       box-shadow: var(--shadow-sm);
+      transition: transform 0.15s ease;
+    }
+
+    .neo-tag:hover {
+      transform: scale(1.04);
     }
 
     .neo-social-btn {
@@ -346,12 +393,14 @@
       background-color: var(--color-main);
       color: var(--color-fg);
       box-shadow: var(--shadow-sm);
-      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease;
+      transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                  box-shadow 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                  background-color 0.18s ease;
     }
 
     .neo-social-btn:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 0 0 0 0 var(--color-border);
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-md);
       background-color: var(--color-yellow);
       color: #111111;
     }
@@ -390,7 +439,7 @@
     .nav-brand-link {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
       text-decoration: none;
     }
 
@@ -398,29 +447,26 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       background-color: var(--color-yellow);
       border: var(--border-thick);
       box-shadow: var(--shadow-sm);
       color: #111111;
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: 1rem;
       position: relative;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .nav-brand-link:hover .nav-logo-badge {
-      transform: translate(2px, 2px);
-      box-shadow: 0 0 0 0 var(--color-border);
+      transform: translate(-2px, -2px) rotate(-3deg);
+      box-shadow: var(--shadow-md);
     }
 
     .nav-logo-pins {
       position: absolute;
       inset: -4px;
-      border: 1px dashed var(--color-fg);
-      opacity: 0.4;
+      border: 1.5px dashed var(--color-fg);
+      opacity: 0.45;
       pointer-events: none;
     }
 
@@ -432,7 +478,7 @@
     .nav-brand-title {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       letter-spacing: -0.02em;
       line-height: 1.1;
       text-transform: uppercase;
@@ -541,6 +587,11 @@
       justify-content: space-between;
       padding: 1.5rem;
       user-select: none;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hero-silicon-box:hover {
+      transform: translateY(-4px);
     }
 
     .silicon-grid-bg {
@@ -587,12 +638,12 @@
       position: relative;
       box-shadow: 4px 4px 0 0 var(--color-fg);
       animation: pulseDie 4s ease-in-out infinite;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     @keyframes pulseDie {
       0%, 100% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.04) rotate(1deg); }
+      50% { transform: scale(1.04) rotate(1.5deg); }
     }
 
     .die-traces {
@@ -650,6 +701,12 @@
       padding: 2.25rem 2rem;
       margin-bottom: 4.5rem;
       position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .base-operations:hover {
+      transform: translateY(-2px);
+      box-shadow: 10px 10px 0 0 var(--color-border);
     }
 
     .base-title {
@@ -755,7 +812,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
       cursor: none;
     }
 
@@ -764,8 +821,8 @@
     }
 
     .view-toggle-btn:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 0 0 0 0 var(--color-border);
+      transform: translate(-2px, -2px) scale(1.05);
+      box-shadow: var(--shadow-md);
     }
 
     .projects-container {
@@ -789,12 +846,12 @@
       display: grid;
       grid-template-columns: 0.9fr 1.3fr;
       gap: 2rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .project-card:hover {
-      transform: translate(2px, 2px);
-      box-shadow: var(--shadow-md);
+      transform: translate(-3px, -3px);
+      box-shadow: var(--shadow-xl);
     }
 
     .projects-container.deck-mode .project-card {
@@ -936,7 +993,7 @@
       box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.3);
       padding: 2.25rem 1.75rem 1.75rem;
       transform: rotate(var(--note-rot, -2deg));
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, z-index 0s;
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, z-index 0s;
       z-index: 10;
       text-decoration: none;
     }
@@ -946,8 +1003,8 @@
     }
 
     .sticky-note:hover {
-      transform: rotate(0deg) scale(1.05) translateY(-8px);
-      box-shadow: 12px 12px 0 0 rgba(0, 0, 0, 0.4);
+      transform: rotate(0deg) scale(1.06) translateY(-10px);
+      box-shadow: 14px 14px 0 0 rgba(0, 0, 0, 0.4);
       z-index: 25;
     }
 
@@ -964,6 +1021,12 @@
       backdrop-filter: blur(2px);
       z-index: 12;
       box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .sticky-note:hover .sticky-tape {
+      transform: translate(-50%) rotate(0deg);
+      background-color: rgba(255, 255, 255, 0.9);
     }
 
     .sticky-meta {
@@ -1042,7 +1105,12 @@
       padding: 2.5rem 2.25rem;
       overflow: hidden;
       margin-bottom: 4.5rem;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .bento-resume-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 10px 10px 0 0 var(--color-border);
     }
 
     .bento-watermark {
@@ -1101,7 +1169,7 @@
       background-color: transparent;
       color: #111111;
       box-shadow: var(--shadow-sm);
-      transition: all 0.15s ease;
+      transition: all 0.16s cubic-bezier(0.34, 1.56, 0.64, 1);
       cursor: none;
     }
 
@@ -1111,13 +1179,14 @@
 
     .resume-tab-btn.active {
       background-color: var(--color-pink);
-      transform: translate(2px, 2px);
-      box-shadow: 0 0 0 0 #000;
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-md);
     }
 
     .resume-tab-btn:hover:not(.active) {
       background-color: #111111;
       color: #ffffff;
+      transform: translate(-2px, -2px);
     }
 
     /* Mini Resume Paper Preview */
@@ -1141,11 +1210,11 @@
       flex-direction: column;
       gap: 0.65rem;
       transform: rotate(2deg);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
     }
 
     .mini-resume-wrap:hover .mini-resume-sheet {
-      transform: rotate(0deg) scale(1.05);
+      transform: rotate(0deg) scale(1.06);
       box-shadow: 8px 8px 0 0 #111111;
     }
 
@@ -1200,12 +1269,12 @@
       background-color: var(--color-main);
       box-shadow: var(--shadow-md);
       padding: 1.75rem 1.5rem;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .skill-card:hover {
-      transform: translate(2px, 2px);
-      box-shadow: var(--shadow-sm);
+      transform: translate(-3px, -3px);
+      box-shadow: var(--shadow-lg);
     }
 
     .skill-card-title {
@@ -1288,6 +1357,7 @@
       max-width: 500px;
       width: 90%;
       overflow: visible;
+      cursor: none;
     }
 
     .neo-modal-dialog::backdrop {
@@ -1295,12 +1365,27 @@
       backdrop-filter: blur(4px);
     }
 
+    .neo-modal-dialog[open] {
+      animation: modalPopIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes modalPopIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.85) rotate(-3deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
     .sticky-note-modal {
       position: relative;
       background-color: var(--color-yellow);
       color: #111111;
       border: var(--border-thick);
-      box-shadow: 10px 10px 0 0 #000000;
+      box-shadow: 12px 12px 0 0 #000000;
       padding: 2.5rem 2rem 2rem;
     }
 
@@ -1316,6 +1401,7 @@
       color: #111111;
       padding: 0.25rem;
       cursor: none;
+      transition: transform 0.15s ease;
     }
 
     @media (pointer: coarse) {
@@ -1323,7 +1409,7 @@
     }
 
     .modal-close-btn:hover {
-      transform: scale(1.2);
+      transform: scale(1.25) rotate(90deg);
     }
 
     .modal-header {
@@ -1432,9 +1518,8 @@
         gap: 0.4rem;
       }
       .nav-logo-badge {
-        width: 32px;
-        height: 32px;
-        font-size: 0.85rem;
+        width: 34px;
+        height: 34px;
       }
       .nav-brand-title {
         font-size: 0.95rem;
@@ -1468,8 +1553,9 @@
 </head>
 
 <body>
-  <!-- Custom Magic Cursor -->
-  <div id="magic-cursor"></div>
+  <!-- Precision Custom Cursor Elements (Dot + Ring) -->
+  <div id="magic-cursor-dot"></div>
+  <div id="magic-cursor-ring"></div>
 
   <!-- Scroll Progress Indicator -->
   <div id="scroll-progress"></div>
@@ -1482,7 +1568,7 @@
         <a href="#hero" class="nav-brand-link" id="nav-brand-logo" aria-label="Varada Govind Portfolio Home">
           <div class="nav-logo-badge">
             <div class="nav-logo-pins"></div>
-            <!-- Embedded Minimalist Silicon Vector -->
+            <!-- Embedded Silicon Chip Vector -->
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="4" y="4" width="16" height="16" rx="2"></rect>
               <rect x="9" y="9" width="6" height="6"></rect>
@@ -2144,7 +2230,7 @@
       } else {
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
-        if (themeColorMeta) themeColorMeta.setAttribute('content', '#f8f8f6');
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#fafaf7');
       }
     }
 
@@ -2156,41 +2242,55 @@
     }
 
     // -------------------------------------------------------------
-    // 2. Custom Magic Cursor
+    // 2. Refined Dual Custom Magic Cursor (Dot + Smooth Ring)
     // -------------------------------------------------------------
-    const magicCursor = document.getElementById('magic-cursor');
+    const cursorDot = document.getElementById('magic-cursor-dot');
+    const cursorRing = document.getElementById('magic-cursor-ring');
     const heroBox = document.getElementById('hero-interactive-box');
     const finePointer = window.matchMedia('(pointer: fine)').matches;
 
-    if (finePointer && magicCursor) {
+    if (finePointer && cursorDot && cursorRing) {
       let mouseX = window.innerWidth / 2;
       let mouseY = window.innerHeight / 2;
-      let cursorX = mouseX;
-      let cursorY = mouseY;
+      let ringX = mouseX;
+      let ringY = mouseY;
 
       window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-      });
+        // Dot moves instantly
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+      }, { passive: true });
 
+      // Ring follows with smooth spring interpolation
       function renderCursor() {
-        cursorX += (mouseX - cursorX) * 0.35;
-        cursorY += (mouseY - cursorY) * 0.35;
-        magicCursor.style.left = `${cursorX}px`;
-        magicCursor.style.top = `${cursorY}px`;
+        ringX += (mouseX - ringX) * 0.28;
+        ringY += (mouseY - ringY) * 0.28;
+        cursorRing.style.left = `${ringX}px`;
+        cursorRing.style.top = `${ringY}px`;
         requestAnimationFrame(renderCursor);
       }
       renderCursor();
 
-      const hoverTargets = document.querySelectorAll('a, button, .sticky-note, .project-card, .skill-card');
-      hoverTargets.forEach((target) => {
-        target.addEventListener('mouseenter', () => magicCursor.classList.add('cursor-hover'));
-        target.addEventListener('mouseleave', () => magicCursor.classList.remove('cursor-hover'));
-      });
+      // Interactive hover bindings
+      function bindHoverElements() {
+        const hoverTargets = document.querySelectorAll('a, button, .sticky-note, .project-card, .skill-card, .neo-tag, .bento-resume-card');
+        hoverTargets.forEach((target) => {
+          target.addEventListener('mouseenter', () => cursorRing.classList.add('cursor-hover'));
+          target.addEventListener('mouseleave', () => cursorRing.classList.remove('cursor-hover'));
+        });
+      }
+      bindHoverElements();
 
+      // Click Elastic Squash
+      window.addEventListener('mousedown', () => cursorRing.classList.add('cursor-active'));
+      window.addEventListener('mouseup', () => cursorRing.classList.remove('cursor-active'));
+
+      // Lens Mode on Hero Interactive Box
       if (heroBox) {
-        heroBox.addEventListener('mouseenter', () => magicCursor.classList.add('cursor-lens'));
-        heroBox.addEventListener('mouseleave', () => magicCursor.classList.remove('cursor-lens'));
+        heroBox.addEventListener('mouseenter', () => cursorRing.classList.add('cursor-lens'));
+        heroBox.addEventListener('mouseleave', () => cursorRing.classList.remove('cursor-lens'));
       }
     }
 
@@ -2237,7 +2337,7 @@
       setInterval(() => {
         cycle = (cycle + 1) & 0xFFFF;
         cycleTicker.textContent = `CYCLE: 0x${cycle.toString(16).toUpperCase().padStart(4, '0')}`;
-      }, 400);
+      }, 350);
     }
 
     // -------------------------------------------------------------
@@ -2330,7 +2430,7 @@
     });
 
     // -------------------------------------------------------------
-    // 7. Sticky Note Contact Modal Dialog
+    // 7. Sticky Note Contact Modal Dialog with Top-Layer Cursor Retention
     // -------------------------------------------------------------
     const contactModal = document.getElementById('contact-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
@@ -2342,12 +2442,22 @@
     function openContactModal() {
       if (contactModal) {
         contactModal.showModal();
+        // Re-parent custom cursor elements into the modal so they stay in the Top Layer above the dialog backdrop!
+        if (cursorRing && cursorDot) {
+          contactModal.appendChild(cursorRing);
+          contactModal.appendChild(cursorDot);
+        }
       }
     }
 
     function closeContactModal() {
       if (contactModal) {
         contactModal.close();
+        // Return cursor elements back to document.body
+        if (cursorRing && cursorDot) {
+          document.body.appendChild(cursorRing);
+          document.body.appendChild(cursorDot);
+        }
       }
     }
 
@@ -2357,7 +2467,7 @@
 
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeContactModal);
 
-    // Close when clicking dialog backdrop
+    // Close when clicking dialog backdrop or pressing ESC
     if (contactModal) {
       contactModal.addEventListener('click', (e) => {
         const dialogDimensions = contactModal.getBoundingClientRect();
@@ -2369,6 +2479,10 @@
         ) {
           closeContactModal();
         }
+      });
+
+      contactModal.addEventListener('cancel', () => {
+        closeContactModal();
       });
     }
 
