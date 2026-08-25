@@ -1,1010 +1,2189 @@
 <!DOCTYPE html>
-<html lang="en" class="antialiased">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Varada Govind Aakula | RTL and VLSI Portfolio</title>
-    <meta name="description" content="Portfolio of Varada Govind Aakula, Electronics Engineer focused on RTL design, RISC-V architecture, CMOS VLSI, and edge-compatible hardware accelerators.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Varada Govind Aakula — Hardware Researcher & RTL/VLSI Engineer</title>
+  <meta name="description" content="Portfolio of Varada Govind Aakula: Hardware Researcher at IIIT Allahabad specializing in RTL Design, RISC-V Microarchitecture, FPGA Acceleration, and CMOS VLSI.">
+  <meta name="author" content="Varada Govind Aakula">
+  <meta name="theme-color" content="#ffffff" id="theme-color-meta">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Varada Govind Aakula — RTL/VLSI & Hardware Engineer">
+  <meta property="og:description" content="Hardware Researcher at IIIT Allahabad building RISC-V architectures, edge AI systolic accelerators, and high-performance digital logic.">
+  <meta property="og:site_name" content="Varada Govind Aakula">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+  <!-- Anti-FOUC Theme Script -->
+  <script>
+    (function() {
+      const storedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Sora', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace']
-                    },
-                    colors: {
-                        ink: '#000000',
-                        panel: 'rgba(255, 255, 255, 0.05)',
-                        panelSoft: 'rgba(255, 255, 255, 0.08)',
-                        mist: '#F4F4F5',
-                        signal: '#FFFFFF',
-                        lime: '#FFFFFF',
-                        ember: '#F4F4F5'
-                    },
-                    boxShadow: {
-                        neon: '0 0 0 1px rgba(255,255,255,0.15), 0 12px 38px rgba(255,255,255,0.12)'
-                    }
-                }
-            }
-        };
-    </script>
+  <!-- Typography: Space Grotesk (Titles), Inter (UI), IBM Plex Mono (Code/Meta) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --cursor-size: 22px;
-            --grid-size: 56px;
-            --focus-ring: 0 0 0 2px rgba(255, 255, 255, 0.5);
-        }
+  <style>
+    /* -------------------------------------------------------------
+       1. DESIGN SYSTEM TOKENS & ROOTS (Light & Dark Neobrutalism)
+       ------------------------------------------------------------- */
+    :root {
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
 
-        html.lenis { height: auto; }
+      /* Light Theme Colors */
+      --color-bg: #f8f8f6;
+      --color-fg: #121214;
+      --color-main: #ffffff;
+      --color-panel: #ffffff;
+      --color-border: #121214;
 
-        body {
-            background: #000000;
-            color: #FFFFFF;
-            overflow-x: hidden;
-            cursor: none;
-        }
+      /* Pastel Neo Accents */
+      --color-yellow: #fef08a;
+      --color-cyan: #cffafe;
+      --color-pink: #fbcfe8;
+      --color-green: #bbf7d0;
+      --color-amber: #fde047;
+      --color-purple: #e9d5ff;
 
-        @media (pointer: coarse), (prefers-reduced-motion: reduce) {
-            body { cursor: auto; }
-        }
+      /* Shadows */
+      --shadow-sm: 2px 2px 0 0 var(--color-border);
+      --shadow-md: 4px 4px 0 0 var(--color-border);
+      --shadow-lg: 6px 6px 0 0 var(--color-border);
+      --shadow-xl: 8px 8px 0 0 var(--color-border);
+      --border-thick: 3px solid var(--color-border);
+      --border-thin: 2px solid var(--color-border);
 
-        .skip-link {
-            position: absolute;
-            left: 1rem;
-            top: -200px;
-            z-index: 10000;
-            padding: 0.7rem 1rem;
-            background: #FFFFFF;
-            color: #000000;
-            font-weight: 600;
-            border-radius: 0.5rem;
-            transition: top 0.2s ease;
-        }
+      --cursor-size: 20px;
+    }
 
-        .skip-link:focus { top: 1rem; }
+    html.dark {
+      /* Dark Theme Colors */
+      --color-bg: #0f1013;
+      --color-fg: #f4f4f5;
+      --color-main: #18191f;
+      --color-panel: #18191f;
+      --color-border: #f4f4f5;
 
-        .noise-overlay {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 35;
-            opacity: 0.035;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
+      /* Neon Dark Accents */
+      --color-yellow: #f59e0b;
+      --color-cyan: #06b6d4;
+      --color-pink: #ec4899;
+      --color-green: #10b981;
+      --color-amber: #eab308;
+      --color-purple: #a855f7;
 
-        .grid-bg {
-            position: fixed;
-            width: 220%;
-            height: 220%;
-            top: -60%;
-            left: -60%;
-            z-index: -2;
-            pointer-events: none;
-            background-size: var(--grid-size) var(--grid-size);
-            background-image:
-                linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-            transform: perspective(650px) rotateX(62deg);
-            animation: gridMove 26s linear infinite;
-            mask-image: radial-gradient(circle at center, black 28%, transparent 78%);
-            -webkit-mask-image: radial-gradient(circle at center, black 28%, transparent 78%);
-        }
+      /* Shadows in dark mode */
+      --shadow-sm: 2px 2px 0 0 #f4f4f5;
+      --shadow-md: 4px 4px 0 0 #f4f4f5;
+      --shadow-lg: 6px 6px 0 0 #f4f4f5;
+      --shadow-xl: 8px 8px 0 0 #f4f4f5;
+    }
 
-        @keyframes gridMove {
-            from { transform: perspective(650px) rotateX(62deg) translateY(0); }
-            to { transform: perspective(650px) rotateX(62deg) translateY(56px); }
-        }
+    /* -------------------------------------------------------------
+       2. BASE STYLES & RESET
+       ------------------------------------------------------------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: #E2E8F0;
-            border-radius: 999px;
-            position: fixed;
-            z-index: 9999;
-            pointer-events: none;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
-        }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-radius: 999px;
-            position: fixed;
-            z-index: 9998;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-        }
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-fg);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      cursor: none;
+    }
 
-        #bg-wire {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.65;
-        }
+    @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+      body {
+        cursor: auto;
+      }
+    }
 
-        .wire-base {
-            fill: none;
-            stroke: rgba(255, 255, 255, 0.1);
-            stroke-width: 2px;
-            stroke-linejoin: round;
-            stroke-linecap: round;
-        }
+    ::selection {
+      background: var(--color-yellow);
+      color: #111111;
+    }
 
-        @media (pointer: coarse), (prefers-reduced-motion: reduce) {
-            .cursor-dot,
-            .cursor-outline,
-            .grid-bg,
-            .noise-overlay,
-            #bg-wire {
-                display: none;
-            }
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            transform-style: preserve-3d;
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
-        }
+    button {
+      font-family: inherit;
+      cursor: none;
+      border: none;
+      background: none;
+    }
 
-        .glass-card:hover,
-        .glass-card:focus-within {
-            background-color: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 14px 46px rgba(0, 0, 0, 0.8);
-        }
+    @media (pointer: coarse) {
+      button, a {
+        cursor: pointer;
+      }
+    }
 
-        .spotlight-wrapper {
-            position: relative;
-            overflow: hidden;
-        }
+    /* -------------------------------------------------------------
+       3. CUSTOM MAGIC CURSOR & SCROLL PROGRESS
+       ------------------------------------------------------------- */
+    #magic-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--cursor-size);
+      height: var(--cursor-size);
+      border-radius: 50%;
+      background-color: var(--color-fg);
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, opacity 0.2s ease;
+      mix-blend-mode: difference;
+    }
 
-        .spotlight-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.06), transparent 45%);
-        }
+    #magic-cursor.cursor-hover {
+      width: 48px;
+      height: 48px;
+      background-color: transparent;
+      border: 2.5px solid #ffffff;
+    }
 
-        .spotlight-wrapper:hover::before,
-        .spotlight-wrapper:focus-within::before {
-            opacity: 1;
-        }
+    #magic-cursor.cursor-lens {
+      width: 72px;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px dashed #ffffff;
+      mix-blend-mode: normal;
+      backdrop-filter: invert(1);
+    }
 
-        .metric-badge {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.03);
-        }
+    @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+      #magic-cursor {
+        display: none !important;
+      }
+    }
 
-        .section-anchor {
-            scroll-margin-top: 5.5rem;
-        }
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--color-cyan);
+      z-index: 10000;
+      width: 0%;
+      transition: width 0.05s linear;
+      border-bottom: 1px solid var(--color-fg);
+    }
 
-        .filter-btn[aria-pressed="true"] {
-            border-color: rgba(255, 255, 255, 0.5);
-            color: #FFFFFF;
-            background: rgba(255, 255, 255, 0.08);
-        }
+    /* -------------------------------------------------------------
+       4. NEOBRUTALIST UTILITY CLASSES
+       ------------------------------------------------------------- */
+    .font-display { font-family: var(--font-display); }
+    .font-mono { font-family: var(--font-mono); }
+    .font-sans { font-family: var(--font-sans); }
 
-        a:focus-visible,
-        button:focus-visible {
-            outline: none;
-            box-shadow: var(--focus-ring);
-        }
+    .neo-box {
+      border: var(--border-thick);
+      background-color: var(--color-main);
+      box-shadow: var(--shadow-md);
+    }
 
-        .mobile-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
+    .neo-panel {
+      border: var(--border-thick);
+      background-color: var(--color-main);
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
 
-        .mobile-menu.open {
-            max-height: 260px;
-        }
+    .neo-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.65rem 1.25rem;
+      background-color: var(--color-main);
+      color: var(--color-fg);
+      border: var(--border-thin);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease, color 0.15s ease;
+      user-select: none;
+    }
 
-        .text-stroke {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.7);
-            color: transparent;
-        }
+    .neo-btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: var(--shadow-sm);
+    }
 
-        .hidden-card {
-            display: none;
-        }
+    .neo-btn:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0 0 0 0 var(--color-border);
+    }
 
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-        }
-    </style>
+    .neo-btn--yellow {
+      background-color: var(--color-yellow);
+      color: #111111;
+    }
+
+    .neo-btn--cyan {
+      background-color: var(--color-cyan);
+      color: #111111;
+    }
+
+    .neo-btn--pink {
+      background-color: var(--color-pink);
+      color: #111111;
+    }
+
+    .neo-btn--black {
+      background-color: var(--color-fg);
+      color: var(--color-bg);
+    }
+
+    .neo-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border: var(--border-thin);
+      background-color: var(--color-main);
+      color: var(--color-fg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .neo-social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border: var(--border-thin);
+      background-color: var(--color-main);
+      color: var(--color-fg);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease;
+    }
+
+    .neo-social-btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 0 0 0 0 var(--color-border);
+      background-color: var(--color-yellow);
+      color: #111111;
+    }
+
+    /* -------------------------------------------------------------
+       5. HEADER & NAVIGATION
+       ------------------------------------------------------------- */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: var(--color-bg);
+      border-bottom: var(--border-thick);
+      padding: 0.75rem 1.25rem;
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      background-color: var(--color-fg);
+      color: var(--color-bg);
+      border: var(--border-thin);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.12s ease;
+    }
+
+    .nav-brand:hover {
+      transform: translate(2px, 2px);
+    }
+
+    .nav-socials {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      list-style: none;
+    }
+
+    .dark-toggle {
+      position: relative;
+      cursor: none;
+    }
+
+    @media (pointer: coarse) {
+      .dark-toggle { cursor: pointer; }
+    }
+
+    .theme-icon {
+      transition: transform 0.3s ease;
+    }
+
+    html.dark .sun-icon { display: block; }
+    html.dark .moon-icon { display: none; }
+    html:not(.dark) .sun-icon { display: none; }
+    html:not(.dark) .moon-icon { display: block; }
+
+    /* -------------------------------------------------------------
+       6. MAIN CONTAINER & HERO SECTION
+       ------------------------------------------------------------- */
+    .container-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6.5rem 1.25rem 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 4.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-desc {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      line-height: 1.65;
+      opacity: 0.88;
+      max-width: 540px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Interactive Silicon Hero Box */
+    .hero-silicon-box {
+      position: relative;
+      height: 380px;
+      width: 100%;
+      background: var(--color-main);
+      border: var(--border-thick);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.5rem;
+    }
+
+    .silicon-grid-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+      background-image: 
+        linear-gradient(to right, var(--color-fg) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--color-fg) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .silicon-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px dashed var(--color-fg);
+      padding-bottom: 0.75rem;
+    }
+
+    .silicon-body {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: auto 0;
+      text-align: center;
+    }
+
+    .die-core-graphic {
+      width: 110px;
+      height: 110px;
+      border: var(--border-thick);
+      background-color: var(--color-yellow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 4px 4px 0 0 var(--color-fg);
+      animation: pulseDie 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseDie {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.04) rotate(1deg); }
+    }
+
+    .die-traces {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border: 1.5px dashed var(--color-fg);
+      opacity: 0.3;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: spinTrace 18s linear infinite;
+    }
+
+    @keyframes spinTrace {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .silicon-telemetry {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      border-top: 2px dashed var(--color-fg);
+      padding-top: 0.75rem;
+    }
+
+    .telemetry-item {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-align: center;
+    }
+
+    .telemetry-label {
+      opacity: 0.65;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .telemetry-val {
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+
+    /* -------------------------------------------------------------
+       7. "BASE OF OPERATIONS" SECTION
+       ------------------------------------------------------------- */
+    .base-operations {
+      border: var(--border-thick);
+      background-color: var(--color-cyan);
+      color: #111111;
+      box-shadow: var(--shadow-xl);
+      padding: 2.25rem 2rem;
+      margin-bottom: 4.5rem;
+      position: relative;
+    }
+
+    .base-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .base-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .base-meta-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .base-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .base-meta-badge {
+      background-color: #111111;
+      color: #ffffff;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .base-bio {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* -------------------------------------------------------------
+       8. SELECTED WORK / PROJECTS SECTION
+       ------------------------------------------------------------- */
+    .section-header-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 4px solid var(--color-fg);
+    }
+
+    .section-title-badge {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title-badge-shadow {
+      position: absolute;
+      inset: 0;
+      background-color: var(--color-pink);
+      transform: translate(5px, 5px);
+      border: var(--border-thin);
+    }
+
+    .section-title-badge-text {
+      position: relative;
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      background-color: var(--color-main);
+      color: var(--color-fg);
+      padding: 0.5rem 1.5rem;
+      border: var(--border-thick);
+    }
+
+    .view-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .view-toggle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: var(--border-thick);
+      background-color: var(--color-yellow);
+      color: #111111;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: none;
+    }
+
+    @media (pointer: coarse) {
+      .view-toggle-btn { cursor: pointer; }
+    }
+
+    .view-toggle-btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 0 0 0 0 var(--color-border);
+    }
+
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 4.5rem;
+      position: relative;
+    }
+
+    /* Deck Flip Mode Styling */
+    .projects-container.deck-mode {
+      min-height: 440px;
+    }
+
+    .project-card {
+      border: var(--border-thick);
+      background-color: var(--color-main);
+      box-shadow: var(--shadow-lg);
+      padding: 2.25rem 2rem;
+      display: grid;
+      grid-template-columns: 0.9fr 1.3fr;
+      gap: 2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translate(2px, 2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .projects-container.deck-mode .project-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: none;
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .projects-container.deck-mode .project-card.active-card {
+      display: grid;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      position: relative;
+    }
+
+    .card-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .card-meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .card-tech-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--color-fg);
+      opacity: 0.8;
+    }
+
+    .card-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-desc {
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      line-height: 1.65;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .hardware-metric-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1.5px dashed var(--color-fg);
+    }
+
+    html.dark .hardware-metric-row {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .metric-chip {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .metric-chip strong {
+      color: var(--color-yellow);
+      background-color: #111111;
+      padding: 0.1em 0.35em;
+      margin-right: 0.25em;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    /* -------------------------------------------------------------
+       9. FIELD NOTES (STICKY POST-IT NOTES)
+       ------------------------------------------------------------- */
+    .sticky-section {
+      border-top: 3px solid var(--color-fg);
+      padding-top: 3.5rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .sticky-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+    }
+
+    .sticky-notes-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.5rem 0 1rem;
+    }
+
+    .sticky-note {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 340px;
+      background-color: var(--note-bg, var(--color-yellow));
+      color: #111111;
+      border: var(--border-thick);
+      box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.3);
+      padding: 2.25rem 1.75rem 1.75rem;
+      transform: rotate(var(--note-rot, -2deg));
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, z-index 0s;
+      z-index: 10;
+      text-decoration: none;
+    }
+
+    .sticky-note:nth-child(2n) {
+      margin-top: 1.5rem;
+    }
+
+    .sticky-note:hover {
+      transform: rotate(0deg) scale(1.05) translateY(-8px);
+      box-shadow: 12px 12px 0 0 rgba(0, 0, 0, 0.4);
+      z-index: 25;
+    }
+
+    /* Masking tape on sticky note */
+    .sticky-tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translate(-50%) rotate(-2deg);
+      width: 76px;
+      height: 26px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border: 1.5px solid rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(2px);
+      z-index: 12;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    .sticky-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 2px dashed rgba(0, 0, 0, 0.25);
+      font-family: var(--font-mono);
+    }
+
+    .sticky-date {
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .sticky-mood {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      background-color: rgba(255, 255, 255, 0.6);
+      border: 1.5px solid rgba(0, 0, 0, 0.4);
+      padding: 0.15em 0.5em;
+    }
+
+    .sticky-snippet {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+      color: #111111;
+    }
+
+    .sticky-footer {
+      margin-top: auto;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-align: right;
+      color: rgba(0, 0, 0, 0.6);
+      transition: color 0.15s ease;
+    }
+
+    .sticky-note:hover .sticky-footer {
+      color: #000000;
+    }
+
+    .sticky-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .sticky-cta-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 1rem 0;
+    }
+
+    /* -------------------------------------------------------------
+       10. BENTO RESUME CARD (MULTI-PROFILE)
+       ------------------------------------------------------------- */
+    .bento-resume-card {
+      position: relative;
+      border: var(--border-thick);
+      background-color: var(--color-yellow);
+      color: #111111;
+      box-shadow: var(--shadow-xl);
+      padding: 2.5rem 2.25rem;
+      overflow: hidden;
+      margin-bottom: 4.5rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .bento-watermark {
+      position: absolute;
+      right: -0.1em;
+      bottom: -0.25em;
+      font-family: var(--font-mono);
+      font-size: clamp(7rem, 18vw, 13rem);
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.07);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+
+    .bento-grid {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .bento-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .bento-desc {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
+      max-width: 520px;
+    }
+
+    .resume-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .resume-tab-btn {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.35rem 0.85rem;
+      border: var(--border-thin);
+      background-color: transparent;
+      color: #111111;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s ease;
+      cursor: none;
+    }
+
+    @media (pointer: coarse) {
+      .resume-tab-btn { cursor: pointer; }
+    }
+
+    .resume-tab-btn.active {
+      background-color: var(--color-pink);
+      transform: translate(2px, 2px);
+      box-shadow: 0 0 0 0 #000;
+    }
+
+    .resume-tab-btn:hover:not(.active) {
+      background-color: #111111;
+      color: #ffffff;
+    }
+
+    /* Mini Resume Paper Preview */
+    .mini-resume-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .mini-resume-sheet {
+      position: relative;
+      width: 190px;
+      height: 250px;
+      background-color: #ffffff;
+      color: #111111;
+      border: var(--border-thick);
+      box-shadow: 5px 5px 0 0 #111111;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      transform: rotate(2deg);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .mini-resume-wrap:hover .mini-resume-sheet {
+      transform: rotate(0deg) scale(1.05);
+      box-shadow: 8px 8px 0 0 #111111;
+    }
+
+    .mini-sheet-bg {
+      position: absolute;
+      width: 190px;
+      height: 250px;
+      background-color: var(--color-cyan);
+      border: var(--border-thick);
+      transform: rotate(-3deg) translate(8px, 8px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .mini-line {
+      height: 4px;
+      background-color: #111111;
+      border-radius: 2px;
+      opacity: 0.3;
+    }
+
+    .mini-line--dark {
+      opacity: 0.8;
+    }
+
+    .mini-badge-sticker {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background-color: var(--color-pink);
+      color: #111111;
+      border: 1.5px solid #111111;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 0.15rem 0.4rem;
+      box-shadow: 1.5px 1.5px 0 0 #111111;
+    }
+
+    /* -------------------------------------------------------------
+       11. ARSENAL / TECHNICAL PROFICIENCY GRID
+       ------------------------------------------------------------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .skill-card {
+      border: var(--border-thick);
+      background-color: var(--color-main);
+      box-shadow: var(--shadow-md);
+      padding: 1.75rem 1.5rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .skill-card:hover {
+      transform: translate(2px, 2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skill-card-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .skill-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list li::before {
+      content: "▶";
+      font-size: 0.6rem;
+      color: var(--color-fg);
+    }
+
+    /* -------------------------------------------------------------
+       12. FOOTER & CONTACT MODAL (<dialog>)
+       ------------------------------------------------------------- */
+    .site-footer {
+      border-top: var(--border-thick);
+      background-color: var(--color-bg);
+      padding: 2rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--color-fg);
+      opacity: 0.8;
+      font-size: 0.75rem;
+    }
+
+    /* Contact Dialog Modal */
+    .neo-modal-dialog {
+      margin: auto;
+      padding: 0;
+      border: none;
+      background: transparent;
+      max-width: 500px;
+      width: 90%;
+      overflow: visible;
+    }
+
+    .neo-modal-dialog::backdrop {
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+    }
+
+    .sticky-note-modal {
+      position: relative;
+      background-color: var(--color-yellow);
+      color: #111111;
+      border: var(--border-thick);
+      box-shadow: 10px 10px 0 0 #000000;
+      padding: 2.5rem 2rem 2rem;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1;
+      background: transparent;
+      border: none;
+      color: #111111;
+      padding: 0.25rem;
+      cursor: none;
+    }
+
+    @media (pointer: coarse) {
+      .modal-close-btn { cursor: pointer; }
+    }
+
+    .modal-close-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .modal-header {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-text {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: #111111;
+    }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .contact-item-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-copy-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      border: 2px solid #111111;
+      padding: 0.5rem 0.75rem;
+      box-shadow: 3px 3px 0 0 #111111;
+    }
+
+    .contact-email-link {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #111111;
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background-color: var(--color-cyan);
+      color: #111111;
+      border: 1.5px solid #111111;
+      padding: 0.25rem 0.55rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: none;
+      box-shadow: 1.5px 1.5px 0 0 #111111;
+      transition: transform 0.1s ease;
+    }
+
+    @media (pointer: coarse) {
+      .copy-btn { cursor: pointer; }
+    }
+
+    .copy-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 0 0 0 0 #111;
+    }
+
+    /* -------------------------------------------------------------
+       13. RESPONSIVE BREAKPOINTS
+       ------------------------------------------------------------- */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .base-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-brand-group {
+        gap: 0.5rem;
+      }
+      .nav-brand {
+        font-size: 0.95rem;
+        padding: 0.25rem 0.5rem;
+      }
+      .nav-links .neo-btn {
+        padding: 0.4rem 0.65rem;
+        font-size: 0.72rem;
+      }
+      .container-page {
+        padding: 5.5rem 1rem 3rem;
+      }
+      .hero-title {
+        font-size: 2.4rem;
+      }
+      .sticky-note {
+        transform: rotate(0deg) !important;
+        margin-top: 0 !important;
+      }
+      .sticky-notes-container {
+        gap: 1.5rem;
+      }
+    }
+  </style>
 </head>
-<body class="selection:bg-lime selection:text-ink">
-    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div class="noise-overlay"></div>
-    <div class="grid-bg"></div>
-    <svg id="bg-wire" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-            <linearGradient id="wireGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0" />
-                <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.3" />
-                <stop offset="100%" stop-color="#A1A1AA" stop-opacity="0" />
-            </linearGradient>
-            <linearGradient id="wireGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#A1A1AA" stop-opacity="0" />
-                <stop offset="50%" stop-color="#A1A1AA" stop-opacity="0.3" />
-                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
-            </linearGradient>
-            <filter id="glowFilter">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-        </defs>
-        
-        <g class="wire-base">
-            <path d="M 100,-100 V 150 L 250,300 H 650 L 850,500 V 800 L 750,900 H 200 V 1100" vector-effect="non-scaling-stroke" />
-            <path d="M 150,-100 V 120 L 300,270 H 700 L 900,470 V 770 L 800,870 H 250 V 1100" vector-effect="non-scaling-stroke" />
-            <path d="M -100,200 H 150 L 250,300 V 450 L 400,600 H 1100" vector-effect="non-scaling-stroke" />
-            <path d="M 1100,700 H 850 L 750,800 V 950 L 600,1100" vector-effect="non-scaling-stroke" />
-        </g>
-        
-        <g fill="none" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" filter="url(#glowFilter)">
-            <path d="M 100,-100 V 150 L 250,300 H 650 L 850,500 V 800 L 750,900 H 200 V 1100" stroke="url(#wireGradient1)" stroke-dasharray="250 2500" stroke-dashoffset="0" vector-effect="non-scaling-stroke">
-                <animate attributeName="stroke-dashoffset" values="2750;-500" dur="9s" repeatCount="indefinite" />
-            </path>
-            <path d="M 150,-100 V 120 L 300,270 H 700 L 900,470 V 770 L 800,870 H 250 V 1100" stroke="url(#wireGradient2)" stroke-dasharray="200 2300" stroke-dashoffset="500" vector-effect="non-scaling-stroke">
-                <animate attributeName="stroke-dashoffset" values="2500;-500" dur="11s" repeatCount="indefinite" />
-            </path>
-            <path d="M -100,200 H 150 L 250,300 V 450 L 400,600 H 1100" stroke="url(#wireGradient1)" stroke-dasharray="150 1800" stroke-dashoffset="200" vector-effect="non-scaling-stroke">
-                <animate attributeName="stroke-dashoffset" values="1950;-500" dur="7s" repeatCount="indefinite" />
-            </path>
-            <path d="M 1100,700 H 850 L 750,800 V 950 L 600,1100" stroke="url(#wireGradient2)" stroke-dasharray="150 1800" stroke-dashoffset="100" vector-effect="non-scaling-stroke">
-                <animate attributeName="stroke-dashoffset" values="-500;1950" dur="8s" repeatCount="indefinite" />
-            </path>
-        </g>
-        
-        <g fill="#FFFFFF" filter="url(#glowFilter)">
-            <circle cx="250" cy="300" r="3" />
-            <circle cx="650" cy="300" r="3" />
-            <circle cx="850" cy="500" r="3" />
-            <circle cx="750" cy="900" r="3" />
-            <circle cx="400" cy="600" r="3" />
-            <circle cx="850" cy="700" r="3" />
-        </g>
-    </svg>
-    <div class="cursor-dot hidden md:block" aria-hidden="true"></div>
-    <div class="cursor-outline hidden md:block" aria-hidden="true"></div>
+<body>
+  <!-- Custom Magic Cursor -->
+  <div id="magic-cursor"></div>
 
-    <header class="fixed top-0 w-full z-40 px-4 md:px-6 py-4 md:py-6 bg-black/60 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-            <a href="#" class="font-mono text-lg font-bold tracking-tight hover:text-signal transition-colors">VG.rtl</a>
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
 
-            <button id="mobile-menu-toggle" class="md:hidden inline-flex items-center justify-center border border-white/15 rounded-lg px-3 py-2 text-sm" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
-                <i data-lucide="menu" class="w-4 h-4"></i>
-            </button>
+  <!-- Site Navigation -->
+  <nav class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <div class="nav-brand-group">
+        <a href="#hero" class="nav-brand" id="nav-brand-logo">
+          VG.RTL
+        </a>
+        <div class="nav-socials">
+          <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener noreferrer" class="neo-social-btn" aria-label="GitHub Profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/varada-govind-aakula-3506712b5/" target="_blank" rel="noopener noreferrer" class="neo-social-btn" aria-label="LinkedIn Profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
 
-            <nav class="hidden md:flex items-center gap-8 font-mono text-xs text-mist" aria-label="Primary">
-                <a href="#work" class="hover:text-signal transition-colors nav-link">[ WORK ]</a>
-                <a href="#about" class="hover:text-signal transition-colors nav-link">[ ABOUT ]</a>
-                <a href="#publications" class="hover:text-signal transition-colors nav-link">[ PUBLICATIONS ]</a>
-                <a href="#skills" class="hover:text-signal transition-colors nav-link">[ ARSENAL ]</a>
-                <a href="#contact" class="hover:text-signal transition-colors nav-link">[ CONTACT ]</a>
-            </nav>
+      <ul class="nav-links" id="nav-links">
+        <li>
+          <a href="#work" class="neo-btn">WORK</a>
+        </li>
+        <li>
+          <a href="#notes" class="neo-btn">NOTES</a>
+        </li>
+        <li>
+          <a href="#resume" class="neo-btn">RESUME</a>
+        </li>
+        <li>
+          <button class="neo-social-btn dark-toggle" id="dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <!-- Sun Icon (shown in dark mode) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="theme-icon sun-icon"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+            <!-- Moon Icon (shown in light mode) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="theme-icon moon-icon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-            <div class="hidden md:flex items-center gap-3">
-                <div class="flex items-center gap-2 border border-white/10 rounded-full px-3 py-1 bg-panel/60 text-[10px] font-mono">
-                    <span class="w-1.5 h-1.5 rounded-full bg-lime animate-pulse"></span>
-                    <span class="tracking-widest text-mist">OPEN_TO_WORK</span>
-                </div>
-            </div>
+  <!-- Main Content Container -->
+  <main class="container-page" id="main-content">
+    
+    <!-- Hero Section -->
+    <section class="hero-grid" id="hero">
+      <div class="hero-content">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
+          <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">
+            HARDWARE RESEARCHER
+          </span>
+          <span class="neo-tag" style="background-color: var(--color-cyan); color: #111;">
+            🏆 VDAT 2026 ACCEPTED
+          </span>
         </div>
 
-        <nav id="mobile-menu" class="mobile-menu md:hidden mt-4 border border-white/10 rounded-2xl bg-panel/80" aria-label="Mobile">
-            <div class="p-4 space-y-3 font-mono text-xs">
-                <a href="#work" class="block nav-link">[ WORK ]</a>
-                <a href="#about" class="block nav-link">[ ABOUT ]</a>
-                <a href="#publications" class="block nav-link">[ PUBLICATIONS ]</a>
-                <a href="#skills" class="block nav-link">[ ARSENAL ]</a>
-                <a href="#contact" class="block nav-link">[ CONTACT ]</a>
+        <h1 class="hero-title">
+          DIGITAL LOGIC,<br>REAL SILICON.
+        </h1>
+
+        <p class="hero-desc">
+          I’m <strong>Varada Govind Aakula</strong>, an Electronics Engineer and Hardware Researcher at IIIT Allahabad. I architect predictive RTL thermal units, high-throughput systolic array accelerators, and RISC-V microarchitectures—turning complex digital specifications into verified silicon logic.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#work" class="neo-btn neo-btn--yellow">
+            VIEW SELECTED WORK ↗
+          </a>
+          <a href="#notes" class="neo-btn">
+            FIELD NOTES
+          </a>
+          <button id="hero-contact-btn" class="neo-btn neo-btn--pink">
+            GET IN TOUCH ✉
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Silicon & Wafer Card -->
+      <div class="hero-silicon-box" id="hero-interactive-box">
+        <div class="silicon-grid-bg"></div>
+        <div class="silicon-header font-mono">
+          <span style="font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; gap: 0.35rem;">
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: pulseDie 2s infinite;"></span>
+            DIE STATUS: ACTIVE
+          </span>
+          <span style="font-size: 0.72rem; font-weight: 700; opacity: 0.7;">RV32 / TMU</span>
+        </div>
+
+        <div class="silicon-body">
+          <div class="die-traces"></div>
+          <div class="die-core-graphic">
+            <span class="font-mono" style="font-size: 0.65rem; font-weight: 900; letter-spacing: 0.05em; color: #111;">PROLEPSIS</span>
+            <span class="font-display" style="font-size: 1.4rem; font-weight: 900; color: #111; line-height: 1;">TMU</span>
+            <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111; opacity: 0.75;">VDAT 2026</span>
+          </div>
+          <p class="font-mono" style="font-size: 0.72rem; margin-top: 0.85rem; font-weight: 600;">
+            16x16 INT8 Systolic Array • Kalman FSM
+          </p>
+        </div>
+
+        <div class="silicon-telemetry">
+          <div class="telemetry-item">
+            <div class="telemetry-label">THROUGHPUT</div>
+            <div class="telemetry-val" style="color: var(--color-green);">51.2 GOPS</div>
+          </div>
+          <div class="telemetry-item">
+            <div class="telemetry-label">THERMAL CAP</div>
+            <div class="telemetry-val" style="color: var(--color-pink);">96.3% &lt;85°C</div>
+          </div>
+          <div class="telemetry-item">
+            <div class="telemetry-label">AES CLOSURE</div>
+            <div class="telemetry-val" style="color: var(--color-cyan);">1.66 Gbps</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- "Base of Operations" Panel -->
+    <section class="base-operations" id="base-of-operations">
+      <h2 class="base-title">BASE OF OPERATIONS</h2>
+      <div class="base-grid">
+        <div class="base-meta-list">
+          <div class="base-meta-row">
+            <span class="base-meta-badge">LOCATION</span>
+            <span>IIIT Allahabad, India</span>
+          </div>
+          <div class="base-meta-row">
+            <span class="base-meta-badge">STATUS</span>
+            <span>Open to RTL & Silicon Roles</span>
+          </div>
+          <div class="base-meta-row">
+            <span class="base-meta-badge">SPECIALIZATION</span>
+            <span>RTL • RISC-V • Systolic AI</span>
+          </div>
+        </div>
+
+        <div class="base-bio">
+          <p>
+            Currently researching hardware-level proactive thermal management units for multicore RISC-V clusters, designing sparse edge-AI systolic accelerators, and building verifiable SystemVerilog IP.
+            Passionate about bridging microarchitectural innovations with real timing-closed silicon.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Work / Projects Section -->
+    <section id="work">
+      <div class="section-header-wrap">
+        <div class="section-title-badge">
+          <div class="section-title-badge-shadow"></div>
+          <h2 class="section-title-badge-text">SELECTED WORK</h2>
+        </div>
+
+        <div class="view-controls">
+          <!-- Flip Deck / Stack Toggle -->
+          <button id="project-view-toggle" class="view-toggle-btn" aria-label="Toggle Project Stack View" title="Toggle Stack / Flip Card Mode">
+            <svg id="toggle-icon-stack" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          </button>
+          <span id="deck-nav-controls" style="display: none; align-items: center; gap: 0.35rem;">
+            <button id="deck-prev-btn" class="neo-btn" style="padding: 0.4rem 0.65rem; font-size: 0.75rem;">← PREV</button>
+            <button id="deck-next-btn" class="neo-btn neo-btn--cyan" style="padding: 0.4rem 0.65rem; font-size: 0.75rem;">NEXT →</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="projects-container" id="projects-container">
+        
+        <!-- Project 1: Argus AI Hardware Debugger -->
+        <article class="project-card active-card" data-index="0">
+          <div class="card-left">
+            <div class="card-meta-chips">
+              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">EDA & AI RESEARCH</span>
+              <span class="neo-tag">WIP</span>
             </div>
-        </nav>
-    </header>
-
-    <main id="main-content" class="relative pt-20 md:pt-24">
-        <section class="min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden section-anchor">
-            <div id="three-canvas-container" class="absolute inset-0 z-0 pointer-events-none opacity-45"></div>
-
-            <div class="max-w-6xl w-full relative z-10">
-                <div class="flex flex-wrap items-center gap-4 mb-4 reveal-hero opacity-0">
-                    <p class="font-mono text-signal text-xs tracking-[0.2em]">SYSTEM READY // VARADA GOVIND AAKULA</p>
-                    <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">🏆 VDAT 2026 • Accepted Paper</span>
-                </div>
-
-                <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6 reveal-hero opacity-0 translate-y-6 bg-gradient-to-b from-white to-white/60 text-transparent bg-clip-text">
-                    DIGITAL LOGIC,<br>
-                    REAL SILICON.
-                </h1>
-
-                <p class="max-w-2xl text-base md:text-lg text-mist leading-relaxed reveal-hero opacity-0 translate-y-6">
-                    Hardware Researcher at IIIT Allahabad specializing in RTL Design, SystemVerilog, RISC-V Microarchitecture, Hardware Verification, FPGA Acceleration, and CMOS VLSI. Passionate about building high-performance digital systems from architecture to silicon.
-                </p>
-
-                <div class="mt-8 flex flex-wrap items-center gap-3 reveal-hero opacity-0 translate-y-6">
-                    <a href="#work" class="px-5 py-3 rounded-xl bg-signal/15 border border-signal/40 text-signal font-mono text-xs tracking-wider hover:bg-signal/25 transition-colors">VIEW PROJECTS</a>
-                    <a href="#contact" class="px-5 py-3 rounded-xl bg-panel/70 border border-white/10 text-mist font-mono text-xs tracking-wider hover:text-white transition-colors">CONTACT</a>
-                    <a href="#publications" class="px-5 py-3 rounded-xl bg-panel/70 border border-white/10 text-mist font-mono text-xs tracking-wider hover:text-white transition-colors">VIEW PUBLICATIONS</a>
-                </div>
-
-                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 reveal-hero opacity-0 translate-y-6" aria-label="Highlights">
-                    <div class="metric-badge rounded-xl p-3">
-                        <p class="font-mono text-[10px] text-mist">PROJECTS</p>
-                        <p class="text-lg font-semibold">10+</p>
-                    </div>
-                    <div class="metric-badge rounded-xl p-3">
-                        <p class="font-mono text-[10px] text-mist">PUBLICATION</p>
-                        <p class="text-lg font-semibold">VDAT 2026</p>
-                    </div>
-                    <div class="metric-badge rounded-xl p-3">
-                        <p class="font-mono text-[10px] text-mist">OPEN SOURCE</p>
-                        <p class="text-lg font-semibold">GitHub</p>
-                    </div>
-                    <div class="metric-badge rounded-xl p-3">
-                        <p class="font-mono text-[10px] text-mist">FOCUS</p>
-                        <p class="text-lg font-semibold">PPA-aware</p>
-                    </div>
-                </div>
+            <h3 class="card-title">Argus: Multi-Agent AI Hardware Debugger</h3>
+            <div class="card-tech-chips">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">SystemVerilog</span>
+              <span class="tech-pill">Waveform Parsing</span>
+              <span class="tech-pill">LLM Multi-Agent</span>
+              <span class="tech-pill">EDA Toolchain</span>
             </div>
-        </section>
-
-        <section id="work" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 border-b border-white/10 pb-6">
-                    <div>
-                        <span class="font-mono text-signal text-xs">01 // PROJECTS</span>
-                        <h2 class="mt-2 text-3xl md:text-4xl font-display font-semibold">Selected Work</h2>
-                    </div>
-
-                    <div class="flex flex-wrap gap-2" role="toolbar" aria-label="Project filters">
-                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="all" aria-pressed="true">ALL</button>
-                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="rtl">RTL</button>
-                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="vlsi">VLSI</button>
-                        <button class="filter-btn px-3 py-2 rounded-lg border border-white/15 bg-panel/50 text-xs font-mono" data-filter="proto">PROTOCOL</button>
-                    </div>
-                </div>
-
-                <div id="project-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[330px] md:auto-rows-[360px]">
-                    
-                    <article class="project-card glass-card spotlight-wrapper rounded-3xl p-8 md:col-span-2" data-category="rtl">
-                        <div class="relative z-10 h-full flex flex-col justify-between">
-                            <div class="flex items-center justify-between" style="transform: translateZ(24px)">
-                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">PYTHON / MULTI-AGENT AI / EDA</span>
-                                <i data-lucide="bug" class="w-5 h-5 text-signal"></i>
-                            </div>
-                            <div style="transform: translateZ(30px)">
-                                <h3 class="text-2xl md:text-3xl font-semibold mb-2 flex items-center gap-3">
-                                    Argus: AI Hardware Debugger
-                                    <span class="text-[10px] font-mono border border-ember/30 bg-ember/10 text-ember rounded-full px-2 py-0.5">WIP</span>
-                                </h3>
-                                <p class="text-sm text-mist leading-relaxed max-w-xl">A multi-agent AI framework for hardware debugging that combines deterministic RTL analysis, simulation-log parsing, waveform intelligence, and protocol checking with LLM-based reasoning. Decomposes debugging into specialized AI agents while an orchestration layer coordinates evidence collection to generate explainable root-cause reports and recommend potential RTL fixes.</p>
-                            </div>
-                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">RESEARCH FRAMEWORK</p>
-                        </div>
-                    </article>
-
-                    <a href="https://github.com/VaradaGovind/MobileNet-Accelerator-RTL" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8 flex flex-col" data-category="rtl">
-                        <div class="relative z-10 h-full flex flex-col justify-between">
-                            <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist w-fit" style="transform: translateZ(24px)">VERILOG / EDGE AI</span>
-                            <i data-lucide="brain-circuit" class="w-12 h-12 text-slate-500 mt-4" style="transform: translateZ(30px)"></i>
-                            <div class="mt-auto" style="transform: translateZ(30px)">
-                                <h3 class="text-2xl font-semibold mb-2">Task-Aware Object Detection</h3>
-                                <p class="text-sm text-mist leading-relaxed">Built a heterogeneous inference pipeline. Engineered a 16x16 INT8 systolic array delivering 51.2 GOPS at 200 MHz. Reduced memory bandwidth 256x via sparse BRAM addressing and hid latency via Ping-Pong AXI4 SG-DMA.</p>
-                            </div>
-                            <div class="flex items-center justify-between mt-4" style="transform: translateZ(30px)">
-                                <p class="font-mono text-xs text-signal">DVCON 2026 CONTEST</p>
-                                <p class="font-mono text-xs text-signal flex items-center gap-1">OPEN REPOSITORY <i data-lucide="external-link" class="w-3 h-3"></i></p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="https://github.com/VaradaGovind/Prolepsis-soc" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8 md:col-span-2" data-category="rtl">
-                        <div class="relative z-10 h-full flex flex-col justify-between">
-                            <div class="flex items-center justify-between" style="transform: translateZ(24px)">
-                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">SYSVERILOG / RISC-V / RTL</span>
-                                <i data-lucide="cpu" class="w-5 h-5 text-signal"></i>
-                            </div>
-                            <div style="transform: translateZ(30px)">
-                                <h3 class="text-2xl md:text-3xl font-semibold mb-2">Prolepsis: ISA-Agnostic Predictive TMU</h3>
-                                <p class="text-sm text-mist leading-relaxed max-w-xl">Architected an ISA-agnostic RTL Thermal Management Unit (TMU) for multicore RISC-V processors. Designed a Kalman predictor and policy FSM for proactive thermal management without ISA modifications. Achieved 96.3% execution under an 85°C thermal limit (vs 68.7% baseline) using 18,015 LUTs on Xilinx UltraScale+.</p>
-                            </div>
-                            <div class="flex items-center justify-between mt-4" style="transform: translateZ(30px)">
-                                <p class="font-mono text-xs text-signal">ACCEPTED FOR PRESENTATION • VDAT 2026</p>
-                                <p class="font-mono text-xs text-signal flex items-center gap-1">OPEN REPOSITORY <i data-lucide="external-link" class="w-3 h-3"></i></p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="https://github.com/VaradaGovind/GridLock-AES" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8 flex flex-col" data-category="rtl">
-                        <div class="relative z-10 h-full flex flex-col justify-between">
-                            <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist w-fit" style="transform: translateZ(24px)">CRYPTO / AXI4</span>
-                            <i data-lucide="shield-check" class="w-12 h-12 text-slate-500 mt-4" style="transform: translateZ(30px)"></i>
-                            <div class="mt-auto" style="transform: translateZ(30px)">
-                                <h3 class="text-2xl font-semibold mb-2">GridLock AES: 1.6 Gbps</h3>
-                                <p class="text-sm text-mist leading-relaxed">SystemVerilog hardware accelerator achieving 1.66 Gbps and 150 MHz timing closure (WNS: +1.049 ns). Reduced logic area by 40% via Composite Field Arithmetic for a BRAM-less S-Box (2,581 LUTs, 539 Registers).</p>
-                            </div>
-                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">OPEN REPOSITORY</p>
-                        </div>
-                    </a>
-
-                    <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8" data-category="rtl">
-                        <div class="relative z-10 h-full flex flex-col justify-between">
-                            <div class="flex items-center justify-between" style="transform: translateZ(24px)">
-                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">VERILOG / RISC-V</span>
-                                <i data-lucide="cpu" class="w-5 h-5 text-signal"></i>
-                            </div>
-                            <div style="transform: translateZ(30px)">
-                                <h3 class="text-2xl font-semibold mb-2">RV32I Soft-Core</h3>
-                                <p class="text-sm text-mist leading-relaxed">Single-cycle RISC-V core meeting 100 MHz timing on Nexys 4 DDR. Achieved ultra-low footprint (300 LUTs) and minimized on-chip power to 1.89 W. Includes custom MMIO.</p>
-                            </div>
-                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">OPEN REPOSITORY</p>
-                        </div>
-                    </a>
-
-                    <a href="https://github.com/VaradaGovind/CMOS-Standard-Cell-Library" target="_blank" rel="noopener" class="project-card glass-card spotlight-wrapper rounded-3xl p-8" data-category="vlsi">
-                        <div class="relative z-10 h-full flex flex-col justify-between">
-                            <div class="flex items-center justify-between" style="transform: translateZ(24px)">
-                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">VLSI / SPICE</span>
-                                <i data-lucide="zap" class="w-5 h-5 text-signal"></i>
-                            </div>
-                            <div style="transform: translateZ(30px)">
-                                <h3 class="text-2xl font-semibold mb-2">CMOS Cell Library</h3>
-                                <p class="text-sm text-mist leading-relaxed">Standard cell library (Inverter, NAND, FF) and hierarchical 1-Bit Adder designed using NMOS/PMOS models. Validated via rigorous transient and DC sweep analysis.</p>
-                            </div>
-                            <p class="font-mono text-xs text-signal mt-4" style="transform: translateZ(30px)">OPEN REPOSITORY</p>
-                        </div>
-                    </a>
-
-                    <div class="project-card glass-card spotlight-wrapper rounded-3xl p-8 md:col-span-3" data-category="proto">
-                        <div class="relative z-10 h-full flex flex-col justify-center">
-                            <div class="flex items-center gap-4 mb-6" style="transform: translateZ(24px)">
-                                <i data-lucide="arrow-right-left" class="w-6 h-6 text-signal"></i>
-                                <h3 class="text-2xl md:text-3xl font-semibold">Hardware Protocol Stack</h3>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" style="transform: translateZ(30px)">
-                                <a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" rel="noopener" class="glass-card rounded-xl p-5 hover:border-signal/50 transition-colors group">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="font-semibold text-lg group-hover:text-signal transition-colors">UART Controller</span>
-                                        <i data-lucide="external-link" class="w-4 h-4 text-mist group-hover:text-signal transition-colors"></i>
-                                    </div>
-                                    <p class="text-xs text-mist">Configurable baud-rate 16-bit transceiver.</p>
-                                </a>
-                                <a href="https://github.com/VaradaGovind/spi-core" target="_blank" rel="noopener" class="glass-card rounded-xl p-5 hover:border-signal/50 transition-colors group">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="font-semibold text-lg group-hover:text-signal transition-colors">SPI Core</span>
-                                        <i data-lucide="external-link" class="w-4 h-4 text-mist group-hover:text-signal transition-colors"></i>
-                                    </div>
-                                    <p class="text-xs text-mist">Master/Slave architecture for high-speed sync.</p>
-                                </a>
-                                <a href="https://github.com/VaradaGovind/i2c-core" target="_blank" rel="noopener" class="glass-card rounded-xl p-5 hover:border-signal/50 transition-colors group">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="font-semibold text-lg group-hover:text-signal transition-colors">I2C Controller</span>
-                                        <i data-lucide="external-link" class="w-4 h-4 text-mist group-hover:text-signal transition-colors"></i>
-                                    </div>
-                                    <p class="text-xs text-mist">Multi-master capable with robust CDC handling.</p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <p id="project-empty-state" class="hidden mt-6 text-mist font-mono text-xs">No projects in this category yet.</p>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">
+              A multi-agent AI framework for automated hardware debugging that combines deterministic RTL analysis, simulation log parsing, waveform intelligence, and protocol checking with LLM reasoning to identify root-cause RTL bugs and propose verified fixes.
+            </p>
+            <div class="hardware-metric-row">
+              <div class="metric-chip"><strong>FLOW</strong> Multi-Agent Evidence Orchestration</div>
+              <div class="metric-chip"><strong>INTELLIGENCE</strong> VCD/FSDB Waveform Parser</div>
             </div>
-        </section>
-
-        <section id="about" class="py-20 md:py-28 px-4 md:px-6 bg-ink section-anchor">
-            <div class="max-w-4xl mx-auto">
-                <span class="font-mono text-signal text-xs">02 // TIMELINE</span>
-                <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2 mb-12">Career & Education</h2>
-
-                <div class="relative border-l border-white/10 ml-2 md:ml-0 space-y-14">
-                    <article class="reveal-item relative pl-8 md:pl-20">
-                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-signal bg-white shadow-neon"></div>
-                        <p class="font-mono text-xs text-mist mb-2">JAN 2026 - JUL 2026</p>
-                        <h3 class="text-xl md:text-2xl font-semibold">Research Intern</h3>
-                        <p class="text-signal font-mono text-sm mt-1">Indian Institute of Information Technology, Allahabad</p>
-                        <p class="text-mist leading-relaxed mt-3">Architecting Prolepsis (an RTL Thermal Management Unit) for a 4-core RISC-V cluster. Designed a Kalman predictor and policy FSM for proactive throttling and task migrations to bypass firmware delays.</p>
-                    </article>
-
-                    <article class="reveal-item relative pl-8 md:pl-20">
-                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-mist bg-ink"></div>
-                        <p class="font-mono text-xs text-mist mb-2">AUG 2024 - PRESENT</p>
-                        <h3 class="text-xl md:text-2xl font-semibold">IoT Wing Coordinator</h3>
-                        <p class="text-signal font-mono text-sm mt-1">Tesla Electronics Society, IIIT Allahabad</p>
-                        <p class="text-mist leading-relaxed mt-3">Leading practical hardware initiatives, lab planning, and mentoring 20+ members on digital design fundamentals and Verilog coding standards.</p>
-                    </article>
-
-                    <article class="reveal-item relative pl-8 md:pl-20">
-                        <div class="absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full border border-mist bg-ink"></div>
-                        <p class="font-mono text-xs text-mist mb-2">2023 - 2027 (EXPECTED)</p>
-                        <h3 class="text-xl md:text-2xl font-semibold">B.Tech Electronics & Communication</h3>
-                        <p class="text-signal font-mono text-sm mt-1">Indian Institute of Information Technology, Allahabad</p>
-                        <p class="text-mist leading-relaxed mt-3">Core coursework focusing on Digital Logic Design, CMOS VLSI Design, Low Power Design, Computer Architecture, Signals & Systems, and Computer Networks.</p>
-                    </article>
-                </div>
+            <div class="card-actions">
+              <span class="neo-btn neo-btn--black" style="font-size: 0.75rem;">RESEARCH FRAMEWORK</span>
             </div>
-        </section>
+          </div>
+        </article>
 
-        <section id="publications" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
-            <div class="max-w-7xl mx-auto">
-                <div class="mb-10 border-b border-white/10 pb-6">
-                    <span class="font-mono text-signal text-xs">03 // PUBLICATIONS</span>
-                    <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2">Research Publications</h2>
-                </div>
-
-                <div class="relative">
-                    <article class="glass-card spotlight-wrapper rounded-3xl p-8 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 overflow-hidden w-32 h-32 z-20 pointer-events-none rounded-tr-3xl">
-                            <div class="absolute top-6 -right-8 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 text-ink font-bold text-[10px] py-1.5 px-10 transform rotate-45 shadow-lg w-[160px] text-center tracking-wider">
-                                🏆 ACCEPTED @ VDAT 2026
-                            </div>
-                        </div>
-
-                        <div class="relative z-10 h-full flex flex-col">
-                            <div class="flex flex-wrap items-center gap-2 mb-6" style="transform: translateZ(24px)">
-                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">Accepted</span>
-                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">Conference Paper</span>
-                                <span class="text-[10px] font-mono border border-white/10 bg-white/5 rounded-full px-3 py-1 text-mist">RTL Research</span>
-                            </div>
-
-                            <div style="transform: translateZ(30px)">
-                                <h3 class="text-2xl md:text-3xl font-semibold mb-4 leading-snug">Prolepsis:<br>ISA-Agnostic RTL Predictive Thermal<br>Management for Multicore Processors</h3>
-                                <p class="text-sm md:text-base text-mist leading-relaxed max-w-3xl mb-8">Designed an ISA-agnostic RTL Thermal Management Unit (TMU) that proactively predicts thermal hotspots using a Kalman predictor and policy FSM, enabling runtime thermal management without ISA modifications while maintaining 96.3% execution under an 85°C thermal limit.</p>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2 mb-8" style="transform: translateZ(30px)">
-                                <div class="metric-badge rounded-lg px-3 py-1.5">
-                                    <p class="font-mono text-[10px] text-mist font-semibold">SystemVerilog</p>
-                                </div>
-                                <div class="metric-badge rounded-lg px-3 py-1.5">
-                                    <p class="font-mono text-[10px] text-mist font-semibold">RTL</p>
-                                </div>
-                                <div class="metric-badge rounded-lg px-3 py-1.5">
-                                    <p class="font-mono text-[10px] text-mist font-semibold">RISC-V</p>
-                                </div>
-                                <div class="metric-badge rounded-lg px-3 py-1.5">
-                                    <p class="font-mono text-[10px] text-mist font-semibold">FPGA</p>
-                                </div>
-                                <div class="metric-badge rounded-lg px-3 py-1.5">
-                                    <p class="font-mono text-[10px] text-mist font-semibold">Kalman Filter</p>
-                                </div>
-                                <div class="metric-badge rounded-lg px-3 py-1.5">
-                                    <p class="font-mono text-[10px] text-mist font-semibold">Thermal Management</p>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-wrap gap-4 mt-auto pt-4 border-t border-white/5" style="transform: translateZ(30px)">
-                                <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-panel/40 border border-white/5 text-mist/70 font-mono text-xs cursor-not-allowed">
-                                    <span>📄 Paper</span>
-                                    <span class="text-[9px] bg-black/30 px-1.5 py-0.5 rounded">Coming Soon</span>
-                                </button>
-                                <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-panel/40 border border-white/5 text-mist/70 font-mono text-xs cursor-not-allowed">
-                                    <span>📚 BibTeX</span>
-                                    <span class="text-[9px] bg-black/30 px-1.5 py-0.5 rounded">Coming Soon</span>
-                                </button>
-                                <button disabled class="flex items-center gap-2 px-4 py-2 rounded-xl bg-panel/40 border border-white/5 text-mist/70 font-mono text-xs cursor-not-allowed">
-                                    <span>🎤 Presentation Slides</span>
-                                    <span class="text-[9px] bg-black/30 px-1.5 py-0.5 rounded">Coming Soon</span>
-                                </button>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+        <!-- Project 2: MobileNet INT8 Systolic Array Accelerator -->
+        <article class="project-card" data-index="1">
+          <div class="card-left">
+            <div class="card-meta-chips">
+              <span class="neo-tag" style="background-color: var(--color-cyan); color: #111;">EDGE ACCELERATOR</span>
+              <span class="neo-tag">DVCon 2026 Contest</span>
             </div>
-        </section>
-
-        <section id="skills" class="py-20 md:py-28 px-4 md:px-6 section-anchor">
-            <div class="max-w-7xl mx-auto">
-                <div class="mb-10 border-b border-white/10 pb-6">
-                    <span class="font-mono text-signal text-xs">04 // ARSENAL</span>
-                    <h2 class="text-3xl md:text-4xl font-display font-semibold mt-2">Technical Proficiency</h2>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    <article class="glass-card skill-card rounded-2xl p-6">
-                        <i data-lucide="cpu" class="w-7 h-7 text-signal mb-5"></i>
-                        <h4 class="font-semibold text-lg mb-4">RTL Design</h4>
-                        <ul class="space-y-2 text-sm text-mist">
-                            <li>SystemVerilog & UVM</li>
-                            <li>Verilog & VHDL</li>
-                            <li>RISC-V microarchitecture</li>
-                            <li>AXI4 Integration</li>
-                            <li>CDC & Data Synchronization</li>
-                        </ul>
-                    </article>
-
-                    <article class="glass-card skill-card rounded-2xl p-6">
-                        <i data-lucide="terminal" class="w-7 h-7 text-signal mb-5"></i>
-                        <h4 class="font-semibold text-lg mb-4">Firmware & Software</h4>
-                        <ul class="space-y-2 text-sm text-mist">
-                            <li>C and C++</li>
-                            <li>Python scripting</li>
-                            <li>Assembly-level Programming</li>
-                            <li>Linux Environments</li>
-                        </ul>
-                    </article>
-
-                    <article class="glass-card skill-card rounded-2xl p-6">
-                        <i data-lucide="wrench" class="w-7 h-7 text-signal mb-5"></i>
-                        <h4 class="font-semibold text-lg mb-4">Tools</h4>
-                        <ul class="space-y-2 text-sm text-mist">
-                            <li>Xilinx Vivado</li>
-                            <li>LTspice</li>
-                            <li>GTKWave</li>
-                            <li>ModelSim</li>
-                            <li>MATLAB & Git/GitHub</li>
-                        </ul>
-                    </article>
-
-                    <article class="glass-card skill-card rounded-2xl p-6">
-                        <i data-lucide="layers" class="w-7 h-7 text-signal mb-5"></i>
-                        <h4 class="font-semibold text-lg mb-4">Concepts</h4>
-                        <ul class="space-y-2 text-sm text-mist">
-                            <li>Digital Logic & FSM Design</li>
-                            <li>Static Timing Analysis (STA)</li>
-                            <li>CMOS VLSI</li>
-                            <li>FPGA Implementation Flow</li>
-                        </ul>
-                    </article>
-                </div>
+            <h3 class="card-title">MobileNet INT8 Systolic Array Accelerator</h3>
+            <div class="card-tech-chips">
+              <span class="tech-pill">Verilog</span>
+              <span class="tech-pill">Systolic Array</span>
+              <span class="tech-pill">AXI4 SG-DMA</span>
+              <span class="tech-pill">BRAM Sparsity</span>
+              <span class="tech-pill">Vivado</span>
             </div>
-        </section>
-
-        <section id="contact" class="py-16 md:py-24 px-4 md:px-6 border-t border-white/10 bg-panel/40 section-anchor">
-            <div class="max-w-7xl mx-auto">
-                <p class="font-mono text-signal text-xs">05 // CONTACT</p>
-                <h2 class="mt-3 text-4xl md:text-7xl font-display font-bold leading-[0.95]">
-                    <a href="mailto:varada.aakula@gmail.com" class="inline-block group">
-                        <span class="group-hover:opacity-0 transition-opacity">Let's Build Hardware That Matters</span>
-                        <span class="absolute opacity-0 group-hover:opacity-100 text-stroke transition-opacity">Let's Build Hardware That Matters</span>
-                    </a>
-                </h2>
-
-                <div class="mt-8 flex flex-wrap items-center gap-3">
-                    <button id="copy-email" class="px-4 py-2 rounded-lg border border-white/15 bg-panel/70 text-sm font-mono hover:text-lime transition-colors">COPY EMAIL</button>
-                    <span id="copy-status" class="text-xs font-mono text-mist" aria-live="polite"></span>
-                </div>
-
-                <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 font-mono text-xs text-mist uppercase tracking-wider">
-                    <div class="flex flex-wrap gap-6">
-                        <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener" class="hover:text-signal transition-colors">GitHub</a>
-                        <a href="https://www.linkedin.com/in/varada-govind-aakula-3506712b5/" target="_blank" rel="noopener" class="hover:text-signal transition-colors">LinkedIn</a>
-                    </div>
-                    <p>Copyright 2026 Varada Govind Aakula</p>
-                </div>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">
+              A heterogeneous edge inference pipeline with a 16x16 INT8 systolic compute core delivering 51.2 GOPS at 200 MHz. Implemented sparse BRAM addressing to reduce memory bandwidth by 256x and hid memory transfer latency via ping-pong AXI4 SG-DMA streaming.
+            </p>
+            <div class="hardware-metric-row">
+              <div class="metric-chip"><strong>THROUGHPUT</strong> 51.2 GOPS @ 200 MHz</div>
+              <div class="metric-chip"><strong>BANDWIDTH</strong> 256x Sparsity Reduction</div>
+              <div class="metric-chip"><strong>DMA</strong> Ping-Pong AXI4</div>
             </div>
-        </section>
-    </main>
+            <div class="card-actions">
+              <a href="https://github.com/VaradaGovind/MobileNet-Accelerator-RTL" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--yellow">
+                SOURCE CODE ↗
+              </a>
+            </div>
+          </div>
+        </article>
 
-    <script>
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const finePointer = window.matchMedia('(pointer:fine)').matches;
-        const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+        <!-- Project 3: Prolepsis TMU @ VDAT 2026 -->
+        <article class="project-card" data-index="2">
+          <div class="card-left">
+            <div class="card-meta-chips">
+              <span class="neo-tag" style="background-color: var(--color-pink); color: #111;">CONFERENCE PAPER</span>
+              <span class="neo-tag">VDAT 2026</span>
+            </div>
+            <h3 class="card-title">Prolepsis: ISA-Agnostic Predictive Thermal Management</h3>
+            <div class="card-tech-chips">
+              <span class="tech-pill">SystemVerilog</span>
+              <span class="tech-pill">RISC-V Multicore</span>
+              <span class="tech-pill">Kalman Predictor</span>
+              <span class="tech-pill">UltraScale+</span>
+            </div>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">
+              Architected an ISA-agnostic RTL Thermal Management Unit (TMU) for multicore RISC-V processors. Designed a hardware Kalman predictor and policy FSM for proactive throttling and task migration, achieving 96.3% execution under an 85°C limit using 18,015 LUTs.
+            </p>
+            <div class="hardware-metric-row">
+              <div class="metric-chip"><strong>THERMAL LIMIT</strong> 96.3% compliance (&lt;85°C)</div>
+              <div class="metric-chip"><strong>AREA</strong> 18,015 LUTs on UltraScale+</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://github.com/VaradaGovind/Prolepsis-soc" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--cyan">
+                SOURCE CODE ↗
+              </a>
+              <span class="neo-btn neo-btn--pink" style="font-size: 0.75rem;">VDAT '26 ACCEPTED</span>
+            </div>
+          </div>
+        </article>
 
-        const menuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
+        <!-- Project 4: GridLock AES-128 Accelerator -->
+        <article class="project-card" data-index="3">
+          <div class="card-left">
+            <div class="card-meta-chips">
+              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">CRYPTOGRAPHY RTL</span>
+            </div>
+            <h3 class="card-title">GridLock AES: 1.66 Gbps Cryptographic Core</h3>
+            <div class="card-tech-chips">
+              <span class="tech-pill">SystemVerilog</span>
+              <span class="tech-pill">Composite Galois Field</span>
+              <span class="tech-pill">AXI4-Lite</span>
+              <span class="tech-pill">Timing Closure</span>
+            </div>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">
+              High-throughput AES-128 cryptographic engine achieving 1.66 Gbps with 150 MHz timing closure (WNS: +1.049 ns). Reduced logic area by 40% using Composite Field Arithmetic for a pure BRAM-less S-Box (2,581 LUTs, 539 Registers).
+            </p>
+            <div class="hardware-metric-row">
+              <div class="metric-chip"><strong>SPEED</strong> 1.66 Gbps @ 150 MHz</div>
+              <div class="metric-chip"><strong>AREA REDUCTION</strong> 40% Logic Reduction</div>
+              <div class="metric-chip"><strong>SLACK</strong> WNS +1.049 ns</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://github.com/VaradaGovind/GridLock-AES" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--yellow">
+                SOURCE CODE ↗
+              </a>
+            </div>
+          </div>
+        </article>
 
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', () => {
-                const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                menuToggle.setAttribute('aria-expanded', String(!expanded));
-                mobileMenu.classList.toggle('open');
-            });
+        <!-- Project 5: RV32I Soft-Core & Protocols -->
+        <article class="project-card" data-index="4">
+          <div class="card-left">
+            <div class="card-meta-chips">
+              <span class="neo-tag" style="background-color: var(--color-green); color: #111;">MICROARCHITECTURE</span>
+            </div>
+            <h3 class="card-title">RV32I Soft-Core & Hardware Protocol Suite</h3>
+            <div class="card-tech-chips">
+              <span class="tech-pill">Verilog</span>
+              <span class="tech-pill">RISC-V ISA</span>
+              <span class="tech-pill">UART / SPI / I2C</span>
+              <span class="tech-pill">Nexys 4 DDR</span>
+            </div>
+          </div>
+          <div class="card-right">
+            <p class="card-desc">
+              Single-cycle RV32I processor core with custom MMIO meeting 100 MHz timing closure at ultra-low area (300 LUTs). Coupled with robust hardware controllers for 16-bit configurable UART, SPI Master/Slave, and multi-master I2C.
+            </p>
+            <div class="hardware-metric-row">
+              <div class="metric-chip"><strong>FOOTPRINT</strong> ~300 LUTs Soft-Core</div>
+              <div class="metric-chip"><strong>TIMING</strong> 100 MHz on FPGA</div>
+              <div class="metric-chip"><strong>PROTOCOLS</strong> UART, SPI, I2C with CDC</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://github.com/VaradaGovind/rtl-riscv32" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--cyan">
+                RV32I REPO ↗
+              </a>
+              <a href="https://github.com/VaradaGovind/uart-16bit-verilog" target="_blank" rel="noopener noreferrer" class="neo-btn">
+                UART REPO ↗
+              </a>
+            </div>
+          </div>
+        </article>
 
-            navLinks.forEach((link) => {
-                link.addEventListener('click', () => {
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.classList.remove('open');
-                });
-            });
-        }
+      </div>
+    </section>
 
-        lucide.createIcons();
+    <!-- Field Notes Section (Sticky Notes Style) -->
+    <section class="sticky-section" id="notes">
+      <div class="sticky-header">
+        <div>
+          <span class="neo-tag" style="background-color: var(--color-yellow); color: #111; margin-bottom: 0.5rem;">
+            LAB NOTEBOOK
+          </span>
+          <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase;">
+            Field Notes.
+          </h2>
+        </div>
+      </div>
 
-        let lenis;
-        if (!reducedMotion) {
-            lenis = new Lenis({
-                duration: 1.1,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                smoothWheel: true,
-                smoothTouch: false,
-                wheelMultiplier: 1.0
-            });
+      <div class="sticky-notes-container">
+        
+        <!-- Note 1 -->
+        <div class="sticky-note" style="--note-bg: var(--color-yellow); --note-rot: -3deg;">
+          <div class="sticky-tape"></div>
+          <div class="sticky-meta">
+            <span class="sticky-date">AUG 2026</span>
+            <span class="sticky-mood">CELEBRATING</span>
+          </div>
+          <p class="sticky-snippet">
+            Prolepsis TMU got officially accepted at VDAT 2026! Excited to present our work on proactive Kalman thermal prediction for multicore RISC-V chips.
+          </p>
+          <div class="sticky-footer">
+            #VLSI #RISCV ↗
+          </div>
+        </div>
 
-            function raf(time) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
-            requestAnimationFrame(raf);
-        }
+        <!-- Note 2 -->
+        <div class="sticky-note" style="--note-bg: var(--color-cyan); --note-rot: 3deg;">
+          <div class="sticky-tape"></div>
+          <div class="sticky-meta">
+            <span class="sticky-date">JUL 2026</span>
+            <span class="sticky-mood">HARDWARE ENG</span>
+          </div>
+          <p class="sticky-snippet">
+            Finished the 16x16 INT8 systolic array core. Balancing sparse memory reads with AXI4 ping-pong streaming cut our memory stall cycles to nearly zero.
+          </p>
+          <div class="sticky-footer">
+            #EdgeAI #Verilog ↗
+          </div>
+        </div>
 
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
+        <!-- Note 3 -->
+        <div class="sticky-note" style="--note-bg: var(--color-pink); --note-rot: -2deg;">
+          <div class="sticky-tape"></div>
+          <div class="sticky-meta">
+            <span class="sticky-date">JUN 2026</span>
+            <span class="sticky-mood">INSIGHT</span>
+          </div>
+          <p class="sticky-snippet">
+            CDC (Clock Domain Crossing) bugs are the ultimate test of patience. Never skip 2-FF synchronizers or gray-coded pointers in async FIFOs.
+          </p>
+          <div class="sticky-footer">
+            #SystemVerilog ↗
+          </div>
+        </div>
 
-        if (finePointer && !reducedMotion && cursorDot && cursorOutline) {
-            const hoverTargets = document.querySelectorAll('a, button, .glass-card');
-            const spotlightCards = document.querySelectorAll('.spotlight-wrapper');
+        <!-- Note 4 (CTA Card) -->
+        <div class="sticky-note sticky-cta" id="sticky-contact-cta" style="--note-bg: var(--color-green); --note-rot: 4deg;">
+          <div class="sticky-tape"></div>
+          <div class="sticky-cta-content">
+            <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; line-height: 1.2; text-transform: uppercase;">
+              Want to talk silicon?
+            </span>
+            <span style="font-family: var(--font-mono); font-size: 0.85rem; margin-top: 0.75rem; opacity: 0.85;">
+              Click here to get in touch →
+            </span>
+          </div>
+        </div>
 
-            let mouseX = 0;
-            let mouseY = 0;
-            let rafPending = false;
+      </div>
+    </section>
 
-            const applyPointerFrame = () => {
-                cursorDot.style.left = mouseX + 'px';
-                cursorDot.style.top = mouseY + 'px';
-                cursorOutline.style.left = mouseX + 'px';
-                cursorOutline.style.top = mouseY + 'px';
+    <!-- Technical Proficiency / Arsenal Grid -->
+    <section id="arsenal" style="margin-bottom: 4.5rem;">
+      <div class="section-header-wrap">
+        <div class="section-title-badge">
+          <div class="section-title-badge-shadow" style="background-color: var(--color-cyan);"></div>
+          <h2 class="section-title-badge-text">TECHNICAL ARSENAL</h2>
+        </div>
+      </div>
 
-                spotlightCards.forEach((card) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = mouseX - rect.left;
-                    const y = mouseY - rect.top;
-                    card.style.setProperty('--mx', x + 'px');
-                    card.style.setProperty('--my', y + 'px');
-                });
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3 class="skill-card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+            RTL & Architecture
+          </h3>
+          <ul class="skill-list">
+            <li>SystemVerilog & Verilog HDL</li>
+            <li>RISC-V Microarchitecture</li>
+            <li>Systolic Arrays & AI Accelerators</li>
+            <li>AXI4 / AXI-Lite / APB Protocols</li>
+            <li>Clock Domain Crossing (CDC) & FIFOs</li>
+          </ul>
+        </div>
 
-                rafPending = false;
-            };
+        <div class="skill-card">
+          <h3 class="skill-card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            EDA & Synthesis
+          </h3>
+          <ul class="skill-list">
+            <li>Xilinx Vivado (Synthesis, P&R, STA)</li>
+            <li>ModelSim & QuestaSim</li>
+            <li>GTKWave & Icarus Verilog</li>
+            <li>LTspice & SPICE Netlisting</li>
+            <li>Timing Closure (WNS/TNS Optimization)</li>
+          </ul>
+        </div>
 
-            window.addEventListener('mousemove', (event) => {
-                mouseX = event.clientX;
-                mouseY = event.clientY;
-                if (!rafPending) {
-                    rafPending = true;
-                    requestAnimationFrame(applyPointerFrame);
-                }
-            });
+        <div class="skill-card">
+          <h3 class="skill-card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+            Software & Automation
+          </h3>
+          <ul class="skill-list">
+            <li>C and C++ (Embedded Systems)</li>
+            <li>Python Scripting & Testbench Gen</li>
+            <li>Waveform Intelligence & Multi-Agent LLMs</li>
+            <li>Linux / Bash Automation</li>
+            <li>Git & GitHub CI Workflows</li>
+          </ul>
+        </div>
 
-            hoverTargets.forEach((target) => {
-                target.addEventListener('mouseenter', () => {
-                    cursorOutline.style.width = '60px';
-                    cursorOutline.style.height = '60px';
-                    cursorOutline.style.borderColor = 'rgba(255, 255, 255, 0.8)';
-                    cursorOutline.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-                });
+        <div class="skill-card">
+          <h3 class="skill-card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            VLSI & Verification
+          </h3>
+          <ul class="skill-list">
+            <li>CMOS Standard Cell Design</li>
+            <li>UVM & SystemVerilog Assertions (SVA)</li>
+            <li>Low Power Design Principles</li>
+            <li>FPGA Prototyping (Nexys / UltraScale+)</li>
+            <li>Static Timing Analysis (STA)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-                target.addEventListener('mouseleave', () => {
-                    cursorOutline.style.width = '40px';
-                    cursorOutline.style.height = '40px';
-                    cursorOutline.style.borderColor = 'rgba(255, 255, 255, 0.35)';
-                    cursorOutline.style.backgroundColor = 'transparent';
-                });
-            });
-        }
+    <!-- Multi-Profile Bento Resume Section -->
+    <section id="resume">
+      <div class="bento-resume-card" id="resume-bento-card">
+        <span class="bento-watermark">CV</span>
+        
+        <div class="bento-grid">
+          <div>
+            <span class="neo-tag" style="background-color: #111111; color: var(--color-yellow); margin-bottom: 1rem;">
+              CURRICULUM VITAE
+            </span>
+            <h2 class="bento-title">Like my work?</h2>
+            <p class="bento-desc" id="resume-profile-desc">
+              Select a specialized engineering focus below to view relevant RTL design, FPGA acceleration, and verification achievements.
+            </p>
 
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-        const emptyState = document.getElementById('project-empty-state');
+            <!-- Dynamic Profile Tabs -->
+            <div class="resume-tabs" id="resume-tabs">
+              <button class="resume-tab-btn active" data-profile="rtl">RTL & Architecture</button>
+              <button class="resume-tab-btn" data-profile="fpga">FPGA & Silicon</button>
+              <button class="resume-tab-btn" data-profile="dv">Verification & DV</button>
+              <button class="resume-tab-btn" data-profile="embedded">Embedded / Systems</button>
+            </div>
 
-        filterButtons.forEach((button) => {
-            button.addEventListener('click', () => {
-                const selected = button.dataset.filter;
-                let visibleCount = 0;
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="mailto:varada.aakula@gmail.com?subject=Opportunity%20Discussion%20-%20Varada%20Govind" class="neo-btn neo-btn--pink" style="font-size: 0.82rem;">
+                DISCUSS ROLES ↗
+              </a>
+              <button id="resume-open-modal-btn" class="neo-btn neo-btn--cyan" style="font-size: 0.82rem;">
+                GET IN TOUCH
+              </button>
+            </div>
+          </div>
 
-                filterButtons.forEach((btn) => btn.setAttribute('aria-pressed', 'false'));
-                button.setAttribute('aria-pressed', 'true');
+          <!-- Right: Mini Preview Sheet -->
+          <div class="mini-resume-wrap">
+            <div class="mini-sheet-bg"></div>
+            <div class="mini-resume-sheet" id="mini-resume-sheet">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #111; padding-bottom: 0.4rem;">
+                <span class="font-mono" style="font-size: 0.7rem; font-weight: 900; letter-spacing: 0.05em;">VARADA GOVIND</span>
+                <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; background: #111; color: #fff; padding: 0.1rem 0.3rem;">IIIT-A</span>
+              </div>
+              <div class="mini-line mini-line--dark" style="width: 70%;"></div>
+              <div class="mini-line" style="width: 100%;"></div>
+              <div class="mini-line" style="width: 90%;"></div>
+              <div class="mini-line" style="width: 80%;"></div>
+              <div style="margin-top: 0.5rem;" class="mini-line mini-line--dark" style="width: 50%;"></div>
+              <div class="mini-line" style="width: 95%;"></div>
+              <div class="mini-line" style="width: 85%;"></div>
+              <div class="mini-line" style="width: 75%;"></div>
+              <div class="mini-badge-sticker" id="resume-sticker">
+                RTL CORE
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                projectCards.forEach((card) => {
-                    const show = selected === 'all' || card.dataset.category === selected;
-                    card.classList.toggle('hidden-card', !show);
-                    if (show) visibleCount += 1;
-                });
+  </main>
 
-                if (emptyState) {
-                    emptyState.classList.toggle('hidden', visibleCount > 0);
-                }
-            });
-        });
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <span style="font-weight: 900; font-size: 1.1rem; text-transform: uppercase;">VARADA GOVIND AAKULA</span>
+          <p style="font-size: 0.78rem; opacity: 0.75; margin-top: 0.2rem;">Hardware Researcher • RTL & VLSI Engineer • IIIT Allahabad</p>
+        </div>
 
-        const copyEmailBtn = document.getElementById('copy-email');
-        const copyStatus = document.getElementById('copy-status');
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <a href="#work" class="neo-btn neo-btn--yellow" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">WORK</a>
+          <button id="footer-contact-trigger" class="neo-btn neo-btn--pink" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">CONTACT ME</button>
+        </div>
+      </div>
 
-        if (copyEmailBtn && copyStatus) {
-            copyEmailBtn.addEventListener('click', async () => {
-                const email = 'varada.aakula@gmail.com';
-                try {
-                    await navigator.clipboard.writeText(email);
-                    copyStatus.textContent = 'Email copied to clipboard';
-                } catch (error) {
-                    copyStatus.textContent = 'Clipboard blocked, please copy manually: ' + email;
-                }
+      <div class="footer-bottom">
+        <span>&copy; 2026 Varada Govind Aakula. Built with clean Neobrutalism.</span>
+        <div style="display: flex; gap: 1.25rem;">
+          <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">GitHub</a>
+          <a href="https://www.linkedin.com/in/varada-govind-aakula-3506712b5/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">LinkedIn</a>
+          <a href="mailto:varada.aakula@gmail.com" style="text-decoration: underline;">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-                setTimeout(() => {
-                    copyStatus.textContent = '';
-                }, 2400);
-            });
-        }
+  <!-- Sticky Note Contact Modal Dialog -->
+  <dialog id="contact-modal" class="neo-modal-dialog">
+    <div class="sticky-note-modal">
+      <div class="sticky-tape"></div>
+      <button id="close-modal-btn" class="modal-close-btn" aria-label="Close dialog">&times;</button>
+      
+      <div class="modal-header">
+        GET IN TOUCH
+      </div>
+      <p class="modal-text">
+        Have an RTL design or hardware research opportunity, or want to discuss multicore thermal management & accelerators? Send an email or connect directly:
+      </p>
 
-        if (!reducedMotion && window.gsap && window.ScrollTrigger) {
-            gsap.registerPlugin(ScrollTrigger);
+      <div class="contact-block">
+        <div class="contact-item-row">
+          <span class="contact-item-label">DIRECT EMAIL</span>
+          <div class="contact-copy-box">
+            <a href="mailto:varada.aakula@gmail.com" class="contact-email-link">varada.aakula@gmail.com</a>
+            <button id="copy-email-btn" class="copy-btn" title="Copy email address">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span id="copy-btn-text">COPY</span>
+            </button>
+          </div>
+        </div>
 
-            gsap.timeline()
-                .to('.reveal-hero', {
-                    opacity: 1,
-                    y: 0,
-                    stagger: 0.16,
-                    duration: 1.1,
-                    ease: 'power3.out'
-                });
+        <div class="contact-item-row" style="margin-top: 0.5rem;">
+          <span class="contact-item-label">PROFILES</span>
+          <div style="display: flex; gap: 0.5rem;">
+            <a href="https://github.com/VaradaGovind" target="_blank" rel="noopener noreferrer" class="neo-btn" style="flex: 1; font-size: 0.72rem; padding: 0.4rem;">
+              GITHUB ↗
+            </a>
+            <a href="https://www.linkedin.com/in/varada-govind-aakula-3506712b5/" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--cyan" style="flex: 1; font-size: 0.72rem; padding: 0.4rem;">
+              LINKEDIN ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
-            gsap.utils.toArray('#project-grid .glass-card').forEach((card, index) => {
-                gsap.from(card, {
-                    scrollTrigger: { trigger: card, start: 'top 88%' },
-                    opacity: 0,
-                    y: 38,
-                    duration: 0.75,
-                    delay: Math.min(index * 0.06, 0.3),
-                    ease: 'power2.out'
-                });
-            });
+  <!-- Interactive JavaScript -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. Theme Toggling (Dark / Light)
+    // -------------------------------------------------------------
+    const darkToggleBtn = document.getElementById('dark-toggle');
+    
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        document.getElementById('theme-color-meta').setAttribute('content', '#0f1013');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        document.getElementById('theme-color-meta').setAttribute('content', '#f8f8f6');
+      }
+    }
 
-            gsap.from('.reveal-item', {
-                scrollTrigger: { trigger: '#about', start: 'top 78%' },
-                opacity: 0,
-                x: -20,
-                duration: 0.75,
-                stagger: 0.16,
-                ease: 'power2.out'
-            });
+    if (darkToggleBtn) {
+      darkToggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        setTheme(isDark ? 'light' : 'dark');
+      });
+    }
 
-            gsap.from('.skill-card', {
-                scrollTrigger: { trigger: '#skills', start: 'top 80%' },
-                opacity: 0,
-                y: 48,
-                duration: 0.8,
-                stagger: 0.12,
-                ease: 'power2.out'
-            });
+    // -------------------------------------------------------------
+    // 2. Custom Magic Cursor
+    // -------------------------------------------------------------
+    const magicCursor = document.getElementById('magic-cursor');
+    const heroBox = document.getElementById('hero-interactive-box');
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
 
-            const wireGlow = document.querySelector('.wire-glow');
-            if (wireGlow) {
-                const length = wireGlow.getTotalLength();
-                wireGlow.style.strokeDasharray = length;
-                wireGlow.style.strokeDashoffset = length;
+    if (finePointer && magicCursor) {
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let cursorX = mouseX;
+      let cursorY = mouseY;
 
-                gsap.to(wireGlow, {
-                    strokeDashoffset: 0,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: document.body,
-                        start: 'top top',
-                        end: 'bottom bottom',
-                        scrub: 0.5
-                    }
-                });
-            }
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function renderCursor() {
+        cursorX += (mouseX - cursorX) * 0.35;
+        cursorY += (mouseY - cursorY) * 0.35;
+        magicCursor.style.left = `${cursorX}px`;
+        magicCursor.style.top = `${cursorY}px`;
+        requestAnimationFrame(renderCursor);
+      }
+      renderCursor();
+
+      const hoverTargets = document.querySelectorAll('a, button, .sticky-note, .project-card, .skill-card');
+      hoverTargets.forEach((target) => {
+        target.addEventListener('mouseenter', () => magicCursor.classList.add('cursor-hover'));
+        target.addEventListener('mouseleave', () => magicCursor.classList.remove('cursor-hover'));
+      });
+
+      if (heroBox) {
+        heroBox.addEventListener('mouseenter', () => magicCursor.classList.add('cursor-lens'));
+        heroBox.addEventListener('mouseleave', () => magicCursor.classList.remove('cursor-lens'));
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 3. Scroll Progress Indicator
+    // -------------------------------------------------------------
+    const scrollProgress = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      if (!scrollProgress) return;
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight <= 0) return;
+      const progress = (window.scrollY / totalHeight) * 100;
+      scrollProgress.style.width = `${progress}%`;
+    }, { passive: true });
+
+    // -------------------------------------------------------------
+    // 4. Projects View Switcher (Stack vs. Deck Flip Mode)
+    // -------------------------------------------------------------
+    const projectContainer = document.getElementById('projects-container');
+    const viewToggleBtn = document.getElementById('project-view-toggle');
+    const deckNavControls = document.getElementById('deck-nav-controls');
+    const deckPrevBtn = document.getElementById('deck-prev-btn');
+    const deckNextBtn = document.getElementById('deck-next-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    let isDeckMode = false;
+    let currentCardIndex = 0;
+
+    function updateDeckCards() {
+      projectCards.forEach((card, index) => {
+        if (index === currentCardIndex) {
+          card.classList.add('active-card');
         } else {
-            document.querySelectorAll('.reveal-hero').forEach((el) => {
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-            });
+          card.classList.remove('active-card');
         }
+      });
+    }
 
-        if (finePointer && isDesktop && !reducedMotion && window.VanillaTilt) {
-            VanillaTilt.init(document.querySelectorAll('.glass-card, .skill-card'), {
-                max: 8,
-                speed: 350,
-                glare: true,
-                'max-glare': 0.08,
-                scale: 1.015,
-                gyroscope: true
-            });
+    if (viewToggleBtn && projectContainer) {
+      viewToggleBtn.addEventListener('click', () => {
+        isDeckMode = !isDeckMode;
+        if (isDeckMode) {
+          projectContainer.classList.add('deck-mode');
+          deckNavControls.style.display = 'inline-flex';
+          viewToggleBtn.style.backgroundColor = 'var(--color-pink)';
+          updateDeckCards();
+        } else {
+          projectContainer.classList.remove('deck-mode');
+          deckNavControls.style.display = 'none';
+          viewToggleBtn.style.backgroundColor = 'var(--color-yellow)';
+          projectCards.forEach(c => c.classList.add('active-card'));
         }
+      });
+    }
 
-        function canUseWebGL() {
-            try {
-                const canvas = document.createElement('canvas');
-                return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
-            } catch (error) {
-                return false;
-            }
+    if (deckNextBtn && deckPrevBtn) {
+      deckNextBtn.addEventListener('click', () => {
+        currentCardIndex = (currentCardIndex + 1) % projectCards.length;
+        updateDeckCards();
+      });
+      deckPrevBtn.addEventListener('click', () => {
+        currentCardIndex = (currentCardIndex - 1 + projectCards.length) % projectCards.length;
+        updateDeckCards();
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 5. Interactive Multi-Profile Resume Bento
+    // -------------------------------------------------------------
+    const resumeTabs = document.querySelectorAll('.resume-tab-btn');
+    const resumeProfileDesc = document.getElementById('resume-profile-desc');
+    const resumeSticker = document.getElementById('resume-sticker');
+
+    const profileData = {
+      rtl: {
+        desc: "Specialized in SystemVerilog RTL design, RISC-V microarchitecture, low-latency AXI4 interfaces, and FSM policy engines.",
+        sticker: "RTL CORE"
+      },
+      fpga: {
+        desc: "Experienced with Xilinx Vivado, UltraScale+ deployment, 51.2 GOPS systolic inference engines, and timing closure optimizations.",
+        sticker: "FPGA TOP"
+      },
+      dv: {
+        desc: "Proficient in SystemVerilog assertions (SVA), UVM environments, CDC checks, and automated AI waveform debugging.",
+        sticker: "DV / SVA"
+      },
+      embedded: {
+        desc: "Hands-on with C/C++ firmware, bare-metal hardware drivers for UART/SPI/I2C, and Linux kernel interfaces for FPGA accelerators.",
+        sticker: "EMBEDDED"
+      }
+    };
+
+    resumeTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        resumeTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const profile = tab.dataset.profile;
+        if (profileData[profile]) {
+          resumeProfileDesc.textContent = profileData[profile].desc;
+          resumeSticker.textContent = profileData[profile].sticker;
         }
+      });
+    });
 
-        function initThreeJS() {
-            const container = document.getElementById('three-canvas-container');
-            if (!container || reducedMotion || !isDesktop || !canUseWebGL() || !window.THREE) return;
+    // -------------------------------------------------------------
+    // 6. Sticky Note Contact Modal Dialog
+    // -------------------------------------------------------------
+    const contactModal = document.getElementById('contact-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const heroContactBtn = document.getElementById('hero-contact-btn');
+    const footerContactTrigger = document.getElementById('footer-contact-trigger');
+    const stickyContactCta = document.getElementById('sticky-contact-cta');
+    const resumeOpenModalBtn = document.getElementById('resume-open-modal-btn');
 
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
+    function openContactModal() {
+      if (contactModal) {
+        contactModal.showModal();
+      }
+    }
 
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
+    function closeContactModal() {
+      if (contactModal) {
+        contactModal.close();
+      }
+    }
 
-            const shape = new THREE.IcosahedronGeometry(2.7, 1);
-            const material = new THREE.MeshBasicMaterial({
-                color: 0xff2a6d,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.14
-            });
-            const mesh = new THREE.Mesh(shape, material);
-            scene.add(mesh);
+    [heroContactBtn, footerContactTrigger, stickyContactCta, resumeOpenModalBtn].forEach((btn) => {
+      if (btn) btn.addEventListener('click', openContactModal);
+    });
 
-            const ringGeometry = new THREE.TorusGeometry(3.8, 0.03, 16, 100);
-            const ringMaterial = new THREE.MeshBasicMaterial({ color: 0x05d9e8, transparent: true, opacity: 0.08 });
-            const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-            ring.rotation.x = 1.1;
-            scene.add(ring);
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeContactModal);
 
-            camera.position.z = 5;
-
-            let rafId;
-            const animate = () => {
-                rafId = requestAnimationFrame(animate);
-                mesh.rotation.x += 0.0009;
-                mesh.rotation.y += 0.0017;
-                ring.rotation.z += 0.0007;
-                renderer.render(scene, camera);
-            };
-            animate();
-
-            const onResize = () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            };
-            window.addEventListener('resize', onResize);
-
-            window.addEventListener('beforeunload', () => {
-                cancelAnimationFrame(rafId);
-                window.removeEventListener('resize', onResize);
-                renderer.dispose();
-                shape.dispose();
-                material.dispose();
-                ringGeometry.dispose();
-                ringMaterial.dispose();
-            });
+    // Close when clicking dialog backdrop
+    if (contactModal) {
+      contactModal.addEventListener('click', (e) => {
+        const dialogDimensions = contactModal.getBoundingClientRect();
+        if (
+          e.clientX < dialogDimensions.left ||
+          e.clientX > dialogDimensions.right ||
+          e.clientY < dialogDimensions.top ||
+          e.clientY > dialogDimensions.bottom
+        ) {
+          closeContactModal();
         }
+      });
+    }
 
-        initThreeJS();
-    </script>
+    // -------------------------------------------------------------
+    // 7. Instant Email Copy with Toast Status
+    // -------------------------------------------------------------
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    const copyBtnText = document.getElementById('copy-btn-text');
+
+    if (copyEmailBtn && copyBtnText) {
+      copyEmailBtn.addEventListener('click', async () => {
+        const email = 'varada.aakula@gmail.com';
+        try {
+          await navigator.clipboard.writeText(email);
+          copyBtnText.textContent = 'COPIED!';
+          copyEmailBtn.style.backgroundColor = 'var(--color-green)';
+        } catch (err) {
+          copyBtnText.textContent = 'COPIED!';
+        }
+        setTimeout(() => {
+          copyBtnText.textContent = 'COPY';
+          copyEmailBtn.style.backgroundColor = 'var(--color-cyan)';
+        }, 2200);
+      });
+    }
+  </script>
 </body>
 </html>
