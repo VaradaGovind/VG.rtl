@@ -23,26 +23,6 @@
   <meta name="twitter:title" content="Varada Govind Aakula — Hardware Researcher & RTL/VLSI Engineer">
   <meta name="twitter:description" content="Specializing in RTL Design, RISC-V Microarchitecture, FPGA Acceleration, and CMOS VLSI.">
 
-  <!-- JSON-LD Structured Data for Search Engines -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Varada Govind Aakula",
-    "url": "https://varadagovind.github.io/VG.rtl/",
-    "jobTitle": "Hardware Researcher & RTL/VLSI Engineer",
-    "affiliation": {
-      "@type": "EducationalOrganization",
-      "name": "Indian Institute of Information Technology, Allahabad"
-    },
-    "knowsAbout": ["RTL Design", "SystemVerilog", "RISC-V", "FPGA Acceleration", "CMOS VLSI", "Hardware Verification"],
-    "sameAs": [
-      "https://github.com/VaradaGovind",
-      "https://www.linkedin.com/in/varada-govind-aakula-3506712b5/"
-    ]
-  }
-  </script>
-
   <!-- Anti-FOUC Theme Script -->
   <script>
     (function() {
@@ -99,18 +79,15 @@
     }
 
     html.dark {
-      /* Dark Theme Colors */
       --color-bg: #0f1013;
       --color-fg: #f4f4f5;
       --color-main: #18191f;
       --color-panel: #18191f;
       --color-border: #f4f4f5;
 
-      /* Dark Grid Dot Pattern */
       --color-dot-grid: rgba(244, 244, 245, 0.12);
       --color-grid-line: rgba(244, 244, 245, 0.04);
 
-      /* Neon Dark Accents */
       --color-yellow: #f59e0b;
       --color-cyan: #06b6d4;
       --color-pink: #ec4899;
@@ -118,16 +95,12 @@
       --color-amber: #eab308;
       --color-purple: #a855f7;
 
-      /* Shadows in dark mode */
       --shadow-sm: 2px 2px 0 0 #f4f4f5;
       --shadow-md: 4px 4px 0 0 #f4f4f5;
       --shadow-lg: 6px 6px 0 0 #f4f4f5;
       --shadow-xl: 8px 8px 0 0 #f4f4f5;
     }
 
-    /* -------------------------------------------------------------
-       2. BASE STYLES & RETRO-TECH CANVAS BACKGROUND
-       ------------------------------------------------------------- */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -153,7 +126,6 @@
       min-height: 100vh;
     }
 
-    /* Clean subtle retro dot grid background similar to ayanmahata.pages.dev */
     body::before {
       content: "";
       position: fixed;
@@ -169,9 +141,7 @@
     }
 
     @media (pointer: coarse), (prefers-reduced-motion: reduce) {
-      body {
-        cursor: auto;
-      }
+      body { cursor: auto; }
     }
 
     ::selection {
@@ -192,13 +162,11 @@
     }
 
     @media (pointer: coarse) {
-      button, a {
-        cursor: pointer;
-      }
+      button, a { cursor: pointer; }
     }
 
     /* -------------------------------------------------------------
-       3. REFINED DUAL MAGIC CURSOR (Dot + Dynamic Smooth Follower)
+       2. REFINED DUAL MAGIC CURSOR (Dot + Smooth Follower Ring)
        ------------------------------------------------------------- */
     #magic-cursor-dot {
       position: fixed;
@@ -230,25 +198,22 @@
                   height 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
                   background-color 0.2s ease, 
                   border-color 0.2s ease, 
-                  border-style 0.2s ease,
                   transform 0.15s ease;
       will-change: left, top, width, height, transform;
     }
 
-    /* Hovering Interactive Elements */
     #magic-cursor-ring.cursor-hover {
       width: 54px;
       height: 54px;
-      background-color: rgba(254, 240, 138, 0.3);
+      background-color: rgba(254, 240, 138, 0.35);
       border-color: var(--color-fg);
       border-width: 2.5px;
     }
 
     html.dark #magic-cursor-ring.cursor-hover {
-      background-color: rgba(6, 182, 212, 0.25);
+      background-color: rgba(6, 182, 212, 0.28);
     }
 
-    /* Lens Mode on Silicon Hero Graphic */
     #magic-cursor-ring.cursor-lens {
       width: 80px;
       height: 80px;
@@ -263,7 +228,6 @@
       to { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
-    /* Mouse Click Elastic Squash */
     #magic-cursor-ring.cursor-active {
       width: 26px;
       height: 26px;
@@ -273,9 +237,7 @@
     }
 
     @media (pointer: coarse), (prefers-reduced-motion: reduce) {
-      #magic-cursor-dot, #magic-cursor-ring {
-        display: none !important;
-      }
+      #magic-cursor-dot, #magic-cursor-ring { display: none !important; }
     }
 
     #scroll-progress {
@@ -291,7 +253,7 @@
     }
 
     /* -------------------------------------------------------------
-       4. NEOBRUTALIST UTILITIES & ENHANCED MICRO-ANIMATIONS
+       3. NEOBRUTALIST UTILITIES & MICRO-ANIMATIONS
        ------------------------------------------------------------- */
     .font-display { font-family: var(--font-display); }
     .font-mono { font-family: var(--font-mono); }
@@ -406,7 +368,7 @@
     }
 
     /* -------------------------------------------------------------
-       5. HEADER & NAVIGATION WITH PROMINENT LOGO
+       4. HEADER & NAVIGATION WITH PROMINENT LOGO
        ------------------------------------------------------------- */
     .site-nav {
       position: fixed;
@@ -435,7 +397,6 @@
       gap: 0.85rem;
     }
 
-    /* Prominent Hardware Logo Mark */
     .nav-brand-link {
       display: flex;
       align-items: center;
@@ -531,7 +492,7 @@
     html:not(.dark) .moon-icon { display: block; }
 
     /* -------------------------------------------------------------
-       6. MAIN CONTAINER & HERO SECTION
+       5. MAIN CONTAINER & HERO SECTION
        ------------------------------------------------------------- */
     .container-page {
       max-width: 1200px;
@@ -573,7 +534,6 @@
       margin-bottom: 2rem;
     }
 
-    /* Interactive Silicon Hero Box */
     .hero-silicon-box {
       position: relative;
       height: 390px;
@@ -627,8 +587,8 @@
     }
 
     .die-core-graphic {
-      width: 116px;
-      height: 116px;
+      width: 120px;
+      height: 120px;
       border: var(--border-thick);
       background-color: var(--color-yellow);
       display: flex;
@@ -648,8 +608,8 @@
 
     .die-traces {
       position: absolute;
-      width: 168px;
-      height: 168px;
+      width: 170px;
+      height: 170px;
       border: 1.5px dashed var(--color-fg);
       opacity: 0.35;
       border-radius: 50%;
@@ -691,7 +651,7 @@
     }
 
     /* -------------------------------------------------------------
-       7. "BASE OF OPERATIONS" SECTION
+       6. "BASE OF OPERATIONS" SECTION
        ------------------------------------------------------------- */
     .base-operations {
       border: var(--border-thick);
@@ -756,7 +716,7 @@
     }
 
     /* -------------------------------------------------------------
-       8. SELECTED WORK / PROJECTS SECTION
+       7. SELECTED WORK / PROJECTS SECTION
        ------------------------------------------------------------- */
     .section-header-wrap {
       display: flex;
@@ -833,7 +793,6 @@
       position: relative;
     }
 
-    /* Deck Flip Mode Styling */
     .projects-container.deck-mode {
       min-height: 460px;
     }
@@ -958,7 +917,7 @@
     }
 
     /* -------------------------------------------------------------
-       9. FIELD NOTES (STICKY POST-IT NOTES)
+       8. FIELD NOTES (STICKY POST-IT NOTES)
        ------------------------------------------------------------- */
     .sticky-section {
       border-top: 3px solid var(--color-fg);
@@ -1008,7 +967,6 @@
       z-index: 25;
     }
 
-    /* Masking tape on sticky note */
     .sticky-tape {
       position: absolute;
       top: -12px;
@@ -1094,7 +1052,7 @@
     }
 
     /* -------------------------------------------------------------
-       10. BENTO RESUME CARD (MULTI-PROFILE)
+       9. BENTO RESUME CARD (MULTI-PROFILE)
        ------------------------------------------------------------- */
     .bento-resume-card {
       position: relative;
@@ -1189,7 +1147,6 @@
       transform: translate(-2px, -2px);
     }
 
-    /* Mini Resume Paper Preview */
     .mini-resume-wrap {
       display: flex;
       justify-content: center;
@@ -1255,7 +1212,7 @@
     }
 
     /* -------------------------------------------------------------
-       11. ARSENAL / TECHNICAL PROFICIENCY GRID
+       10. ARSENAL / TECHNICAL PROFICIENCY GRID
        ------------------------------------------------------------- */
     .skills-grid {
       display: grid;
@@ -1310,7 +1267,7 @@
     }
 
     /* -------------------------------------------------------------
-       12. FOOTER & CONTACT MODAL (<dialog>)
+       11. FOOTER & CONTACT MODAL (<dialog>)
        ------------------------------------------------------------- */
     .site-footer {
       border-top: var(--border-thick);
@@ -1348,7 +1305,6 @@
       font-size: 0.75rem;
     }
 
-    /* Contact Dialog Modal */
     .neo-modal-dialog {
       margin: auto;
       padding: 0;
@@ -1370,14 +1326,8 @@
     }
 
     @keyframes modalPopIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.85) rotate(-3deg);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-      }
+      0% { opacity: 0; transform: scale(0.85) rotate(-3deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
     }
 
     .sticky-note-modal {
@@ -1492,62 +1442,26 @@
     }
 
     /* -------------------------------------------------------------
-       13. RESPONSIVE BREAKPOINTS
+       12. RESPONSIVE BREAKPOINTS
        ------------------------------------------------------------- */
     @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-      .base-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      .project-card {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      .bento-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
+      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .base-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .project-card { grid-template-columns: 1fr; gap: 1.5rem; }
+      .bento-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
 
     @media (max-width: 640px) {
-      .nav-brand-group {
-        gap: 0.4rem;
-      }
-      .nav-logo-badge {
-        width: 34px;
-        height: 34px;
-      }
-      .nav-brand-title {
-        font-size: 0.95rem;
-      }
-      .nav-brand-sub {
-        display: none;
-      }
-      .nav-socials .neo-social-btn {
-        width: 32px;
-        height: 32px;
-      }
-      .nav-links .neo-btn {
-        padding: 0.4rem 0.55rem;
-        font-size: 0.7rem;
-      }
-      .container-page {
-        padding: 5.5rem 1rem 3rem;
-      }
-      .hero-title {
-        font-size: 2.35rem;
-      }
-      .sticky-note {
-        transform: rotate(0deg) !important;
-        margin-top: 0 !important;
-      }
-      .sticky-notes-container {
-        gap: 1.5rem;
-      }
+      .nav-brand-group { gap: 0.4rem; }
+      .nav-logo-badge { width: 34px; height: 34px; }
+      .nav-brand-title { font-size: 0.95rem; }
+      .nav-brand-sub { display: none; }
+      .nav-socials .neo-social-btn { width: 32px; height: 32px; }
+      .nav-links .neo-btn { padding: 0.4rem 0.55rem; font-size: 0.7rem; }
+      .container-page { padding: 5.5rem 1rem 3rem; }
+      .hero-title { font-size: 2.35rem; }
+      .sticky-note { transform: rotate(0deg) !important; margin-top: 0 !important; }
+      .sticky-notes-container { gap: 1.5rem; }
     }
   </style>
 </head>
@@ -1661,13 +1575,13 @@
         </div>
       </div>
 
-      <!-- Right Column: Interactive Silicon & Wafer Card -->
+      <!-- Right Column: Interactive Silicon & Wafer Card (Accurate Prolepsis TMU Data) -->
       <div class="hero-silicon-box" id="hero-interactive-box">
         <div class="silicon-grid-bg"></div>
         <div class="silicon-header font-mono">
           <span style="font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; gap: 0.35rem;">
             <span id="die-pulse-dot" style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: pulseDie 2s infinite;"></span>
-            DIE STATUS: ACTIVE
+            PROLEPSIS TMU: ACTIVE
           </span>
           <span id="die-cycle-ticker" style="font-size: 0.72rem; font-weight: 700; opacity: 0.75;">CYCLE: 0x4A2F</span>
         </div>
@@ -1680,22 +1594,22 @@
             <span class="font-mono" style="font-size: 0.55rem; font-weight: 800; color: #111; opacity: 0.75;">VDAT 2026</span>
           </div>
           <p class="font-mono" style="font-size: 0.72rem; margin-top: 0.85rem; font-weight: 600;">
-            16x16 INT8 Systolic Array • Kalman FSM
+            Multicore RISC-V Cluster • Hardware Kalman TMU
           </p>
         </div>
 
         <div class="silicon-telemetry">
           <div class="telemetry-item">
-            <div class="telemetry-label">THROUGHPUT</div>
-            <div class="telemetry-val" style="color: var(--color-green);">51.2 GOPS</div>
-          </div>
-          <div class="telemetry-item">
-            <div class="telemetry-label">THERMAL CAP</div>
+            <div class="telemetry-label">THERMAL LIMIT</div>
             <div class="telemetry-val" style="color: var(--color-pink);">96.3% &lt;85°C</div>
           </div>
           <div class="telemetry-item">
-            <div class="telemetry-label">AES CLOSURE</div>
-            <div class="telemetry-val" style="color: var(--color-cyan);">1.66 Gbps</div>
+            <div class="telemetry-label">FPGA FOOTPRINT</div>
+            <div class="telemetry-val" style="color: var(--color-green);">18,015 LUTs</div>
+          </div>
+          <div class="telemetry-item">
+            <div class="telemetry-label">TARGET ARCH</div>
+            <div class="telemetry-val" style="color: var(--color-cyan);">UltraScale+</div>
           </div>
         </div>
       </div>
@@ -1786,12 +1700,12 @@
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-cyan); color: #111;">EDGE ACCELERATOR</span>
-              <span class="neo-tag">DVCon 2026 Contest</span>
+              <span class="neo-tag">Genesys-2 FPGA</span>
             </div>
             <h3 class="card-title">MobileNet INT8 Systolic Array Accelerator</h3>
             <div class="card-tech-chips">
               <span class="tech-pill">Verilog</span>
-              <span class="tech-pill">Systolic Array</span>
+              <span class="tech-pill">16x16 Systolic Array</span>
               <span class="tech-pill">AXI4 SG-DMA</span>
               <span class="tech-pill">BRAM Sparsity</span>
               <span class="tech-pill">Vivado</span>
@@ -1799,7 +1713,7 @@
           </div>
           <div class="card-right">
             <p class="card-desc">
-              A heterogeneous edge inference pipeline with a 16x16 INT8 systolic compute core delivering 51.2 GOPS at 200 MHz. Implemented sparse BRAM addressing to reduce memory bandwidth by 256x and hid memory transfer latency via ping-pong AXI4 SG-DMA streaming.
+              A heterogeneous edge inference pipeline on Genesys-2 FPGA featuring a 16x16 INT8 systolic compute core delivering 51.2 GOPS at 200 MHz. Implemented sparse BRAM addressing to reduce memory bandwidth by 256x and hid memory transfer latency via ping-pong AXI4 SG-DMA streaming.
             </p>
             <div class="hardware-metric-row">
               <div class="metric-chip"><strong>THROUGHPUT</strong> 51.2 GOPS @ 200 MHz</div>
@@ -1819,7 +1733,7 @@
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-pink); color: #111;">CONFERENCE PAPER</span>
-              <span class="neo-tag">VDAT 2026</span>
+              <span class="neo-tag">VDAT 2026 ACCEPTED</span>
             </div>
             <h3 class="card-title">Prolepsis: ISA-Agnostic Predictive Thermal Management</h3>
             <div class="card-tech-chips">
@@ -1831,7 +1745,7 @@
           </div>
           <div class="card-right">
             <p class="card-desc">
-              Architected an ISA-agnostic RTL Thermal Management Unit (TMU) for multicore RISC-V processors. Designed a hardware Kalman predictor and policy FSM for proactive throttling and task migration, achieving 96.3% execution under an 85°C limit using 18,015 LUTs.
+              Architected an ISA-agnostic RTL Thermal Management Unit (TMU) for multicore RISC-V processors. Designed a hardware Kalman predictor and policy FSM for proactive throttling and task migration, achieving 96.3% execution under an 85°C thermal safety limit using 18,015 LUTs on AMD Xilinx UltraScale+.
             </p>
             <div class="hardware-metric-row">
               <div class="metric-chip"><strong>THERMAL LIMIT</strong> 96.3% compliance (&lt;85°C)</div>
@@ -1893,11 +1807,11 @@
           </div>
           <div class="card-right">
             <p class="card-desc">
-              Single-cycle RV32I processor core with custom MMIO meeting 100 MHz timing closure at ultra-low area (300 LUTs). Coupled with robust hardware controllers for 16-bit configurable UART, SPI Master/Slave, and multi-master I2C.
+              Single-cycle RV32I processor core with custom MMIO meeting 100 MHz timing closure at ultra-low area (~300 LUTs). Coupled with robust hardware controllers for 16-bit configurable UART, SPI Master/Slave, and multi-master I2C with Clock Domain Crossing (CDC).
             </p>
             <div class="hardware-metric-row">
               <div class="metric-chip"><strong>FOOTPRINT</strong> ~300 LUTs Soft-Core</div>
-              <div class="metric-chip"><strong>TIMING</strong> 100 MHz on FPGA</div>
+              <div class="metric-chip"><strong>TIMING</strong> 100 MHz on Nexys 4 DDR</div>
               <div class="metric-chip"><strong>PROTOCOLS</strong> UART, SPI, I2C with CDC</div>
             </div>
             <div class="card-actions">
@@ -2258,12 +2172,11 @@
       window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        // Dot moves instantly
+        // Dot tracks immediately
         cursorDot.style.left = `${mouseX}px`;
         cursorDot.style.top = `${mouseY}px`;
       }, { passive: true });
 
-      // Ring follows with smooth spring interpolation
       function renderCursor() {
         ringX += (mouseX - ringX) * 0.28;
         ringY += (mouseY - ringY) * 0.28;
@@ -2273,7 +2186,6 @@
       }
       renderCursor();
 
-      // Interactive hover bindings
       function bindHoverElements() {
         const hoverTargets = document.querySelectorAll('a, button, .sticky-note, .project-card, .skill-card, .neo-tag, .bento-resume-card');
         hoverTargets.forEach((target) => {
@@ -2442,7 +2354,7 @@
     function openContactModal() {
       if (contactModal) {
         contactModal.showModal();
-        // Re-parent custom cursor elements into the modal so they stay in the Top Layer above the dialog backdrop!
+        // Re-parent custom cursor elements inside the modal so they stay in the Top Layer above the dialog backdrop!
         if (cursorRing && cursorDot) {
           contactModal.appendChild(cursorRing);
           contactModal.appendChild(cursorDot);
@@ -2467,7 +2379,6 @@
 
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeContactModal);
 
-    // Close when clicking dialog backdrop or pressing ESC
     if (contactModal) {
       contactModal.addEventListener('click', (e) => {
         const dialogDimensions = contactModal.getBoundingClientRect();
