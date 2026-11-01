@@ -6,10 +6,10 @@
   <title>Varada Govind Aakula — Hardware Researcher & RTL/VLSI Engineer</title>
   <meta name="description" content="Portfolio of Varada Govind Aakula: Hardware Researcher at IIIT Allahabad specializing in RTL Design, RISC-V Microarchitecture, FPGA Acceleration, and CMOS VLSI.">
   <meta name="author" content="Varada Govind Aakula">
-  <meta name="theme-color" content="#fafaf7" id="theme-color-meta">
+  <meta name="theme-color" content="#070a12" id="theme-color-meta">
 
   <!-- Favicon: Hardware Silicon Chip Neo-Logo -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fef08a' stroke='%23121214' stroke-width='2.5' rx='5'/%3E%3Crect x='7' y='7' width='18' height='18' fill='%23121214' rx='2'/%3E%3Ctext x='16' y='20' fill='%23fef08a' font-family='monospace' font-weight='900' font-size='10' text-anchor='middle'%3EVG%3C/text%3E%3Cline x1='16' y1='1' x2='16' y2='6' stroke='%23121214' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='26' x2='16' y2='31' stroke='%23121214' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='1' y1='16' x2='6' y2='16' stroke='%23121214' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='26' y1='16' x2='31' y2='16' stroke='%23121214' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%233e8bff' stroke='%23070a12' stroke-width='2.5' rx='5'/%3E%3Crect x='7' y='7' width='18' height='18' fill='%23070a12' rx='2'/%3E%3Ctext x='16' y='20' fill='%233e8bff' font-family='monospace' font-weight='900' font-size='10' text-anchor='middle'%3EVG%3C/text%3E%3Cline x1='16' y1='1' x2='16' y2='6' stroke='%23070a12' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='16' y1='26' x2='16' y2='31' stroke='%23070a12' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='1' y1='16' x2='6' y2='16' stroke='%23070a12' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='26' y1='16' x2='31' y2='16' stroke='%23070a12' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
@@ -43,62 +43,49 @@
 
   <style>
     /* -------------------------------------------------------------
-       1. DESIGN SYSTEM TOKENS (Neobrutalism Light & Dark)
+       1. DESIGN SYSTEM TOKENS (Midnight / Electric Blue / Cantaloupe)
        ------------------------------------------------------------- */
     :root {
       --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'IBM Plex Mono', monospace;
 
-      /* Light Theme Colors */
-      --color-bg: #fafaf7;
-      --color-fg: #121214;
-      --color-main: #ffffff;
-      --color-panel: #ffffff;
-      --color-border: #121214;
+      /* Midnight Black foundation */
+      --color-bg: #070a12;
+      --color-fg: #f4f7ff;
+      --color-main: #0e1422;
+      --color-panel: #101827;
+      --color-border: rgba(148, 163, 184, 0.24);
 
       /* Grid Dot Pattern Color */
-      --color-dot-grid: rgba(18, 18, 20, 0.08);
-      --color-grid-line: rgba(18, 18, 20, 0.035);
+      --color-dot-grid: rgba(74, 142, 255, 0.16);
+      --color-grid-line: rgba(74, 142, 255, 0.055);
 
-      /* Pastel Neo Accents */
-      --color-yellow: #fef08a;
-      --color-cyan: #cffafe;
-      --color-pink: #fbcfe8;
-      --color-green: #bbf7d0;
-      --color-amber: #fde047;
-      --color-purple: #e9d5ff;
+      /* Electric Blue + Cantaloupe Orange accents */
+      --color-yellow: #ff9a6c;
+      --color-cyan: #3e8bff;
+      --color-pink: #ff7d59;
+      --color-green: #67d6ff;
+      --color-amber: #ff875f;
+      --color-purple: #8bb4ff;
 
       /* Shadows */
-      --shadow-sm: 2px 2px 0 0 var(--color-border);
-      --shadow-md: 4px 4px 0 0 var(--color-border);
-      --shadow-lg: 6px 6px 0 0 var(--color-border);
-      --shadow-xl: 8px 8px 0 0 var(--color-border);
-      --border-thick: 3px solid var(--color-border);
-      --border-thin: 2px solid var(--color-border);
+      --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.18);
+      --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.24);
+      --shadow-lg: 0 18px 46px rgba(0, 0, 0, 0.3);
+      --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.36);
+      --border-thick: 1px solid var(--color-border);
+      --border-thin: 1px solid var(--color-border);
     }
 
     html.dark {
-      --color-bg: #0f1013;
-      --color-fg: #f4f4f5;
-      --color-main: #18191f;
-      --color-panel: #18191f;
-      --color-border: #f4f4f5;
-
-      --color-dot-grid: rgba(244, 244, 245, 0.12);
-      --color-grid-line: rgba(244, 244, 245, 0.04);
-
-      --color-yellow: #f59e0b;
-      --color-cyan: #06b6d4;
-      --color-pink: #ec4899;
-      --color-green: #10b981;
-      --color-amber: #eab308;
-      --color-purple: #a855f7;
-
-      --shadow-sm: 2px 2px 0 0 #f4f4f5;
-      --shadow-md: 4px 4px 0 0 #f4f4f5;
-      --shadow-lg: 6px 6px 0 0 #f4f4f5;
-      --shadow-xl: 8px 8px 0 0 #f4f4f5;
+      --color-bg: #070a12;
+      --color-fg: #f4f7ff;
+      --color-main: #0e1422;
+      --color-panel: #101827;
+      --color-border: rgba(148, 163, 184, 0.24);
+      --color-dot-grid: rgba(74, 142, 255, 0.16);
+      --color-grid-line: rgba(74, 142, 255, 0.055);
     }
 
     *, *::before, *::after {
@@ -1453,6 +1440,188 @@
       .sticky-note { transform: rotate(0deg) !important; margin-top: 0 !important; }
       .sticky-notes-container { gap: 1.5rem; }
     }
+
+    /* -------------------------------------------------------------
+       14. MIDNIGHT REFRESH (clean surfaces, soft depth, focused accents)
+       ------------------------------------------------------------- */
+    body {
+      background:
+        radial-gradient(circle at 50% -10%, rgba(47, 128, 255, 0.22), transparent 34rem),
+        radial-gradient(circle at 92% 38%, rgba(255, 126, 86, 0.08), transparent 26rem),
+        var(--color-bg);
+    }
+
+    body::before {
+      background-image:
+        radial-gradient(var(--color-dot-grid) 1px, transparent 1px),
+        linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
+      background-size: 24px 24px, 120px 120px, 120px 120px;
+    }
+
+    ::selection {
+      background: var(--color-yellow);
+      color: #08101f;
+    }
+
+    #scroll-progress {
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-cyan), var(--color-yellow));
+      border-bottom: 0;
+      box-shadow: 0 0 18px rgba(62, 139, 255, 0.7);
+    }
+
+    #magic-cursor-dot { background-color: var(--color-yellow); }
+    #magic-cursor-ring { border-color: var(--color-cyan); }
+    #magic-cursor-ring.cursor-hover {
+      background-color: rgba(62, 139, 255, 0.18);
+      border-color: var(--color-yellow);
+    }
+    #magic-cursor-ring.cursor-active { background-color: var(--color-yellow); }
+
+    .site-nav {
+      background: rgba(7, 10, 18, 0.78);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-logo-badge {
+      background: linear-gradient(135deg, var(--color-cyan), #2365d1);
+      color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(47, 128, 255, 0.3);
+    }
+
+    .nav-logo-pins { border-color: rgba(255, 255, 255, 0.72); }
+    .nav-link-item a.active { background: var(--color-cyan); color: #ffffff; }
+
+    .neo-btn,
+    .neo-tag,
+    .neo-social-btn,
+    .view-toggle-btn,
+    .resume-tab-btn,
+    .tech-pill {
+      border-radius: 999px;
+    }
+
+    .neo-btn {
+      background: rgba(14, 20, 34, 0.86);
+      border-color: rgba(148, 163, 184, 0.32);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .neo-btn:hover { border-color: rgba(255, 154, 108, 0.65); }
+    .neo-btn--yellow,
+    .neo-btn--pink { background: var(--color-yellow); color: #171018; }
+    .neo-btn--cyan { background: var(--color-cyan); color: #ffffff; }
+    .neo-btn--black { background: #05070d; color: var(--color-fg); }
+    .neo-tag { box-shadow: 0 5px 16px rgba(0, 0, 0, 0.16); }
+    .neo-social-btn { background: rgba(14, 20, 34, 0.86); }
+    .neo-social-btn:hover { background: var(--color-yellow); color: #171018; }
+
+    .hero-title {
+      max-width: 760px;
+      text-wrap: balance;
+    }
+
+    .hero-title::after {
+      content: "";
+      display: block;
+      width: 5rem;
+      height: 0.35rem;
+      margin-top: 1.15rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--color-cyan), var(--color-yellow));
+      box-shadow: 0 0 20px rgba(62, 139, 255, 0.45);
+    }
+
+    .silicon-artifact-box,
+    .project-card,
+    .skill-card {
+      border-radius: 22px;
+      border-color: rgba(82, 145, 255, 0.28);
+      background: linear-gradient(145deg, rgba(16, 24, 39, 0.96), rgba(8, 13, 24, 0.96));
+    }
+
+    .silicon-artifact-box {
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(62, 139, 255, 0.08);
+    }
+
+    .silicon-artifact-box:hover,
+    .project-card:hover,
+    .skill-card:hover { box-shadow: 0 24px 64px rgba(0, 0, 0, 0.42), 0 0 28px rgba(62, 139, 255, 0.1); }
+
+    .silicon-grid-bg { opacity: 0.16; }
+    .die-core-graphic {
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(255, 126, 86, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.18);
+    }
+
+    .base-operations {
+      border-radius: 22px;
+      border-color: rgba(139, 180, 255, 0.34);
+      background: linear-gradient(135deg, #174da9 0%, #236fe2 54%, #2d82ee 100%);
+      color: #f7fbff;
+      box-shadow: 0 24px 64px rgba(31, 102, 220, 0.28);
+    }
+
+    .base-meta-badge { border-radius: 999px; background: #071328; color: #b9d4ff; }
+
+    .section-header-wrap { border-bottom: 1px solid rgba(148, 163, 184, 0.25); }
+    .section-title-badge-shadow { background: var(--color-yellow); border-radius: 14px; }
+    .section-title-badge-text {
+      border-radius: 14px;
+      background: rgba(14, 20, 34, 0.9);
+      border-color: rgba(82, 145, 255, 0.3);
+    }
+
+    .project-card { box-shadow: 0 22px 60px rgba(0, 0, 0, 0.32); }
+    .tech-pill { background: rgba(62, 139, 255, 0.08); border-color: rgba(139, 180, 255, 0.28); }
+    .sticky-section { border-top-color: rgba(148, 163, 184, 0.25); }
+    .sticky-note {
+      border: 0;
+      border-radius: 18px;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28);
+    }
+
+    .sticky-note:hover { box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4); }
+    .sticky-note:nth-child(2n) { transform: rotate(2deg); }
+
+    .bento-resume-card {
+      border-radius: 22px;
+      border-color: rgba(139, 180, 255, 0.3);
+      background: linear-gradient(135deg, #1a5bc3, #286ed7 55%, #327de7);
+      color: #f7fbff;
+      box-shadow: 0 24px 64px rgba(31, 102, 220, 0.28);
+    }
+
+    .bento-resume-card:hover { box-shadow: 0 28px 72px rgba(31, 102, 220, 0.36); }
+    .resume-tab-btn { border-color: rgba(7, 19, 40, 0.34); color: #071328; }
+    .resume-tab-btn.active { background: var(--color-yellow); }
+    .resume-tab-btn:hover:not(.active) { background: #071328; color: #ffffff; }
+    .mini-resume-sheet { border-radius: 12px; }
+    .mini-sheet-bg { border-radius: 12px; }
+
+    .site-footer {
+      background: rgba(7, 10, 18, 0.74);
+      border-top-color: rgba(148, 163, 184, 0.2);
+    }
+
+    .footer-bottom { border-top-color: rgba(148, 163, 184, 0.22); }
+    .sticky-note-modal {
+      border-radius: 20px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.46);
+    }
+
+    @media (max-width: 640px) {
+      .site-nav { padding-inline: 0.8rem; }
+      .hero-title { font-size: clamp(2.25rem, 12vw, 3.6rem); }
+      .hero-desc { font-size: 0.86rem; }
+      .silicon-artifact-box { min-height: 340px; }
+      .project-card { padding: 1.45rem 1.1rem; }
+      .base-operations { padding: 1.6rem 1.25rem; }
+    }
   </style>
 </head>
 
@@ -1536,9 +1705,9 @@
           <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">
             HARDWARE RESEARCHER
           </span>
-          <span class="neo-tag" style="background-color: var(--color-cyan); color: #111;">
-            🏆 VDAT 2026 ACCEPTED
-          </span>
+          <a href="https://ieeexplore.ieee.org/document/11704577" target="_blank" rel="noopener noreferrer" class="neo-tag" style="background-color: var(--color-cyan); color: #111;" title="View Prolepsis Paper on IEEE Xplore">
+            🏆 VDAT 2026 ACCEPTED ↗
+          </a>
         </div>
 
         <h1 class="hero-title">
@@ -1567,7 +1736,7 @@
         <div class="silicon-grid-bg"></div>
         <div class="silicon-header">
           <span style="display: flex; align-items: center; gap: 0.4rem;">
-            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: pulseDie 2s infinite;"></span>
+            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--color-green); animation: pulseDie 2s infinite;"></span>
             PROLEPSIS TMU: ACTIVE
           </span>
           <span id="die-cycle-ticker" style="opacity: 0.75;">CYCLE: 0x4A2F</span>
@@ -1716,7 +1885,7 @@
           <div class="card-left">
             <div class="card-meta-chips">
               <span class="neo-tag" style="background-color: var(--color-pink); color: #111;">CONFERENCE PAPER</span>
-              <span class="neo-tag" style="background-color: var(--color-yellow); color: #111;">🏆 VDAT 2026 ACCEPTED</span>
+              <a href="https://ieeexplore.ieee.org/document/11704577" target="_blank" rel="noopener noreferrer" class="neo-tag" style="background-color: var(--color-yellow); color: #111;" title="View Prolepsis on IEEE Xplore">🏆 VDAT 2026 ACCEPTED ↗</a>
             </div>
             <h3 class="card-title">Prolepsis: Predictive Thermal Management Unit</h3>
             <div class="card-tech-chips">
@@ -1733,7 +1902,9 @@
               <a href="https://github.com/VaradaGovind/Prolepsis-SoC" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--cyan">
                 VIEW GITHUB REPO ↗
               </a>
-              <span class="neo-btn neo-btn--pink" style="font-size: 0.75rem;">VDAT '26 ACCEPTED</span>
+              <a href="https://ieeexplore.ieee.org/document/11704577" target="_blank" rel="noopener noreferrer" class="neo-btn neo-btn--pink">
+                READ IEEE PAPER ↗
+              </a>
             </div>
           </div>
 
@@ -2045,7 +2216,7 @@
             Prolepsis TMU got officially accepted at VDAT 2026! Excited to present our work on proactive Kalman thermal prediction for multicore RISC-V chips.
           </p>
           <div class="sticky-footer">
-            #VLSI #RISCV ↗
+            <a href="https://ieeexplore.ieee.org/document/11704577" target="_blank" rel="noopener noreferrer" style="color: inherit;" title="View Prolepsis Paper on IEEE Xplore">#VLSI #RISCV ↗</a>
           </div>
         </div>
 
@@ -2305,7 +2476,7 @@
       } else {
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
-        if (themeColorMeta) themeColorMeta.setAttribute('content', '#fafaf7');
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#070a12');
       }
     }
 
